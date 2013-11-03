@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reg no:</strong>
+  <%= @vehicle.reg_no %>
+</p>
+
+<p>
+  <strong>Chassis no:</strong>
+  <%= @vehicle.chassis_no %>
+</p>
+
+<p>
+  <strong>Engine no:</strong>
+  <%= @vehicle.engine_no %>
+</p>
+
+<p>
+  <strong>Reg on:</strong>
+  <%= @vehicle.reg_on %>
+</p>
+
+<p>
+  <strong>Manufacturer year:</strong>
+  <%= @vehicle.manufacturer_year %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @vehicle.manufacturer_id %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @vehicle.category_id %>
+</p>
+
+<p>
+  <strong>Aquired on:</strong>
+  <%= @vehicle.aquired_on %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @vehicle.price %>
+</p>
+
+<p>
+  <strong>Contract:</strong>
+  <%= @vehicle.contract_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @vehicle.status_id %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>

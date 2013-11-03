@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905150104) do
+ActiveRecord::Schema.define(version: 20131103125259) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +30,22 @@ ActiveRecord::Schema.define(version: 20130905150104) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vehicles", force: true do |t|
+    t.string   "reg_no"
+    t.string   "chassis_no"
+    t.string   "engine_no"
+    t.date     "reg_on"
+    t.date     "manufacturer_year"
+    t.integer  "manufacturer_id"
+    t.string   "model"
+    t.integer  "category_id"
+    t.date     "acquired_on"
+    t.decimal  "price"
+    t.integer  "contract_id"
+    t.integer  "status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

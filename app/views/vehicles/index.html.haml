@@ -1,0 +1,53 @@
+- provide(:title, 'Vehicles')
+- model_class = Vehicle
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle")), new_vehicle_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Reg no
+      %th Chassis no
+      %th Engine no
+      %th Reg on
+      %th Manufacturer year
+      %th Manufacturer
+      %th Model
+      %th Category
+      %th Aquired on
+      %th Price
+      %th Contract
+      %th Status
+      %th
+      %th
+      %th
+  %tbody
+    - @vehicles.each do |vehicle|
+      %tr
+        %td= vehicle.reg_no
+        %td= vehicle.chassis_no
+        %td= vehicle.engine_no
+        %td= vehicle.reg_on
+        %td= vehicle.manufacturer_year
+        %td= vehicle.manufacturer_id
+        %td= vehicle.model
+        %td= vehicle.category_id
+        %td= vehicle.aquired_on
+        %td= vehicle.price
+        %td= vehicle.contract_id
+        %td= vehicle.status_id
+        %td= link_to 'Show', vehicle
+        %td= link_to 'Edit', edit_vehicle_path(vehicle)
+        %td= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' }
+      
+      

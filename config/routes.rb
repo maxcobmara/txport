@@ -1,4 +1,6 @@
 Txport::Application.routes.draw do
+  resources :vehicles
+
   devise_for :users
   resources :users
   root  'static_pages#home'

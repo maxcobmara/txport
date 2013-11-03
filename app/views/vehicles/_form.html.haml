@@ -1,0 +1,65 @@
+= form_for @vehicle, :html => { :class => 'form-horizontal' }  do |f|
+  - if @vehicle.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@vehicle.errors.count, "error")
+        prohibited this vehicle from being saved:
+      %ul
+        - @vehicle.errors.full_messages.each do |msg|
+          %li= msg
+          
+  .control-group
+    = f.label :reg_no, :class => 'control-label'
+    .controls= f.text_field :reg_no, :class => 'text_field mandatory'
+    
+  .control-group
+    = f.label :chassis_no, :class => 'control-label'
+    .controls= f.text_field :chassis_no, :class => 'text_field input-xxlarge'
+    
+  .control-group
+    = f.label :engine_no, :class => 'control-label'
+    .controls= f.text_field :engine_no, :class => 'text_field input-xxlarge'
+
+
+
+//  <div class="field">
+//    <%= f.label :reg_on %><br>
+//    <%= f.date_select :reg_on %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :manufacturer_year %><br>
+//    <%= f.date_select :manufacturer_year %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :manufacturer_id %><br>
+//    <%= f.number_field :manufacturer_id %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :model %><br>
+//    <%= f.text_field :model %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :category_id %><br>
+//    <%= f.number_field :category_id %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :acquired_on %><br>
+//    <%= f.date_select :acquired_on %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :price %><br>
+//    <%= f.text_field :price %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :contract_id %><br>
+//    <%= f.number_field :contract_id %>
+//  </div>
+//  <div class="field">
+//    <%= f.label :status_id %><br>
+//    <%= f.number_field :status_id %>
+//  </div>
+//  <div class="actions">
+//    <%= f.submit %>
+//  </div>
+//<% end %>
+//

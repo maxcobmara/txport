@@ -90,6 +90,7 @@ p {
 /* header */
 .topnav {height:40px; padding-top:5px;
   a {color:#606060; font-size:1.3em;}
+  a:hover{color:#606060; background-color:white; font-size:1.3em;}
 }
 
 
@@ -164,8 +165,10 @@ label {
 }
 input {
 	height: auto !important;
-
 }
+
+.text_field.mandatory {background-color:#FFF0F5;}
+
 input[type=checkbox] {width:13px; height:13px; *overflow: hidden; }
 .form-group {
 	padding: 1em 0;
