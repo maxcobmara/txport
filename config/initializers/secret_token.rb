@@ -10,3 +10,21 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 Txport::Application.config.secret_key_base = '07e7641b19ee682e3f8838002839ef52dfc90518b0ecb23e41c7e1ce374ad74ec62460995df8ae4377061cb509aef219317e3b895ca5a6eb574d39d49c0a988c'
+
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Txport::Application.config.secret_key_base = secure_token
