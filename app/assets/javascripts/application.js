@@ -15,4 +15,28 @@
 //= require bootstrap
 //= require bootstrap-transition
 //= require turbolinks
+//= require bootstrap-datepicker
 //= require_tree .
+
+
+$(document).ready(function(){
+  
+  $('[data-behaviour=datepicker_before]').datepicker({
+    format: "yyyy/mm/dd",
+    endDate: "today",
+    todayBtn: true
+  });
+  
+  $('[data-behaviour=datepicker_year]').datepicker({
+      format: "yyyy",
+      endDate: "today",
+      startView: 1,
+      minViewMode: 2,
+      daysOfWeekDisabled: "6"
+  });
+
+});
+
+
+    
+

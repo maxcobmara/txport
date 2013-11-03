@@ -17,8 +17,6 @@
   %thead
     %tr
       %th Reg no
-      %th Chassis no
-      %th Engine no
       %th Reg on
       %th Manufacturer year
       %th Manufacturer
@@ -35,14 +33,12 @@
     - @vehicles.each do |vehicle|
       %tr
         %td= vehicle.reg_no
-        %td= vehicle.chassis_no
-        %td= vehicle.engine_no
         %td= vehicle.reg_on
         %td= vehicle.manufacturer_year
         %td= vehicle.manufacturer_id
         %td= vehicle.model
         %td= vehicle.category_id
-        %td= vehicle.aquired_on
+        %td= vehicle.acquired_on
         %td= vehicle.price
         %td= vehicle.contract_id
         %td= vehicle.status_id

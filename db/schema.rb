@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131103125259) do
     t.string   "chassis_no"
     t.string   "engine_no"
     t.date     "reg_on"
-    t.date     "manufacturer_year"
+    t.string   "manufacturer_year"
     t.integer  "manufacturer_id"
     t.string   "model"
     t.integer  "category_id"
