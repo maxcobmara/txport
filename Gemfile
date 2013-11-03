@@ -14,6 +14,7 @@ gem 'turbolinks', '~> 1.1.1'  # Turbolinks makes following links in your web app
 gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "haml", "~> 4.0.3"
 gem "font-awesome-rails", "~> 4.0.1.0"
+gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
 
 group :assets do
   gem "modernizr-rails", "~> 2.6.2.3"
