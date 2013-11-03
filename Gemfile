@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.1'
 gem "thin", "~> 1.6.0"
 gem "devise", "~> 3.1.1"
 gem 'bootstrap-sass', '~> 2.3.2.2'
@@ -13,7 +13,7 @@ gem "jquery-rails", "~> 3.0.4"  # Use jquery as the JavaScript library
 gem 'turbolinks', '~> 1.1.1'  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "haml", "~> 4.0.3"
-gem "font-awesome-rails", "~> 3.2.1.3"
+gem "font-awesome-rails", "~> 4.0.1.0"
 
 group :assets do
   gem "modernizr-rails", "~> 2.6.2.3"
