@@ -1,4 +1,10 @@
 Txport::Application.routes.draw do
+  resources :vehicle_manufacturers
+
+  resources :vehicle_categories
+
+  resources :vehicle_statuses
+
   resources :vehicles
 
   devise_for :users

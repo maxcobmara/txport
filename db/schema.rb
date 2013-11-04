@@ -31,8 +31,29 @@ ActiveRecord::Schema.define(version: 20131103125259) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
+  create_table "vehicle_categories", force: true do |t|
+    t.string   "shortname",   limit: 12
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vehicle_manufacturers", force: true do |t|
+    t.string   "name"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vehicle_statuses", force: true do |t|
+    t.string   "shortname",   limit: 12
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "vehicles", force: true do |t|
-    t.string   "reg_no"
+    t.string   "reg_no",            limit: 8
     t.string   "chassis_no"
     t.string   "engine_no"
     t.date     "reg_on"
@@ -41,7 +62,7 @@ ActiveRecord::Schema.define(version: 20131103125259) do
     t.string   "model"
     t.integer  "category_id"
     t.date     "acquired_on"
-    t.decimal  "price"
+    t.decimal  "price",                       precision: 10, scale: 2
     t.integer  "contract_id"
     t.integer  "status_id"
     t.datetime "created_at"

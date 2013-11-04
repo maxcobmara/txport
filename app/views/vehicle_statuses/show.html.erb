@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @vehicle_status.short_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vehicle_status.description %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_status_path(@vehicle_status) %> |
+<%= link_to 'Back', vehicle_statuses_path %>

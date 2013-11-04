@@ -1,0 +1,29 @@
+<h1>Listing vehicle_manufacturers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_manufacturers.each do |vehicle_manufacturer| %>
+      <tr>
+        <td><%= vehicle_manufacturer.name %></td>
+        <td><%= vehicle_manufacturer.country %></td>
+        <td><%= link_to 'Show', vehicle_manufacturer %></td>
+        <td><%= link_to 'Edit', edit_vehicle_manufacturer_path(vehicle_manufacturer) %></td>
+        <td><%= link_to 'Destroy', vehicle_manufacturer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle manufacturer', new_vehicle_manufacturer_path %>
