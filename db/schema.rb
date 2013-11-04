@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20131103125259) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vehicle_categories", force: true do |t|
-    t.string   "shortname",   limit: 12
+    t.string   "short_name",  limit: 12
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20131103125259) do
   end
 
   create_table "vehicle_statuses", force: true do |t|
-    t.string   "shortname",   limit: 12
+    t.string   "short_name",  limit: 12
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -18,13 +18,13 @@ class CreateVehicles < ActiveRecord::Migration
     end
     
     create_table :vehicle_statuses do |t|
-      t.string  :shortname, :limit => 12
+      t.string  :short_name, :limit => 12
       t.string  :description
       t.timestamps
     end
     
     create_table :vehicle_categories do |t|
-      t.string  :shortname, :limit => 12
+      t.string  :short_name, :limit => 12
       t.string  :description
       t.timestamps
     end
