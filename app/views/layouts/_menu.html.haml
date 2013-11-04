@@ -18,9 +18,9 @@
               %h2.icon Vehicles
               %a.mp-back{:href => "#"} Back
               %ul
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Manufacturers", '#'
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Categories", '#'
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Status", '#'
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Manufacturers", vehicle_manufacturers_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Categories", vehicle_categories_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Status", vehicle_statuses_path
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Contract", '#'
       .mp-level
