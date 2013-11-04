@@ -7,19 +7,28 @@
         %h2.icon Vehicles
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "List", vehicles_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Cameras", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Tablets", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Televisions", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Vehicles", vehicles_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Summons", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Touch N Go", '#'
+          %li.icon.icon-left
+            = link_to "Drop Downs", '#'
+            .mp-level
+              %h2.icon Vehicles
+              %a.mp-back{:href => "#"} Back
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Manufacturers", '#'
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Categories", '#'
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Status", '#'
     %li.icon.icon-left
-      = link_to content_tag(:i, "", :class => "icon-numb") + "Books", '#'
+      = link_to content_tag(:i, "", :class => "icon-numb") + "Contract", '#'
       .mp-level
-        %h2.icon Books
+        %h2.icon Contract
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maths", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Science", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Health", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fiction", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contracts", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Suppliers", '#'
+
           
         
