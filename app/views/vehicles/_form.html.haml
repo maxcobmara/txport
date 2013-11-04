@@ -1,65 +1,59 @@
-= form_for @vehicle, :html => { :class => 'form-horizontal' }  do |f|
-  - if @vehicle.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@vehicle.errors.count, "error")
-        prohibited this vehicle from being saved:
-      %ul
-        - @vehicle.errors.full_messages.each do |msg|
-          %li= msg
+.container{:style => "padding-left: 60px;"}
+  = form_for @vehicle, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
           
-  .control-group
-    = f.label :reg_no, :class => 'control-label'
-    .controls= f.text_field :reg_no, :class => 'text_field mandatory'
+    .control-group
+      = f.label :reg_no, :class => 'control-label'
+      .controls= f.text_field :reg_no, :class => 'text_field mandatory'
     
-  .control-group
-    = f.label :chassis_no, :class => 'control-label'
-    .controls= f.text_field :chassis_no, :class => 'text_field input-xxlarge'
+    .control-group
+      = f.label :chassis_no, :class => 'control-label'
+      .controls= f.text_field :chassis_no, :class => 'text_field input-xxlarge'
     
-  .control-group
-    = f.label :engine_no, :class => 'control-label'
-    .controls= f.text_field :engine_no, :class => 'text_field input-xxlarge'
+    .control-group
+      = f.label :engine_no, :class => 'control-label'
+      .controls= f.text_field :engine_no, :class => 'text_field input-xxlarge'
     
-  .control-group
-    = f.label :reg_on, :class => 'control-label'
-    .controls= f.text_field :reg_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
+    .control-group
+      = f.label :reg_on, :class => 'control-label'
+      .controls= f.text_field :reg_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
     
-  .control-group
-    = f.label :manufacturer_year, :class => 'control-label'
-    .controls= f.text_field :manufacturer_year, :discard_month => true, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_year'
+    .control-group
+      = f.label :manufacturer_year, :class => 'control-label'
+      .controls= f.text_field :manufacturer_year, :discard_month => true, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_year'
     
     
-  .control-group
-    = f.label :manufacturer_id, :class => 'control-label'
-    .controls= f.number_field :manufacturer_id, :class => 'text_field'
+    .control-group
+      = f.label :manufacturer_id, :class => 'control-label'
+      .controls= f.number_field :manufacturer_id, :class => 'text_field'
     
-  .control-group
-    = f.label :model, :class => 'control-label'
-    .controls= f.text_field :model, :class => 'text_field input-xxlarge'    
+    .control-group
+      = f.label :model, :class => 'control-label'
+      .controls= f.text_field :model, :class => 'text_field input-xxlarge'    
 
-  .control-group
-    = f.label :category_id, :class => 'control-label'
-    .controls= f.number_field :category_id, :class => 'text_field'
+    .control-group
+      = f.label :category_id, :class => 'control-label'
+      .controls= f.number_field :category_id, :class => 'text_field'
     
-  .control-group
-    = f.label :acquired_on, :class => 'control-label'
-    .controls= f.text_field :acquired_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
+    .control-group
+      = f.label :acquired_on, :class => 'control-label'
+      .controls= f.text_field :acquired_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
     
-  .control-group
-    = f.label :price, :class => 'control-label'
-    .controls= f.text_field :price, :class => 'text_field'
+    .control-group
+      = f.label :price, :class => 'control-label'
+      .controls= f.text_field :price, :class => 'text_field'
     
-  .control-group
-    = f.label :contract_id, :class => 'control-label'
-    .controls= f.number_field :contract_id, :class => 'text_field'
+    .control-group
+      = f.label :contract_id, :class => 'control-label'
+      .controls= f.number_field :contract_id, :class => 'text_field'
     
-  .control-group
-    = f.label :status_id, :class => 'control-label'
-    .controls= f.number_field :status_id, :class => 'text_field'
+    .control-group
+      = f.label :status_id, :class => 'control-label'
+      .controls= f.number_field :status_id, :class => 'text_field'
     
     
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-      vehicles_path, :class => 'btn'     
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        vehicles_path, :class => 'btn'     
 
