@@ -1,0 +1,30 @@
+- provide(:title, 'Vehicles Status')
+- model_class = VehicleStatus
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+      
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Status")), new_vehicle_status_path, id: "add_new_status", remote: true
+    %ul.nav.pull-right
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+%table.table.table-condensed.table-hover#vehicle_status_list{:style => "width:60%;"}
+  %thead
+    %tr
+      %th Short name
+      %th Description
+      %th
+  %tbody
+    %tr#vehicle_status_form(style="display:none;")
+      = render :partial => 'form'
+    - @vehicle_statuses.each do |vehicle_status|
+      %tr{:id => "tr_#{vehicle_status.id}"}
+        %td= vehicle_status.short_name
+        %td= vehicle_status.description
+        %td= link_to (fa_icon "trash-o"), vehicle_status, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+

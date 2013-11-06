@@ -1,0 +1,7 @@
+= form_for @vehicle_status, remote: true do |f|
+  %div#vehicle_status_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :short_name
+  %td= f.text_field :description
+  %td= f.submit

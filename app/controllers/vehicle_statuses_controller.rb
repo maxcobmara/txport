@@ -1,16 +1,18 @@
 class VehicleStatusesController < ApplicationController
-  before_action :set_vehicle_status, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle_status, only: [:show, :edit, :update, :destroy]\
+
 
   # GET /vehicle_statuses
-  # GET /vehicle_statuses.json
+  # GET /vehicle_statuses.json  
   def index
     @vehicle_statuses = VehicleStatus.all
+    @vehicle_status = VehicleStatus.new
   end
 
   # GET /vehicle_statuses/1
   # GET /vehicle_statuses/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /vehicle_statuses/new
   def new
@@ -28,10 +30,11 @@ class VehicleStatusesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_status.save
-        format.html { redirect_to @vehicle_status, notice: 'Vehicle status was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vehicle_status }
+        format.html { redirect_to vehicle_statuses_url, notice: 'Vehicle status was successfully created.' }
+        format.js
+        format.json { render action: 'index', status: :created, location: @vehicle_status }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'index' }
         format.json { render json: @vehicle_status.errors, status: :unprocessable_entity }
       end
     end
@@ -40,9 +43,11 @@ class VehicleStatusesController < ApplicationController
   # PATCH/PUT /vehicle_statuses/1
   # PATCH/PUT /vehicle_statuses/1.json
   def update
+    @vehicle_statuses = VehicleStatus.all
+    @vehicle_status = VehicleStatus.find(params[:id])
     respond_to do |format|
       if @vehicle_status.update(vehicle_status_params)
-        format.html { redirect_to @vehicle_status, notice: 'Vehicle status was successfully updated.' }
+        format.html { redirect_to vehicle_statuses_url, notice: 'Vehicle status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +59,11 @@ class VehicleStatusesController < ApplicationController
   # DELETE /vehicle_statuses/1
   # DELETE /vehicle_statuses/1.json
   def destroy
+    @vehicle_status = VehicleStatus.find(params[:id])
     @vehicle_status.destroy
     respond_to do |format|
       format.html { redirect_to vehicle_statuses_url }
+      format.js
       format.json { head :no_content }
     end
   end
