@@ -15,7 +15,9 @@ gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github
 gem "haml", "~> 4.0.3"
 gem "font-awesome-rails", "~> 4.0.1.0"
 gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
-gem "jquery-ui-rails", "~> 4.1.0"
+gem "bootstrap-select-rails", "~> 1.3.0.1"
+gem "country_select", "~> 1.2.0"
+#gem "jquery-ui-rails", "~> 4.1.0"
 
 group :assets do
   gem "modernizr-rails", "~> 2.6.2.3"

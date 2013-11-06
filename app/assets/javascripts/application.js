@@ -16,6 +16,7 @@
 //= require bootstrap-transition
 //= require turbolinks
 //= require bootstrap-datepicker
+//= require bootstrap-select
 //= require_tree .
 
 
@@ -34,6 +35,8 @@ $(document).ready(function(){
       minViewMode: 2,
       daysOfWeekDisabled: "6"
   });
+  
+  $('select').selectpicker();
 
 });
 

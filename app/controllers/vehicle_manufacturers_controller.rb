@@ -5,6 +5,7 @@ class VehicleManufacturersController < ApplicationController
   # GET /vehicle_manufacturers.json
   def index
     @vehicle_manufacturers = VehicleManufacturer.all
+    @vehicle_manufacturer = VehicleManufacturer.new
   end
 
   # GET /vehicle_manufacturers/1

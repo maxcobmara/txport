@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+vehicle_statuses = VehicleStatus.create([
+  {short_name: 'TB'}, {short_name: 'TBG'}, {short_name: 'TEB'}
+])

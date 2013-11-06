@@ -39,7 +39,7 @@
         %td= vehicle.acquired_on
         %td= vehicle.price
         %td= vehicle.contract_id
-        %td= vehicle.status_id
+        %td= vehicle.status.try(:short_name)
         = render :partial => 'action_menu', :locals => { :vehicle => vehicle }
       
       

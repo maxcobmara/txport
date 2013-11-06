@@ -30,7 +30,7 @@ textarea {resize: vertical;}
 
 .container {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;  this line causes dropdowns to disappear
 	/*max-width: none !important;*/
 	/*background: #34495e;*/
 }
@@ -115,7 +115,7 @@ p {
 
 footer {
   margin-top: 45px;
-  padding-top: 5px;
+  padding-top: 45px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
   a {
@@ -150,6 +150,7 @@ footer {
 
 
 /* forms */
+.control-group {z-index:9999;}
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -175,16 +176,13 @@ input[type=checkbox] {width:13px; height:13px; *overflow: hidden; }
 }
 /*.btn {width: 30%; margin-bottom: 1.5em;}*/
 
-li.danger a {
- display:block;
-}
-li.danger a:hover, li.danger a:focus {
- color:red;
+
+.dropdown, select {
+position: relative;
+
 }
 
-.dropdown-menu {
-position: relative;
-}
+.yielder {z-index: 9999;}
 
 
 #error_explanation {
