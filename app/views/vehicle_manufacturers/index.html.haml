@@ -9,26 +9,21 @@
       %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Manufacturer")), new_vehicle_manufacturer_path, id: "add_new_manufacturer", remote: true
   
   
-%table.table.table-condensed.table-hover#vehicle_status_list{:style => "width:90%;"}
+%table.table.table-condensed.table-hover#vehicle_manufacturer_list{:style => "width:90%;"}
   %thead
     %tr
       %th Name
       %th Country
       %th
-      %th
-      %th
   %tbody
     %tr#vehicle_manufacturer_form(style="display:none;")
       = render :partial => 'form'
     - @vehicle_manufacturers.each do |vehicle_manufacturer|
-      %tr
+      %tr{:id => "tr_#{vehicle_manufacturer.name}"}
         %td= vehicle_manufacturer.name
         %td= vehicle_manufacturer.country
-        %td= link_to 'Show', vehicle_manufacturer
-        %td= link_to 'Edit', edit_vehicle_manufacturer_path(vehicle_manufacturer)
-        %td= link_to 'Destroy', vehicle_manufacturer, method: :delete, data: { confirm: 'Are you sure?' }
-%br
-  = link_to 'New Vehicle manufacturer', new_vehicle_manufacturer_path
+        %td= link_to (fa_icon "trash-o"), vehicle_manufacturer, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
 
 
 

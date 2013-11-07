@@ -4,7 +4,7 @@ class VehicleManufacturersController < ApplicationController
   # GET /vehicle_manufacturers
   # GET /vehicle_manufacturers.json
   def index
-    @vehicle_manufacturers = VehicleManufacturer.all
+    @vehicle_manufacturers = VehicleManufacturer.order("name")
     @vehicle_manufacturer = VehicleManufacturer.new
   end
 
@@ -30,6 +30,7 @@ class VehicleManufacturersController < ApplicationController
     respond_to do |format|
       if @vehicle_manufacturer.save
         format.html { redirect_to @vehicle_manufacturer, notice: 'Vehicle manufacturer was successfully created.' }
+        format.js
         format.json { render action: 'show', status: :created, location: @vehicle_manufacturer }
       else
         format.html { render action: 'new' }
@@ -58,6 +59,7 @@ class VehicleManufacturersController < ApplicationController
     @vehicle_manufacturer.destroy
     respond_to do |format|
       format.html { redirect_to vehicle_manufacturers_url }
+      format.js
       format.json { head :no_content }
     end
   end

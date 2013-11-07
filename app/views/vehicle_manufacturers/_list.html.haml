@@ -1,0 +1,4 @@
+%tr
+  %td= @vehicle_manufacturer.name
+  %td= @vehicle_manufacturer.country
+  %td= link_to (fa_icon "trash-o"), @vehicle_manufacturer, method: :delete, data: { confirm: 'Are you sure?' }
