@@ -1,0 +1,33 @@
+<%= form_for(@vehicle_road_tax) do |f| %>
+  <% if @vehicle_road_tax.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle_road_tax.errors.count, "error") %> prohibited this vehicle_road_tax from being saved:</h2>
+
+      <ul>
+      <% @vehicle_road_tax.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vehicle_id %><br>
+    <%= f.number_field :vehicle_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start_on %><br>
+    <%= f.date_select :start_on %>
+  </div>
+  <div class="field">
+    <%= f.label :end_on %><br>
+    <%= f.date_select :end_on %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<h1>Listing vehicle_road_taxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vehicle</th>
+      <th>Start on</th>
+      <th>End on</th>
+      <th>Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_road_taxes.each do |vehicle_road_tax| %>
+      <tr>
+        <td><%= vehicle_road_tax.vehicle_id %></td>
+        <td><%= vehicle_road_tax.start_on %></td>
+        <td><%= vehicle_road_tax.end_on %></td>
+        <td><%= vehicle_road_tax.amount %></td>
+        <td><%= link_to 'Show', vehicle_road_tax %></td>
+        <td><%= link_to 'Edit', edit_vehicle_road_tax_path(vehicle_road_tax) %></td>
+        <td><%= link_to 'Destroy', vehicle_road_tax, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle road tax', new_vehicle_road_tax_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @vehicle_assignment.vehicle_id %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @vehicle_assignment.staff_id %>
+</p>
+
+<p>
+  <strong>Assigned on:</strong>
+  <%= @vehicle_assignment.assigned_on %>
+</p>
+
+<p>
+  <strong>Assignment end:</strong>
+  <%= @vehicle_assignment.assignment_end %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_assignment_path(@vehicle_assignment) %> |
+<%= link_to 'Back', vehicle_assignments_path %>

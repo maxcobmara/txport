@@ -1,0 +1,61 @@
+<%= form_for(@vehicle_fine) do |f| %>
+  <% if @vehicle_fine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle_fine.errors.count, "error") %> prohibited this vehicle_fine from being saved:</h2>
+
+      <ul>
+      <% @vehicle_fine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :vehicle_id %><br>
+    <%= f.number_field :vehicle_id %>
+  </div>
+  <div class="field">
+    <%= f.label :type_id %><br>
+    <%= f.number_field :type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :issued_at %><br>
+    <%= f.datetime_select :issued_at %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_before %><br>
+    <%= f.date_select :pay_before %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :reason %><br>
+    <%= f.text_field :reason %>
+  </div>
+  <div class="field">
+    <%= f.label :compound %><br>
+    <%= f.text_field :compound %>
+  </div>
+  <div class="field">
+    <%= f.label :receipt_no %><br>
+    <%= f.text_field :receipt_no %>
+  </div>
+  <div class="field">
+    <%= f.label :paid_on %><br>
+    <%= f.date_select :paid_on %>
+  </div>
+  <div class="field">
+    <%= f.label :paid_amount %><br>
+    <%= f.text_field :paid_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

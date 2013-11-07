@@ -1,4 +1,24 @@
 Txport::Application.routes.draw do
+  resources :unit_types
+
+  resources :companies
+
+  resources :contract_types
+
+  resources :vehicle_fine_types
+
+  resources :vehicle_assignments
+
+  resources :vehicle_cards
+
+  resources :maintenances
+
+  resources :contracts
+
+  resources :vehicle_fines
+
+  resources :vehicle_road_taxes
+
   resources :vehicle_manufacturers
 
   resources :vehicle_categories

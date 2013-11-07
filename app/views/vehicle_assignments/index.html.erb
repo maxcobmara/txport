@@ -1,0 +1,33 @@
+<h1>Listing vehicle_assignments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vehicle</th>
+      <th>Staff</th>
+      <th>Assigned on</th>
+      <th>Assignment end</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_assignments.each do |vehicle_assignment| %>
+      <tr>
+        <td><%= vehicle_assignment.vehicle_id %></td>
+        <td><%= vehicle_assignment.staff_id %></td>
+        <td><%= vehicle_assignment.assigned_on %></td>
+        <td><%= vehicle_assignment.assignment_end %></td>
+        <td><%= link_to 'Show', vehicle_assignment %></td>
+        <td><%= link_to 'Edit', edit_vehicle_assignment_path(vehicle_assignment) %></td>
+        <td><%= link_to 'Destroy', vehicle_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle assignment', new_vehicle_assignment_path %>

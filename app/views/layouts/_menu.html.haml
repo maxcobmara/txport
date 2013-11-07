@@ -8,10 +8,10 @@
         %a.mp-back{:href => "#"} Back
         %ul
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Vehicles", vehicles_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Summons", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Touch N Go", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", maintenances_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", vehicle_road_taxes_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Summons", vehicle_fines_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Touch N Go", vehicle_cards_path
           %li.icon.icon-left
             = link_to "Drop Downs", '#'
             .mp-level
@@ -27,8 +27,9 @@
         %h2.icon Contract
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contracts", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Suppliers", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contracts", contracts_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Suppliers", companies_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contract Types", contract_types_path
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Fuel", '#'
       .mp-level

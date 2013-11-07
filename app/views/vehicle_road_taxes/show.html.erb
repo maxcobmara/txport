@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @vehicle_road_tax.vehicle_id %>
+</p>
+
+<p>
+  <strong>Start on:</strong>
+  <%= @vehicle_road_tax.start_on %>
+</p>
+
+<p>
+  <strong>End on:</strong>
+  <%= @vehicle_road_tax.end_on %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @vehicle_road_tax.amount %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_road_tax_path(@vehicle_road_tax) %> |
+<%= link_to 'Back', vehicle_road_taxes_path %>

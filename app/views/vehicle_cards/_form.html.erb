@@ -1,0 +1,25 @@
+<%= form_for(@vehicle_card) do |f| %>
+  <% if @vehicle_card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle_card.errors.count, "error") %> prohibited this vehicle_card from being saved:</h2>
+
+      <ul>
+      <% @vehicle_card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vehicle_id %><br>
+    <%= f.number_field :vehicle_id %>
+  </div>
+  <div class="field">
+    <%= f.label :serial_no %><br>
+    <%= f.text_field :serial_no %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
