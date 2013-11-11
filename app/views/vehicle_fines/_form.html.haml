@@ -1,0 +1,52 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @vehicle_fine, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+
+    .control-group
+      = f.label :code, :class => 'control-label'
+      .controls= f.text_field :code, :class => 'text_field'
+  
+    .control-group
+      = f.label :vehicle_id, :class => 'control-label'
+      .controls= f.number_field :vehicle_id, :class => 'text_field'
+
+    .control-group
+      = f.label :type_id, :class => 'control-label'
+      .controls= f.number_field :type_id, :class => 'text_field'
+
+    .control-group
+      = f.label :issued_at, :class => 'control-label'
+      .controls= f.datetime_select :issued_at, :class => 'text_field'
+
+    .control-group
+      = f.label :pay_before, :class => 'control-label'
+      .controls= f.date_select :pay_before, :class => 'text_field'
+
+    .control-group
+      = f.label :location, :class => 'control-label'
+      .controls= f.text_field :location, :class => 'text_field'
+
+    .control-group
+      = f.label :reason, :class => 'control-label'
+      .controls= f.text_field :reason, :class => 'text_field'
+
+    .control-group
+      = f.label :compound, :class => 'control-label'
+      .controls= f.text_field :compound, :class => 'text_field'
+
+    .control-group
+      = f.label :receipt_no, :class => 'control-label'
+      .controls= f.text_field :receipt_no, :class => 'text_field'
+
+    .control-group
+      = f.label :paid_on, :class => 'control-label'
+      .controls= f.date_select :paid_on, :class => 'text_field'
+
+    .control-group
+      = f.label :paid_amount, :class => 'control-label'
+      .controls= f.text_field :paid_amount, :class => 'text_field'
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        vehicle_fines_path, :class => 'btn'     

@@ -1,0 +1,35 @@
+- provide(:title, 'Maintenances')
+- model_class = Maintenance
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Maintenance")), new_maintenance_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Vehicle
+      %th Work order no
+      %th Contract
+      %th Repaired by
+      %th Supplied by
+      %th
+  %tbody
+    - @maintenances.each do |maintenance|
+      %tr
+        %td= maintenance.vehicle_id
+        %td= maintenance.work_order_no
+        %td= maintenance.contract_id
+        %td= maintenance.repaired_by
+        %td= maintenance.supplied_by
+        = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
+      
+      

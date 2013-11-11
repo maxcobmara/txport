@@ -1,0 +1,60 @@
+- provide(:title, 'Vehicle Fine Details')
+- model_class = VehicleFine
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human
+%p#notice= notice
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:code) + ":"
+  %dd= @vehicle_fine.code
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:vehicle_id) + ":"
+  %dd= @vehicle_fine.vehicle_id
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:type_id) + ":"
+  %dd= @vehicle_fine.type_id
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:issued_at) + ":"
+  %dd= @vehicle_fine.issued_at
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:pay_before) + ":"
+  %dd= @vehicle_fine.pay_before
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:location) + ":"
+  %dd= @vehicle_fine.location
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:reason) + ":"
+  %dd= @vehicle_fine.reason
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:compound) + ":"
+  %dd= @vehicle_fine.compound
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:receipt_no) + ":"
+  %dd= @vehicle_fine.receipt_no
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:paid_on) + ":"
+  %dd= @vehicle_fine.paid_on
+
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:paid_amount) + ":"
+  %dd= @vehicle_fine.paid_amount
+
+.form-actions
+  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicle_fines_path, :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
+    edit_vehicle_fine_path(@vehicle_fine), :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
+    vehicle_fines_path(@vehicle_fine),                                                                                                    |
+    :method => 'delete',                                                                                                           |
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
+    :class => 'btn btn-danger'                                                                                             
+
