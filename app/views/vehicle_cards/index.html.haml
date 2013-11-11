@@ -1,0 +1,28 @@
+- provide(:title, 'Vehicles Card')
+- model_class = VehicleCard
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle Card")), new_vehicle_card_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Vehicle
+      %th Serial no
+      %th
+  %tbody
+    - @vehicle_cards.each do |vehicle_card| 
+      %tr
+        %td= vehicle_card.vehicle_id
+        %td= vehicle_card.serial_no  
+        = render :partial => 'action_menu', :locals => { :vehicle_card => vehicle_card }
+
+
+

@@ -1,0 +1,37 @@
+- provide(:title, 'Vehicles Fines')
+- model_class = VehicleFine
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle Fine")), new_vehicle_fine_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Code
+      %th Vehicle
+      %th Pay Before
+      %th Reason
+      %th Compound
+      %th Paid On
+      %th
+
+  %tbody
+    - @vehicle_fines.each do |vehicle_fine| 
+      %tr
+        %td= vehicle_fine.code 
+        %td= vehicle_fine.vehicle_id 
+        %td= vehicle_fine.pay_before 
+        %td= vehicle_fine.reason
+        %td= vehicle_fine.compound 
+        %td= vehicle_fine.paid_on 
+        = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
+
+
+
