@@ -1,0 +1,43 @@
+- provide(:title, 'Contract')
+- model_class = Contract
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Contract")), new_contract_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Contract no
+      %th Name
+      %th Description
+      %th Company
+      %th Value
+      %th Starts on
+      %th End on
+      %th Issued by
+      %th Contract type
+      %th
+  %tbody
+    - @contracts.each do |contract|
+      %tr
+        %td= contract.contract_no
+        %td= contract.name
+        %td= contract.description
+        %td= contract.company_id
+        %td= contract.value
+        %td= contract.starts_on
+        %td= contract.ends_on
+        %td= contract.issued_by
+        %td= contract.contract_type
+        = render :partial => 'action_menu', :locals => { :contract => contract }
+      
+      
