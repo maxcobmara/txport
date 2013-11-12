@@ -1,0 +1,37 @@
+- provide(:title, 'Companies')
+- model_class = Company
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Company")), new_company_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Name
+      %th address
+      %th contact person
+      %th Phone
+      %th Fax
+      %th Email
+      %th
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= company.address
+        %td= company.contact_person
+        %td= company.phone
+        %td= company.fax
+        %td= company.email
+        = render :partial => 'action_menu', :locals => { :company => Company }
+      
+      
