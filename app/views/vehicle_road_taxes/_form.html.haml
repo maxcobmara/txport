@@ -9,11 +9,11 @@
   
     .control-group
       = f.label :start_on, :class => 'control-label'
-      .controls= f.date_select :start_on, :class => 'text_field'
+      .controls= f.text_field :start_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'daterange'
 
     .control-group
       = f.label :end_on, :class => 'control-label'
-      .controls= f.date_select :end_on, :class => 'text_field'
+      .controls= f.text_field :end_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'daterange'
 
     .control-group
       = f.label :amount, :class => 'control-label'
@@ -23,4 +23,4 @@
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-        vehicle_road_taxes_path, :class => 'btn'     
+        vehicle_road_taxes_path, :class => 'btn'
