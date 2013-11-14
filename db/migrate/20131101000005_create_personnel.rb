@@ -4,7 +4,6 @@ class CreatePersonnel < ActiveRecord::Migration
       t.string :shortname
       t.string :name
       t.integer :parent_id
-
       t.timestamps
     end
     
@@ -12,7 +11,12 @@ class CreatePersonnel < ActiveRecord::Migration
       t.string :id_no
       t.integer :rank_id
       t.string :name
-
+      t.timestamps
+    end
+    
+    create_table :ranks do |t|
+      t.string :shortname
+      t.string :name
       t.timestamps
     end
   end

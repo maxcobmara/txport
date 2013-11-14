@@ -1,4 +1,10 @@
 Txport::Application.routes.draw do
+  resources :fuel_types
+
+  resources :fuel_tanks
+
+  resources :ranks
+
   resources :staffs
 
   resources :units

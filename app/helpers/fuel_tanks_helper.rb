@@ -1,0 +1,2 @@
+module FuelTanksHelper
+end
