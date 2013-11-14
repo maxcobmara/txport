@@ -8,10 +8,12 @@
         %a.mp-back{:href => "#"} Back
         %ul
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Vehicles", vehicles_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Assignment", vehicle_assignments_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", maintenances_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", vehicle_road_taxes_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Summons", vehicle_fines_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Touch N Go", vehicle_cards_path
+          
           %li.icon.icon-left
             = link_to "Drop Downs", '#'
             .mp-level
@@ -21,6 +23,7 @@
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + "Manufacturers", vehicle_manufacturers_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + "Categories", vehicle_categories_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + "Status", vehicle_statuses_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fine Types", vehicle_fine_types_path
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Contract", '#'
       .mp-level
@@ -30,17 +33,30 @@
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contracts", contracts_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Suppliers", companies_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contract Types", contract_types_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Measurement Types", unit_types_path
+          
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Fuel", '#'
       .mp-level
         %h2.icon Fuel
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Depots", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Tanks", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Depots", units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Tanks", fuel_tanks_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Supplied", '#'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issued", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fuel Types", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fuel Types", fuel_types_path
+          
+    %li.icon.icon-left
+      = link_to content_tag(:i, "", :class => "icon-numb") + "People", '#'
+      .mp-level
+        %h2.icon Fuel
+        %a.mp-back{:href => "#"} Back
+        %ul
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Units", units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff", staffs_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Ranks", ranks_path
+
 
           
         
