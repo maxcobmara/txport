@@ -4,23 +4,23 @@
 
     .control-group
       = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.collection_select :vehicle_id, Vehicle.find(:all), :reg_no, :model, :include_blank => 'Select Reg no', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :vehicle_id, Vehicle.find(:all), :model, :reg_no, :include_blank => 'Select Reg no', :html_options => {:class => 'selectpicker'}
 
   
     .control-group
       = f.label :start_on, :class => 'control-label'
-      .controls= f.date_select :start_on, :class => 'text_field'
+      .controls= f.text_field :start_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'daterange'
 
     .control-group
       = f.label :end_on, :class => 'control-label'
-      .controls= f.date_select :end_on, :class => 'text_field'
+      .controls= f.text_field :end_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'daterange'
 
     .control-group
       = f.label :amount, :class => 'control-label'
-      .controls= f.text_field :amount, :class => 'text_field'
+      .controls= f.text_field :amount, :placeholder => "RM", :class => 'text_field'
 
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-        vehicle_road_taxes_path, :class => 'btn'     
+        vehicle_road_taxes_path, :class => 'btn'

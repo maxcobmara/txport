@@ -1,4 +1,8 @@
 Txport::Application.routes.draw do
+  resources :staffs
+
+  resources :units
+
   resources :unit_types
 
   resources :companies

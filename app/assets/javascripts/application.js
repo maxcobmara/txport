@@ -41,5 +41,10 @@ $(document).ready(function(){
 });
 
 
+ $(document).ready(function(){
     
+ $('[data-behaviour~=daterange]').datepicker({
+    format: "yyyy/mm/dd",
+  });
+});
 
