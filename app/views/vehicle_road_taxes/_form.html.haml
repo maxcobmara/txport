@@ -4,7 +4,7 @@
 
     .control-group
       = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.collection_select :vehicle_id, Vehicle.find(:all), :reg_no, :model, :include_blank => 'Select Reg no', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :vehicle_id, Vehicle.find(:all), :model, :reg_no, :include_blank => 'Select Reg no', :html_options => {:class => 'selectpicker'}
 
   
     .control-group
@@ -17,7 +17,7 @@
 
     .control-group
       = f.label :amount, :class => 'control-label'
-      .controls= f.text_field :amount, :class => 'text_field'
+      .controls= f.text_field :amount, :placeholder => "RM", :class => 'text_field'
 
 
     .form-actions
