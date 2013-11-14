@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114083513) do
+ActiveRecord::Schema.define(version: 20131101000007) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -45,6 +48,23 @@ ActiveRecord::Schema.define(version: 20131114083513) do
     t.datetime "updated_at"
   end
 
+  create_table "fuel_tanks", force: true do |t|
+    t.integer  "unit_id"
+    t.string   "locations"
+    t.decimal  "capacity"
+    t.integer  "unit_type"
+    t.integer  "fuel_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fuel_types", force: true do |t|
+    t.string   "shortname"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "maintenance_details", force: true do |t|
     t.integer  "maintenance_id"
     t.string   "line_item"
@@ -61,6 +81,13 @@ ActiveRecord::Schema.define(version: 20131114083513) do
     t.integer  "contract_id"
     t.integer  "repaired_by"
     t.integer  "supplied_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ranks", force: true do |t|
+    t.string   "shortname"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,14 +130,23 @@ ActiveRecord::Schema.define(version: 20131114083513) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "vehicle_assignments", force: true do |t|
+  create_table "vehicle_assignment_details", force: true do |t|
+    t.integer  "vehicle_assignment_id"
     t.integer  "vehicle_id"
     t.integer  "staff_id"
     t.date     "assigned_on"
     t.date     "assignment_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vehicle_assignments", force: true do |t|
+    t.integer  "document_code"
+    t.date     "document_date"
+    t.integer  "authorised_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
