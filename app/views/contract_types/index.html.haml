@@ -1,29 +1,30 @@
-- provide(:title, 'Contract type')
+- provide(:title, 'contract type')
 - model_class = ContractType
 .page-header
   %h1= t '.title', :default => model_class.model_name.human.pluralize
-  
-  
+      
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Contract type")), new_contract_type_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New contract_type")), new_contract_type_path, id: "add_new_type", remote: true
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
       
-      
-%table.table.table-condensed.table-hover
+%table.table.table-condensed.table-hover#vehicle_status_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Short Name
+      %th Short name
       %th Description
       %th
   %tbody
+    %tr#contract_type_form(style="display:none;")
+      = render :partial => 'form'
     - @contract_types.each do |contract_type|
-      %tr
+      %tr{:id => "tr_#{contract_type.id}"}
         %td= contract_type.short_name
         %td= contract_type.description
-        = render :partial => 'action_menu', :locals => { :contract_type => contract_type }
-      
-      
+        %td= link_to (fa_icon "trash-o"), contract_type, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+
