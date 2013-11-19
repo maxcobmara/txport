@@ -7,24 +7,24 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Rank")), new_rank_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Rank")), new_rank_path, id: "add_new_rank", remote: true
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+  //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+  //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
       
       
-%table.table.table-condensed.table-hover
+%table.table.table-condensed.table-hover#rank_list{:style => "width:60%;"}
   %thead
     %tr
       %th Shortname
       %th Name
       %th 
-
   %tbody
+    %tr#rank_form(style="display:none;")
+      = render :partial => 'form'
     - @ranks.each do | rank |
-      %tr
+      %tr{:id => "tr_#{rank.id}"}
         %td= rank.shortname
         %td= rank.name
-        = render :partial => 'action_menu', :locals => { :rank => rank }
-      
+        %td= link_to (fa_icon "trash-o"), rank, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
       
