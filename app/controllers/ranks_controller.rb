@@ -5,12 +5,13 @@ class RanksController < ApplicationController
   # GET /ranks.json
   def index
     @ranks = Rank.all
+	@rank = Rank.new
   end
 
   # GET /ranks/1
   # GET /ranks/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /ranks/new
   def new
@@ -29,9 +30,10 @@ class RanksController < ApplicationController
     respond_to do |format|
       if @rank.save
         format.html { redirect_to @rank, notice: 'Rank was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @rank }
+		format.js
+        format.json { render action: 'index', status: :created, location: @rank }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'index' }
         format.json { render json: @rank.errors, status: :unprocessable_entity }
       end
     end
@@ -40,6 +42,8 @@ class RanksController < ApplicationController
   # PATCH/PUT /ranks/1
   # PATCH/PUT /ranks/1.json
   def update
+	@ranks = Rank.all
+	@rank = Rank.find(params[:id])
     respond_to do |format|
       if @rank.update(rank_params)
         format.html { redirect_to @rank, notice: 'Rank was successfully updated.' }
@@ -54,9 +58,11 @@ class RanksController < ApplicationController
   # DELETE /ranks/1
   # DELETE /ranks/1.json
   def destroy
+	@rank = Rank.find(params[:id])
     @rank.destroy
     respond_to do |format|
       format.html { redirect_to ranks_url }
+	  format.js
       format.json { head :no_content }
     end
   end
