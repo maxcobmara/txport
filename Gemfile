@@ -18,6 +18,7 @@ gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
 gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "country_select", "~> 1.2.0"
 #gem "jquery-ui-rails", "~> 4.1.0"
+gem "pg", "~> 0.17.0"
 
 group :assets do
   gem "modernizr-rails", "~> 2.6.2.3"
@@ -27,7 +28,6 @@ end
 # gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
-  gem 'pg', '~> 0.15.1'
   gem "rspec-rails", "~> 2.14.0"
   gem 'guard-rspec', "~> 2.5.0"
 end
@@ -44,7 +44,6 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '~> 0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 

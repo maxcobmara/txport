@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101000007) do
+ActiveRecord::Schema.define(version: 20131101000010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,33 @@ ActiveRecord::Schema.define(version: 20131101000007) do
     t.datetime "updated_at"
   end
 
+  create_table "kit_staffs", force: true do |t|
+    t.integer  "kit_id"
+    t.integer  "staff_id"
+    t.integer  "staff_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kit_uniforms", force: true do |t|
+    t.integer  "kit_id"
+    t.integer  "uniform_id"
+    t.integer  "quantity"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kits", force: true do |t|
+    t.string   "code"
+    t.string   "combo_code"
+    t.string   "name"
+    t.string   "ancestry"
+    t.integer  "ancestry_depth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "maintenance_details", force: true do |t|
     t.integer  "maintenance_id"
     t.string   "line_item"
@@ -92,10 +119,61 @@ ActiveRecord::Schema.define(version: 20131101000007) do
     t.datetime "updated_at"
   end
 
+  create_table "staff_measurements", force: true do |t|
+    t.integer  "staff_id"
+    t.integer  "uniform_id"
+    t.string   "measurement_type"
+    t.decimal  "value"
+    t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "staffs", force: true do |t|
     t.string   "id_no"
     t.integer  "rank_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uniform_items", force: true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uniform_stock_issues", force: true do |t|
+    t.integer  "stock_id"
+    t.integer  "issued_to"
+    t.integer  "issued_by"
+    t.date     "issued_on"
+    t.integer  "quantity"
+    t.integer  "document_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uniform_stock_receiveds", force: true do |t|
+    t.integer  "stock_id"
+    t.integer  "quantity"
+    t.decimal  "size"
+    t.date     "received_on"
+    t.integer  "received_by"
+    t.integer  "contract_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uniform_stocks", force: true do |t|
+    t.integer  "uniform_id"
+    t.decimal  "size"
+    t.string   "category"
+    t.integer  "max_quantity"
+    t.integer  "min_quantity"
+    t.integer  "unit_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
