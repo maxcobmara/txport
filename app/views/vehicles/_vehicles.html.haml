@@ -1,0 +1,28 @@
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Reg no
+      %th Reg on
+      %th Manufacturer year
+      %th Manufacturer
+      %th Model
+      %th Category
+      %th Aquired on
+      %th Price
+      %th Contract
+      %th Status
+      %th
+  %tbody
+    - @vehicles.each do |vehicle|
+      %tr
+        %td= vehicle.reg_no
+        %td= vehicle.reg_on
+        %td= vehicle.manufacturer_year
+        %td= vehicle.manufacturer_id
+        %td= vehicle.model
+        %td= vehicle.category_id
+        %td= vehicle.acquired_on
+        %td= vehicle.price
+        %td= vehicle.contract_id
+        %td= vehicle.status.try(:short_name)
+        = render :partial => 'action_menu', :locals => { :vehicle => vehicle }
