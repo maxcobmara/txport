@@ -14,7 +14,9 @@ class VehicleRoadTaxesController < ApplicationController
 
   # GET /vehicle_road_taxes/new
   def new
-    @vehicle_road_tax = VehicleRoadTax.new
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @vehicle_road_tax = @vehicle.vehicle_road_taxes.new(params[:vehicle_road_tax])
+    @vehicle_road_tax.save
   end
 
   # GET /vehicle_road_taxes/1/edit

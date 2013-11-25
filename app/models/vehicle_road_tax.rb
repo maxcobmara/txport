@@ -1,5 +1,3 @@
 class VehicleRoadTax < ActiveRecord::Base
-	has_many :vehicles, :foreign_key => "vehicle_id"
-	
-	
+	belongs_to :vehicle
 end

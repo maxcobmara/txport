@@ -1,12 +1,15 @@
 .container{:style => "padding-left: 60px;"}
   = form_for @vehicle_road_tax, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
+    = f.hidden_field :vehicle_id
 
-    .control-group
-      = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.collection_select :vehicle_id, Vehicle.find(:all), :model, :reg_no, :include_blank => 'Select Reg no', :html_options => {:class => 'selectpicker'}
-
-  
+    %dl.dl-horizontal
+      %dt
+        %strong Registration No :
+      %dd
+        = h @vehicle.reg_no
+    %br/
+      
     .control-group
       = f.label :start_on, :class => 'control-label'
       .controls= f.text_field :start_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'daterange'
