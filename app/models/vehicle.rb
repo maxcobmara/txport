@@ -5,6 +5,8 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
   
   has_many :vehicle_road_taxes
+  has_many :vehicle_fines
+  has_many :maintenances
   belongs_to :card,     :class_name => "VehicleCard",     :foreign_key => "vehicle_id"
   belongs_to :status,   :class_name => "VehicleStatus",   :foreign_key => "status_id"
   

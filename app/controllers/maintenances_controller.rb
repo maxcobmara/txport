@@ -14,7 +14,10 @@ class MaintenancesController < ApplicationController
 
   # GET /maintenances/new
   def new
-    @maintenance = Maintenance.new
+    #@maintenance = Maintenance.new
+	@vehicle = Vehicle.find(params[:vehicle_id])
+	@maintenance = @vehicle.maintenances.new(params[:maintenance])
+	@maintenance.save
   end
 
   # GET /maintenances/1/edit

@@ -1,10 +1,14 @@
 .container{:style => "padding-left: 60px;"}
   = form_for @maintenance, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
+    = f.hidden_field :vehicle_id
 
-    .control-group
-      = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.number_field :vehicle_id, :class => 'text_field'
+    %dl.dl-horizontal
+      %dt
+        %strong Registration No :
+      %dd
+        = h @vehicle.reg_no
+    %br/
 
     .control-group
       = f.label :work_order_no, :class => 'control-label'
