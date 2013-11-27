@@ -14,7 +14,10 @@ class VehicleFinesController < ApplicationController
 
   # GET /vehicle_fines/new
   def new
-    @vehicle_fine = VehicleFine.new
+    #@vehicle_fine = VehicleFine.new
+	@vehicle = Vehicle.find(params[:vehicle_id])
+	@vehicle_fine = @vehicle.vehicle_fines.new(params[:vehicle_fine])
+    @vehicle_fine.save
   end
 
   # GET /vehicle_fines/1/edit
