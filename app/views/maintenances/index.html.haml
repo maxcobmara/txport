@@ -7,7 +7,7 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Maintenance")), new_maintenance_path
+      //%li= link_to content_tag(:li, fa_icon("truck", text: "New Maintenance")), new_maintenance_path
     %ul.nav.pull-right
       %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
@@ -25,7 +25,7 @@
   %tbody
     - @maintenances.each do |maintenance|
       %tr
-        %td= maintenance.vehicle_id
+        %td= maintenance.vehicle.reg_no
         %td= maintenance.work_order_no
         %td= maintenance.contract_id
         %td= maintenance.repaired_by

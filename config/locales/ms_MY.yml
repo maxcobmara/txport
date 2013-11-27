@@ -9,7 +9,7 @@ ms_MY:
   errors:
   date:
   menu:
-  vehicle:
+  vehicles:
     title: Kenderaan
     reg_no: "No. Pendaftaran"
     reg_on: Tarikh Daftar
