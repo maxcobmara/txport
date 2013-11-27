@@ -2,12 +2,12 @@
   %h2.icon.icon-world Menu
   %ul
     %li.icon.icon-left
-      = link_to "Vehicles", '#'
+      = link_to (t 'vehicle.title'), '#'
       .mp-level
-        %h2.icon Vehicles
+        %h2.icon= t 'vehicle.title'
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Vehicles", vehicles_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle.title'), vehicles_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Assignment", vehicle_assignments_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", maintenances_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", vehicle_road_taxes_path

@@ -1,5 +1,33 @@
 ms_MY:
-  sidebar:
+  actions:
+    new: Baru
+    search: Cari
+    print: Cetak
+    show: Pamer
+    edit: Ubah
+    delete: Padam
+  errors:
+  date:
+  menu:
+  vehicle:
+    title: Kenderaan
+    reg_no: "No. Pendaftaran"
+    reg_on: Tarikh Daftar
+    manufacturer_year: Tahun Di Buat
+    manufacturer: pengeluar
+
+
+
+
+
+
+
+
+
+
+
+
+  vehicle:
     home: Rumah
     
     

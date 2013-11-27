@@ -19,5 +19,22 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+
+#language - actions, errors, dates, models, 
 en:
-  hello: "Hello world"
+  actions:
+    new: New
+    search: Search
+    print: Print
+    show: Show
+    edit: Edit
+    delete: Delete
+  errors:
+  date:
+  menu:
+  vehicles:
+    title: Vehicles
+    reg_no: Registration
+    reg_on: Registration Date
+    manufacturer_year: Year of Manufacture
+    manufacturer: Manufacturer

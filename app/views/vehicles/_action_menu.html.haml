@@ -6,7 +6,7 @@
    %li= link_to content_tag(:li, fa_icon("certificate", text: "Road Tax")), new_vehicle_road_tax_path(:vehicle_id => vehicle)
    %li= link_to content_tag(:li, fa_icon("gavel", text: "Summons")), new_vehicle_fine_path(:vehicle_id => vehicle) 
    %li= link_to content_tag(:li, fa_icon("wrench", text: "Maintenance")), new_maintenance_path(:vehicle_id => vehicle)
-   %li= link_to content_tag(:li, fa_icon("eye", text: "Show")), vehicle
-   %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_vehicle_path(vehicle)
-   %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), vehicle_path(vehicle), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+   %li= link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle
+   %li= link_to content_tag(:li, fa_icon("pencil", text: (t 'actions.edit'))), edit_vehicle_path(vehicle)
+   %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: (t 'actions.delete'))), vehicle_path(vehicle), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
       

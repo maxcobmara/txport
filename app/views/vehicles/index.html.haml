@@ -1,21 +1,21 @@
-- provide(:title, 'Vehicles')
+//- provide(:title, t ())
 - model_class = Vehicle
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicles.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle")), new_vehicle_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_path
     %ul.nav.pull-right
       %li.search_bar{:style => "display: none;" } 
         = form_tag vehicles_path, :method => 'get', :id => "vehicles_search" do
           = text_field_tag :search, params[:search], :class => "search"
       %li#toga
         %a{:href => "#", "data-no-turbolink" => true}
-          = fa_icon "search", text: "Search"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+          = fa_icon "search", text: (t 'actions.search')
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 #vehicles= render 'vehicles'
