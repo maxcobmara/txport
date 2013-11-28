@@ -1,5 +1,14 @@
-- provide(:title, 'Edit Fuel type')
-- model_class = FuelType
-.page-header
-  %h1= t '.title', :default => [:'helpers.titles.new', 'Edit %{model}'], :model => model_class.model_name.human
-= render :partial => 'form'
+
+%h1 Editing fuel type
+
+
+= form_for @fuel_type do |f|
+  %div#fuel_type_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :shortname
+  %td= f.text_field :name
+  %td= f.submit
+= link_to 'Show', @fuel_type
+|
+\#{link_to 'Back', fuel_types_path}

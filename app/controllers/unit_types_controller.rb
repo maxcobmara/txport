@@ -5,12 +5,13 @@ class UnitTypesController < ApplicationController
   # GET /unit_types.json
   def index
     @unit_types = UnitType.all
+	@unit_type = UnitType.new
   end
 
   # GET /unit_types/1
   # GET /unit_types/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /unit_types/new
   def new
@@ -29,6 +30,7 @@ class UnitTypesController < ApplicationController
     respond_to do |format|
       if @unit_type.save
         format.html { redirect_to @unit_type, notice: 'Unit type was successfully created.' }
+		formar.js
         format.json { render action: 'show', status: :created, location: @unit_type }
       else
         format.html { render action: 'new' }
@@ -40,6 +42,8 @@ class UnitTypesController < ApplicationController
   # PATCH/PUT /unit_types/1
   # PATCH/PUT /unit_types/1.json
   def update
+	@unit_types = UnitType.all
+	@unit_type = UnitType.find(params[:id])
     respond_to do |format|
       if @unit_type.update(unit_type_params)
         format.html { redirect_to @unit_type, notice: 'Unit type was successfully updated.' }
@@ -54,9 +58,11 @@ class UnitTypesController < ApplicationController
   # DELETE /unit_types/1
   # DELETE /unit_types/1.json
   def destroy
+	@unit_type = UnitType.find(params[:id])
     @unit_type.destroy
     respond_to do |format|
       format.html { redirect_to unit_types_url }
+	  format.js
       format.json { head :no_content }
     end
   end

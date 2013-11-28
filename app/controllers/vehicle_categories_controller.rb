@@ -5,12 +5,13 @@ class VehicleCategoriesController < ApplicationController
   # GET /vehicle_categories.json
   def index
     @vehicle_categories = VehicleCategory.all
+	@vehicle_category = VehicleCategory.new
   end
 
   # GET /vehicle_categories/1
   # GET /vehicle_categories/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /vehicle_categories/new
   def new
@@ -29,7 +30,8 @@ class VehicleCategoriesController < ApplicationController
     respond_to do |format|
       if @vehicle_category.save
         format.html { redirect_to @vehicle_category, notice: 'Vehicle category was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vehicle_category }
+        format.js
+		 format.json { render action: 'show', status: :created, location: @vehicle_category }
       else
         format.html { render action: 'new' }
         format.json { render json: @vehicle_category.errors, status: :unprocessable_entity }
@@ -40,6 +42,8 @@ class VehicleCategoriesController < ApplicationController
   # PATCH/PUT /vehicle_categories/1
   # PATCH/PUT /vehicle_categories/1.json
   def update
+	@vehicle_categories = VehicleCategory.all
+	@vehicle_category = VehicleCategory.find(params[:id])
     respond_to do |format|
       if @vehicle_category.update(vehicle_category_params)
         format.html { redirect_to @vehicle_category, notice: 'Vehicle category was successfully updated.' }
@@ -54,9 +58,11 @@ class VehicleCategoriesController < ApplicationController
   # DELETE /vehicle_categories/1
   # DELETE /vehicle_categories/1.json
   def destroy
+    @vehicle_category = VehicleCategory.find(params[:id])
     @vehicle_category.destroy
     respond_to do |format|
       format.html { redirect_to vehicle_categories_url }
+	  format.js
       format.json { head :no_content }
     end
   end

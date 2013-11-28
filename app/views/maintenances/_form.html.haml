@@ -16,15 +16,15 @@
 
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.number_field :contract_id, :class => 'text_field'
+      .controls= f.collection_select :contract_id, Contract.find(:all), :name, :contract_no, :include_blank => 'Select contract', :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :repaired_by, :class => 'control-label'
-      .controls= f.number_field :repaired_by, :class => 'text_field'
+      .controls= f.collection_select :repaired_by, Company.find(:all), :name, :address, :include_blank => 'Select repaired by', :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :supplied_by, :class => 'control-label'
-      .controls= f.number_field :supplied_by, :class => 'text_field'
+      .controls= f.collection_select :supplied_by, Company.find(:all), :name, :address, :include_blank => 'Select supplied by', :html_options => {:class => 'selectpicker'}
 
 
     .form-actions

@@ -5,12 +5,13 @@ class VehicleFineTypesController < ApplicationController
   # GET /vehicle_fine_types.json
   def index
     @vehicle_fine_types = VehicleFineType.all
+	@vehicle_fine_type = VehicleFineType.new
   end
 
   # GET /vehicle_fine_types/1
   # GET /vehicle_fine_types/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /vehicle_fine_types/new
   def new
@@ -29,7 +30,8 @@ class VehicleFineTypesController < ApplicationController
     respond_to do |format|
       if @vehicle_fine_type.save
         format.html { redirect_to @vehicle_fine_type, notice: 'Vehicle fine type was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vehicle_fine_type }
+        format.js
+		format.json { render action: 'show', status: :created, location: @vehicle_fine_type }
       else
         format.html { render action: 'new' }
         format.json { render json: @vehicle_fine_type.errors, status: :unprocessable_entity }
@@ -40,6 +42,8 @@ class VehicleFineTypesController < ApplicationController
   # PATCH/PUT /vehicle_fine_types/1
   # PATCH/PUT /vehicle_fine_types/1.json
   def update
+     @vehicle_fine_types = VehicleFineType.all
+     @vehicle_fine_type = VehicleFineType.find(params[:id])
     respond_to do |format|
       if @vehicle_fine_type.update(vehicle_fine_type_params)
         format.html { redirect_to @vehicle_fine_type, notice: 'Vehicle fine type was successfully updated.' }
@@ -54,9 +58,11 @@ class VehicleFineTypesController < ApplicationController
   # DELETE /vehicle_fine_types/1
   # DELETE /vehicle_fine_types/1.json
   def destroy
+   @vehicle_fine_type = VehicleFineType.find(params[:id])
     @vehicle_fine_type.destroy
     respond_to do |format|
       format.html { redirect_to vehicle_fine_types_url }
+	  format.js
       format.json { head :no_content }
     end
   end

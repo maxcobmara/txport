@@ -1,0 +1,30 @@
+- provide(:title, 'Vehicles category')
+- model_class = VehicleCategory
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+      
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New category")), new_vehicle_category_path, id: "add_new_category", remote: true
+    %ul.nav.pull-right
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+%table.table.table-condensed.table-hover#vehicle_category_list{:style => "width:60%;"}
+  %thead
+    %tr
+      %th Short name
+      %th Description
+      %th
+  %tbody
+    %tr#vehicle_category_form(style="display:none;")
+      = render :partial => 'form'
+    - @vehicle_categories.each do |vehicle_category|
+      %tr{:id => "tr_#{vehicle_category.id}"}
+        %td= vehicle_category.short_name
+        %td= vehicle_category.description
+        %td= link_to (fa_icon "trash-o"), vehicle_category, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+
