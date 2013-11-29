@@ -9,8 +9,9 @@ class Vehicle < ActiveRecord::Base
   has_many :maintenances,       :dependent => :destroy
   belongs_to :card,     :class_name => "VehicleCard",     :foreign_key => "vehicle_id"
   belongs_to :status,   :class_name => "VehicleStatus",   :foreign_key => "status_id"
-  
-  
+  belongs_to :manufacturer,   :class_name => "VehicleManufacturer",   :foreign_key => "manufacturer_id"
+  belongs_to :category,   :class_name => "VehicleCategory",   :foreign_key => "category_id"
+  belongs_to :cantract,   :class_name => "Contract",   :foreign_key => "contract_id"
   
   def self.search(search)
     if search
