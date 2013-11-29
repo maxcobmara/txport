@@ -16,7 +16,7 @@
 
     .control-group
       = f.label :type_id, :class => 'control-label'
-      .controls= f.number_field :type_id, :class => 'text_field'
+      .controls= f.collection_select :type_id, VehicleFineType.find(:all), :id, :short_name, :include_blank => 'Select Fine Type', :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :issued_at, :class => 'control-label'
