@@ -8,6 +8,23 @@ ms_MY:
     delete: Padam
   errors:
   date:
+    formats:
+    default: "%d %B %Y"
+    short: "%d %b"
+    long: "%d %B, %Y"
+    events: "%A, %e %b"
+    # Use the strftime parameters for formats.
+    # When no format has been given, it uses default.
+    # You can provide other formats here if you like!
+    day_names: [Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu]
+    abbr_day_names: [Ahd, Isn, Sel, Rabu, Kha, Jum, Sab]
+      # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, Mei, Jun, Jul, Ogo, Sep, Okt, Nov, Dis]
+      # Used in date_select and datime_select.
+    order: 
+    - day
+    - month
+    - year
   menu:
   vehicles:
     title: Kenderaan
@@ -16,31 +33,13 @@ ms_MY:
     manufacturer_year: Tahun Di Buat
     manufacturer: pengeluar
 
-
-
-
-
-
-
-
-
-
-
-
   vehicle:
     home: Rumah
-    
-    
-    
+        
   helpers:
     links:
       new: Cipta
       back: Terdahulu
   
   
-  date:
-    formats:
-      default: "%d %B %Y"
-      short: "%d %b"
-      long: "%d %B, %Y"
-      events: "%A, %e %b"
+  
