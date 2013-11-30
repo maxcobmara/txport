@@ -31,6 +31,10 @@ en:
     delete: Delete
   errors:
   date:
+    order:
+      - :day
+      - :month
+      - :year
   menu:
   vehicles:
     title: Vehicles

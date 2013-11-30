@@ -36,15 +36,13 @@ $(document).ready(function(){
       daysOfWeekDisabled: "6"
   });
   
+  $('.input-daterange').datepicker({
+     format: "yyyy-mm-dd",
+     autoclose: true
+   });
+  
   $('select').selectpicker();
 
 });
 
-
- $(document).ready(function(){
-    
- $('[data-behaviour~=daterange]').datepicker({
-    format: "yyyy/mm/dd",
-  });
-});
 

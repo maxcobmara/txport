@@ -11,7 +11,7 @@ class Vehicle < ActiveRecord::Base
   belongs_to :status,   :class_name => "VehicleStatus",   :foreign_key => "status_id"
   belongs_to :manufacturer,   :class_name => "VehicleManufacturer",   :foreign_key => "manufacturer_id"
   belongs_to :category,   :class_name => "VehicleCategory",   :foreign_key => "category_id"
-  belongs_to :cantract,   :class_name => "Contract",   :foreign_key => "contract_id"
+  belongs_to :contract,   :class_name => "Contract",   :foreign_key => "contract_id"
   
   def self.search(search)
     if search

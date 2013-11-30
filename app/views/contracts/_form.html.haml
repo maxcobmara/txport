@@ -4,7 +4,7 @@
           
     .control-group
       = f.label :contract_no, :class => 'control-label'
-      .controls= f.text_field :contract_no, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :contract_no, :class => 'text_field input-xlarge'
     
     .control-group
       = f.label :name, :class => 'control-label'
@@ -21,18 +21,18 @@
     .control-group
       = f.label :value, :class => 'control-label'
       .controls= f.text_field :value, :class => 'text_field'
-   
+      
     .control-group
-      = f.label :starts_on, :class => 'control-label'
-      .controls= f.date_select :starts_on, :class => 'text_field'
-    
-    .control-group
-      = f.label :ends_on, :class => 'control-label'
-      .controls= f.date_select :ends_on, :class => 'text_field'
+      = f.label 'contract dates', :class => 'control-label'
+      .controls
+        #datepicker.input-daterange
+          = f.text_field :starts_on, :class => 'text_field input-medium', :type => :text
+          %span.add-on{:style => "height:30px;"} to
+          = f.text_field :ends_on, :class => 'text_field input-medium', :type => :text
 
     .control-group
       = f.label :issued_by, :class => 'control-label'
-      .controls= f.date_select :issued_by, :class => 'text_field'
+      .controls= f.number_field :issued_by, :class => 'text_field'
 
     .control-group
       = f.label :contract_type, :class => 'control-label'
