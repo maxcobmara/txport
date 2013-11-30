@@ -18,6 +18,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
+//= require global
 //= require_tree .
 
 
