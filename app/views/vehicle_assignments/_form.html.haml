@@ -3,20 +3,16 @@
     = render 'shared/error_messages', object: f.object
 
     .control-group
-      = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.number_field :vehicle_id, :class => 'text_field'
+      = f.label :document_code, :class => 'control-label'
+      .controls= f.text_field :document_code, :class => 'text_field'
 
     .control-group
-      = f.label :staff_id, :class => 'control-label'
-      .controls= f.number_field :staff_id, :class => 'text_field'
+      = f.label :document_date, :class => 'control-label'
+      .controls= f.date_select :document_date, :class => 'text_field'
 
     .control-group
-      = f.label :assigned_on, :class => 'control-label'
-      .controls= f.date_select :assigned_on, :class => 'text_field'
-
-    .control-group
-      = f.label :assignment_end, :class => 'control-label'
-      .controls= f.date_select :assignment_end, :class => 'text_field'
+      = f.label :authorised_by, :class => 'control-label'
+      .controls= f.number_field :authorised_by, :class => 'text_field'
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

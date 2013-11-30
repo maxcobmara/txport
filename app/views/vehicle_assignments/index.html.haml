@@ -14,19 +14,17 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Vehicle
-      %th Staff
-      %th Assigned on
-      %th Assignment end
+      %th Document
+      %th Date
+      %th Authorised
       %th
 
   %tbody
     - @vehicle_assignments.each do | vehicle_assignment | 
       %tr
-        %td= vehicle_assignment.vehicle_id 
-        %td= vehicle_assignment.staff_id 
-        %td= vehicle_assignment.assigned_on 
-        %td= vehicle_assignment.assignment_end
+        %td= vehicle_assignment.document_code 
+        %td= vehicle_assignment.document_date 
+        %td= vehicle_assignment.authorised_by
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
 
 

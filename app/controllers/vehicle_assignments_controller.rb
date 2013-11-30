@@ -69,6 +69,6 @@ class VehicleAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_assignment_params
-      params.require(:vehicle_assignment).permit(:vehicle_id, :staff_id, :assigned_on, :assignment_end)
+      params.require(:vehicle_assignment).permit(:document_code, :document_date, :authorised_by)
     end
 end
