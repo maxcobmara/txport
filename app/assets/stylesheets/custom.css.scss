@@ -29,7 +29,8 @@ textarea {resize: vertical;}
 
 
 .container {
-	position: relative;
+	position: relative; 
+  /*padding-top:30px; /* use when fixing top nav */
 	/*overflow: hidden;  this line causes dropdowns to disappear
 	/*max-width: none !important;*/
 	/*background: #34495e;*/
@@ -88,7 +89,8 @@ p {
 
 
 /* header */
-.topnav {height:40px; padding-top:5px;
+.topnav {height:40px; padding-top:5px; 
+  /* width:95%; position: fixed; /* fixes navbav to top */
   a {color:#606060; font-size:1.3em; padding-right:5px;}
   a:hover{color:#606060; background-color:white; font-size:1.3em;}
 }

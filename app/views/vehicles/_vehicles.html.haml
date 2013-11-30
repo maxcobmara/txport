@@ -18,11 +18,11 @@
         %td= vehicle.reg_no
         %td= vehicle.reg_on
         %td= vehicle.manufacturer_year
-        %td= vehicle.manufacturer_id
+        %td= vehicle.manufacturer.try(:name)
         %td= vehicle.model
         %td= vehicle.category_id
         %td= vehicle.acquired_on
-        %td= vehicle.price
+        %td= ringgols(vehicle.price)
         %td= vehicle.contract_id
         %td= vehicle.status.try(:short_name)
         = render :partial => 'action_menu', :locals => { :vehicle => vehicle }

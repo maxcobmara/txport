@@ -20,7 +20,7 @@
   %dd= @vehicle.manufacturer_year
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:manufacturer_id) + ":"
-  %dd= @vehicle.manufacturer_id
+  %dd= @vehicle.manufacturer.try(:name)
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:model) + ":"
   %dd= @vehicle.model
