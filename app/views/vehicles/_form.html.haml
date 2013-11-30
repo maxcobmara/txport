@@ -41,8 +41,11 @@
     
     .control-group
       = f.label :price, :class => 'control-label'
-      .controls= f.text_field :price, :class => 'text_field'
-    
+      .controls
+        .input-prepend
+          %span.add-on{:style => "height:30px;"} RM &nbsp;
+          = f.text_field :price, :class => "span2", :id => "prependedInput", :type => "text"
+      
     .control-group
       = f.label :contract_id, :class => 'control-label'
       .controls= f.collection_select :contract_id, Contract.find(:all), :name, :name, :include_blank => 'Select Category', :html_options => {:class => 'selectpicker'}
