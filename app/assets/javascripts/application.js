@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require bootstrap-select
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 
@@ -28,6 +29,13 @@ $(document).ready(function(){
     todayBtn: true
   });
   
+  $('[data-behaviour=datepicker_after]').datepicker({
+    format: "yyyy/mm/dd",
+    startDate: "today",
+    autoclose: true,
+    todayBtn: true
+  });
+  
   $('[data-behaviour=datepicker_year]').datepicker({
       format: "yyyy",
       endDate: "today",
@@ -36,12 +44,15 @@ $(document).ready(function(){
       daysOfWeekDisabled: "6"
   });
   
+  $('#datetimepicker1').datetimepicker({});
+  
   $('.input-daterange').datepicker({
      format: "yyyy-mm-dd",
      autoclose: true
    });
   
   $('select').selectpicker();
+  
 
 });
 

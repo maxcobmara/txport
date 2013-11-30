@@ -4,7 +4,7 @@ class VehicleFinesController < ApplicationController
   # GET /vehicle_fines
   # GET /vehicle_fines.json
   def index
-    @vehicle_fines = VehicleFine.all
+    @vehicle_fines = VehicleFine.order(pay_before: :asc).all
   end
 
   # GET /vehicle_fines/1

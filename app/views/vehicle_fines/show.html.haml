@@ -10,11 +10,11 @@
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:vehicle_id) + ":"
-  %dd= @vehicle_fine.vehicle_id
+  %dd= @vehicle_fine.vehicle.try(:reg_no)
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:type_id) + ":"
-  %dd= @vehicle_fine.type_id
+  %dd= @vehicle_fine.vehicle_fine_type.try(:short_name)
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:issued_at) + ":"
@@ -34,7 +34,7 @@
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:compound) + ":"
-  %dd= @vehicle_fine.compound
+  %dd= ringgols(@vehicle_fine.compound)
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:receipt_no) + ":"
@@ -46,7 +46,7 @@
 
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:paid_amount) + ":"
-  %dd= @vehicle_fine.paid_amount
+  %dd= ringgols(@vehicle_fine.paid_amount)
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicle_fines_path, :class => 'btn'

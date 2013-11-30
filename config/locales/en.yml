@@ -29,7 +29,7 @@ en:
     show: Show
     edit: Edit
     delete: Delete
-  errors:
+  #errors:
   date:
     order:
       - :day

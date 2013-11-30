@@ -3,11 +3,11 @@ class VehicleRoadTax < ActiveRecord::Base
   
   def status
     if end_on < Date.today
-      "error"
+      "error" #overdue
     elsif end_on < Date.today + 3.months
-      "warning"
+      "warning" #due
     else
-      "success"
+      "success" #ok
     end
   end
 end

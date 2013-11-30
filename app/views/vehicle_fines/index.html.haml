@@ -24,12 +24,12 @@
 
   %tbody
     - @vehicle_fines.each do |vehicle_fine| 
-      %tr
+      %tr{:class => vehicle_fine.status}
         %td= vehicle_fine.code 
-        %td= vehicle_fine.vehicle.reg_no 
+        %td= vehicle_fine.vehicle.try(:reg_no)
         %td= vehicle_fine.pay_before 
         %td= vehicle_fine.reason
-        %td= vehicle_fine.compound 
+        %td= ringgols(vehicle_fine.compound)
         %td= vehicle_fine.paid_on 
         = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
 
