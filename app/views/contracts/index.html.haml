@@ -32,12 +32,12 @@
         %td= contract.contract_no
         %td= contract.name
         %td= contract.description
-        %td= contract.company_id
-        %td= contract.value
+        %td= contract.contractor.try(:name)
+        %td= ringgols(contract.value)
         %td= contract.starts_on
         %td= contract.ends_on
         %td= contract.issued_by
-        %td= contract.contract_type
+        %td= contract.type.try(:short_name)
         = render :partial => 'action_menu', :locals => { :contract => contract }
       
       
