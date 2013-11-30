@@ -31,7 +31,7 @@ class MaintenancesController < ApplicationController
 
     respond_to do |format|
       if @maintenance.save
-        format.html { redirect_to @maintenance, notice: 'Maintenance was successfully created.' }
+        format.html { redirect_to @maintenance, notice: (t 'maintenances.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @maintenance }
       else
         format.html { render action: 'new' }
@@ -45,7 +45,7 @@ class MaintenancesController < ApplicationController
   def update
     respond_to do |format|
       if @maintenance.update(maintenance_params)
-        format.html { redirect_to @maintenance, notice: 'Maintenance was successfully updated.' }
+        format.html { redirect_to @maintenance, notice: (t 'maintenances.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

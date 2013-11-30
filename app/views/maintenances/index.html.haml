@@ -1,26 +1,26 @@
-- provide(:title, 'Maintenances')
+//- provide(:title, 'Maintenances')
 - model_class = Maintenance
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'maintenances.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      //%li= link_to content_tag(:li, fa_icon("truck", text: "New Maintenance")), new_maintenance_path
+      //%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_maintenance_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Vehicle
-      %th Work order no
-      %th Contract
-      %th Repaired by
-      %th Supplied by
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'maintenances.work_order_no'  
+      %th= t 'maintenances.contract_no' 
+      %th= t 'maintenances.repaired_by' 
+      %th= t 'maintenances.supplied_by' 
       %th
   %tbody
     - @maintenances.each do |maintenance|

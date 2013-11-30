@@ -1,43 +1,43 @@
 - provide(:title, 'Vehicle Details')
 - model_class = Vehicle
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'vehicles.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:reg_no) + ":"
+  %dt= t 'vehicles.reg_no', :default => model_class.human_attribute_name(:reg_no) + ":"
   %dd= @vehicle.reg_no
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:chassis_no) + ":"
+  %dt= t 'vehicle.chassis_no', :default => model_class.human_attribute_name(:chassis_no) + ":"
   %dd= @vehicle.chassis_no
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:engine_no) + ":"
+  %dt= t 'vehicle.engine_no', :default => model_class.human_attribute_name(:engine_no) + ":"
   %dd= @vehicle.engine_no
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:reg_on) + ":"
+  %dt= t 'vehicles.reg_on', :default => model_class.human_attribute_name(:reg_on) + ":"
   %dd= @vehicle.reg_on.try(:strftime, "%d-%b-%Y")
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:manufacturer_year) + ":"
+  %dt= t 'vehicles.manufacturer_year', :default => model_class.human_attribute_name(:manufacturer_year) + ":"
   %dd= @vehicle.manufacturer_year
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:manufacturer_id) + ":"
+  %dt= t 'vehicles.manufacturer_id', :default => model_class.human_attribute_name(:manufacturer_id) + ":"
   %dd= @vehicle.manufacturer_id
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:model) + ":"
+  %dt= t 'vehicles.model', :default => model_class.human_attribute_name(:model) + ":"
   %dd= @vehicle.model
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:category_id) + ":"
+  %dt= t 'vehicles.category_id', :default => model_class.human_attribute_name(:category_id) + ":"
   %dd= @vehicle.category_id
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:acquired_on) + ":"
+  %dt= t 'vehicles.acquired_on', :default => model_class.human_attribute_name(:acquired_on) + ":"
   %dd= @vehicle.acquired_on.try(:strftime, "%d-%b-%Y")
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:price) + ":"
+  %dt= t 'vehicles.price', :default => model_class.human_attribute_name(:price) + ":"
   %dd= ringgols(@vehicle.price)
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:contract_id) + ":"
+  %dt= t 'vehicles.contract_id', :default => model_class.human_attribute_name(:contract_id) + ":"
   %dd= @vehicle.contract_id
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:status_id) + ":"
+  %dt= t 'vehicles.status_id', :default => model_class.human_attribute_name(:status_id) + ":"
   %dd= @vehicle.status.try(:short_name)
 
 

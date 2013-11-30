@@ -30,7 +30,7 @@ class VehicleRoadTaxesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_road_tax.save
-        format.html { redirect_to @vehicle_road_tax, notice: 'Vehicle road tax was successfully created.' }
+        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title')+(t 'actions.created')  }
         format.json { render action: 'show', status: :created, location: @vehicle_road_tax }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class VehicleRoadTaxesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_road_tax.update(vehicle_road_tax_params)
-        format.html { redirect_to @vehicle_road_tax, notice: 'Vehicle road tax was successfully updated.' }
+        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

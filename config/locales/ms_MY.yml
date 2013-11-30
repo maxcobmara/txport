@@ -4,8 +4,10 @@ ms_MY:
     search: Cari
     print: Cetak
     show: Pamer
-    edit: Ubah
+    edit: Sunting
     delete: Padam
+    created: " telah berjaya disimpan."
+    updated: " telah berjaya dikemaskini."
   errors:
   date:
     formats:
@@ -26,20 +28,121 @@ ms_MY:
     - month
     - year
   menu:
+    main: Menu
+    dropdown: Data Asas
+    fuel: Minyak
+    people: Pentadbiran
+    depot: Depot
+  #index & _action_menu & show      
   vehicles:
     title: Kenderaan
-    reg_no: "No. Pendaftaran"
+    reg_no: "No. Daftar"
     reg_on: Tarikh Daftar
-    manufacturer_year: Tahun Di Buat
-    manufacturer: pengeluar
-
+    manufacturer_year: Tahun Dibuat
+    manufacturer_id: Pengeluar
+    model: Model
+    category_id: Kategori
+    acquired_on: Tarikh Perolehan #Mula Khidmat
+    price: "Harga (RM)"
+    contract_id: "No. Kontrak" #Kuasa VRO
+    status_id: Status    
+    road_tax: Cukai Jalan
+    summons: Saman
+    maintenance: Penyelenggaraan  
+    edit: Sunting Kenderaan
+  #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
-        
+    select_status: Pilih Status   #in _forms
+    vehicle_id: Kenderaan   #use in index - other than vehicles
+    new: Kenderaan Baru
+    chassis_no: "No. Chasis"
+    engine_no: "No. Enjin"
+  maintenances:
+    title: Penyelenggaraan
+    work_order_no: Work Order No
+    contract_id: "No. Kontrak"
+    repaired_by: Dibaiki Oleh
+    supplied_by: Pembekal    
+    new: Penyelenggaraan Baru
+    edit: Sunting Penyelenggaraan
+  vehicle_road_taxes:
+    title: Cukai Jalan Kenderaan
+    start_on: Mula
+    end_on: Tamat
+    amount: Amaun
+    new: Cukai Jalan Kenderaan Baru
+    edit: Sunting Cukai Jalan Kenderaan
+  vehicle_assignments:
+    title: Penguntukkan
+  vehicle_fines:
+    title: Saman
+  vehicle_cards:
+    title: Touch N Go  
+  contracts:
+    title: Kontrak
+  companies:
+    title: Kontraktor #Pembekal #suppliers #supplied by & repaired by
+  contract_types:
+    title: Jenis Kontrak
+  unit_types:
+    title: Unit Pengiraan
+  fuel_tanks:    
+    title: Tangki
+  fuel_types:
+    title: Jenis Minyak
+  units:
+    title: Unit
+  staffs:
+    title: Anggota
+  ranks:
+    title: Pangkat
+  vehicle_manufacturers:
+    title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
+  vehicle_categories:
+    title: Kategori
+  vehicle_statusses:
+    title: Status
+  vehicle_fine_types:
+    title: Jenis Saman
+  #localization for FORMS LABEL in activemodel (to use in haml)
+  #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
     links:
       new: Cipta
       back: Terdahulu
+      cancel: Batal
+      submit: Hantar
+      destroy: Hapus
+      edit: Sunting
+    label:
+      vehicle:
+        reg_no: "No. Daftar"
+        reg_on: Tarikh Daftar
+        manufacturer_year: Tahun Dibuat
+        manufacturer_id: Pengeluar
+        model: Model
+        category_id: Kategori
+        acquired_on: Tarikh Perolehan #Mula Khidmat
+        price: "Harga (RM)"
+        contract_id: "No. Kontrak" #Kuasa VRO
+        status_id: Status    
+        new: Kenderaan Baru
+        chassis_no: "No. Chasis"
+        engine_no: "No. Enjin"
+      maintenance:
+        work_order_no: Work Order No
+        contract_id: "No. Kontrak"
+        repaired_by: Dibaiki Oleh
+        supplied_by: Pembekal
+      vehicle_road_tax:
+        start_on: Mula
+        end_on: Tamat
+        amount: Amaun
+        
+            
+        
+        
   
   
   

@@ -1,29 +1,29 @@
-- provide(:title, 'Vehicles road taxes')
+//- provide(:title, 'Vehicles road taxes')
 - model_class = VehicleRoadTax
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_road_taxes.title', :default => model_class.model_name.human.pluralize
 
 
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle Road Tax")), new_vehicle_road_tax_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_road_tax_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Vehicle
-      %th Start on
-      %th End on
-      %th Amount
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_road_taxes.start_on' 
+      %th= t 'vehicle_road_taxes.end_on' 
+      %th= t 'vehicle_road_taxes.amount' 
       %th     
   %tbody
     - @vehicle_road_taxes.each do |vehicle_road_tax| 
       %tr
-        %td= vehicle_road_tax.vehicle_id 
+        %td= vehicle_road_tax.vehicle.reg_no
         %td= vehicle_road_tax.start_on 
         %td= vehicle_road_tax.end_on 
         %td= vehicle_road_tax.amount 
