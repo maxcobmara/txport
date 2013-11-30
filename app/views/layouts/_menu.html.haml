@@ -5,57 +5,57 @@
       = link_to (t 'vehicles.title'), '#'
       .mp-level
         %h2.icon= t 'vehicles.title'
-        %a.mp-back{:href => "#"} Back
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicles.title'), vehicles_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Assignment", vehicle_assignments_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Maintenance", maintenances_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Road Tax", vehicle_road_taxes_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Summons", vehicle_fines_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Touch N Go", vehicle_cards_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_assignments.title'), vehicle_assignments_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'maintenances.title'), maintenances_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_road_taxes.title'), vehicle_road_taxes_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_fines.title'), vehicle_fines_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_cards.title'), vehicle_cards_path
           
           %li.icon.icon-left
-            = link_to "Drop Downs", '#'
+            = link_to (t 'menu.dropdown'), '#'
             .mp-level
-              %h2.icon Vehicles
-              %a.mp-back{:href => "#"} Back
+              %h2.icon= t 'vehicles.title'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
               %ul
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Manufacturers", vehicle_manufacturers_path
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Categories", vehicle_categories_path
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Status", vehicle_statuses_path
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fine Types", vehicle_fine_types_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_manufacturers.title'), vehicle_manufacturers_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_categories.title'), vehicle_categories_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_statusses.title'), vehicle_statuses_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'vehicle_fine_types.title'), vehicle_fine_types_path
     %li.icon.icon-left
-      = link_to content_tag(:i, "", :class => "icon-numb") + "Contract", '#'
+      = link_to content_tag(:i, "", :class => "icon-numb") + (t 'contracts.title'), '#'
       .mp-level
-        %h2.icon Contract
-        %a.mp-back{:href => "#"} Back
+        %h2.icon= t 'contracts.title'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contracts", contracts_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Suppliers", companies_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Contract Types", contract_types_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Measurement Types", unit_types_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'contracts.title'), contracts_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'companies.title'), companies_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'contract_types.title'), contract_types_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'unit_types.title'), unit_types_path
           
     %li.icon.icon-left
-      = link_to content_tag(:i, "", :class => "icon-numb") + "Fuel", '#'
+      = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel'), '#'
       .mp-level
-        %h2.icon Fuel
-        %a.mp-back{:href => "#"} Back
+        %h2.icon= t 'menu.fuel'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Depots", units_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Tanks", fuel_tanks_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Supplied", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issued", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Fuel Types", fuel_types_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot'), units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_tanks.title'), fuel_tanks_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Supplied/Received", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issued/Usage", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_types.title'), fuel_types_path
           
     %li.icon.icon-left
-      = link_to content_tag(:i, "", :class => "icon-numb") + "People", '#'
+      = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.people'), '#'
       .mp-level
-        %h2.icon Fuel
-        %a.mp-back{:href => "#"} Back
+        %h2.icon= t 'menu.people'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Units", units_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff", staffs_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Ranks", ranks_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'ranks.title'), ranks_path
 
 
           

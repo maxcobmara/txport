@@ -52,11 +52,11 @@
     
     .control-group
       = f.label :status_id, :class => 'control-label'
-      .controls= f.collection_select :status_id, VehicleStatus.find(:all), :id, :short_name, :include_blank => 'Select Status', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :status_id, VehicleStatus.find(:all), :id, :short_name, :include_blank => t('vehicle.select_status'), :html_options => {:class => 'selectpicker'}
     
     
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         vehicles_path, :class => 'btn'     
 

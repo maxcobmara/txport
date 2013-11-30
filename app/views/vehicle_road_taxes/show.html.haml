@@ -1,7 +1,7 @@
 - provide(:title, 'Vehicle Road Tax Details')
 - model_class = VehicleRoadTax
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'vehicle_road_taxes.title', :default => model_class.model_name.human
 %p#notice= notice
 
 %dl.dl-horizontal
@@ -9,11 +9,11 @@
   %dd= @vehicle_road_tax.vehicle.try(:reg_no) 
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:start_on) + ":"
+  %dt= t 'vehicle_road_taxes.start_on', :default =>  model_class.human_attribute_name(:start_on) + ":"
   %dd= @vehicle_road_tax.start_on 
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:end_on) + ":"
+  %dt= t 'vehicle_road_taxes.end_on', :default =>  model_class.human_attribute_name(:end_on) + ":"
   %dd= @vehicle_road_tax.end_on 
 
 %dl.dl-horizontal

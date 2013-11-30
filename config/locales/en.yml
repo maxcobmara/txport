@@ -29,16 +29,136 @@ en:
     show: Show
     edit: Edit
     delete: Delete
-  #errors:
+    created: " was successfully created."
+    updated: " was successfully updated."
+  errors:
   date:
-    order:
-      - :day
-      - :month
-      - :year
+    formats:
+       default: "%d-%b-%Y"
+       short: "%d %b"
+       long: "%d %B %Y"
+       events: "%A, %e %b"
+       # Use the strftime parameters for formats.
+       # When no format has been given, it uses default.
+       # You can provide other formats here if you like!
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datime_select.
+    order: 
+       - day
+       - month
+       - year
   menu:
+    main: Menu
+    dropdown: Drop Downs  
+    fuel: Fuel
+    people: People
+    depot: Depots
+  #index, _action_menu, show  
   vehicles:
     title: Vehicles
-    reg_no: Registration
+    reg_no: Registration No
     reg_on: Registration Date
     manufacturer_year: Year of Manufacture
-    manufacturer: Manufacturer
+    manufacturer_id: Manufacturer
+    model: Model
+    category_id: Category
+    acquired_on: Acquired On
+    price: "Price (RM)"
+    contract_id: Contract No
+    status_id: Status
+    road_tax: Road Tax
+    summons: Summons
+    maintenance: Maintenance
+  #-forms (other than FORMS LABEL) & show & controller
+  vehicle:
+    home: Rumah
+    select_status: Select Status    #in _forms 
+    vehicle_id: Vehicle   #use in index - other than vehicles
+    new: New Vehicle
+    chassis_no: Chassis No
+    engine_no: Engine No
+  maintenances:
+    title: Maintenance
+    work_order_no: Work Order No
+    contract_id: Contract No
+    repaired_by: Repaired By
+    supplied_by: Supplied By    
+    new: New Maintenance
+    edit: Edit Maintenance
+  vehicle_road_taxes:
+    title: Vehicle Road Taxes
+    start_on: Start On
+    end_on: End On
+    amount: Amount
+    new: New Vehicle Road Tax
+    edit: Edit Vehicle Road Tax
+  vehicle_assignments:
+    title: Assignment
+  vehicle_fines:
+    title: Summons
+  vehicle_cards:
+    title: Touch N Go
+  contracts:
+    title: Contract
+  companies:
+    title: Contractor #suppliers #supplied by & repaired by
+  contract_types:
+    title: Contract Types
+  unit_types:
+    title: Measurement Type
+  fuel_tanks:    
+    title: Tanks
+  fuel_types:
+    title: Fuel Types
+  units:
+    title: Units
+  staffs:
+    title: Staffs
+  ranks:
+    title: Ranks
+  vehicle_manufacturers:
+    title: Vehicle Manufacturer #pengeluar kenderaan @ pembuat
+  vehicle_categories:
+    title: Categories
+  vehicle_statusses:
+    title: Status
+  vehicle_fine_types:
+    title: Summon Types
+  #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
+  #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
+  helpers:
+    links:
+      new: New
+      back: Back
+      cancel: Cancel
+      submit: Submit
+      destroy: Destroy
+      edit: Edit
+    label:
+      vehicle:
+        reg_no: Registration No
+        reg_on: Registration Date
+        manufacturer_year: Year of Manufacture
+        manufacturer_id: Manufacturer
+        model: Model
+        category: Category
+        acquired_on: Acquired On
+        price: "Price (RM)"
+        contract_id: Contract No
+        status: Status
+        new: New Vehicle
+        chassis_no: Chasis No
+        engine_no: Engine No 
+      maintenance:
+        work_order_no: Work Order No
+        contract_id: Contract No
+        repaired_by: Repaired By
+        supplied_by: Supplied By 
+      vehicle_road_tax:
+        start_on: Start On
+        end_on: End On
+        amount: Amount

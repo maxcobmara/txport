@@ -5,7 +5,7 @@
 
     %dl.dl-horizontal
       %dt
-        %strong Registration No :
+        %strong= t 'vehicles.reg_no'
       %dd
         = h @maintenance.vehicle.reg_no
     %br/
@@ -28,5 +28,5 @@
 
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), maintenances_path, :class => 'btn'
