@@ -27,9 +27,9 @@
       %tr
         %td= maintenance.vehicle.reg_no
         %td= maintenance.work_order_no
-        %td= maintenance.contract_id
-        %td= maintenance.repaired_by
-        %td= maintenance.supplied_by
+        %td= maintenance.contract.try(:contract_no)
+        %td= maintenance.repairer.try(:name)
+        %td= maintenance.supplier.try(:name)
         = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
       
       
