@@ -16,11 +16,14 @@
    
     .control-group
       = f.label :company_id, :class => 'control-label'
-      .controls= f.number_field :company_id, :class => 'text_field'    
+      .controls= f.collection_select :company_id, Company.order(name: :asc).all, :id, :name, :include_blank => 'Select Company', :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :value, :class => 'control-label'
-      .controls= f.text_field :value, :class => 'text_field'
+      .controls
+        .input-prepend
+          %span.add-on{:style => "height:30px;"} RM &nbsp;
+          = f.text_field :value, :class => "span2", :id => "prependedInput", :type => "text"
       
     .control-group
       = f.label 'contract dates', :class => 'control-label'
@@ -32,11 +35,11 @@
 
     .control-group
       = f.label :issued_by, :class => 'control-label'
-      .controls= f.number_field :issued_by, :class => 'text_field'
+      .controls= f.collection_select :issued_by, Staff.all, :id, :name, :include_blank => 'Select Issuer', :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :contract_type, :class => 'control-label'
-      .controls= f.number_field :contract_type, :class => 'text_field'
+      .controls= f.collection_select :contract_type, ContractType.order(short_name: :asc).all, :id, :short_name, :include_blank => 'Select Type', :html_options => {:class => 'selectpicker'}
  
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

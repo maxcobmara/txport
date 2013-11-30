@@ -14,22 +14,19 @@
   %dd= @contract.description
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:company_id) + ":"
-  %dd= @contract.company_id
+  %dd= @contract.contractor.try(:name)
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:value) + ":"
-  %dd= @contract.value
+  %dd= ringgols(@contract.value)
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:starts_on) + ":"
-  %dd= @contract.starts_on
-%dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:ends_on) + ":"
-  %dd= @contract.ends_on
+  %dd= (@contract.starts_on).to_s + ' to ' + (@contract.ends_on).to_s
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:issued_by) + ":"
-  %dd= @contract.issued_by
+  %dd= @contract.issued_by #issuer.try(:name)
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:contract_type) + ":"
-  %dd= @contract.contract_type
+  %dd= @contract.type.try(:short_name)
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), contracts_path, :class => 'btn'
