@@ -6,10 +6,10 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Vehicle Fine")), new_vehicle_fine_path
+     
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
 
 %table.table.table-condensed.table-hover
   %thead
@@ -26,7 +26,7 @@
     - @vehicle_fines.each do |vehicle_fine| 
       %tr
         %td= vehicle_fine.code 
-        %td= vehicle_fine.vehicle_id 
+        %td= vehicle_fine.vehicle.reg_no 
         %td= vehicle_fine.pay_before 
         %td= vehicle_fine.reason
         %td= vehicle_fine.compound 

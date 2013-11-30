@@ -5,12 +5,13 @@ class FuelTypesController < ApplicationController
   # GET /fuel_types.json
   def index
     @fuel_types = FuelType.all
+	@fuel_type = FuelType.new
   end
 
   # GET /fuel_types/1
   # GET /fuel_types/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /fuel_types/new
   def new
@@ -29,7 +30,8 @@ class FuelTypesController < ApplicationController
     respond_to do |format|
       if @fuel_type.save
         format.html { redirect_to @fuel_type, notice: 'Fuel type was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @fuel_type }
+        format.js
+		format.json { render action: 'show', status: :created, location: @fuel_type }
       else
         format.html { render action: 'new' }
         format.json { render json: @fuel_type.errors, status: :unprocessable_entity }
@@ -40,6 +42,8 @@ class FuelTypesController < ApplicationController
   # PATCH/PUT /fuel_types/1
   # PATCH/PUT /fuel_types/1.json
   def update
+	@fuel_types = FuelType.all
+	@fuel_type = FuelType.find(params[:id])
     respond_to do |format|
       if @fuel_type.update(fuel_type_params)
         format.html { redirect_to @fuel_type, notice: 'Fuel type was successfully updated.' }
@@ -54,9 +58,11 @@ class FuelTypesController < ApplicationController
   # DELETE /fuel_types/1
   # DELETE /fuel_types/1.json
   def destroy
+	@fuel_type = FuelType.find(params[:id])
     @fuel_type.destroy
     respond_to do |format|
       format.html { redirect_to fuel_types_url }
+	  format.js
       format.json { head :no_content }
     end
   end

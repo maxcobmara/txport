@@ -1,0 +1,1 @@
+$('#tr_<%= @vehicle_category.id =%>').remove();

@@ -1,0 +1,10 @@
+%tr
+  %td= @vehicle_category.short_name
+  %td= @vehicle_category.description
+  %td
+    .btn-group.dropdown
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+        .span.caret
+      %ul.dropdown-menu.pull-right.action_menu
+        %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_vehicle_category_path(@vehicle_category), :remote => true
+        %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), @vehicle_category, :remote => true, method: :delete, data: { confirm: 'Are you sure?' }  

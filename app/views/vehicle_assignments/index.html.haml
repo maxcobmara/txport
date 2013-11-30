@@ -1,0 +1,33 @@
+- provide(:title, 'vehicle assignment')
+- model_class = VehicleAssignment
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Assignment")), new_vehicle_assignment_path     
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Vehicle
+      %th Staff
+      %th Assigned on
+      %th Assignment end
+      %th
+
+  %tbody
+    - @vehicle_assignments.each do | vehicle_assignment | 
+      %tr
+        %td= vehicle_assignment.vehicle_id 
+        %td= vehicle_assignment.staff_id 
+        %td= vehicle_assignment.assigned_on 
+        %td= vehicle_assignment.assignment_end
+        = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
+
+
+

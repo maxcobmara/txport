@@ -8,7 +8,7 @@
     
     .control-group
       = f.label :rank_id, :class => 'control-label'
-      .controls= f.number_field :rank_id, :class => 'text_field'
+      .controls= f.collection_select :rank_id, Rank.find(:all), :shortname, :name, :include_blank => 'Select rank', :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :name, :class => 'control-label'

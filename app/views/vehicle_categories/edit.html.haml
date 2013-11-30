@@ -1,0 +1,14 @@
+
+%h1 Editing vehicle category
+
+
+= form_for @vehicle_category do |f|
+  %div#vehicle_category_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :short_name
+  %td= f.text_field :description
+  %td= f.submit
+= link_to 'Show', @vehicle_category
+|
+\#{link_to 'Back', vehicle_categories_path}

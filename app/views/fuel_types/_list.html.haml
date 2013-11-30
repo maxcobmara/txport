@@ -1,0 +1,10 @@
+%tr
+  %td= @fuel_type.shortname
+  %td= @fuel_type.name
+  %td
+    .btn-group.dropdown
+      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+        .span.caret
+      %ul.dropdown-menu.pull-right.action_menu
+        %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_fuel_type_path(@fuel_type), :remote => true
+        %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), @fuel_type, :remote => true, method: :delete, data: { confirm: 'Are you sure?' }  

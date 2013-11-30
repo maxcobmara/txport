@@ -22,10 +22,10 @@
       = f.label :manufacturer_year, :class => 'control-label'
       .controls= f.text_field :manufacturer_year, :discard_month => true, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_year'
     
-    
+   
     .control-group
       = f.label :manufacturer_id, :class => 'control-label'
-      .controls= f.number_field :manufacturer_id, :class => 'text_field'
+      .controls= f.collection_select :manufacturer_id, VehicleManufacturer.find(:all), :id, :name, :include_blank => 'Select Manufacturer', :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :model, :class => 'control-label'
@@ -33,7 +33,7 @@
 
     .control-group
       = f.label :category_id, :class => 'control-label'
-      .controls= f.number_field :category_id, :class => 'text_field'
+      .controls= f.collection_select :category_id, VehicleCategory.find(:all), :id, :short_name, :include_blank => 'Select Category', :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :acquired_on, :class => 'control-label'
@@ -45,7 +45,7 @@
     
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.number_field :contract_id, :class => 'text_field'
+      .controls= f.collection_select :contract_id, Contract.find(:all), :name, :name, :include_blank => 'Select Category', :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :status_id, :class => 'control-label'

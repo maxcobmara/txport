@@ -1,0 +1,1 @@
+$('#tr_<%= @vehicle_fine_type.id =%>').remove();

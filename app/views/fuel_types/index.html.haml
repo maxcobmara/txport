@@ -2,29 +2,29 @@
 - model_class = FuelType
 .page-header
   %h1= t '.title', :default => model_class.model_name.human.pluralize
-  
-  
+      
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Fuel Type")), new_fuel_type_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Fuel Type")), new_fuel_type_path, id: "add_new_type", remote: true
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
       
-      
-%table.table.table-condensed.table-hover
+%table.table.table-condensed.table-hover#fuel_type_list{:style => "width:60%;"}
   %thead
     %tr
       %th Shortname
       %th Name
-      %th 
-
+      %th
   %tbody
-    - @fuel_types.each do | fuel_type |
-      %tr
+    %tr#fuel_type_form(style="display:none;")
+      = render :partial => 'form'
+    - @fuel_types.each do |fuel_type|
+      %tr{:id => "tr_#{fuel_type.id}"}
         %td= fuel_type.shortname
         %td= fuel_type.name
-        = render :partial => 'action_menu', :locals => { :fuel_type => fuel_type }
-      
-      
+        %td= link_to (fa_icon "trash-o"), fuel_type, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+
