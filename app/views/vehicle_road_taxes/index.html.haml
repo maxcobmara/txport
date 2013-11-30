@@ -22,7 +22,7 @@
       %th     
   %tbody
     - @vehicle_road_taxes.each do |vehicle_road_tax| 
-      %tr
+      %tr{:class => vehicle_road_tax.status}
         %td= vehicle_road_tax.vehicle.reg_no
         %td= vehicle_road_tax.start_on 
         %td= vehicle_road_tax.end_on 
