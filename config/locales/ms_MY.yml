@@ -56,7 +56,7 @@ ms_MY:
     home: Rumah  
     vehicle_id: Kenderaan   #use in index - other than vehicles
     new: Kenderaan Baru
-    chassis_no: "No. Chasis"
+    chassis_no: "No. Casis"
     engine_no: "No. Enjin"
   maintenances:
     title: Penyelenggaraan
