@@ -6,6 +6,7 @@ ms_MY:
     show: Pamer
     edit: Sunting
     delete: Padam
+    create: Cipta
     created: " telah berjaya disimpan."
     updated: " telah berjaya dikemaskini."
   errors:
@@ -52,8 +53,7 @@ ms_MY:
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
-    home: Rumah
-    select_status: Pilih Status   #in _forms
+    home: Rumah  
     vehicle_id: Kenderaan   #use in index - other than vehicles
     new: Kenderaan Baru
     chassis_no: "No. Chasis"
@@ -75,16 +75,53 @@ ms_MY:
     edit: Sunting Cukai Jalan Kenderaan
   vehicle_assignments:
     title: Penguntukkan
+    assigned_on: Mula
+    assignment_end: Tamat
   vehicle_fines:
     title: Saman
+    code: Kod
+    pay_before: Bayar Sebelum
+    reason: Sebab
+    compound: Kompaun
+    paid_on: Dibayar Pada    
+    issued_at: Dikeluarkan Pada
+    location: Lokasi
+    receipt_no: "No. Resit"
+    paid_amount: Amaun Dibayar 
+    new: Saman Baru
+    edit: Sunting Saman
   vehicle_cards:
     title: Touch N Go  
+    serial_no: "No. Siri"
+    new: Touch N Go Baru
+    edit: Sunting Touch N Go
   contracts:
     title: Kontrak
+    contract_no: "No. Kontrak"
+    name: Tajuk Kontrak
+    description: Deskripsi  
+    company_id: Kontraktor
+    value: Nilai
+    starts_on: Tarikh Mula
+    ends_on: Tarikh Tamat
+    issued_by: Dikeluarkan Oleh
+    contract_type: Jenis Kontrak
+    new: Kontrak Baru
+    edit: Sunting Kontrak
   companies:
     title: Kontraktor #Pembekal #suppliers #supplied by & repaired by
+    name: Nama
+    address: Alamat
+    contact_person: Staf Dihubungi
+    phone: "No. Telefon"
+    fax: "No. Faks"
+    email: Emel
+    new: Kontraktor Baru
+    edit: Sunting Kontraktor
   contract_types:
     title: Jenis Kontrak
+    short_name: Nama Ringkas
+    description: Deskripsi
   unit_types:
     title: Unit Pengiraan
   fuel_tanks:    
@@ -95,16 +132,28 @@ ms_MY:
     title: Unit
   staffs:
     title: Anggota
+    staff_id: Anggota
   ranks:
     title: Pangkat
   vehicle_manufacturers:
     title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
   vehicle_categories:
-    title: Kategori
-  vehicle_statusses:
-    title: Status
+    title: Kategori kenderaan
+    short_name: Nama Ringkas
+    description: Deskripsi
+  vehicle_statuses:
+    title: Status Kenderaan
+    short_name: Nama Ringkas
+    description: Deskripsi
   vehicle_fine_types:
     title: Jenis Saman
+    type_id: Jenis Saman
+    short_name: Nama Ringkas
+    description: Deskripsi
+  vehicle_manufacturers:
+    title: Pengeluar Kenderaan
+    name: Nama
+    country: Negara  
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -136,10 +185,48 @@ ms_MY:
         repaired_by: Dibaiki Oleh
         supplied_by: Pembekal
       vehicle_road_tax:
-        start_on: Mula
-        end_on: Tamat
+        from: Dari
+        to: hingga
         amount: Amaun
-        
+      vehicle_fine:
+        code: Kod
+        type_id: Jenis Saman
+        pay_before: Bayar Sebelum
+        reason: Sebab
+        compound: Kompaun
+        paid_on: Dibayar Pada    
+        issued_at: Dikeluarkan Pada
+        location: Lokasi
+        receipt_no: "No. Resit"
+        paid_amount: Amaun Dibayar  
+      vehicle_card:
+        vehicle_id: Kenderaan
+        serial_no: "No. Siri"
+      contract:
+        contract_no: "No. Kontrak"
+        name: Tajuk Kontrak
+        description: Deskripsi  
+        company_id: Kontraktor
+        value: Nilai
+        starts_on: Tarikh Mula
+        issued_by: Dikeluarkan Oleh
+        contract_type: Jenis Kontrak
+        contract_dates: Tarikh Kontrak
+        to: hingga
+      company:
+        name: Nama
+        address: Alamat
+        contact_person: Staf Dihubungi
+        phone: "No. Telefon"
+        fax: "No. Faks"
+        email: Emel
+    prompt:   
+      select_manufacturer: Pilih Pengeluar
+      select_category: Pilih Kategori
+      select_contract: Pilih Kontrak
+      select_status: Pilih Status  
+      select_repaired_by: Pilih Pembaikan Oleh
+      select_supplied_by: Pilih Dibekalkan Oleh
             
         
         

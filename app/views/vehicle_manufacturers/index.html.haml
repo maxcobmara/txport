@@ -1,19 +1,19 @@
 - provide(:title, 'Vehicle Manufacturers')
 - model_class = VehicleManufacturer
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_manufacturers.title', :default => model_class.model_name.human.pluralize
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Manufacturer")), new_vehicle_manufacturer_path, id: "add_new_manufacturer", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_manufacturer_path, id: "add_new_manufacturer", remote: true
   
   
 %table.table.table-condensed.table-hover#vehicle_manufacturer_list{:style => "width:70%;"}
   %thead
     %tr
-      %th Name
-      %th Country
+      %th= t 'vehicle_manufacturers.name'
+      %th= t 'vehicle_manufacturers.country'
       %th
   %tbody
     %tr#vehicle_manufacturer_form(style="display:none;")

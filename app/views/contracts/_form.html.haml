@@ -26,11 +26,11 @@
           = f.text_field :value, :class => "span2", :id => "prependedInput", :type => "text"
       
     .control-group
-      = f.label 'contract dates', :class => 'control-label'
+      = f.label :contract_dates, :class => 'control-label'
       .controls
         #datepicker.input-daterange
           = f.text_field :starts_on, :class => 'text_field input-medium', :type => :text
-          %span.add-on{:style => "height:30px;"} to
+          %span.add-on{:style => "height:30px;"}= t 'helpers.label.contract.to'
           = f.text_field :ends_on, :class => 'text_field input-medium', :type => :text
 
     .control-group
@@ -42,7 +42,7 @@
       .controls= f.collection_select :contract_type, ContractType.order(short_name: :asc).all, :id, :short_name, :include_blank => 'Select Type', :html_options => {:class => 'selectpicker'}
  
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         contracts_path, :class => 'btn'     
 

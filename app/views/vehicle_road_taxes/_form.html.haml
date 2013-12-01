@@ -11,11 +11,11 @@
     %br/
       
     .control-group
-      = f.label "From", :class => 'control-label'
+      = f.label :from, :class => 'control-label'
       .controls
         #datepicker.input-daterange
           = f.text_field :start_on, :class => 'text_field input-medium', :type => :text
-          %span.add-on{:style => "height:30px;"} to
+          %span.add-on{:style => "height:30px;"}= t 'helpers.label.vehicle_road_tax.to'
           = f.text_field :end_on, :class => 'text_field input-medium', :type => :text
 
     .control-group
@@ -26,6 +26,6 @@
           = f.text_field :amount, :class => "span2", :id => "prependedInput", :type => "text"
 
     .form-actions
-      = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         vehicle_road_taxes_path, :class => 'btn'

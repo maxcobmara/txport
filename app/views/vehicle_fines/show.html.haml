@@ -1,51 +1,51 @@
 - provide(:title, 'Vehicle Fine Details')
 - model_class = VehicleFine
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'vehicle_fines.title', :default => model_class.model_name.human
 %p#notice= notice
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:code) + ":"
+  %dt= t 'vehicle_fines.code', :default => model_class.human_attribute_name(:code) + ":"
   %dd= @vehicle_fine.code
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:vehicle_id) + ":"
-  %dd= @vehicle_fine.vehicle.try(:reg_no)
+  %dt= t 'vehicle.vehicle_id', :default => model_class.human_attribute_name(:vehicle_id) + ":"
+  %dd= @vehicle_fine.vehicle.reg_no
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:type_id) + ":"
+  %dt= t 'vehicle_fine_types.type_id', :default => model_class.human_attribute_name(:type_id) + ":"
   %dd= @vehicle_fine.vehicle_fine_type.try(:short_name)
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:issued_at) + ":"
+  %dt= t 'vehicle_fines.issued_at', :default => model_class.human_attribute_name(:issued_at) + ":"
   %dd= @vehicle_fine.issued_at
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:pay_before) + ":"
+  %dt= t 'vehicle_fines.pay_before', :default => model_class.human_attribute_name(:pay_before) + ":"
   %dd= @vehicle_fine.pay_before
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:location) + ":"
+  %dt= t 'vehicle_fines.location', :default =>model_class.human_attribute_name(:location) + ":"
   %dd= @vehicle_fine.location
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:reason) + ":"
+  %dt= t 'vehicle_fines.reason', :default =>model_class.human_attribute_name(:reason) + ":"
   %dd= @vehicle_fine.reason
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:compound) + ":"
+  %dt=  t 'vehicle_fines.compound', :default =>model_class.human_attribute_name(:compound) + ":"
   %dd= ringgols(@vehicle_fine.compound)
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:receipt_no) + ":"
+  %dt=  t 'vehicle_fines.receipt_no', :default =>model_class.human_attribute_name(:receipt_no) + ":"
   %dd= @vehicle_fine.receipt_no
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:paid_on) + ":"
+  %dt=  t 'vehicle_fines.paid_on', :default =>model_class.human_attribute_name(:paid_on) + ":"
   %dd= @vehicle_fine.paid_on
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:paid_amount) + ":"
+  %dt=  t 'vehicle_fines.paid_amount', :default =>model_class.human_attribute_name(:paid_amount) + ":"
   %dd= ringgols(@vehicle_fine.paid_amount)
 
 .form-actions

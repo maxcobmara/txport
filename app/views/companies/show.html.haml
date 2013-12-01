@@ -1,25 +1,25 @@
 - provide(:title, 'Company Details')
 - model_class = Company
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'companies.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:name) + ":"
+  %dt= t 'companies.name', :default => model_class.human_attribute_name(:name) + ":"
   %dd= @company.name
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:address) + ":"
+  %dt=  t 'companies.address', :default => model_class.human_attribute_name(:address) + ":"
   %dd= @company.address
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:contact_person) + ":"
+  %dt= t 'companies.contact_person', :default => model_class.human_attribute_name(:contact_person) + ":"
   %dd= @company.contact_person
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:phone) + ":"
+  %dt= t 'companies.phone', :default => model_class.human_attribute_name(:phone) + ":"
   %dd= @company.phone
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:fax) + ":"
+  %dt= t 'companies.fax', :default => model_class.human_attribute_name(:fax) + ":"
   %dd= @company.fax
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:email) + ":"
+  %dt= t 'companies.email', :default => model_class.human_attribute_name(:email) + ":"
   %dd= @company.email
 
 

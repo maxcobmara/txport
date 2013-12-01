@@ -28,7 +28,7 @@ class VehicleCardsController < ApplicationController
 
     respond_to do |format|
       if @vehicle_card.save
-        format.html { redirect_to @vehicle_card, notice: 'Vehicle card was successfully created.' }
+        format.html { redirect_to @vehicle_card, notice: (t 'vehicle_cards.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @vehicle_card }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class VehicleCardsController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_card.update(vehicle_card_params)
-        format.html { redirect_to @vehicle_card, notice: 'Vehicle card was successfully updated.' }
+        format.html { redirect_to @vehicle_card, notice: (t 'vehicle_cards.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -13,6 +13,7 @@
   %dt= t 'contracts.description', :default => model_class.human_attribute_name(:description) + ":"
   %dd= @contract.description
 %dl.dl-horizontal
+<<<<<<< HEAD
   %dt= model_class.human_attribute_name(:company_id) + ":"
   %dd= @contract.contractor.try(:name)
 %dl.dl-horizontal
@@ -27,6 +28,25 @@
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:contract_type) + ":"
   %dd= @contract.type.try(:short_name)
+=======
+  %dt= t 'contracts.company_id', :default => model_class.human_attribute_name(:company_id) + ":"
+  %dd= @contract.company_id
+%dl.dl-horizontal
+  %dt= t 'contracts.value', :default => model_class.human_attribute_name(:value) + ":"
+  %dd= @contract.value
+%dl.dl-horizontal
+  %dt= t 'contracts.starts_on', :default => model_class.human_attribute_name(:starts_on) + ":"
+  %dd= @contract.starts_on
+%dl.dl-horizontal
+  %dt= t 'contracts.ends_on', :default => model_class.human_attribute_name(:ends_on) + ":"
+  %dd= @contract.ends_on
+%dl.dl-horizontal
+  %dt= t 'contracts.issued_by', :default => model_class.human_attribute_name(:issued_by) + ":"
+  %dd= @contract.issued_by
+%dl.dl-horizontal
+  %dt= t 'contracts.contract_type', :default => model_class.human_attribute_name(:contract_type) + ":"
+  %dd= @contract.contract_type
+>>>>>>> Nurhashimah-master
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), contracts_path, :class => 'btn'

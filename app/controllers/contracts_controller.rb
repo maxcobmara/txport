@@ -28,7 +28,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.save
-        format.html { redirect_to @contract, notice: 'Contract was successfully created.' }
+        format.html { redirect_to @contract, notice: (t 'contracts.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @contract }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ContractsController < ApplicationController
   def update
     respond_to do |format|
       if @contract.update(contract_params)
-        format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
+        format.html { redirect_to @contract, notice: (t 'contracts.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

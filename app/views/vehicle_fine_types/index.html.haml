@@ -1,12 +1,12 @@
 - provide(:title, 'Vehicles fine type')
 - model_class = VehicleFineType
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_fine_types.title', :default => model_class.model_name.human.pluralize
       
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Fine Type")), new_vehicle_fine_type_path, id: "add_new_fine_type", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_fine_type_path, id: "add_new_fine_type", remote: true
     %ul.nav.pull-right
       //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
@@ -14,8 +14,8 @@
 %table.table.table-condensed.table-hover#vehicle_fine_type_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Short name
-      %th Description
+      %th= t 'vehicle_fine_types.short_name'
+      %th= t 'vehicle_fine_types.description'
       %th
   %tbody
     %tr#vehicle_fine_type_form(style="display:none;")

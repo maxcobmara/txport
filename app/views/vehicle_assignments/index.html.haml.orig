@@ -14,10 +14,16 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
+<<<<<<< HEAD
+      %th Document
+      %th Date
+      %th Authorised
+=======
       %th= t 'vehicle.vehicle_id'
       %th= t 'staffs.staff_id'
       %th= t 'vehicle_assignments.assigned_on'
       %th= t 'vehicle_assignments.assignment_end'
+>>>>>>> Nurhashimah-master
       %th
 
   %tbody

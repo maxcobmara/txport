@@ -1,7 +1,7 @@
-- provide(:title, 'Vehicles Fines')
+//- provide(:title, 'Vehicles Fines')
 - model_class = VehicleFine
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_fines.title', :default => model_class.model_name.human.pluralize
 
 .navbar.navbar-inverse
   .navbar-inner
@@ -14,19 +14,19 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Code
-      %th Vehicle
-      %th Pay Before
-      %th Reason
-      %th Compound
-      %th Paid On
+      %th= t 'vehicle_fines.code'
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_fines.pay_before' 
+      %th= t 'vehicle_fines.reason'
+      %th= t 'vehicle_fines.compound'
+      %th= t 'vehicle_fines.paid_on'
       %th
 
   %tbody
     - @vehicle_fines.each do |vehicle_fine| 
-      %tr{:class => vehicle_fine.status}
+      %tr
         %td= vehicle_fine.code 
-        %td= vehicle_fine.vehicle.try(:reg_no)
+        %td= vehicle_fine.vehicle.reg_no
         %td= vehicle_fine.pay_before 
         %td= vehicle_fine.reason
         %td= ringgols(vehicle_fine.compound)
