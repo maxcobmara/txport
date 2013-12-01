@@ -5,7 +5,7 @@
  
     %dl.dl-horizontal
       %dt
-        %strong Registration No :
+        %strong= t 'vehicles.reg_no'
       %dd
         = h @vehicle_fine.vehicle.reg_no
     %br/
@@ -61,6 +61,6 @@
           = f.text_field :paid_amount, :class => "span2 input-small", :id => "prependedInput", :type => "text"
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         vehicle_fines_path, :class => 'btn'     

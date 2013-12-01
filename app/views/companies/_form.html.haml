@@ -27,7 +27,7 @@
       .controls= f.text_field :email, :class => 'text_field'
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         companies_path, :class => 'btn'     
 

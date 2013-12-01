@@ -1,27 +1,27 @@
 - provide(:title, 'Companies')
 - model_class = Company
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'companies.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Company")), new_company_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_company_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Name
-      %th address
-      %th contact person
-      %th Phone
-      %th Fax
-      %th Email
+      %th= t 'companies.name'
+      %th= t 'companies.address' 
+      %th= t 'companies.contact_person' 
+      %th= t 'companies.phone' 
+      %th= t 'companies.fax' 
+      %th= t 'companies.email' 
       %th
   %tbody
     - @companies.each do |company|
@@ -32,6 +32,6 @@
         %td= company.phone
         %td= company.fax
         %td= company.email
-        = render :partial => 'action_menu', :locals => { :company => Company }
+        = render :partial => 'action_menu', :locals => { :company => company }
       
       

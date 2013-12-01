@@ -1,15 +1,15 @@
 - provide(:title, 'Vehicle Card Details')
 - model_class = VehicleCard
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'vehicle_cards.title', :default => model_class.model_name.human
 %p#notice= notice
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:vehicle_id) + ":"
+  %dt= t 'vehicle.vehicle_id', :default => model_class.human_attribute_name(:vehicle_id) + ":"
   %dd= @vehicle_card.vehicle_id
 
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:serial_no) + ":"
+  %dt= t 'vehicle_cards.serial_no', :default => model_class.human_attribute_name(:serial_no) + ":"
   %dd= @vehicle_card.serial_no
 
 .form-actions

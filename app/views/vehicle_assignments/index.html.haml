@@ -1,12 +1,12 @@
-- provide(:title, 'vehicle assignment')
+//- provide(:title, 'vehicle assignment')
 - model_class = VehicleAssignment
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_assignments.title', :default => model_class.model_name.human.pluralize
 
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Assignment")), new_vehicle_assignment_path     
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_assignment_path     
     %ul.nav.pull-right
       %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
@@ -14,10 +14,10 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Vehicle
-      %th Staff
-      %th Assigned on
-      %th Assignment end
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'staffs.staff_id'
+      %th= t 'vehicle_assignments.assigned_on'
+      %th= t 'vehicle_assignments.assignment_end'
       %th
 
   %tbody

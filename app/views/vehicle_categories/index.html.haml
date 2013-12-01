@@ -1,12 +1,12 @@
 - provide(:title, 'Vehicles category')
 - model_class = VehicleCategory
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_categories.title', :default => model_class.model_name.human.pluralize
       
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New category")), new_vehicle_category_path, id: "add_new_category", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_category_path, id: "add_new_category", remote: true
     %ul.nav.pull-right
       //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
@@ -14,8 +14,8 @@
 %table.table.table-condensed.table-hover#vehicle_category_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Short name
-      %th Description
+      %th= t 'vehicle_categories.short_name'
+      %th= t 'vehicle_categories.description'
       %th
   %tbody
     %tr#vehicle_category_form(style="display:none;")

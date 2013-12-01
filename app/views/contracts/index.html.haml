@@ -1,30 +1,30 @@
 - provide(:title, 'Contract')
 - model_class = Contract
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'contracts.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Contract")), new_contract_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_contract_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Contract no
-      %th Name
-      %th Description
-      %th Company
-      %th Value
-      %th Starts on
-      %th End on
-      %th Issued by
-      %th Contract type
+      %th=t 'contracts.contract_no' 
+      %th=t 'contracts.name'
+      %th=t 'contracts.description'
+      %th=t 'contracts.company_id'
+      %th=t 'contracts.value'
+      %th=t 'contracts.starts_on'
+      %th=t 'contracts.ends_on'
+      %th=t 'contracts.issued_by'
+      %th=t 'contracts.contract_type' 
       %th
   %tbody
     - @contracts.each do |contract|

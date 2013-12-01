@@ -1,12 +1,12 @@
 - provide(:title, 'Vehicles Status')
 - model_class = VehicleStatus
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_statuses.title', :default => model_class.model_name.human.pluralize
       
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Vehicle Status")), new_vehicle_status_path, id: "add_new_status", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_status_path, id: "add_new_status", remote: true
     %ul.nav.pull-right
       //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
@@ -14,8 +14,8 @@
 %table.table.table-condensed.table-hover#vehicle_status_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Short name
-      %th Description
+      %th=t 'vehicle_statuses.short_name'
+      %th=t 'vehicle_statuses.description'
       %th
   %tbody
     %tr#vehicle_status_form(style="display:none;")

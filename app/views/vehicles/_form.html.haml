@@ -25,7 +25,7 @@
    
     .control-group
       = f.label :manufacturer_id, :class => 'control-label'
-      .controls= f.collection_select :manufacturer_id, VehicleManufacturer.find(:all), :id, :name, :include_blank => 'Select Manufacturer', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :manufacturer_id, VehicleManufacturer.find(:all), :id, :name, :include_blank => t('helpers.prompt.select_manufacturer'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :model, :class => 'control-label'
@@ -33,7 +33,7 @@
 
     .control-group
       = f.label :category_id, :class => 'control-label'
-      .controls= f.collection_select :category_id, VehicleCategory.find(:all), :id, :short_name, :include_blank => 'Select Category', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :category_id, VehicleCategory.find(:all), :id, :short_name, :include_blank => t('helpers.prompt.select_category'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :acquired_on, :class => 'control-label'
@@ -48,11 +48,11 @@
       
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.collection_select :contract_id, Contract.find(:all), :id, :contract_no, :include_blank => 'Select Contract', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :contract_id, Contract.find(:all), :id, :contract_no, :include_blank => t('helpers.prompt.select_contract'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :status_id, :class => 'control-label'
-      .controls= f.collection_select :status_id, VehicleStatus.find(:all), :id, :short_name, :include_blank => t('vehicle.select_status'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :status_id, VehicleStatus.find(:all), :id, :short_name, :include_blank => t('helpers.prompt.select_status'), :html_options => {:class => 'selectpicker'}
     
     
     .form-actions

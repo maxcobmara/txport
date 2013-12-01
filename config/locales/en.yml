@@ -29,6 +29,7 @@ en:
     show: Show
     edit: Edit
     delete: Delete
+    create: Create
     created: " was successfully created."
     updated: " was successfully updated."
   errors:
@@ -76,7 +77,6 @@ en:
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
-    select_status: Select Status    #in _forms 
     vehicle_id: Vehicle   #use in index - other than vehicles
     new: New Vehicle
     chassis_no: Chassis No
@@ -98,16 +98,51 @@ en:
     edit: Edit Vehicle Road Tax
   vehicle_assignments:
     title: Assignment
+    assigned_on: Assigned On
+    assignment_end: Assignment End
   vehicle_fines:
     title: Summons
+    code: Code
+    pay_before: Pay Before
+    reason: Reason
+    compound: Compound
+    paid_on: Paid On
+    issued_at: Issued At
+    location: Location
+    receipt_no: Receipt No
+    paid_amount: Paid Amount
+    new: New Summon
+    edit: Edit Summon
   vehicle_cards:
     title: Touch N Go
+    serial_no: Serial No
+    new: New Touch N Go 
+    edit: Edit Touch N Go
   contracts:
     title: Contract
+    contract_no: Contract No
+    name: Contract Title
+    description: Description
+    company_id: Contractor
+    value: Value
+    starts_on: Starts On
+    ends_on: End On
+    issued_by: Issued By
+    contract_type: Contract Type
   companies:
     title: Contractor #suppliers #supplied by & repaired by
+    name: Name
+    address: Address
+    contact_person: Contact Person
+    phone: Phone
+    fax: Fax
+    email: Email
+    new: New Contractor
+    edit: Edit Contractor
   contract_types:
     title: Contract Types
+    short_name: Short Name
+    description: Description
   unit_types:
     title: Measurement Type
   fuel_tanks:    
@@ -118,16 +153,28 @@ en:
     title: Units
   staffs:
     title: Staffs
+    staff_id : Staff
   ranks:
     title: Ranks
   vehicle_manufacturers:
     title: Vehicle Manufacturer #pengeluar kenderaan @ pembuat
   vehicle_categories:
-    title: Categories
-  vehicle_statusses:
-    title: Status
+    title: Vehicle Categories
+    short_name: Short Name
+    description: Description
+  vehicle_statuses:
+    title: Vehicle Statuses
+    short_name: Short Name
+    description: Description
   vehicle_fine_types:
     title: Summon Types
+    type_id: Summon Types
+    short_name: Short Name
+    description: Description
+  vehicle_manufacturers:
+    title: Vehicle Manufacturers
+    name: Name
+    country: Country
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -159,6 +206,45 @@ en:
         repaired_by: Repaired By
         supplied_by: Supplied By 
       vehicle_road_tax:
-        start_on: Start On
-        end_on: End On
+        from: From
+        to: to
         amount: Amount
+      vehicle_fine:
+        code: Code
+        type_id: Summon Type
+        pay_before: Pay Before
+        reason: Reason
+        compound: Compound
+        paid_on: Paid On 
+        issued_at: Issued At
+        location: Location
+        receipt_no: Receipt No
+        paid_amount: Paid Amount
+      vehicle_card:
+        vehicle_id: Vehicle
+        serial_no: Serial No
+      contract:
+        contract_no: Contract No
+        name: Contract Title
+        description: Description
+        company_id: Contractor
+        value: Value
+        starts_on: Starts On
+        issued_by: Issued By
+        contract_type: Contract Type
+        contract_dates: Contract Dates
+        to: to
+      company:
+        name: Name
+        address: Address
+        contact_person: Contact Person
+        phone: Phone
+        fax: Fax
+        email: Email  
+    prompt:
+      select_manufacturer: Select Manufacturer
+      select_category: Select Category
+      select_contract: Select Contract
+      select_status: Select Status 
+      select_repaired_by: Select Repaired By
+      select_supplied_by: Select Supplied By
