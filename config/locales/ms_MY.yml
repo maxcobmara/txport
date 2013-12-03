@@ -31,7 +31,7 @@ ms_MY:
   menu:
     main: Menu
     dropdown: Data Asas
-    fuel: Minyak
+    fuel: Bahan PMP
     people: Pentadbiran
     depot: Depot
   #index & _action_menu & show      
@@ -56,7 +56,7 @@ ms_MY:
     home: Rumah  
     vehicle_id: Kenderaan   #use in index - other than vehicles
     new: Kenderaan Baru
-    chassis_no: "No. Chasis"
+    chassis_no: "No. Casis"
     engine_no: "No. Enjin"
   maintenances:
     title: Penyelenggaraan
@@ -124,21 +124,36 @@ ms_MY:
     description: Deskripsi
   unit_types:
     title: Unit Pengiraan
+    unit_type: Jenis Unit Ukuran
   fuel_tanks:    
-    title: Tangki
+    title: Tangki Penyimpanan
+    title2: Tangki Penyimpanan Bahan PMP
+    unit_id: "Depot / Unit"
+    locations: Tangki
+    capacity: Kapasiti    
+    new: Tangki Penyimpanan Baru
+    edit: Sunting Tangki Penyimpanan
   fuel_types:
-    title: Jenis Minyak
+    title: Jenis Bahan PMP
+    fuel_type_id: Jenis Bahan PMP
+    shortname: Nama Ringkas
+    name: Nama    
   units:
     title: Unit
   staffs:
     title: Anggota
     staff_id: Anggota
+    id_no: "No. Tentera"
+    rank_id: Pangkat
+    name: Nama
+    new: Anggota Baru
+    edit: Sunting Anggota
   ranks:
     title: Pangkat
   vehicle_manufacturers:
     title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
   vehicle_categories:
-    title: Kategori kenderaan
+    title: Kategori Kenderaan
     short_name: Nama Ringkas
     description: Deskripsi
   vehicle_statuses:
@@ -220,6 +235,16 @@ ms_MY:
         phone: "No. Telefon"
         fax: "No. Faks"
         email: Emel
+      fuel_tank: 
+        unit_id: "Depot / Unit" 
+        locations: Tangki
+        capacity: Kapasiti
+        unit_type: Jenis Unit Ukuran
+        fuel_type_id: Jenis Bahan PMP
+      staff:
+        id_no: "No. Tentera"
+        rank_id: Pangkat
+        name: Nama
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -227,6 +252,11 @@ ms_MY:
       select_status: Pilih Status  
       select_repaired_by: Pilih Pembaikan Oleh
       select_supplied_by: Pilih Dibekalkan Oleh
+      select_rank: Pilih Pangkat
+      select_depot: "Pilih Depot / Unit"
+      select_unit_type: Pilih Unit Ukuran
+      select_fuel_type: Pilih Jenis Bahan PMP
+      
             
         
         

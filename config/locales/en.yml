@@ -145,15 +145,30 @@ en:
     description: Description
   unit_types:
     title: Measurement Type
+    unit_type: Unit Type
   fuel_tanks:    
-    title: Tanks
+    title: Storage Tanks
+    title2: Storage Tanks
+    unit_id: "Depot / Unit"
+    locations: Tank
+    capacity: Capacity
+    new: New Storage Tank
+    edit: Edit Storage Tank
   fuel_types:
     title: Fuel Types
+    fuel_type_id: Fuel Type
+    shortname: Short Name
+    name: Name
   units:
     title: Units
   staffs:
     title: Staffs
     staff_id : Staff
+    id_no: Id No
+    rank_id: Rank
+    name: Name
+    new: New Staff
+    edit: Edit Staff
   ranks:
     title: Ranks
   vehicle_manufacturers:
@@ -241,6 +256,14 @@ en:
         phone: Phone
         fax: Fax
         email: Email  
+      fuel_tank: 
+        unit_id: "Depot / Unit"
+        locations: Tank
+        capacity: Capacity
+      staff:
+        id_no: Id No
+        rank_id: Rank
+        name: Name
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -248,3 +271,7 @@ en:
       select_status: Select Status 
       select_repaired_by: Select Repaired By
       select_supplied_by: Select Supplied By
+      select_rank: Select Rank
+      select_depot: "Select Depot / Unit"
+      select_unit_type: Select Unit Type
+      select_fuel_type: Select Fuel Type

@@ -1,36 +1,36 @@
-- provide(:title, 'Fuel Tank')
+//- provide(:title, 'Fuel Tank')
 - model_class = FuelTank
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'fuel_tanks.title2', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Fuel Tank")), new_fuel_tank_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_fuel_tank_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Unit
-      %th Location
-      %th Capacity
-      %th Unit type
-      %th Fuel type
+      %th=t 'fuel_tanks.unit_id' 
+      %th=t 'fuel_tanks.locations'
+      %th=t 'fuel_tanks.capacity' 
+      %th=t 'unit_types.unit_type'
+      %th=t 'fuel_types.fuel_type_id'
       %th 
 
   %tbody
-    - @fuel_tanks.each do |fuel_tank|
+    - @fuel_tanks.sort.each do |fuel_tank|
       %tr
-        %td= fuel_tank.unit_id
+        %td= fuel_tank.unit.name
         %td= fuel_tank.locations
         %td= fuel_tank.capacity
-        %td= fuel_tank.unit_type
-        %td= fuel_tank.fuel_type_id
+        %td= fuel_tank.unittype.short_name
+        %td= fuel_tank.fuel_type.shortname
         = render :partial => 'action_menu', :locals => { :fuel_tank => fuel_tank }
       
       
