@@ -28,7 +28,7 @@ class FuelTanksController < ApplicationController
 
     respond_to do |format|
       if @fuel_tank.save
-        format.html { redirect_to @fuel_tank, notice: 'Fuel tank was successfully created.' }
+        format.html { redirect_to @fuel_tank, notice: (t 'fuel_tanks.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @fuel_tank }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class FuelTanksController < ApplicationController
   def update
     respond_to do |format|
       if @fuel_tank.update(fuel_tank_params)
-        format.html { redirect_to @fuel_tank, notice: 'Fuel tank was successfully updated.' }
+        format.html { redirect_to @fuel_tank, notice: (t 'fuel_tanks.title')+(t 'actions.updated')}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

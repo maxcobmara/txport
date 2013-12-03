@@ -1,3 +1,3 @@
 class Rank < ActiveRecord::Base
-	has_many :staffs, :foreign_key => "rank_id"
+	has_many :staffs
 end

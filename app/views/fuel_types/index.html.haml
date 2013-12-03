@@ -1,21 +1,21 @@
 - provide(:title, 'Fuel Type')
 - model_class = FuelType
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'fuel_types.title', :default => model_class.model_name.human.pluralize
       
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Fuel Type")), new_fuel_type_path, id: "add_new_type", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_fuel_type_path, id: "add_new_type", remote: true
     %ul.nav.pull-right
-      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
 %table.table.table-condensed.table-hover#fuel_type_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Shortname
-      %th Name
+      %th= t 'fuel_types.shortname'
+      %th= t 'fuel_types.name'
       %th
   %tbody
     %tr#fuel_type_form(style="display:none;")

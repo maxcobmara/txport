@@ -4,7 +4,7 @@
           
     .control-group
       = f.label :unit_id, :class => 'control-label'
-      .controls= f.collection_select :unit_id, Unit.find(:all), :id, :name, :include_blank => 'Select Unit', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :unit_id, Unit.find(:all), :id, :name, :include_blank => t('helpers.prompt.select_depot'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :locations, :class => 'control-label'
@@ -16,14 +16,14 @@
  
     .control-group
       = f.label :unit_type, :class => 'control-label'
-      .controls= f.collection_select :unit_type, UnitType.find(:all), :id, :short_name, :include_blank => 'Select Unit Type', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :unit_type, UnitType.find(:all), :id, :short_name, :include_blank => t('helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :fuel_type_id, :class => 'control-label'
-      .controls= f.collection_select :fuel_type_id, FuelType.find(:all), :id, :name, :include_blank => 'Select Fuel Type', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :fuel_type_id, FuelType.find(:all), :id, :name, :include_blank => t('helpers.prompt.select_fuel_type'), :html_options => {:class => 'selectpicker'}
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         fuel_tanks_path, :class => 'btn'     
 
