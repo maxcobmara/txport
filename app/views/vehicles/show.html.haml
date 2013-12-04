@@ -3,6 +3,17 @@
 .page-header
   %h1= t 'vehicles.title', :default => model_class.model_name.human
 %p#notice= notice
+%ul.nav.nav-tabs
+  %li 
+    = link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle_path
+  %li
+    = link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.road_tax'))), new_vehicle_road_tax_path
+  %li
+    = link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.summons'))), new_vehicle_fine_path
+  %li
+    = link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.maintenance'))), "#new"
+
+
 %dl.dl-horizontal
   %dt= t 'vehicles.reg_no', :default => model_class.human_attribute_name(:reg_no) + ":"
   %dd= @vehicle.reg_no
