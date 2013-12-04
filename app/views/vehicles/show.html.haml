@@ -4,19 +4,17 @@
   %h1= t 'vehicles.title', :default => model_class.model_name.human
 %p#notice= notice
 %ul.nav.nav-tabs
-  %li 
-    = link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle_path
-  %li
-    = link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.road_tax'))), new_vehicle_road_tax_path
-  %li
-    = link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.summons'))), new_vehicle_fine_path
-  %li
-    = link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.maintenance'))), "#new"
+  %li Make Link To Tabs
+  %li See http://getbootstrap.com/2.3.2/javascript.html#tabs
+  %li Make Link To Tabs
+  %li Make Link To Tabs
 
 
 %dl.dl-horizontal
   %dt= t 'vehicles.reg_no', :default => model_class.human_attribute_name(:reg_no) + ":"
   %dd= @vehicle.reg_no
+  
+Content For Tab Details
 %dl.dl-horizontal
   %dt= t 'vehicle.chassis_no', :default => model_class.human_attribute_name(:chassis_no) + ":"
   %dd= @vehicle.chassis_no
@@ -51,6 +49,16 @@
   %dt= t 'vehicles.status_id', :default => model_class.human_attribute_name(:status_id) + ":"
   %dd= @vehicle.status.try(:short_name)
 
+
+Content For Tab Road Tax  
+- for vehicle_road_tax in @vehicle.vehicle_road_taxes
+  = vehicle_road_tax.end_on 
+
+Content For Tab Summons
+Stuff Here
+
+Content For Tab Maintenance
+Same Stuff here
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'
