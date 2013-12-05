@@ -5,11 +5,11 @@
 %p#notice= notice
 %ul.nav.nav-tabs
   %li 
-    = link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle_path
+    = link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), "#new"
   %li
-    = link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.road_tax'))), new_vehicle_road_tax_path
+    = link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.road_tax'))), "#new"
   %li
-    = link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.summons'))), new_vehicle_fine_path
+    = link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.summons'))), "#new" 
   %li
     = link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.maintenance'))), "#new"
 
