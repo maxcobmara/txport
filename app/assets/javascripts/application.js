@@ -54,7 +54,12 @@ $(document).ready(function(){
   
   $('select').selectpicker();
   
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 
-});
+})
+
 
 
