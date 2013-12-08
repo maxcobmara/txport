@@ -8,16 +8,16 @@
 
     .control-group
       = f.label :document_date, :class => 'control-label'
-      .controls= f.date_select :document_date, :class => 'text_field'
+      .controls= f.text_field :document_date, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
 
     .control-group
       = f.label :authorised_by, :class => 'control-label'
-      .controls= f.number_field :authorised_by, :class => 'text_field'
+      .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :name, :include_blank => t('helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
     
-    %br  
+    %br
     %p Vehicle Details
     %hr{:style => "padding:0; margin:0;"}
-      
+    
     .form-group
       .col-lg-offset-2.col-lg-10
         = f.fields_for :vehicle_assignment_details do |builder|
