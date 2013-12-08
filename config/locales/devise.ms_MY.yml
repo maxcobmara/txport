@@ -15,8 +15,8 @@ ms_MY:
       timeout: 'Sesi anda telah tamat, silahkan sign in bagi meneruskan sesi yang baru.'
       inactive: 'Akun anda belum diaktifkan.'
     sessions:
-      signed_in: 'Proses sign in berjaya.'
-      signed_out: 'Proses sign out berjaya.'
+      signed_in: 'Proses log masuk berjaya.'
+      signed_out: 'Proses log keluar berjaya.'
     passwords:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah mengubah password sebentar lagi.'
       updated: 'Password anda telah berjaya diubah. Anda telah sign in.'
@@ -24,9 +24,9 @@ ms_MY:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah proses pengesahan akaun sebentar lagi.'
       confirmed: 'Akaun anda telah berjaya disahkan. Anda telah sign in.'
     registrations:
-      signed_up: 'Proses pendaftaran berjaya. Link untuk mengaktifkan akaun telah dihantar di e-mail.'
+      signed_up: 'Proses pendaftaran berjaya. Link untuk mengaktifkan akaun telah dihantar ke emel.'
       updated: 'Akaun anda telah dikemaskini'
-      destroyed: 'Selamat Tinggal, akaun anda telah di tutup'
+      destroyed: 'Selamat Tinggal, akaun anda telah ditutup'
     unlocks:
       send_instructions: 'Anda akan menerima e-mail mengenai langkah membuka akaun kembali sebentar lagi.'
       unlocked: 'Akun anda telah berjaya dibuka. Anda telah sign in.'

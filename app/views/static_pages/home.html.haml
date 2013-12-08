@@ -2,9 +2,9 @@
   
   .well#login_box{:style => "float:left; margin:10px 0 0 0px; align:bottom; display:none;"}
     = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-inline', :role => 'form') do |f|
-      = f.text_field :email, :placeholder => "Email", :class => "input-xlarge"
-      = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
-      = f.submit "Sign in", :class => "btn btn-primary", :type => "submit", :style => "margin-top: -10px;"
+      = f.text_field :email, :placeholder => (t 'home.email'), :class => "input-xlarge"
+      = f.password_field :password, :placeholder => (t 'home.password'), :class => "input-xlarge"
+      = f.submit (t 'home.signin'), :class => "btn btn-primary", :type => "submit", :style => "margin-top: -10px;"
         
   .span2.piclogo{:style => "float:right; height:140px;"} 
     //=fa_icon "camera-retro", text: "Take a photo"
@@ -14,8 +14,8 @@
 .row
   .center.hero-unit
     .overlay
-      %h1 Welcome to Txport
-      %h2 Transport Management System
+      %h1= t 'home.welcome'
+      %h2= t 'home.system'
       //= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary"
 .row
   = link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'

@@ -58,6 +58,16 @@ en:
     fuel: Fuel
     people: People
     depot: Depots
+  home: 
+    welcome: Welcome to Txport
+    system: Transport Management System  
+    email: Email
+    password: Password
+    signin: Sign in
+  footer:
+    about: About
+    contact: Contact
+    news: News
   #index, _action_menu, show  
   vehicles:
     title: Vehicles
@@ -111,6 +121,7 @@ en:
     location: Location
     receipt_no: Receipt No
     paid_amount: Paid Amount
+    payment_status: Payment Status
     new: New Summon
     edit: Edit Summon
   vehicle_cards:
@@ -146,6 +157,8 @@ en:
   unit_types:
     title: Measurement Type
     unit_type: Unit Type
+    shortname: Short Name
+    description: Description
   fuel_tanks:    
     title: Storage Tanks
     title2: Storage Tanks
@@ -161,6 +174,10 @@ en:
     name: Name
   units:
     title: Units
+    title2: Depots
+    shortname: Short Name
+    name: Name
+    parent_id: Parent Id
   staffs:
     title: Staffs
     staff_id : Staff
@@ -171,6 +188,8 @@ en:
     edit: Edit Staff
   ranks:
     title: Ranks
+    shortname: Short Name
+    name: Name
   vehicle_manufacturers:
     title: Vehicle Manufacturer #pengeluar kenderaan @ pembuat
   vehicle_categories:

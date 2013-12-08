@@ -41,7 +41,7 @@
         %h2.icon= t 'menu.fuel'
         %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot'), units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot'), units_path(:id=>1)
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_tanks.title'), fuel_tanks_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Supplied/Received", '#'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issued/Usage", '#'
@@ -53,7 +53,7 @@
         %h2.icon= t 'menu.people'
         %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path(:id=>0)
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'ranks.title'), ranks_path
 

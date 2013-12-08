@@ -34,6 +34,16 @@ ms_MY:
     fuel: Bahan PMP
     people: Pentadbiran
     depot: Depot
+  home:
+    welcome: Selamat Datang ke Txport
+    system: Sistem Pengurusan Pengangkutan
+    email: Emel
+    password: Kata Laluan
+    signin: Log masuk
+  footer:
+    about: Tentang Kami
+    contact: Hubungi Kami
+    news: Berita
   #index & _action_menu & show      
   vehicles:
     title: Kenderaan
@@ -88,6 +98,7 @@ ms_MY:
     location: Lokasi
     receipt_no: "No. Resit"
     paid_amount: Amaun Dibayar 
+    payment_status: Status Pembayaran
     new: Saman Baru
     edit: Sunting Saman
   vehicle_cards:
@@ -123,8 +134,10 @@ ms_MY:
     short_name: Nama Ringkas
     description: Deskripsi
   unit_types:
-    title: Unit Pengiraan
-    unit_type: Jenis Unit Ukuran
+    title: Unit Pengukuran
+    unit_type: Jenis Unit Pengukuran
+    shortname: Nama Ringkas
+    description: Deskripsi
   fuel_tanks:    
     title: Tangki Penyimpanan
     title2: Tangki Penyimpanan Bahan PMP
@@ -140,6 +153,10 @@ ms_MY:
     name: Nama    
   units:
     title: Unit
+    title2: Depot
+    shortname: Nama Ringkas
+    name: Nama
+    parent_id: Id Induk
   staffs:
     title: Anggota
     staff_id: Anggota
@@ -150,6 +167,8 @@ ms_MY:
     edit: Sunting Anggota
   ranks:
     title: Pangkat
+    shortname: Nama Ringkas
+    name: Nama
   vehicle_manufacturers:
     title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
   vehicle_categories:
