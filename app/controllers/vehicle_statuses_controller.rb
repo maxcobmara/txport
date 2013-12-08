@@ -32,7 +32,7 @@ class VehicleStatusesController < ApplicationController
       if @vehicle_status.save
         format.html { redirect_to vehicle_statuses_url, notice: 'Vehicle status was successfully created.' }
         format.js
-        format.json { render action: 'index', status: :created, location: @vehicle_status }
+        #format.json { render action: 'index', status: :created, location: @vehicle_status }
       else
         format.html { render action: 'index' }
         format.json { render json: @vehicle_status.errors, status: :unprocessable_entity }

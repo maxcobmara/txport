@@ -1,4 +1,5 @@
 $('#vehicle_category_form').remove();
 $('#vehicle_category_list tr:last').after('<%= j render("list") %>');
 $('#vehicle_category_list tr:last').effect("highlight", {}, 2000);
+location.reload(false);
 
