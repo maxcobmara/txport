@@ -1,2 +1,16 @@
-%fieldset 
-  Some Text
+%fieldset
+  .floaters{:style => "float:left"} 
+    = f.collection_select :vehicle_id, Vehicle.order(reg_no: :asc).all, :id, :reg_no, :include_blank => t('helpers.prompt.select_vehicle'), :html_options => {:class => 'selectpicker', "data-width" => "auto"}
+    = f.collection_select :staff_id, Staff.order(name: :asc).all, :id, :name, :include_blank => t('helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
+  #datepicker.input-daterange{:style => "float:left"}
+    = f.text_field :assigned_on, :class => 'text_field input-medium', :type => :text
+    %span.add-on{:style => "height:30px;"}= t 'helpers.label.vehicle_road_tax.to'
+    = f.text_field :assignment_end, :class => 'text_field input-medium', :type => :text
+    
+    
+
+:javascript
+  $('.input-daterange').datepicker({
+     format: "yyyy-mm-dd",
+     autoclose: true
+   });

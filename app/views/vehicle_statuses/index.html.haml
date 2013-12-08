@@ -6,7 +6,7 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_status_path, id: "add_new_status", remote: true
+      %li#boom= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_status_path, id: "add_eeos", remote: true
     %ul.nav.pull-right
       //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
@@ -25,6 +25,14 @@
         %td= vehicle_status.short_name
         %td= vehicle_status.description
         %td= link_to (fa_icon "trash-o"), vehicle_status, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
-
-
-
+        
+        
+:javascript
+  $(document).ready(function() {
+      $('#add_eeos').click(function() {
+          $('#add_eeos').hide();
+          $('#boom').hide();
+      });
+  });
+  
+  
