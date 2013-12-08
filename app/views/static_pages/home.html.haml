@@ -1,13 +1,17 @@
+.row{:style => "height:140px;"} 
+  .span2.piclogo{:style => "float:right; height:140px;"} 
+    //=fa_icon "camera-retro", text: "Take a photo"
+    = image_tag("RMNLOGO_L.jpg", :height => '120px', :width => '95px') # =>
+    
+    
 .row
- .span3.piclogo{:style => "float:right; height:120px; background:#DDD;"} 
-  =fa_icon "camera-retro", text: "Take a photo"
-.center.hero-unit
- %h1 Welcome to Txport
- %h2
-  This is the home page for the
-  %a{:href => "https://github.com/maxcobmara/txport"} Txport App sample application.
-  = link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary"
-= link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
+  .center.hero-unit
+    .overlay
+      %h1 Welcome to Txport
+      %h2 Transport Management System
+      //= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary"
+.row
+  = link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
 
 
 

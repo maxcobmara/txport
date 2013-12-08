@@ -70,7 +70,6 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 h2 {
@@ -95,6 +94,16 @@ p {
   a:hover{color:#606060; background-color:white; font-size:1.3em;}
 }
 
+.hero-unit {
+background-image:url('cover_art.jpg');
+background-repeat:no-repeat;
+background-position:right bottom; 
+  
+.overlay {background: rgba(0,0,0,0.5); padding:20px;}
+h1 {color:#FFF !important; text-align:left;}
+h2 {color:#FFF !important; text-align:left; font-weight:normal;}
+}
+
 
 #logo {
   float: left;
@@ -117,7 +126,7 @@ p {
 
 footer {
   margin-top: 45px;
-  padding-top: 45px;
+  padding-top: 10px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
   a {
