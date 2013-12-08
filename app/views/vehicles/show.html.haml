@@ -3,11 +3,14 @@
 .page-header
   %h1= t 'vehicles.title', :default => model_class.model_name.human
 %p#notice= notice
-%ul.nav.nav-tabs
-  %li Make Link To Tabs
-  %li See http://getbootstrap.com/2.3.2/javascript.html#tabs
-  %li Make Link To Tabs
-  %li Make Link To Tabs
+%ul#myTab.nav.nav-tabs
+  %li.active
+    = link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.road_tax'))), "#road_tax"
+  %li
+    = link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.summons'))), "#summons"
+  %li
+    = link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.maintenance'))), "#maintenance"
+
 
 
 %dl.dl-horizontal
@@ -50,15 +53,14 @@ Content For Tab Details
   %dd= @vehicle.status.try(:short_name)
 
 
-Content For Tab Road Tax  
-- for vehicle_road_tax in @vehicle.vehicle_road_taxes
-  = vehicle_road_tax.end_on 
+.tab-content
+  #road_tax.tab-pane.active  @vehicle.vehicle_road_taxes
+  
+  #summons.tab-pane summons
 
-Content For Tab Summons
-Stuff Here
+  #maintenance.tab-pane maintenance
 
-Content For Tab Maintenance
-Same Stuff here
+
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'
