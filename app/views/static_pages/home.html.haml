@@ -1,4 +1,11 @@
-.row{:style => "height:140px;"} 
+.row{:style => "height:140px;"}
+  
+  .well#login_box{:style => "float:left; margin:10px 0 0 0px; align:bottom; display:none;"}
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-inline', :role => 'form') do |f|
+      = f.text_field :email, :placeholder => "Email", :class => "input-xlarge"
+      = f.password_field :password, :placeholder => "Password", :class => "input-xlarge"
+      = f.submit "Sign in", :class => "btn btn-primary", :type => "submit", :style => "margin-top: -10px;"
+        
   .span2.piclogo{:style => "float:right; height:140px;"} 
     //=fa_icon "camera-retro", text: "Take a photo"
     = image_tag("RMNLOGO_L.jpg", :height => '120px', :width => '95px') # =>
@@ -12,6 +19,15 @@
       //= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary"
 .row
   = link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
+  
+  
+:javascript
+  $(document).ready(function() {
+      $('#sign_in_trigger').click(function() {
+          $('#login_box').show().effect('highlight', {}, 3000)
+      });
+  });
+
 
 
 
