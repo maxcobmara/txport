@@ -14,18 +14,18 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'vehicle.vehicle_id'
+      %th VRO Document
+      %th dated
       %th= t 'staffs.staff_id'
-      %th= t 'vehicle_assignments.assigned_on'
-      %th= t 'vehicle_assignments.assignment_end'
       %th
 
   %tbody
     - @vehicle_assignments.each do | vehicle_assignment | 
       %tr
-        %td= vehicle_assignment.document_code 
-        %td= vehicle_assignment.document_date 
-        %td= vehicle_assignment.authorised_by
+        %td= vehicle_assignment.document_code
+        %td= vehicle_assignment.document_date
+        %td= vehicle_assignment.authoriser.try(:name)
+        %td
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
 
 

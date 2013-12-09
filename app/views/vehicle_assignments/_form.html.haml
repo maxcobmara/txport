@@ -21,7 +21,7 @@
     .form-group
       .col-lg-offset-2.col-lg-10
         = f.fields_for :vehicle_assignment_details do |builder|
-          = render ':vehicle_assignment_detail_fields', f: builder
+          = render 'vehicle_assignment_detail_fields', f: builder
         = link_to_add_fields "Add Details", f, :vehicle_assignment_details
       
       
