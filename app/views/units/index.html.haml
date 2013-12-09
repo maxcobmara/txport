@@ -1,24 +1,27 @@
 - provide(:title, 'Unit')
 - model_class = Unit
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
-  
-  
+
+- if @depot == 1 || @depot == '1'
+  %h1= t 'units.title2', :default => model_class.model_name.human.pluralize
+- else
+  %h1= t 'units.title', :default => model_class.model_name.human.pluralize
+    
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Unit")), new_unit_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_unit_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Short Name
-      %th Name
-      %th Parent id
+      %th= t 'units.shortname'
+      %th= t 'units.name'
+      %th= t 'units.parent_id'
       %th 
   %tbody
     - @units.each do |unit|
