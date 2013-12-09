@@ -66,11 +66,44 @@
               %td= ringgols(vehicle_road_tax.amount )
       
   #tab3.tab-pane
-    summons here
+    .div{:style => "padding: 15px 50px 10px 50px; "}
+      %table.table.table-condensed.table-hover{:style => "width: 50%; "}
+        %thead
+          %tr
+            %th= t 'vehicle_fines.code'
+            %th= t 'vehicle_fines.issued_at'
+            %th= t 'vehicle_fines.pay_before'
+            %th= t 'vehicle_fines.reason'
+            %th= t 'vehicle_fines.compound'
+            %th= t 'vehicle_fines.paid_on'
+            %th Payment Status
+        %tbody
+          - for vehicle_fine in @vehicle.vehicle_fines
+            %tr
+              %td= vehicle_fine.code  
+              %td= vehicle_fine.issued_at
+              %td= vehicle_fine.pay_before
+              %td= vehicle_fine.reason
+              %td= ringgols(vehicle_fine.compound)
+              %td= vehicle_fine.paid_on
+              %td= vehicle_fine.payment_status
+
   #tab4.tab-pane
-    maintenance here
-
-
+    .div{:style => "padding: 15px 50px 10px 50px; "}
+      %table.table.table-condensed.table-hover{:style => "width: 50%; "}
+        %thead
+          %tr
+            %th= t 'maintenances.work_order_no' 
+            %th= t 'maintenances.contract_no'
+            %th= t 'maintenances.repaired_by'
+            %th= t 'maintenances.supplied_by'
+        %tbody
+          - for maintenance in @vehicle.maintenances
+            %tr
+              %td= maintenance.work_order_no 
+              %td= maintenance.contract.try(:contract_no)
+              %td= maintenance.repairer.try(:name)
+              %td= maintenance.supplier.try(:name)
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'
