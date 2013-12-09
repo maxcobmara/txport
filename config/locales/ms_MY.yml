@@ -36,7 +36,7 @@ ms_MY:
     depot: Depot
   home:
     welcome: Selamat Datang ke Txport
-    system: Sistem Pengurusan Pengangkutan
+    txport: Sistem Pengurusan Pengangkutan
     email: Emel
     password: Kata Laluan
     signin: Log masuk
@@ -44,6 +44,15 @@ ms_MY:
     about: Tentang Kami
     contact: Hubungi Kami
     news: Berita
+  about:
+    title: Tentang Kami  
+    about_txport: Tentang Txport
+  contact:
+    contact: Hubungi Kami
+    contact_page: Maklumat Perhubungan 
+  help:
+    title: Bantuan
+    txport_help: Bantuan Txport  
   #index & _action_menu & show      
   vehicles:
     title: Kenderaan

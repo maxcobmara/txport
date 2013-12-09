@@ -60,14 +60,23 @@ en:
     depot: Depots
   home: 
     welcome: Welcome to Txport
-    system: Transport Management System  
+    txport: Transport Management System  
     email: Email
     password: Password
     signin: Sign in
   footer:
     about: About
     contact: Contact
-    news: News
+    news: News 
+  about:
+    title: About Us
+    about_txport: About this txport App
+  contact:
+    contact: Contact
+    contact_page: Contact Page
+  help:
+    title: Help
+    txport_help: Txport Help
   #index, _action_menu, show  
   vehicles:
     title: Vehicles
