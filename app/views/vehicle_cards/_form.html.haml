@@ -4,7 +4,7 @@
 
     .control-group
       = f.label :vehicle_id, :class => 'control-label'
-      .controls= f.collection_select :vehicle_id, Vehicle.find(:all, :order => 'reg_no'), :id, :reg_no, :include_blank => 'Select vehicle no', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :vehicle_id, Vehicle.find(:all, :order => 'reg_no'), :id, :reg_no, :include_blank => (t 'helpers.prompt.select_vehicle'), :html_options => {:class => 'selectpicker'}
   
     .control-group
       = f.label :serial_no, :class => 'control-label'

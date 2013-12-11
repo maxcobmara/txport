@@ -8,7 +8,8 @@ class UnitsController < ApplicationController
     #depot vs unit
     @depot = params[:id]
     if @depot == 1 || @depot == '1'
-      @units = Unit.find(:all, :conditions=>['id IN (?)',FuelTank.all.map(&:unit_id)])
+      @units = Unit.where("id IN(?)",FuelTank.pluck(:unit_id))
+      #@units = Unit.find(:all, :conditions=>['id IN (?)',FuelTank.all.map(&:unit_id)])
     else
       @units = Unit.all
     end 

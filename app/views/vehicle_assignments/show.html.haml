@@ -1,19 +1,19 @@
 - provide(:title, 'Vehicle Assignment Details')
 - model_class = VehicleAssignment
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'vehicle_assignments.title', :default => model_class.model_name.human
 %p#notice= notice
 
 %dl.dl-horizontal
-  %dt Document Code
+  %dt= t 'vehicle_assignments.document_code2'
   %dd= @vehicle_assignment.document_code
 
 %dl.dl-horizontal
-  %dt Document Date
+  %dt= t 'vehicle_assignments.document_date'
   %dd= @vehicle_assignment.document_date
 
 %dl.dl-horizontal
-  %dt Authorised By
+  %dt= t 'vehicle_assignments.authorised_by'
   %dd= @vehicle_assignment.authoriser.try(:name)
   
 
@@ -21,9 +21,9 @@
   %table.table.table-condensed.table-hover{:style => "width: 70%; "}
     %thead
       %tr
-        %th= t 'vehicle_road_taxes.reg_no' 
-        %th Staff Name
-        %th Assignment Dates
+        %th= t 'vehicle.vehicle_id' 
+        %th= t 'vehicle_assignments.user'
+        %th= t 'vehicle_assignments.assignment_dates'
     %tbody
       - for details in @vehicle_assignment.vehicle_assignment_details
         %tr

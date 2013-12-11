@@ -93,9 +93,19 @@ ms_MY:
     new: Cukai Jalan Kenderaan Baru
     edit: Sunting Cukai Jalan Kenderaan
   vehicle_assignments:
-    title: Penguntukkan
-    assigned_on: Mula
-    assignment_end: Tamat
+    title: Perjawatan Kenderaan
+    #assigned_on: Mula
+    #assignment_end: Tamat
+    document_code: "Kuasa VRO (No. Pengeluaran)"
+    document_code2: Kuasa VRO
+    document_date: Tarikh VRO
+    authorised_by: Pengeluar VRO
+    new: Perjawatan Kenderaan Baru
+    edit: Sunting Perjawatan Kenderaan
+    vehicle_details: "Butir-Butir Pengguna"
+    add_details: Tambah Butiran
+    user: Nama Pengguna
+    assignment_dates: Tarikh Penggunaan
   vehicle_fines:
     title: Saman
     code: Kod
@@ -166,6 +176,8 @@ ms_MY:
     shortname: Nama Ringkas
     name: Nama
     parent_id: Id Induk
+    new: Unit Baru
+    edit: Sunting Unit
   staffs:
     title: Anggota
     staff_id: Anggota
@@ -231,6 +243,12 @@ ms_MY:
         from: Dari
         to: hingga
         amount: Amaun
+      vehicle_assignment:
+        assigned_on: Mula
+        assignment_end: Tamat
+        document_code: "Kuasa VRO (No. Pengeluaran)"
+        document_date: Tarikh VRO
+        authorised_by: Pengeluar VRO
       vehicle_fine:
         code: Kod
         type_id: Jenis Saman
@@ -273,6 +291,10 @@ ms_MY:
         id_no: "No. Tentera"
         rank_id: Pangkat
         name: Nama
+      unit:
+        shortname: Nama Ringkas
+        name: Nama
+        parent_id: Id Induk
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -284,6 +306,8 @@ ms_MY:
       select_depot: "Pilih Depot / Unit"
       select_unit_type: Pilih Unit Ukuran
       select_fuel_type: Pilih Jenis Bahan PMP
+      select_vehicle: Pilih Kenderaan
+      select_staff: Pilih Anggota
       
             
         

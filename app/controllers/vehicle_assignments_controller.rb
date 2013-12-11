@@ -28,7 +28,7 @@ class VehicleAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @vehicle_assignment.save
-        format.html { redirect_to @vehicle_assignment, notice: 'Vehicle assignment was successfully created.' }
+        format.html { redirect_to @vehicle_assignment, notice:  (t 'vehicle_assignments.title')+(t 'actions.created')  }
         format.json { render action: 'show', status: :created, location: @vehicle_assignment }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class VehicleAssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_assignment.update(vehicle_assignment_params)
-        format.html { redirect_to @vehicle_assignment, notice: 'Vehicle assignment was successfully updated.' }
+        format.html { redirect_to @vehicle_assignment, notice:  (t 'vehicle_assignments.title')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
