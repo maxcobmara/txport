@@ -3,7 +3,7 @@
     = render 'shared/error_messages', object: f.object
           
     .control-group
-      = f.label :short_name, :class => 'control-label'
+      = f.label :shortname, :class => 'control-label'
       .controls= f.text_field :shortname, :class => 'text_field'
     
     .control-group
@@ -15,7 +15,7 @@
       .controls= f.number_field :parent_id, :class => 'text_field'
  
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         units_path, :class => 'btn'     
 

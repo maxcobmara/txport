@@ -12,22 +12,22 @@
 
     .control-group
       = f.label :authorised_by, :class => 'control-label'
-      .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :name, :include_blank => t('helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
     
     %br
-    %p Vehicle Details
+    %p= t 'vehicle_assignments.vehicle_details'
     %hr{:style => "padding:0; margin:0;"}
     
     .form-group
       .col-lg-offset-2.col-lg-10
         = f.fields_for :vehicle_assignment_details do |builder|
           = render 'vehicle_assignment_detail_fields', f: builder
-        = link_to_add_fields "Add Details", f, :vehicle_assignment_details
+        = link_to_add_fields (t 'vehicle_assignments.add_details'), f, :vehicle_assignment_details
       
       
     
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         vehicle_assignments_path, :class => 'btn'     
