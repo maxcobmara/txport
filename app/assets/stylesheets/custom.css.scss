@@ -70,6 +70,7 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 h2 {
@@ -99,9 +100,10 @@ background-image:url('cover_art.jpg');
 background-repeat:no-repeat;
 background-position:right bottom; 
   
-.overlay {background: rgba(0,0,0,0.5); padding:20px;}
-h1 {color:#FFF !important; text-align:left;}
-h2 {color:#FFF !important; text-align:left; font-weight:normal; letter-spacing:3px;}
+  .overlay {background: rgba(0,0,0,0.5); padding:20px;
+  h1 {color:#FFF !important; text-align:left;}
+  h2 {color:#FFF !important; text-align:left; font-weight:normal; letter-spacing:3px;}
+  }
 }
 
 
