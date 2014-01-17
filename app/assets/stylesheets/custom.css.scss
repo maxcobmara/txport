@@ -215,3 +215,9 @@ position: relative;
 .dl-horizontal {padding:0; margin:0;
   dt {font-weight:bold;}
 }
+
+table {
+  td.right {text-align:right;}
+  th.right {text-align:right;}
+  th.centre {text-align:center;}
+}

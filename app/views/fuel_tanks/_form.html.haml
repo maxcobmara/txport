@@ -12,15 +12,13 @@
     
     .control-group
       = f.label :capacity, :class => 'control-label'
-      .controls= f.text_field :capacity, :class => 'text_field'
- 
-    .control-group
-      = f.label :unit_type, :class => 'control-label'
-      .controls= f.collection_select :unit_type, UnitType.find(:all), :id, :short_name, :include_blank => t('helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
-
+      .controls
+        = f.text_field :capacity, :class => 'text_field'
+        = f.collection_select :unit_type, UnitType.order(description: :asc).all, :id, :description, :include_blank => t('helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
+        
     .control-group
       = f.label :fuel_type_id, :class => 'control-label'
-      .controls= f.collection_select :fuel_type_id, FuelType.find(:all), :id, :name, :include_blank => t('helpers.prompt.select_fuel_type'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :fuel_type_id, FuelType.all, :id, :name, :include_blank => t('helpers.prompt.select_fuel_type'), :html_options => {:class => 'selectpicker'}
 
     .form-actions
       = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
