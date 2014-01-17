@@ -21,11 +21,11 @@ class VehicleFine < ActiveRecord::Base
  def payment_status
    if paid_amount == nil
      "Tiada Bayaran"
-   elsif paid_amount < compound && receipt_no.length > 1
+   elsif paid_amount < compound && paid_amount > 0 &&receipt_no.length > 1
      "Diskaun"
    elsif paid_amount == compound && receipt_no.length > 1
      "Bayaran Penuh"
-   elsif paid_amount < 1 && receipt_no.length > 1
+   elsif paid_amount = 0 && receipt_no.length > 1
      "Dikecualikan"     
    end
  end
