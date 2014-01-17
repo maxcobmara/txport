@@ -21,14 +21,17 @@
     %tr
       %th= t 'units.shortname'
       %th= t 'units.name'
-      %th= t 'units.parent_id'
-      %th 
   %tbody
-    - @units.each do |unit|
-      %tr
-        %td= unit.shortname
-        %td= unit.name
-        %td= unit.parent_id
-        = render :partial => 'action_menu', :locals => { :unit => unit }
+    - @units.group_by(&:parent).each do |parent, units|
+      - if parent
+        %tr
+          %td{:colspan => "2"}
+            = link_to parent.shortname, parent
+            = link_to parent.name, parent
+      - for unit in units
+        - unless unit.parent_id.blank? || unit.parent_id == 0
+          %tr
+            %td{style: "padding-left:20px;"}= link_to unit.shortname, unit
+            %td= unit.name
       
       

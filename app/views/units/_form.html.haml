@@ -8,11 +8,11 @@
     
     .control-group
       = f.label :name, :class => 'control-label'
-      .controls= f.text_field :name, :class => 'text_field'
+      .controls= f.text_field :name, :class => 'text_field input-xxlarge'
     
     .control-group
-      = f.label :parent_id, :class => 'control-label'
-      .controls= f.number_field :parent_id, :class => 'text_field'
+      = f.label :parent_id, "Parent Unit", :class => 'control-label'
+      .controls.controls= f.collection_select :parent_id, Unit.order(shortname: :asc).all, :id, :shortname, :include_blank => t('helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
  
     .form-actions
       = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'
