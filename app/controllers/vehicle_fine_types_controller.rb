@@ -5,7 +5,7 @@ class VehicleFineTypesController < ApplicationController
   # GET /vehicle_fine_types.json
   def index
     @vehicle_fine_types = VehicleFineType.all
-	@vehicle_fine_type = VehicleFineType.new
+	  @vehicle_fine_type = VehicleFineType.new
   end
 
   # GET /vehicle_fine_types/1

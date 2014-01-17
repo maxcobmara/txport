@@ -5,6 +5,11 @@ ruby '2.0.0'
 gem 'rails', '4.0.1'
 gem "thin", "~> 1.6.0"
 gem "devise", "~> 3.1.1"
+gem "pg", "~> 0.17.0"
+gem "ransack", "~> 1.1.0"
+
+
+#display gems
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '~> 2.1.1'  # Use Uglifier as compressor for JavaScript assets
@@ -19,7 +24,7 @@ gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"
 #gem "jquery-ui-rails", "~> 4.1.0"
-gem "pg", "~> 0.17.0"
+
 
 group :assets do
   gem "modernizr-rails", "~> 2.6.2.3"
@@ -27,6 +32,10 @@ end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+group :development do
+  gem "quiet_assets", "~> 1.0.2"
+end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.14.0"

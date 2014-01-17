@@ -10,17 +10,28 @@
     %ul.nav.pull-right
       %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+.row.searchit
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f| 
+      .field
+        = f.text_field :code_cont, class: "input-medium search-query", placeholder: "Code Contains" 
+        /= f.label :vehicle_id, "Reg Contains"
+        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
+        //= f.text_field :name_cont, class: "input-large search-query"
+        = f.submit "Search", class: "btn btn-warning"
+    .div{style: "display:none;"}
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'vehicle_fines.code'
-      %th= t 'vehicle.vehicle_id'
-      %th= t 'vehicle_fines.pay_before' 
+      %th= sort_link @search, :code,  t('vehicle_fines.code')
+      %th= sort_link @search, :code,  t('vehicle.vehicle_id')
+      %th= sort_link @search, :code,  t('vehicle_fines.pay_before')
       %th= t 'vehicle_fines.reason'
-      %th= t 'vehicle_fines.compound'
+      %th= sort_link @search, :code,  t('vehicle_fines.compound')
       %th= t 'vehicle_fines.paid_on'
-      %th= t 'vehicle_fines.payment_status'
+      %th= sort_link @search, :code,  t('vehicle_fines.payment_status')
       %th
 
   %tbody
