@@ -19,7 +19,7 @@ class Vehicle < ActiveRecord::Base
     if search
       where('reg_no ILIKE ?', "%#{search}%")
     else
-      scoped
+      Vehicle.all
     end
   end
       
