@@ -65,6 +65,11 @@ class VehicleFinesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  ##custom routes
+  def kembaran_a
+    @vehicle_fines = VehicleFine.all
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

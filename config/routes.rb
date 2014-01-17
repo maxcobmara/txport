@@ -25,7 +25,11 @@ Txport::Application.routes.draw do
 
   resources :contracts
 
-  resources :vehicle_fines
+  resources :vehicle_fines do
+    collection do
+      get 'kembaran_a'
+    end
+  end
 
   resources :vehicle_road_taxes
 
