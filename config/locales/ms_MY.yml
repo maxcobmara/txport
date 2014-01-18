@@ -1,4 +1,29 @@
 ms_MY:
+  activerecord:
+    models:
+      vehicle: Vehicle
+      vehicle_fine: Saman
+    attributes:
+      vehicle:
+        reg_no: "No. Pendaftaran"
+      vehicle_fine:
+        code: Kod
+        type_id: Jenis Saman
+        issued_at: Dikeluarkan Pada
+        pay_before: Bayar Sebelum
+        compound: Kompaun
+    errors:
+      template:
+        body: "Berikut adalah beberapa masalah:"
+        header:
+          one: "%{model} ini mempunyai 1 kesalahan dari disimpan"
+          other: "%{model} ini mempunyai %{count} kesalahan dari yang disimpan"
+      messages:
+          blank: tidak boleh dikosongkan
+          not_a_number: adalah bukan nombor
+          too_short: "sangat pendek (minima ialah {{count}} huruf)"
+          taken: sudah digunakan
+
   actions:
     new: Baru
     search: Cari
@@ -311,6 +336,9 @@ ms_MY:
       select_staff: Pilih Anggota
       select_summon_type: Pilih Jenis Saman
       select_unit: Pilih Unit
+      select_company: Pilih Kontraktor
+      select_issuer: Pilih Pengeluar
+      select_contract_type: Pilih Jenis Kontrak
       
             
         

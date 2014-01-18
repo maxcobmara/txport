@@ -22,6 +22,31 @@
 
 #language - actions, errors, dates, models, 
 en:
+  activerecord:
+    models:
+      vehicle: Vehicle
+      vehicle_fine: Summon
+    attributes:
+      vehicle:
+        reg_no: Registration No
+      vehicle_fine:
+        code: Code
+        type_id: Summon Type
+        issued_at: Issued At
+        pay_before: Pay Before
+        compound: Compound
+    errors:
+      template:
+        body: "There were problems with the following fields:"
+        header:
+          one: "1 errors prohibited this %{model} from being saved"
+          other: "%{count} prohibited this %{model} from being saved"
+      messages:
+          blank: "Can't Be Blank"
+          not_a_number: is not number
+          too_short: "is too short (minimum is {{count}} characters)"
+          taken: has already been taken
+
   actions:
     new: New
     search: Search
@@ -203,7 +228,7 @@ en:
   staffs:
     title: Staffs
     staff_id : Staff
-    id_no: Id No
+    id_no: Armed Force No
     rank_id: Rank
     name: Name
     new: New Staff
@@ -308,7 +333,7 @@ en:
         locations: Tank
         capacity: Capacity
       staff:
-        id_no: Id No
+        id_no: Armed Force No
         rank_id: Rank
         name: Name
       unit:
@@ -330,3 +355,5 @@ en:
       select_staff: Select Staff
       select_summon_type: Select Summon Type
       select_unit: Select Unit
+      select_company: Select Contractor
+      select_issuer: Select Issuer

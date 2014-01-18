@@ -16,7 +16,7 @@
    
     .control-group
       = f.label :company_id, :class => 'control-label'
-      .controls= f.collection_select :company_id, Company.order(name: :asc).all, :id, :name, :include_blank => 'Select Company', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :company_id, Company.order(name: :asc).all, :id, :name, :include_blank => (t 'helpers.prompt.select_company'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :value, :class => 'control-label'
@@ -35,11 +35,11 @@
 
     .control-group
       = f.label :issued_by, :class => 'control-label'
-      .controls= f.collection_select :issued_by, Staff.all, :id, :name, :include_blank => 'Select Issuer', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :issued_by, Staff.all, :id, :name, :include_blank => (t 'helpers.prompt.select_issuer'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :contract_type, :class => 'control-label'
-      .controls= f.collection_select :contract_type, ContractType.order(short_name: :asc).all, :id, :short_name, :include_blank => 'Select Type', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :contract_type, ContractType.order(short_name: :asc).all, :id, :short_name, :include_blank => (t 'helpers.prompt.select_contract_type'), :html_options => {:class => 'selectpicker'}
  
     .form-actions
       = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
