@@ -90,9 +90,9 @@ en:
     price: "Price (RM)"
     contract_id: Contract No
     status_id: Status
-    road_tax: Road Tax
-    summons: Summons
-    maintenance: Maintenance
+    road_tax: New Road Tax
+    summons: New Summon
+    maintenance: New Maintenance
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -144,7 +144,7 @@ en:
     new: New Summon
     edit: Edit Summon
   vehicle_cards:
-    title: Touch N Go
+    title: "Touch N Go & Smart Tag"
     serial_no: Serial No
     new: New Touch N Go 
     edit: Edit Touch N Go
@@ -194,9 +194,10 @@ en:
   units:
     title: Units
     title2: Depots
+    title3: Unit
     shortname: Short Name
     name: Name
-    parent_id: Parent Id
+    parent_id: Parent Unit
     new: New Unit
     edit: Edit Unit
   staffs:
@@ -313,7 +314,7 @@ en:
       unit:
         shortname: Short Name
         name: Name
-        parent_id: Parent Id
+        parent_id: Parent Unit
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -327,3 +328,5 @@ en:
       select_fuel_type: Select Fuel Type
       select_vehicle: Select Vehicle 
       select_staff: Select Staff
+      select_summon_type: Select Summon Type
+      select_unit: Select Unit

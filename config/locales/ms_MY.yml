@@ -66,9 +66,9 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
-    road_tax: Cukai Jalan
-    summons: Saman
-    maintenance: Penyelenggaraan  
+    road_tax: Cukai Jalan Baru
+    summons: Saman Baru
+    maintenance: Penyelenggaraan Baru  
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
@@ -121,7 +121,7 @@ ms_MY:
     new: Saman Baru
     edit: Sunting Saman
   vehicle_cards:
-    title: Touch N Go  
+    title: "Touch N Go & Smart Tag"  
     serial_no: "No. Siri"
     new: Touch N Go Baru
     edit: Sunting Touch N Go
@@ -173,9 +173,10 @@ ms_MY:
   units:
     title: Unit
     title2: Depot
+    title3: Unit
     shortname: Nama Ringkas
     name: Nama
-    parent_id: Id Induk
+    parent_id: Unit Induk
     new: Unit Baru
     edit: Sunting Unit
   staffs:
@@ -294,7 +295,7 @@ ms_MY:
       unit:
         shortname: Nama Ringkas
         name: Nama
-        parent_id: Id Induk
+        parent_id: Unit Induk
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -308,6 +309,8 @@ ms_MY:
       select_fuel_type: Pilih Jenis Bahan PMP
       select_vehicle: Pilih Kenderaan
       select_staff: Pilih Anggota
+      select_summon_type: Pilih Jenis Saman
+      select_unit: Pilih Unit
       
             
         
