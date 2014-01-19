@@ -4,7 +4,7 @@ class VehicleRoadTaxesController < ApplicationController
   # GET /vehicle_road_taxes
   # GET /vehicle_road_taxes.json
   def index
-    @vehicle_road_taxes = VehicleRoadTax.order(:end_on => :desc).uniq_by(&:vehicle_id)
+    @vehicle_road_taxes = VehicleRoadTax.order(:end_on => :desc).all
   end
 
   # GET /vehicle_road_taxes/1

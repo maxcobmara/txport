@@ -13,31 +13,36 @@
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
-%table.table.table-condensed.table-hover
-  %thead
-    %tr
-      %th=t 'contracts.contract_no' 
-      %th=t 'contracts.name'
-      %th=t 'contracts.description'
-      %th=t 'contracts.company_id'
-      %th=t 'contracts.value'
-      %th=t 'contracts.starts_on'
-      %th=t 'contracts.ends_on'
-      %th=t 'contracts.issued_by'
-      %th=t 'contracts.contract_type' 
-      %th
-  %tbody
-    - @contracts.each do |contract|
-      %tr
-        %td= contract.contract_no
-        %td= contract.name
-        %td= contract.description
-        %td= contract.contractor.try(:name)
-        %td= ringgols(contract.value)
-        %td= contract.starts_on
-        %td= contract.ends_on
-        %td= contract.issued_by
-        %td= contract.type.try(:short_name)
-        = render :partial => 'action_menu', :locals => { :contract => contract }
+.row{style: "font-weight:bold;"}
+  .span3
+    = t 'contracts.contract_no'
+    %br
+    = t 'contracts.name'
+    %br
+    = t 'contracts.description'
+    %br
+    =t 'contracts.value'
+  .span3=t 'contracts.company_id'
+  .span1=t 'contracts.starts_on'
+  .span1=t 'contracts.ends_on'
+  .span1=t 'contracts.issued_by'
+  .span1=t 'contracts.contract_type' 
+  .span1
+- @contracts.each do |contract|
+  .row{style: "padding-top:15px;"}
+    .span3{style: "font-weight:bold;"}= contract.contract_no
+    .span3= contract.contractor.try(:name)
+    .span1= contract.starts_on
+    .span1= contract.ends_on
+    .span1= contract.issued_by
+    .span1= contract.type.try(:short_name)
+    .span1
+      = render :partial => 'action_menu', :locals => { :contract => contract }
+  .row
+    .span6= contract.name
+  .row
+    .span8= contract.description
+  .row
+    .span6{style: "font-weight:bold;"}= ringgols(contract.value)
       
       

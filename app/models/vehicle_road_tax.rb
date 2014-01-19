@@ -6,7 +6,7 @@ class VehicleRoadTax < ActiveRecord::Base
       ""
     elsif end_on < Date.today
       "error" #overdue
-    elsif end_on < Date.today + 3.months
+    elsif end_on < Date.today + 45.days
       "warning" #due
     else
       "success" #ok
