@@ -69,6 +69,6 @@ class VehicleCardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_card_params
-      params.require(:vehicle_card).permit(:vehicle_id, :serial_no)
+      params.require(:vehicle_card).permit(:vehicle_id, :serial_no, :staff_id, :unit_id, :issue_date, :start_date, :expired_date, :smart_tag, :smarttag_serial)
     end
 end

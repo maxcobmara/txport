@@ -6,11 +6,39 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle.vehicle_id', :default => model_class.human_attribute_name(:vehicle_id) + ":"
-  %dd= @vehicle_card.vehicle_id
+  %dd= @vehicle_card.vehicle.reg_no if !@vehicle_card.vehicle_id.blank?
 
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.staff_id', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.card_holder.staff_details
+
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.unit_id', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.unit.name if !@vehicle_card.unit_id.blank?
+  
 %dl.dl-horizontal
   %dt= t 'vehicle_cards.serial_no', :default => model_class.human_attribute_name(:serial_no) + ":"
   %dd= @vehicle_card.serial_no
+  
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.issue_date', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.issue_date
+  
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.start_date', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.start_date
+
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.expired_date', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.expired_date
+  
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.smart_tag', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.smart_tag
+  
+%dl.dl-horizontal
+  %dt= t 'vehicle_cards.smarttag_serial', :default => model_class.human_attribute_name(:serial_no) + ":"
+  %dd= @vehicle_card.smarttag_serial
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicle_cards_path, :class => 'btn'

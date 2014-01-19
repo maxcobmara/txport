@@ -1,4 +1,32 @@
 ms_MY:
+  activerecord:
+    models:
+      vehicle: Vehicle
+      vehicle_fine: Saman
+      vehicle_card: "Touch N Go & Smart Tag"
+    attributes:
+      vehicle:
+        reg_no: "No. Pendaftaran"
+      vehicle_fine:
+        code: Kod
+        type_id: Jenis Saman
+        issued_at: Dikeluarkan Pada
+        pay_before: Bayar Sebelum
+        compound: Kompaun
+      vehicle_card:
+        card_holder: Pemegang Kad
+    errors:
+      template:
+        body: "Berikut adalah beberapa masalah:"
+        header:
+          one: "%{model} ini mempunyai 1 kesalahan dari disimpan"
+          other: "%{model} ini mempunyai %{count} kesalahan dari yang disimpan"
+      messages:
+          blank: tidak boleh dikosongkan
+          not_a_number: adalah bukan nombor
+          too_short: "sangat pendek (minima ialah {{count}} huruf)"
+          taken: sudah digunakan
+
   actions:
     new: Baru
     search: Cari
@@ -66,9 +94,9 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
-    road_tax: Cukai Jalan
-    summons: Saman
-    maintenance: Penyelenggaraan  
+    road_tax: Cukai Jalan Baru
+    summons: Saman Baru
+    maintenance: Penyelenggaraan Baru  
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
@@ -121,10 +149,17 @@ ms_MY:
     new: Saman Baru
     edit: Sunting Saman
   vehicle_cards:
-    title: Touch N Go  
-    serial_no: "No. Siri"
-    new: Touch N Go Baru
-    edit: Sunting Touch N Go
+    title: "Touch N Go & Smart Tag"  
+    new: "Touch N Go & Smart Tag Baru"
+    edit: "Sunting Touch N Go & Smart Tag"
+    staff_id: Pemegang Kad
+    unit_id: Unit
+    serial_no: "No. Siri Touch N Go"
+    issue_date: Tarikh Dikeluarkan
+    start_date: Tarikh Mula
+    expired_date: Tarikh Tamat
+    smart_tag: Smart Tag
+    smarttag_serial: "No. Siri Smart Tag"
   contracts:
     title: Kontrak
     contract_no: "No. Kontrak"
@@ -173,9 +208,10 @@ ms_MY:
   units:
     title: Unit
     title2: Depot
+    title3: Unit
     shortname: Nama Ringkas
     name: Nama
-    parent_id: Id Induk
+    parent_id: Unit Induk
     new: Unit Baru
     edit: Sunting Unit
   staffs:
@@ -262,7 +298,14 @@ ms_MY:
         paid_amount: Amaun Dibayar  
       vehicle_card:
         vehicle_id: Kenderaan
-        serial_no: "No. Siri"
+        staff_id: Pemegang Kad
+        unit_id: Unit
+        serial_no: "No. Siri Touch N Go"
+        issue_date: Tarikh Dikeluarkan
+        start_date: Tarikh Mula
+        expired_date: Tarikh Tamat
+        smart_tag: Smart Tag
+        smarttag_serial: "No. Siri Smart Tag"
       contract:
         contract_no: "No. Kontrak"
         name: Tajuk Kontrak
@@ -294,7 +337,7 @@ ms_MY:
       unit:
         shortname: Nama Ringkas
         name: Nama
-        parent_id: Id Induk
+        parent_id: Unit Induk
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -308,6 +351,11 @@ ms_MY:
       select_fuel_type: Pilih Jenis Bahan PMP
       select_vehicle: Pilih Kenderaan
       select_staff: Pilih Anggota
+      select_summon_type: Pilih Jenis Saman
+      select_unit: Pilih Unit
+      select_company: Pilih Kontraktor
+      select_issuer: Pilih Pengeluar
+      select_contract_type: Pilih Jenis Kontrak
       
             
         
