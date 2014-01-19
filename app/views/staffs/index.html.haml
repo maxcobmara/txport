@@ -24,7 +24,11 @@
     - @staffs.each do |staff|
       %tr
         %td= staff.id_no
+<<<<<<< HEAD
         %td= staff.rank.name
+=======
+        %td= staff.rank.try(:name)
+>>>>>>> 78c0219d12d0e161be6dff98284d4d68458581b4
         %td= staff.name
         = render :partial => 'action_menu', :locals => { :staff => staff }
       

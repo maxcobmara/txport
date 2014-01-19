@@ -214,8 +214,8 @@ en:
     shortname: Short Name
     description: Description
   fuel_tanks:    
-    title: Storage Tanks
-    title2: Storage Tanks
+    title: Fuel Storage Tanks
+    title2: Fuel Storage Tanks
     unit_id: "Depot / Unit"
     locations: Tank
     capacity: Capacity
