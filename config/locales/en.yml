@@ -22,6 +22,34 @@
 
 #language - actions, errors, dates, models, 
 en:
+  activerecord:
+    models:
+      vehicle: Vehicle
+      vehicle_fine: Summon
+      vehicle_card: "Touch N Go & Smart Tag"
+    attributes:
+      vehicle:
+        reg_no: Registration No
+      vehicle_fine:
+        code: Code
+        type_id: Summon Type
+        issued_at: Issued At
+        pay_before: Pay Before
+        compound: Compound
+      vehicle_card:
+        staff_id: Card Holder
+    errors:
+      template:
+        body: "There were problems with the following fields:"
+        header:
+          one: "1 errors prohibited this %{model} from being saved"
+          other: "%{count} prohibited this %{model} from being saved"
+      messages:
+          blank: "Can't Be Blank"
+          not_a_number: is not number
+          too_short: "is too short (minimum is {{count}} characters)"
+          taken: has already been taken
+
   actions:
     new: New
     search: Search
@@ -90,9 +118,9 @@ en:
     price: "Price (RM)"
     contract_id: Contract No
     status_id: Status
-    road_tax: Road Tax
-    summons: Summons
-    maintenance: Maintenance
+    road_tax: New Road Tax
+    summons: New Summon
+    maintenance: New Maintenance
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -144,10 +172,17 @@ en:
     new: New Summon
     edit: Edit Summon
   vehicle_cards:
-    title: Touch N Go
-    serial_no: Serial No
-    new: New Touch N Go 
-    edit: Edit Touch N Go
+    title: "Touch N Go & Smart Tag"
+    new: "New Touch N Go & Smart Tag"
+    edit: "Edit Touch N Go & Smart Tag"
+    staff_id: Card Holder
+    unit_id: Unit
+    serial_no: Touch N Go Serial No
+    issue_date: Issued Date
+    start_date: Start Date
+    expired_date: Expired Date
+    smart_tag: Smart Tag
+    smarttag_serial: Smart Tag Serial No
   contracts:
     title: Contract
     contract_no: Contract No
@@ -194,15 +229,16 @@ en:
   units:
     title: Units
     title2: Depots
+    title3: Unit
     shortname: Short Name
     name: Name
-    parent_id: Parent Id
+    parent_id: Parent Unit
     new: New Unit
     edit: Edit Unit
   staffs:
     title: Staffs
     staff_id : Staff
-    id_no: Id No
+    id_no: Armed Force No
     rank_id: Rank
     name: Name
     new: New Staff
@@ -283,7 +319,14 @@ en:
         paid_amount: Paid Amount
       vehicle_card:
         vehicle_id: Vehicle
-        serial_no: Serial No
+        staff_id: Card Holder
+        unit_id: Unit
+        serial_no: Touch N Go Serial No
+        issue_date: Issued Date
+        start_date: Start Date
+        expired_date: Expired Date
+        smart_tag: Smart Tag
+        smarttag_serial: Smart Tag Serial No
       contract:
         contract_no: Contract No
         name: Contract Title
@@ -307,13 +350,13 @@ en:
         locations: Tank
         capacity: Capacity
       staff:
-        id_no: Id No
+        id_no: Armed Force No
         rank_id: Rank
         name: Name
       unit:
         shortname: Short Name
         name: Name
-        parent_id: Parent Id
+        parent_id: Parent Unit
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -327,3 +370,7 @@ en:
       select_fuel_type: Select Fuel Type
       select_vehicle: Select Vehicle 
       select_staff: Select Staff
+      select_summon_type: Select Summon Type
+      select_unit: Select Unit
+      select_company: Select Contractor
+      select_issuer: Select Issuer

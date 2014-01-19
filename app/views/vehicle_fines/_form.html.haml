@@ -16,7 +16,7 @@
 
     .control-group
       = f.label :type_id, :class => 'control-label'
-      .controls= f.collection_select :type_id, VehicleFineType.order(short_name: :asc).all, :id, :short_name, :include_blank => 'Select Category', :html_options => {:class => 'selectpicker mandatory'}
+      .controls= f.collection_select :type_id, VehicleFineType.order(short_name: :asc).all, :id, :short_name, :include_blank => (t 'helpers.prompt.select_summon_type'), :html_options => {:class => 'selectpicker mandatory'}
      
     .control-group
       = f.label :issued_at, :class => 'control-label'
