@@ -26,6 +26,7 @@ en:
     models:
       vehicle: Vehicle
       vehicle_fine: Summon
+      vehicle_card: "Touch N Go & Smart Tag"
     attributes:
       vehicle:
         reg_no: Registration No
@@ -35,6 +36,8 @@ en:
         issued_at: Issued At
         pay_before: Pay Before
         compound: Compound
+      vehicle_card:
+        staff_id: Card Holder
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -170,9 +173,16 @@ en:
     edit: Edit Summon
   vehicle_cards:
     title: "Touch N Go & Smart Tag"
-    serial_no: Serial No
-    new: New Touch N Go 
-    edit: Edit Touch N Go
+    new: "New Touch N Go & Smart Tag"
+    edit: "Edit Touch N Go & Smart Tag"
+    staff_id: Card Holder
+    unit_id: Unit
+    serial_no: Touch N Go Serial No
+    issue_date: Issued Date
+    start_date: Start Date
+    expired_date: Expired Date
+    smart_tag: Smart Tag
+    smarttag_serial: Smart Tag Serial No
   contracts:
     title: Contract
     contract_no: Contract No
@@ -309,7 +319,14 @@ en:
         paid_amount: Paid Amount
       vehicle_card:
         vehicle_id: Vehicle
-        serial_no: Serial No
+        staff_id: Card Holder
+        unit_id: Unit
+        serial_no: Touch N Go Serial No
+        issue_date: Issued Date
+        start_date: Start Date
+        expired_date: Expired Date
+        smart_tag: Smart Tag
+        smarttag_serial: Smart Tag Serial No
       contract:
         contract_no: Contract No
         name: Contract Title

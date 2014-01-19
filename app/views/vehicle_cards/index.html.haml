@@ -15,13 +15,21 @@
   %thead
     %tr
       %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_cards.staff_id'
+      %th= t 'vehicle_cards.unit_id'
       %th= t 'vehicle_cards.serial_no'
+      %th= t 'vehicle_cards.expired_date'
+      %th= t 'vehicle_cards.smarttag_serial'
       %th
   %tbody
     - @vehicle_cards.each do |vehicle_card| 
       %tr
-        %td= vehicle_card.vehicle_id
-        %td= vehicle_card.serial_no  
+        %td= vehicle_card.vehicle.reg_no if !vehicle_card.vehicle_id.blank?
+        %td= vehicle_card.card_holder.staff_details
+        %td= vehicle_card.unit.name if !vehicle_card.unit_id.blank?
+        %td= vehicle_card.serial_no
+        %td= vehicle_card.expired_date
+        %td= vehicle_card.smarttag_serial
         = render :partial => 'action_menu', :locals => { :vehicle_card => vehicle_card }
 
 

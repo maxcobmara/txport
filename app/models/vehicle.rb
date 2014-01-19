@@ -9,7 +9,8 @@ class Vehicle < ActiveRecord::Base
   has_many :maintenances,       :dependent => :destroy
   has_many :vehicle_assignment_details, :dependent => :destroy #has_many - instead of has_one - refer trello card #87
   belongs_to :contract
-  belongs_to :card,     :class_name => "VehicleCard",     :foreign_key => "vehicle_id"
+  #belongs_to :card,     :class_name => "VehicleCard",     :foreign_key => "vehicle_id"
+  has_many :cards, :class_name => "VehicleCard"
   belongs_to :status,   :class_name => "VehicleStatus",   :foreign_key => "status_id"
   belongs_to :manufacturer,   :class_name => "VehicleManufacturer",   :foreign_key => "manufacturer_id"
   belongs_to :category,   :class_name => "VehicleCategory",   :foreign_key => "category_id"

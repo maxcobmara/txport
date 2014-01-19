@@ -3,6 +3,7 @@ ms_MY:
     models:
       vehicle: Vehicle
       vehicle_fine: Saman
+      vehicle_card: "Touch N Go & Smart Tag"
     attributes:
       vehicle:
         reg_no: "No. Pendaftaran"
@@ -12,6 +13,8 @@ ms_MY:
         issued_at: Dikeluarkan Pada
         pay_before: Bayar Sebelum
         compound: Kompaun
+      vehicle_card:
+        card_holder: Pemegang Kad
     errors:
       template:
         body: "Berikut adalah beberapa masalah:"
@@ -147,9 +150,16 @@ ms_MY:
     edit: Sunting Saman
   vehicle_cards:
     title: "Touch N Go & Smart Tag"  
-    serial_no: "No. Siri"
-    new: Touch N Go Baru
-    edit: Sunting Touch N Go
+    new: "Touch N Go & Smart Tag Baru"
+    edit: "Sunting Touch N Go & Smart Tag"
+    staff_id: Pemegang Kad
+    unit_id: Unit
+    serial_no: "No. Siri Touch N Go"
+    issue_date: Tarikh Dikeluarkan
+    start_date: Tarikh Mula
+    expired_date: Tarikh Tamat
+    smart_tag: Smart Tag
+    smarttag_serial: "No. Siri Smart Tag"
   contracts:
     title: Kontrak
     contract_no: "No. Kontrak"
@@ -288,7 +298,14 @@ ms_MY:
         paid_amount: Amaun Dibayar  
       vehicle_card:
         vehicle_id: Kenderaan
-        serial_no: "No. Siri"
+        staff_id: Pemegang Kad
+        unit_id: Unit
+        serial_no: "No. Siri Touch N Go"
+        issue_date: Tarikh Dikeluarkan
+        start_date: Tarikh Mula
+        expired_date: Tarikh Tamat
+        smart_tag: Smart Tag
+        smarttag_serial: "No. Siri Smart Tag"
       contract:
         contract_no: "No. Kontrak"
         name: Tajuk Kontrak
