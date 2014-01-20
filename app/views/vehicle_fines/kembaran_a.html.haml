@@ -1,0 +1,33 @@
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle_fines.code'
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_fine_types.type_id'
+      %th= t 'vehicle_fines.issued_at'
+      %th= t 'vehicle_fines.pay_before'
+      %th= t 'vehicle_fines.location'
+      %th= t 'vehicle_fines.reason'
+      %th= t 'vehicle_fines.compound'
+      %th= t 'vehicle_fines.receipt_no'
+      %th= t 'vehicle_fines.paid_on'
+      %th= t 'vehicle_fines.paid_amount'
+      %th= t 'vehicle_fines.payment_status'
+
+  %tbody
+  - @vehicle_fines.each do |vehicle_fine| 
+    %tr{:class => vehicle_fine.table_status}
+      %td= vehicle_fine.code
+      %td= vehicle_fine.vehicle.reg_no
+      %td= vehicle_fine.vehicle_fine_type
+      %td= vehicle_fine.issued_at
+      %td= vehicle_fine.pay_before 
+      %td= vehicle_fine.location 
+      %td= vehicle_fine.reason
+      %td= ringgols(vehicle_fine.compound)
+      %td= vehicle_fine.receipt_no
+      %td= vehicle_fine.paid_on
+      %td= ringgols(vehicle_fine.paid_amount)
+      %td= vehicle_fine.payment_status
+
