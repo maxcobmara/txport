@@ -31,7 +31,11 @@ Txport::Application.routes.draw do
     end
   end
 
-  resources :vehicle_road_taxes
+  resources :vehicle_road_taxes do
+    collection do
+      get 'monthly_roadtax'
+    end
+  end
 
   resources :vehicle_manufacturers
 

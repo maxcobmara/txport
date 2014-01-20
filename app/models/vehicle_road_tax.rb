@@ -12,4 +12,6 @@ class VehicleRoadTax < ActiveRecord::Base
       "success" #ok
     end
   end
+  
+
 end

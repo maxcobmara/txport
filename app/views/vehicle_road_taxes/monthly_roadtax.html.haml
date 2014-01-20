@@ -1,0 +1,18 @@
+%h2 Listing of expiring road tax 
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_road_taxes.start_on' 
+      %th= t 'vehicle_road_taxes.end_on' 
+      %th= t 'vehicle_road_taxes.amount'
+
+  %tbody
+    - @next_month_road_tax.each do |vehicle_road_tax|
+      %tr
+        %td= vehicle_road_tax.vehicle.reg_no
+        %td= vehicle_road_tax.start_on 
+        %td= vehicle_road_tax.end_on 
+        %td= vehicle_road_tax.amount
+
+
