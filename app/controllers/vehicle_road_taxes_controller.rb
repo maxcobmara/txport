@@ -63,8 +63,8 @@ class VehicleRoadTaxesController < ApplicationController
     end
   end
   
-  def monthly_roadtax
-    @vehicle_road_taxes = VehicleRoadTax.all
+  def monthly_roadtax  
+     @next_month_road_tax = VehicleRoadTax.where("end_on >= ? AND end_on <= ?", 1.month.from_now.beginning_of_month, 1.month.from_now.end_of_month) 
   end
   
   private
