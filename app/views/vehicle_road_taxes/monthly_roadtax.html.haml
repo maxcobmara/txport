@@ -1,0 +1,21 @@
+%h2 Listing of expiring road tax this month
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_road_taxes.start_on' 
+      %th= t 'vehicle_road_taxes.end_on' 
+      %th= t 'vehicle_road_taxes.amount'
+
+  %tbody
+    - @vehicle_road_taxes.each do |vehicle_road_tax| 
+      - @current_month = Date.today.month
+      - @roadtax_month = vehicle_road_tax.end_on.month
+      - if @current_month == @roadtax_month
+        %tr
+          %td= vehicle_road_tax.vehicle.reg_no
+          %td= vehicle_road_tax.start_on 
+          %td= vehicle_road_tax.end_on 
+          %td= vehicle_road_tax.amount
+
+
