@@ -1,7 +1,11 @@
 Txport::Application.routes.draw do
   resources :fuel_types
 
-  resources :fuel_tanks
+  resources :fuel_tanks do
+    collection do
+      get 'tank_capacity'
+    end
+  end
 
   resources :ranks
 
@@ -21,9 +25,17 @@ Txport::Application.routes.draw do
 
   resources :vehicle_cards
 
-  resources :maintenances
+  resources :maintenances do
+    collection do
+      get 'maintenance'
+    end
+  end
 
-  resources :contracts
+  resources :contracts do
+    collection do
+      get 'maintenance_contract'
+    end
+  end
 
   resources :vehicle_fines do
     collection do

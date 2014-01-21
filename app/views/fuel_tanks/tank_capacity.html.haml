@@ -1,0 +1,22 @@
+%h2 Listing of maintenance contract 
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'fuel_tanks.unit_id'
+      %th= t 'fuel_tanks.locations'
+      %th= t 'fuel_tanks.capacity'
+      %th= t 'fuel_types.fuel_type_id'
+      %th= maximum
+
+  %tbody
+    - @fuel_tanks.each do |fuel_tank|
+      %tr
+        %td= fuel_tank.unit.name
+        %td= fuel_tank.locations 
+        %td= fuel_tank.capacity
+        %td= fuel_tank.unittype.try(:description)
+        %td= fuel_tank.fuel_type.shortname
+
+
+
+

@@ -61,6 +61,10 @@ class FuelTanksController < ApplicationController
     end
   end
 
+  def maintenance
+      @fuel_tanks = FuelTank.all
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fuel_tank
