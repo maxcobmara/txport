@@ -12,7 +12,7 @@
 
     .control-group
       = f.label :authorised_by, :class => 'control-label'
-      .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :name, :include_blank => (t 'helpers.prompt.select_authoriser'), :html_options => {:class => 'selectpicker'}
     
     %br
     %p= t 'vehicle_assignments.vehicle_details'

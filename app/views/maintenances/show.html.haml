@@ -11,13 +11,13 @@
   %dd= @maintenance.vehicle.try(:reg_no)
 %dl.dl-horizontal
   %dt= t 'maintenances.contract_id', :default => model_class.human_attribute_name(:contract_id) + ":"
-  %dd= @maintenance.contract.try(:contract_no)
+  %dd= check_kin {@maintenance.contract.contract_no}
 %dl.dl-horizontal
   %dt= t 'maintenances.repaired_by', :default => model_class.human_attribute_name(:repaired_by) + ":"
-  %dd= @maintenance.repairer.try(:name)
+  %dd= check_kin {@maintenance.repairer.name}
 %dl.dl-horizontal
   %dt= t 'maintenances.supplied_by', :default => model_class.human_attribute_name(:supplied_by) + ":"
-  %dd= @maintenance.supplier.try(:name)
+  %dd= check_kin {@maintenance.supplier.name}
 
 
 .form-actions

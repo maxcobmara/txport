@@ -24,31 +24,31 @@
       %dd= @vehicle.engine_no
     %dl.dl-horizontal
       %dt= t 'vehicles.reg_on', :default => model_class.human_attribute_name(:reg_on) + ":"
-      %dd= @vehicle.reg_on.try(:strftime, "%d-%b-%Y")
+      %dd= l(@vehicle.reg_on)
     %dl.dl-horizontal
       %dt= t 'vehicles.manufacturer_year', :default => model_class.human_attribute_name(:manufacturer_year) + ":"
       %dd= @vehicle.manufacturer_year
     %dl.dl-horizontal
       %dt= t 'vehicles.manufacturer_id', :default => model_class.human_attribute_name(:manufacturer_id) + ":"
-      %dd= @vehicle.manufacturer.try(:name)
+      %dd= check_kin {@vehicle.manufacturer.name}
     %dl.dl-horizontal
       %dt= t 'vehicles.model', :default => model_class.human_attribute_name(:model) + ":"
       %dd= @vehicle.model
     %dl.dl-horizontal
       %dt= t 'vehicles.category_id', :default => model_class.human_attribute_name(:category_id) + ":"
-      %dd= @vehicle.category.try(:short_name)
+      %dd= check_kin {@vehicle.category.short_name}
     %dl.dl-horizontal
       %dt= t 'vehicles.acquired_on', :default => model_class.human_attribute_name(:acquired_on) + ":"
-      %dd= @vehicle.acquired_on.try(:strftime, "%d-%b-%Y")
+      %dd= l(@vehicle.acquired_on)
     %dl.dl-horizontal
       %dt= t 'vehicles.price', :default => model_class.human_attribute_name(:price) + ":"
       %dd= ringgols(@vehicle.price)
     %dl.dl-horizontal
       %dt= t 'vehicles.contract_id', :default => model_class.human_attribute_name(:contract_id) + ":"
-      %dd= @vehicle.contract.try(:contract_no)
+      %dd= check_kin {@vehicle.contract.contract_no}
     %dl.dl-horizontal
       %dt= t 'vehicles.status_id', :default => model_class.human_attribute_name(:status_id) + ":"
-      %dd= @vehicle.status.try(:short_name)
+      %dd= check_kin {@vehicle.status.short_name}
       //%dd= @vehicle.vehicle_assignment_details[0].vehicle_assignment.document_date
   #tab2.tab-pane
     .div{:style => "padding: 15px 50px 10px 50px; "}
@@ -61,8 +61,8 @@
         %tbody
           - for vehicle_road_tax in @vehicle.vehicle_road_taxes
             %tr
-              %td= vehicle_road_tax.start_on 
-              %td= vehicle_road_tax.end_on 
+              %td= l(vehicle_road_tax.start_on) 
+              %td= l(vehicle_road_tax.end_on) 
               %td= ringgols(vehicle_road_tax.amount )
       
   #tab3.tab-pane
@@ -82,7 +82,7 @@
             %tr
               %td= vehicle_fine.code  
               %td= vehicle_fine.issued_at
-              %td= vehicle_fine.pay_before
+              %td= l(vehicle_fine.pay_before)
               %td= vehicle_fine.reason
               %td= ringgols(vehicle_fine.compound)
               %td= vehicle_fine.paid_on
@@ -101,9 +101,9 @@
           - for maintenance in @vehicle.maintenances
             %tr
               %td= maintenance.work_order_no 
-              %td= maintenance.contract.try(:contract_no)
-              %td= maintenance.repairer.try(:name)
-              %td= maintenance.supplier.try(:name)
+              %td= check_kin {maintenance.contract.contract_no}
+              %td= check_kin {maintenance.repairer.name}
+              %td= check_kin {maintenance.supplier.name}
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'

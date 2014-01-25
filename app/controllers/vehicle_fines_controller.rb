@@ -33,7 +33,7 @@ class VehicleFinesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_fine.save
-        format.html { redirect_to @vehicle_fine, notice: (t 'vehicle_fines.title')+(t 'actions.created') }
+        format.html { redirect_to @vehicle_fine, notice: (t 'vehicle_fines.title2')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @vehicle_fine }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class VehicleFinesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_fine.update(vehicle_fine_params)
-        format.html { redirect_to @vehicle_fine, notice: (t 'vehicle_fines.title')+(t 'actions.updated') }
+        format.html { redirect_to @vehicle_fine, notice: (t 'vehicle_fines.title2')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

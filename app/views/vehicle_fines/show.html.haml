@@ -14,7 +14,7 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle_fine_types.type_id', :default => model_class.human_attribute_name(:type_id) + ":"
-  %dd= @vehicle_fine.vehicle_fine_type.try(:short_name)
+  %dd= check_kin {@vehicle_fine.vehicle_fine_type.short_name}
 
 %dl.dl-horizontal
   %dt= t 'vehicle_fines.issued_at', :default => model_class.human_attribute_name(:issued_at) + ":"
@@ -22,7 +22,7 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle_fines.pay_before', :default => model_class.human_attribute_name(:pay_before) + ":"
-  %dd= @vehicle_fine.pay_before
+  %dd= check_kin {l(@vehicle_fine.pay_before)}
 
 %dl.dl-horizontal
   %dt= t 'vehicle_fines.location', :default =>model_class.human_attribute_name(:location) + ":"
@@ -42,7 +42,7 @@
 
 %dl.dl-horizontal
   %dt=  t 'vehicle_fines.paid_on', :default =>model_class.human_attribute_name(:paid_on) + ":"
-  %dd= @vehicle_fine.paid_on
+  %dd= check_kin {l(@vehicle_fine.paid_on)}
 
 %dl.dl-horizontal
   %dt=  t 'vehicle_fines.paid_amount', :default =>model_class.human_attribute_name(:paid_amount) + ":"

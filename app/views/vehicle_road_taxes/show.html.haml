@@ -6,15 +6,15 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle.vehicle_id', :default => model_class.human_attribute_name(:vehicle_id) + ":"
-  %dd= @vehicle_road_tax.vehicle.try(:reg_no) 
+  %dd= check_kin {@vehicle_road_tax.vehicle.reg_no} 
 
 %dl.dl-horizontal
   %dt= t 'vehicle_road_taxes.start_on', :default =>  model_class.human_attribute_name(:start_on) + ":"
-  %dd= @vehicle_road_tax.start_on 
+  %dd= l(@vehicle_road_tax.start_on) 
 
 %dl.dl-horizontal
   %dt= t 'vehicle_road_taxes.end_on', :default =>  model_class.human_attribute_name(:end_on) + ":"
-  %dd= @vehicle_road_tax.end_on 
+  %dd= l(@vehicle_road_tax.end_on) 
 
 %dl.dl-horizontal
   %dt= t 'vehicle_road_taxes.amount', :default =>  model_class.human_attribute_name(:amount) + ":"

@@ -11,7 +11,7 @@
     %ul.nav.pull-right
       %li.search_bar{:style => "display: none;" } 
         = form_tag vehicles_path, :method => 'get', :id => "vehicles_search" do
-          = text_field_tag :search, params[:search], :class => "search search-query"
+          = text_field_tag :search, params[:search], :class => "search search-query", :placeholder => " Registration No"
       %li#toga
         %a{:href => "#", "data-no-turbolink" => true}
           = fa_icon "search", text: (t 'actions.search')

@@ -8,7 +8,7 @@
   %dd=  @staff.id_no
 %dl.dl-horizontal
   %dt= t 'staffs.rank_id', :default => model_class.human_attribute_name(:rank_id) + ":"
-  %dd=  @staff.rank.name
+  %dd= check_kin {@staff.rank.name}
 %dl.dl-horizontal
   %dt= t 'staffs.name', :default => model_class.human_attribute_name(:name) + ":"
   %dd= @staff.name

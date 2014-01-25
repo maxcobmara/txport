@@ -94,9 +94,12 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
-    road_tax: Cukai Jalan Baru
-    summons: Saman Baru
-    maintenance: Penyelenggaraan Baru  
+    new_road_tax: Cukai Jalan Baru
+    new_summons: Saman Baru
+    new_maintenance: Penyelenggaraan Baru
+    road_tax: Cukai Jalan
+    summons: Saman
+    maintenance: Penyelenggaraan  
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
@@ -136,6 +139,7 @@ ms_MY:
     assignment_dates: Tarikh Penggunaan
   vehicle_fines:
     title: Saman
+    title2: Saman
     code: Kod
     pay_before: Bayar Sebelum
     reason: Sebab
@@ -356,6 +360,7 @@ ms_MY:
       select_company: Pilih Kontraktor
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
+      select_authoriser: Select Authoriser
       
             
         

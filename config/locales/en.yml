@@ -80,6 +80,14 @@ en:
        - day
        - month
        - year
+  time:
+    formats:
+      default:  "%l:%M %p"
+      short: "%l:%M %p"
+  datetime:
+    formats:
+      default: "%d %b %y, %l:%M %p"
+      short:   "%d %b %y, %l:%M %p"	   	
   menu:
     main: Menu
     dropdown: Drop Downs  
@@ -108,6 +116,7 @@ en:
   #index, _action_menu, show  
   vehicles:
     title: Vehicles
+    title2: Vehicle
     reg_no: Registration No
     reg_on: Registration Date
     manufacturer_year: Year of Manufacture
@@ -118,9 +127,12 @@ en:
     price: "Price (RM)"
     contract_id: Contract No
     status_id: Status
-    road_tax: New Road Tax
-    summons: New Summon
-    maintenance: New Maintenance
+    new_road_tax: New Road Tax
+    new_summons: New Summon
+    new_maintenance: New Maintenance
+    road_tax: Road Taxes
+    summons: Summons
+    maintenance: Maintenances
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -138,6 +150,7 @@ en:
     edit: Edit Maintenance
   vehicle_road_taxes:
     title: Vehicle Road Taxes
+    title2: Vehicle Road Tax
     start_on: Start On
     end_on: End On
     amount: Amount
@@ -159,6 +172,7 @@ en:
     assignment_dates: Assignment Dates
   vehicle_fines:
     title: Summons
+    title2: Summon
     code: Code
     pay_before: Pay Before
     reason: Reason
@@ -374,3 +388,4 @@ en:
       select_unit: Select Unit
       select_company: Select Contractor
       select_issuer: Select Issuer
+      select_authoriser: Select Authoriser
