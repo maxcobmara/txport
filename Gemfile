@@ -7,6 +7,7 @@ gem "thin", "~> 1.6.0"
 gem "devise", "~> 3.1.1"
 gem "pg", "~> 0.17.0"
 gem "ransack", "~> 1.1.0"
+gem "ancestry", "~> 2.0.0"
 
 
 #display gems

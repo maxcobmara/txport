@@ -362,6 +362,7 @@ ms_MY:
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
       select_authoriser: Select Authoriser
+      sequence: Urutan
       
             
         
