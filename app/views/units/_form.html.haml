@@ -9,7 +9,7 @@
         .input-prepend
           %span.add-on{:style => "height:30px"}= @unit.parent.shortname unless @unit.parent.nil?
           = f.text_field :code,  :size => '50', :class => "span2", :id => "prependedInput", :placeholder => (t 'helpers.prompt.sequence') 
-        %div (Sequence format : 01 for 1, 11 for 11)
+        %div= (t 'helpers.prompt.sequence_text')
 		            
     .control-group
       = f.label :shortname, :class => 'control-label'

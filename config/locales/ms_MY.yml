@@ -363,7 +363,7 @@ ms_MY:
       select_contract_type: Pilih Jenis Kontrak
       select_authoriser: Select Authoriser
       sequence: Urutan
-      
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11" 
             
         
         
