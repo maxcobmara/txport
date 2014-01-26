@@ -22,7 +22,7 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    @unit = Unit.new
+    @unit = Unit.new(:parent_id => params[:parent_id])
   end
 
   # GET /units/1/edit
@@ -77,6 +77,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:shortname, :name, :parent_id)
+      params.require(:unit).permit(:shortname, :name, :ancestry, :ancestry_depth, :parent_id, :code, :combo_code)
     end
 end

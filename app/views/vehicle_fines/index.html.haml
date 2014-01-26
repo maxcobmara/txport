@@ -39,10 +39,10 @@
       %tr{:class => vehicle_fine.table_status}
         %td= vehicle_fine.code 
         %td= vehicle_fine.vehicle.reg_no
-        %td= vehicle_fine.pay_before 
+        %td= check_kin {l(vehicle_fine.pay_before)} 
         %td= vehicle_fine.reason
         %td= ringgols(vehicle_fine.compound)
-        %td= vehicle_fine.paid_on
+        %td= check_kin {l(vehicle_fine.paid_on)}
         %td= vehicle_fine.payment_status
         = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
 

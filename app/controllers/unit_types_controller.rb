@@ -30,7 +30,7 @@ class UnitTypesController < ApplicationController
     respond_to do |format|
       if @unit_type.save
         format.html { redirect_to @unit_type, notice: 'Unit type was successfully created.' }
-		formar.js
+		    format.js
         format.json { render action: 'show', status: :created, location: @unit_type }
       else
         format.html { render action: 'new' }

@@ -22,15 +22,15 @@
   
 %dl.dl-horizontal
   %dt= t 'vehicle_cards.issue_date', :default => model_class.human_attribute_name(:serial_no) + ":"
-  %dd= @vehicle_card.issue_date
+  %dd= check_kin {l(@vehicle_card.issue_date)}
   
 %dl.dl-horizontal
   %dt= t 'vehicle_cards.start_date', :default => model_class.human_attribute_name(:serial_no) + ":"
-  %dd= @vehicle_card.start_date
+  %dd= check_kin {l(@vehicle_card.start_date)}
 
 %dl.dl-horizontal
   %dt= t 'vehicle_cards.expired_date', :default => model_class.human_attribute_name(:serial_no) + ":"
-  %dd= @vehicle_card.expired_date
+  %dd= check_kin {l(@vehicle_card.expired_date)}
   
 %dl.dl-horizontal
   %dt= t 'vehicle_cards.smart_tag', :default => model_class.human_attribute_name(:serial_no) + ":"

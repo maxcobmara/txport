@@ -1,10 +1,4 @@
 %tr
   %td= @vehicle_fine_type.short_name
   %td= @vehicle_fine_type.description
-  %td
-    .btn-group.dropdown
-      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-        .span.caret
-      %ul.dropdown-menu.pull-right.action_menu
-        %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_vehicle_fine_type_path(@vehicle_fine_type), :remote => true
-        %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), @vehicle_fine_type, :remote => true, method: :delete, data: { confirm: 'Are you sure?' }  
+  

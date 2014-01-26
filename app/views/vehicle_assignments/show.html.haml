@@ -10,11 +10,11 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.document_date'
-  %dd= @vehicle_assignment.document_date
+  %dd= l(@vehicle_assignment.document_date)
 
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.authorised_by'
-  %dd= @vehicle_assignment.authoriser.try(:name)
+  %dd= check_kin {@vehicle_assignment.authoriser.name}
   
 
 .div{:style => "padding: 15px 50px 10px 50px; "}
@@ -29,7 +29,7 @@
         %tr
           %td= Vehicle.where("id = ?", details.vehicle_id).pluck(:reg_no)[0]
           %td= Staff.where("id = ?", details.staff_id).pluck(:name)[0]
-          %td #{details.assigned_on} to #{details.assignment_end}
+          %td #{l(details.assigned_on)} to #{l(details.assignment_end)}
   
 
 .form-actions

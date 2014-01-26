@@ -40,16 +40,17 @@ ms_MY:
   errors:
   date:
     formats:
-    default: "%d %B %Y"
-    short: "%d %b"
-    long: "%d %B, %Y"
-    events: "%A, %e %b"
+       default: "%d %B %Y"
+       short: "%d %b"
+       long: "%d %B, %Y"
+       events: "%A, %e %b"
     # Use the strftime parameters for formats.
     # When no format has been given, it uses default.
     # You can provide other formats here if you like!
     day_names: [Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu]
     abbr_day_names: [Ahd, Isn, Sel, Rabu, Kha, Jum, Sab]
       # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Januari, Februari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, Mei, Jun, Jul, Ogo, Sep, Okt, Nov, Dis]
       # Used in date_select and datime_select.
     order: 
@@ -94,9 +95,12 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
-    road_tax: Cukai Jalan Baru
-    summons: Saman Baru
-    maintenance: Penyelenggaraan Baru  
+    new_road_tax: Cukai Jalan Baru
+    new_summons: Saman Baru
+    new_maintenance: Penyelenggaraan Baru
+    road_tax: Cukai Jalan
+    summons: Saman
+    maintenance: Penyelenggaraan  
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
@@ -136,6 +140,7 @@ ms_MY:
     assignment_dates: Tarikh Penggunaan
   vehicle_fines:
     title: Saman
+    title2: Saman
     code: Kod
     pay_before: Bayar Sebelum
     reason: Sebab
@@ -356,6 +361,8 @@ ms_MY:
       select_company: Pilih Kontraktor
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
+      select_authoriser: Select Authoriser
+      sequence: Urutan
       
             
         

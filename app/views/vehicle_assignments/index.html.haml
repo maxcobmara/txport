@@ -23,8 +23,8 @@
     - @vehicle_assignments.each do | vehicle_assignment | 
       %tr
         %td= vehicle_assignment.document_code
-        %td= vehicle_assignment.document_date
-        %td= vehicle_assignment.authoriser.try(:name)
+        %td= l(vehicle_assignment.document_date)
+        %td= check_kin {vehicle_assignment.authoriser.name}
         %td
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
 
