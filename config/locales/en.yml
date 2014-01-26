@@ -390,3 +390,4 @@ en:
       select_issuer: Select Issuer
       select_authoriser: Select Authoriser
       sequence: Sequence
+      sequence_text: "Sequence format : 01 for 1, 11 for 11"
