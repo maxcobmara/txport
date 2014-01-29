@@ -1,5 +1,5 @@
 .container{:style => "padding-left: 60px;"}
-  = form_for @depot_fuel_supplied, :html => { :class => 'form-horizontal' }  do |f|
+  = form_for @fuel_supplied, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
     = f.hidden_field :depot_fuel_id
 
@@ -7,7 +7,7 @@
       %dt
         %strong= t 'fuel_supplieds.depot_fuel_id'
       %dd
-        = h @depot_fuel_supplied.depot_fuel.month_depot
+        = h @fuel_supplied.depot_fuel.month_depot
     %br
 
     .control-group

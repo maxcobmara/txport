@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127120214) do
+ActiveRecord::Schema.define(version: 20140129103133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_fuels", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.string   "description"
+    t.decimal  "quantity"
+    t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -210,6 +220,20 @@ ActiveRecord::Schema.define(version: 20140127120214) do
     t.integer  "max_quantity"
     t.integer  "min_quantity"
     t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unit_fuels", force: true do |t|
+    t.date     "issue_date"
+    t.integer  "unit_id"
+    t.decimal  "d_vessel"
+    t.decimal  "d_vehicle"
+    t.decimal  "d_misctool"
+    t.decimal  "d_boat"
+    t.decimal  "p_vehicle"
+    t.decimal  "p_misctool"
+    t.decimal  "p_boat"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

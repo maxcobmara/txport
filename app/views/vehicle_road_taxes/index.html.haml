@@ -24,8 +24,8 @@
     - @vehicle_road_taxes.each do |vehicle_road_tax| 
       %tr{:class => vehicle_road_tax.status}
         %td= vehicle_road_tax.vehicle.reg_no
-        %td= l(vehicle_road_tax.start_on) 
-        %td= l(vehicle_road_tax.end_on) 
+        %td= check_kin {l(vehicle_road_tax.start_on)}
+        %td= check_kin {l(vehicle_road_tax.end_on)} 
         %td= ringgols(vehicle_road_tax.amount) 
         = render :partial => 'action_menu', :locals => { :vehicle_road_tax => vehicle_road_tax }
 

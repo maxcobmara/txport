@@ -1,0 +1,34 @@
+- provide(:title, 'Unit Fuels')
+- model_class = UnitFuel
+.page-header
+  %h1= t 'unit_fuels.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_unit_fuel_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'unit_fuels.unit_id'
+      %th= t 'unit_fuels.issue_date'
+      %th= t 'unit_fuels.diesel_usage'
+      %th= t 'unit_fuels.petrol_usage'
+      %th 
+  %tbody
+    - @unit_fuels.each do |unit_fuel|
+      %tr
+        %td= check_kin {unit_fuel.unit.name}
+        %td= check_kin {l(unit_fuel.issue_date)}
+        %td= UnitFuel.diesel_usage(unit_fuel)     
+        %td= UnitFuel.petrol_usage(unit_fuel)
+        = render :partial => 'action_menu', :locals => { :unit_fuel => unit_fuel }
+      
+      
+

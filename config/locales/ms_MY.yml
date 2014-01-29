@@ -255,7 +255,7 @@ ms_MY:
     name: Nama
     country: Negara
   depot_fuels:
-    title: "Bahan PMP Bulanan (Depot)"
+    title: "Bahan PMP Bulanan"
     new: "Bahan PMP Bulanan (Depot) Baru"
     edit: "Sunting Bahan PMP Bulanan (Depot)"
     unit_id: Depot
@@ -272,7 +272,7 @@ ms_MY:
   fuel_issueds:
     title: Pengeluaran Bahan PMP
     title2: Pengeluaran
-    title3: "Pengeluaran (Depot)"
+    title3: Pengeluaran
     add_details: Tambah Butiran
     new: Pengeluaran Bahan PMP Baru
     edit: Sunting Pengeluaran Bahan PMP
@@ -284,7 +284,7 @@ ms_MY:
   fuel_supplieds:
     title: Penerimaan Bahan PMP
     title2: Penerimaan
-    title3: "Penerimaan (Depot)"
+    title3: Penerimaan
     add_details: Tambah Butiran
     new: Penerimaan Bahan PMP Baru
     edit: Sunting Penerimaan Bahan PMP
@@ -304,6 +304,39 @@ ms_MY:
     current: Baki Semasa 
     unit_type_id: Unit Ukuran
     new_balance: Baki Tangki Baru
+  unit_fuels:
+    title: Bahan PMP di Unit
+    unit_id: Unit
+    issue_date: Tarikh
+    petrol_usage: Penggunaan Petrol
+    diesel_usage: Penggunaan Diesel
+    other_usage: Lain-Lain Bahan PMP
+    new: Bahan PMP Baru di Unit 
+    edit: Sunting Bahan PMP di Unit
+    quantity_ltr: Kuantiti dalam Liter
+    usage: Penggunaan
+    d_vessel: Kapal
+    d_vehicle: Kenderaan
+    d_misctool: Alat Pelbagai
+    d_boat: Bot
+    p_vehicle: Kenderaan
+    p_misctool: Alat Pelbagai
+    p_boat: Bot
+    fuel_type_id: Jenis Bahan PMP
+    description: Deskripsi 
+    quantity: Kuantiti
+    unit_type_id: Unit Ukuran
+  add_fuels:
+    title: Lain-Lain Bahan PMP di Unit
+    new: Lain-Lain Bahan PMP Baru di Unit
+    edit: Sunting Lain-Lain Bahan PMP di Unit
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    description: Deskripsi 
+    quantity: Kuantiti
+    unit_type_id: Unit Ukuran
+    new_addfuel: Lain-Lain Bahan PMP Baru
+    add_details: Tambah Butiran
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -415,6 +448,20 @@ ms_MY:
         fuel_tank_id: Tangki Penyimpanan 
         current: Baki Semasa Bahan PMP
         unit_type_id: Unit Ukuran
+      unit_fuel:
+        d_vessel: Kapal
+        d_vehicle: Kenderaan
+        d_misctool: Alat Pelbagai
+        d_boat: Bot
+        p_vehicle: Kenderaan
+        p_misctool: Alat Pelbagai
+        p_boat: Bot
+      add_fuel:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        description: Deskripsi 
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -442,6 +489,7 @@ ms_MY:
       issued: "* Jumlah pengeluaran sebulan mengikut jenis bahan PMP"
       balance: "* Baki semasa bahan PMP pada akhir bulan untuk setiap tangki"
       summary: "* Baki stok bahan PMP pada akhir bulan untuk setiap jenis bahan PMP"
+      other_fuel: "* Untuk bahan PMP selain daripada Diesel dan Petrol"
             
         
         

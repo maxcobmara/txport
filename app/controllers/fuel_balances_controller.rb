@@ -14,10 +14,9 @@ class FuelBalancesController < ApplicationController
 
   # GET /fuel_balances/new
   def new
-    #@fuel_balance = FuelBalance.new
     @depot_fuel = DepotFuel.find(params[:depot_fuel_id])
-    @depot_fuel_balance = @depot_fuel.fuel_balances.new(params[:fuel_balance])
-    @depot_fuel_balance.save
+    @fuel_balance = @depot_fuel.fuel_balances.new(params[:fuel_balance])
+    @fuel_balance.save
   end
 
   # GET /fuel_balances/1/edit

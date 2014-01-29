@@ -285,7 +285,7 @@ en:
     name: Name
     country: Country
   depot_fuels:
-    title: "Depot Monthly Fuel"
+    title: "Monthly Fuel"
     new: "New Monthly Fuel (Depot)"
     edit: "Edit Monthly Fuel (Depot)"
     unit_id: Depot
@@ -302,7 +302,7 @@ en:
   fuel_issueds:
     title: Fuel Issued
     title2: Issued
-    title3: "Issued/Usage (Depot)"
+    title3: "Issueds/Usage"
     add_details: Add Details
     depot_fuel_id: "Depot - Month Year"
     fuel_type_id: Fuel Type
@@ -314,7 +314,7 @@ en:
   fuel_supplieds:
     title: Fuel Supplied
     title2: Supplied
-    title3: "Supplieds/Received (Depot)"
+    title3: "Supplieds/Received"
     add_details: Add Details
     depot_fuel_id: "Depot - Month Year"
     fuel_type_id: Fuel Type
@@ -334,6 +334,39 @@ en:
     current: Current Balance
     unit_type_id: Unit Type
     new_balance: New Tank Balance
+  unit_fuels:
+    title: Unit Fuels
+    unit_id: Unit
+    issue_date: Issue Date
+    petrol_usage: Petrol Usage
+    diesel_usage: Diesel Usage
+    other_usage: Other Fuel Type
+    new: New Unit Fuel
+    edit: Edit Unit Fuel
+    quantity_ltr: Quantity in Litre
+    usage: Usage
+    d_vessel: Vessel
+    d_vehicle: Vehicle
+    d_misctool: Misc Tool
+    d_boat: Boat
+    p_vehicle: Vehicle
+    p_misctool: Misc Tool
+    p_boat: Boat
+    fuel_type_id: Fuel Type
+    description: Description
+    quantity: Quantity
+    unit_type_id: Unit Type
+  add_fuels:
+    title: Other Fuel - Unit
+    new: New Other Fuel - Unit 
+    edit: Edit Other Fuel - Unit
+    unit_fuel_id: "Unit - Month Year"
+    fuel_type_id: Fuel Type
+    description: Description
+    quantity: Quantity
+    unit_type_id: Unit Type
+    new_addfuel: New Other Fuel Type
+    add_details: Add Details
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -443,6 +476,20 @@ en:
         fuel_tank_id: Storage Tank
         current: Fuel Current Balance
         unit_type_id: Unit Type
+      unit_fuel:
+        d_vessel: Vessel
+        d_vehicle: Vehicle
+        d_misctool: Misc Tools
+        d_boat: Boat
+        p_vehicle: Vehicle
+        p_misctool: Misc Tools
+        p_boat: Boat
+      add_fuel:
+        unit_fuel_id: "Unit - Month Year"
+        fuel_type_id: Fuel Type
+        description: Description
+        quantity: Quantity
+        unit_type_id: Unit Type		
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -469,3 +516,4 @@ en:
       issued: "* Total issueds (usage) per month according to the fuel type"
       balance: "* Current balance of fuel at the end of the month for each tank"
       summary: "* Stock balance of fuel at the end of the month for each fuel type"
+      other_fuel: "* For fuel of type other than Diesel and Petrol"

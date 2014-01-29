@@ -61,8 +61,8 @@
         %tbody
           - for vehicle_road_tax in @vehicle.vehicle_road_taxes
             %tr
-              %td= l(vehicle_road_tax.start_on) 
-              %td= l(vehicle_road_tax.end_on) 
+              %td= check_kin {l(vehicle_road_tax.start_on)} 
+              %td= check_kin {l(vehicle_road_tax.end_on)}
               %td= ringgols(vehicle_road_tax.amount )
       
   #tab3.tab-pane
