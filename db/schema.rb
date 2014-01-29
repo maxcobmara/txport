@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126004644) do
+ActiveRecord::Schema.define(version: 20140127120214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,40 @@ ActiveRecord::Schema.define(version: 20140126004644) do
     t.datetime "updated_at"
   end
 
+  create_table "depot_fuels", force: true do |t|
+    t.integer  "unit_id"
+    t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fuel_balances", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_tank_id"
+    t.decimal  "current"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_type_id"
+  end
+
+  create_table "fuel_issueds", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_type_id"
+    t.decimal  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_type_id"
+  end
+
+  create_table "fuel_supplieds", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_type_id"
+    t.decimal  "quantity"
+    t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fuel_tanks", force: true do |t|
     t.integer  "unit_id"
     t.string   "locations"
@@ -56,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140126004644) do
     t.integer  "fuel_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "maximum"
   end
 
   create_table "fuel_types", force: true do |t|

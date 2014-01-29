@@ -63,6 +63,9 @@ ms_MY:
     fuel: Bahan PMP
     people: Pentadbiran
     depot: Depot
+    depot_listing: Senarai Depot
+    fuel_tank: Tangki Penyimpanan
+    fuel_tank_listing: Senarai Tangki
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -205,6 +208,7 @@ ms_MY:
     capacity: Kapasiti    
     new: Tangki Penyimpanan Baru
     edit: Sunting Tangki Penyimpanan
+    tank: "Tangki : " 
   fuel_types:
     title: Jenis Bahan PMP
     fuel_type_id: Jenis Bahan PMP
@@ -249,7 +253,57 @@ ms_MY:
   vehicle_manufacturers:
     title: Pengeluar Kenderaan
     name: Nama
-    country: Negara  
+    country: Negara
+  depot_fuels:
+    title: "Bahan PMP Bulanan (Depot)"
+    new: "Bahan PMP Bulanan (Depot) Baru"
+    edit: "Sunting Bahan PMP Bulanan (Depot)"
+    unit_id: Depot
+    issue_date: Tarikh
+    fuel_type: Jenis Bahan PMP
+    start_bal: Baki Mula
+    received: Penerimaan
+    issued: Pengeluaran
+    tank_bal: Baki Tangki
+    end_bal: Baki Akhir
+    summary: Rumusan
+    and: dan
+    must_match: mesti sama
+  fuel_issueds:
+    title: Pengeluaran Bahan PMP
+    title2: Pengeluaran
+    title3: "Pengeluaran (Depot)"
+    add_details: Tambah Butiran
+    new: Pengeluaran Bahan PMP Baru
+    edit: Sunting Pengeluaran Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    new_issued: Pengeluaran Baru
+  fuel_supplieds:
+    title: Penerimaan Bahan PMP
+    title2: Penerimaan
+    title3: "Penerimaan (Depot)"
+    add_details: Tambah Butiran
+    new: Penerimaan Bahan PMP Baru
+    edit: Sunting Penerimaan Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    new_supplied: Penerimaan Baru
+  fuel_balances:
+    title: Baki Tangki Bahan PMP
+    title2: Baki Tangki
+    add_details: Tambah Butiran
+    new: Baki Semasa Bahan PMP Baru
+    edit: Sunting Baki Semasa Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_tank_id: Tangki Penyimpanan 
+    current: Baki Semasa 
+    unit_type_id: Unit Ukuran
+    new_balance: Baki Tangki Baru
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -343,6 +397,24 @@ ms_MY:
         shortname: Nama Ringkas
         name: Nama
         parent_id: Unit Induk
+      depot_fuel:
+        unit_id: Depot
+        issue_date: Tarikh
+      fuel_issued:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
+      fuel_supplied:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
+      fuel_balance:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_tank_id: Tangki Penyimpanan 
+        current: Baki Semasa Bahan PMP
+        unit_type_id: Unit Ukuran
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -363,7 +435,13 @@ ms_MY:
       select_contract_type: Pilih Jenis Kontrak
       select_authoriser: Select Authoriser
       sequence: Urutan
-      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11" 
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
+      select_depot_fuel: Pilih Depot | Bulan Tahun
+      select_fuel_tank: Pilih Depot | Tangki Penyimpanan
+      supplied: "* Jumlah penerimaan sebulan mengikut jenis bahan PMP"
+      issued: "* Jumlah pengeluaran sebulan mengikut jenis bahan PMP"
+      balance: "* Baki semasa bahan PMP pada akhir bulan untuk setiap tangki"
+      summary: "* Baki stok bahan PMP pada akhir bulan untuk setiap jenis bahan PMP"
             
         
         

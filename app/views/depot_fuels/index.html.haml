@@ -1,0 +1,30 @@
+- provide(:title, 'Depot Fuels')
+- model_class = DepotFuel
+.page-header
+  %h1= t 'depot_fuels.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_depot_fuel_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'depot_fuels.unit_id'
+      %th= t 'depot_fuels.issue_date'
+      %th 
+  %tbody
+    - @depot_fuels.each do |depot_fuel|
+      %tr
+        %td= check_kin {depot_fuel.depot.unit_details}
+        %td= check_kin {l(depot_fuel.issue_date)}
+        = render :partial => 'action_menu', :locals => { :depot_fuel => depot_fuel }
+      
+      
+
