@@ -94,6 +94,9 @@ en:
     fuel: Fuel
     people: People
     depot: Depots
+    depot_listing: Depot Listing
+    fuel_tank: Storage Tanks
+    fuel_tank_listing: Storage Tank Listing
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  
@@ -235,6 +238,7 @@ en:
     capacity: Capacity
     new: New Storage Tank
     edit: Edit Storage Tank
+    tank: "Tanks : "
   fuel_types:
     title: Fuel Types
     fuel_type_id: Fuel Type
@@ -280,6 +284,89 @@ en:
     title: Vehicle Manufacturers
     name: Name
     country: Country
+  depot_fuels:
+    title: "Monthly Fuel"
+    new: "New Monthly Fuel (Depot)"
+    edit: "Edit Monthly Fuel (Depot)"
+    unit_id: Depot
+    issue_date: Issue Date
+    fuel_type: Fuel Type
+    start_bal: Initial Balance
+    received: Received
+    issued: Issue
+    tank_bal: Tank Balance
+    end_bal: New Balance
+    summary: Summary
+    and: and
+    must_match: must match
+  fuel_issueds:
+    title: Fuel Issued
+    title2: Issued
+    title3: "Issueds/Usage"
+    add_details: Add Details
+    depot_fuel_id: "Depot - Month Year"
+    fuel_type_id: Fuel Type
+    unit_type_id: Unit Type
+    quantity: Quantity
+    new: New Fuel Issued
+    edit: Edit Fuel Issued
+    new_issued: New Fuel Issued
+  fuel_supplieds:
+    title: Fuel Supplied
+    title2: Supplied
+    title3: "Supplieds/Received"
+    add_details: Add Details
+    depot_fuel_id: "Depot - Month Year"
+    fuel_type_id: Fuel Type
+    unit_type_id: Unit Type
+    quantity: Quantity
+    new: New Fuel Supplied
+    edit: Edit Fuel Supplied
+    new_supplied: New Fuel Supplied
+  fuel_balances:
+    title: Storage Tank Balance
+    title2: Storage Tank Balance
+    add_details: Add Details
+    new: New Storage Tank Balance
+    edit: Edit Storage Tank Balance
+    depot_fuel_id: "Depot - Month Year"
+    fuel_tank_id: Storage Tank
+    current: Current Balance
+    unit_type_id: Unit Type
+    new_balance: New Tank Balance
+  unit_fuels:
+    title: Unit Fuels
+    unit_id: Unit
+    issue_date: Issue Date
+    petrol_usage: Petrol Usage
+    diesel_usage: Diesel Usage
+    other_usage: Other Fuel Type
+    new: New Unit Fuel
+    edit: Edit Unit Fuel
+    quantity_ltr: Quantity in Litre
+    usage: Usage
+    d_vessel: Vessel
+    d_vehicle: Vehicle
+    d_misctool: Misc Tool
+    d_boat: Boat
+    p_vehicle: Vehicle
+    p_misctool: Misc Tool
+    p_boat: Boat
+    fuel_type_id: Fuel Type
+    description: Description
+    quantity: Quantity
+    unit_type_id: Unit Type
+  add_fuels:
+    title: Other Fuel - Unit
+    new: New Other Fuel - Unit 
+    edit: Edit Other Fuel - Unit
+    unit_fuel_id: "Unit - Month Year"
+    fuel_type_id: Fuel Type
+    description: Description
+    quantity: Quantity
+    unit_type_id: Unit Type
+    new_addfuel: New Other Fuel Type
+    add_details: Add Details
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -371,6 +458,38 @@ en:
         shortname: Short Name
         name: Name
         parent_id: Parent Unit
+      depot_fuel:
+        unit_id: Depot
+        issue_date: Issue Date
+      fuel_issued:
+        depot_fuel_id: "Depot - Month Year"
+        fuel_type_id: Fuel Type
+        quantity: Quantity
+        unit_type_id: Unit Type
+      fuel_supplied:
+        depot_fuel_id: "Depot - Month Year"
+        fuel_type_id: Fuel Type
+        quantity: Quantity
+        unit_type_id: Unit Type
+      fuel_balance:
+        depot_fuel_id: "Depot - Month Year"
+        fuel_tank_id: Storage Tank
+        current: Fuel Current Balance
+        unit_type_id: Unit Type
+      unit_fuel:
+        d_vessel: Vessel
+        d_vehicle: Vehicle
+        d_misctool: Misc Tools
+        d_boat: Boat
+        p_vehicle: Vehicle
+        p_misctool: Misc Tools
+        p_boat: Boat
+      add_fuel:
+        unit_fuel_id: "Unit - Month Year"
+        fuel_type_id: Fuel Type
+        description: Description
+        quantity: Quantity
+        unit_type_id: Unit Type		
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -391,3 +510,10 @@ en:
       select_authoriser: Select Authoriser
       sequence: Sequence
       sequence_text: "Sequence format : 01 for 1, 11 for 11"
+      select_depot_fuel: Select Depot | Month Year
+      select_fuel_tank: Select Depot | Fuel Tank
+      supplied: "* Total supplieds (receive) per month according to the fuel type"
+      issued: "* Total issueds (usage) per month according to the fuel type"
+      balance: "* Current balance of fuel at the end of the month for each tank"
+      summary: "* Stock balance of fuel at the end of the month for each fuel type"
+      other_fuel: "* For fuel of type other than Diesel and Petrol"

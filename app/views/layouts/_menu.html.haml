@@ -41,10 +41,27 @@
         %h2.icon= t 'menu.fuel'
         %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot'), units_path(:id=>1)
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_tanks.title'), fuel_tanks_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Supplied/Received", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issued/Usage", '#'
+          /%li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot'), units_path(:id=>1)
+          %li.icon.icon-left
+            = link_to (t 'menu.depot'), '#'
+            .mp-level
+              %h2.icon= t 'menu.fuel'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot_listing'), units_path(:id=>1)
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'depot_fuels.title'), depot_fuels_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_supplieds.title3'), fuel_supplieds_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_issueds.title3'), fuel_issueds_path				
+          /%li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_tanks.title'), fuel_tanks_path
+          %li.icon.icon-left
+            = link_to (t 'menu.fuel_tank'), '#'
+            .mp-level
+              %h2.icon= t 'menu.fuel'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel_tank_listing'), fuel_tanks_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_balances.title'), fuel_balances_path		  
+
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_types.title'), fuel_types_path
           
     %li.icon.icon-left

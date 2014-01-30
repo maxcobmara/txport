@@ -6,6 +6,8 @@ class Unit < ActiveRecord::Base
   has_many :subunits, class_name: "Unit", foreign_key: 'parent_id'
   belongs_to :parent, class_name: "Unit", foreign_key: 'parent_id'
   has_many :vehicle_cards, dependent: :nullify
+  has_many :depot_fuels, dependent: :destroy #only for depot (unit having fuel tanks)
+  has_many :unit_fuels, dependent: :destroy #for all units
   
   def set_combo_code
     if ancestry_depth == 0
@@ -15,5 +17,9 @@ class Unit < ActiveRecord::Base
     else
       self.combo_code = parent.combo_code + code
     end
+  end
+  
+  def unit_details
+    "#{shortname} " + "#{name}"
   end
 end
