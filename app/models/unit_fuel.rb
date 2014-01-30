@@ -1,8 +1,15 @@
 class UnitFuel < ActiveRecord::Base
   before_save :set_default_value
+  
   belongs_to :unit, :foreign_key => "unit_id"
   has_many :add_fuels, dependent: :destroy
   accepts_nested_attributes_for :add_fuels, allow_destroy: true, reject_if: proc { |add_fuels| add_fuels[:quantity].blank? }
+  has_many :external_issueds, dependent: :destroy
+  accepts_nested_attributes_for :external_issueds, allow_destroy: true, reject_if: proc { |external_issueds| external_issueds[:quantity].blank? }
+  has_many :external_supplieds, dependent: :destroy
+  accepts_nested_attributes_for :external_supplieds, allow_destroy: true, reject_if: proc { |external_supplieds| external_supplieds[:quantity].blank? }
+  
+  validates_presence_of :unit_id, :issue_date
   
   def set_default_value
     self.d_vessel = 0 if d_vessel.blank?

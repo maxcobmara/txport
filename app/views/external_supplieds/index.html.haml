@@ -1,0 +1,39 @@
+- provide(:title, 'External Supplieds')
+- model_class = ExternalSupplied
+.page-header
+  %h1= t 'external_supplieds.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      /%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_external_issued_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'external_supplieds.unit_fuel_id'
+      %th= t 'external_supplieds.fuel_type_id'
+      %th= t 'external_supplieds.quantity'
+      %th= t 'external_supplieds.unit_type_id'
+      %th= t 'external_supplieds.source'
+      %th
+  %tbody
+    - @external_supplieds.each do |external_supplied|
+      %tr
+        %td= check_kin {external_supplied.unit_fuel.month_unit}
+        %td= check_kin {external_supplied.fuel_type.name}
+        %td= external_supplied.quantity.to_i
+        %td= check_kin {external_supplied.unit_type.description}
+        %td= external_supplied.resource.name
+        %td
+        = render :partial => 'action_menu', :locals => { :external_supplied => external_supplied }
+      
+      
+
+
+

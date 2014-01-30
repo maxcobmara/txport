@@ -69,6 +69,6 @@ class UnitFuelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_fuel_params
-      params.require(:unit_fuel).permit(:issue_date, :unit_id, :d_vessel, :d_vehicle, :d_misctool, :d_boat, :p_vehicle, :p_misctool, :p_boat, add_fuels_attributes: [:id, :fuel_type_id, :description, :quantity, :unit_type_id])
+      params.require(:unit_fuel).permit(:issue_date, :unit_id, :d_vessel, :d_vehicle, :d_misctool, :d_boat, :p_vehicle, :p_misctool, :p_boat, add_fuels_attributes: [:id, :fuel_type_id, :description, :quantity, :unit_type_id], external_issueds_attributes: [:id, :fuel_type_id, :quantity, :unit_type_id, :source], external_supplieds_attributes: [:id, :fuel_type_id, :quantity, :unit_type_id, :source])
     end
 end

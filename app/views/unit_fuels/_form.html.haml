@@ -11,12 +11,29 @@
       .controls= f.text_field :issue_date, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
 
     %br
+	
+    
+    %b= t 'unit_fuels.external_issued'
+    = t 'unit_fuels.tab_applicable'
+    %b Depot. 
+    %font{:color => "blue"}
+      = link_to (t 'external_issueds.add_details'),'#' 
+    = t 'unit_fuels.link_available'
+    %b Depot.
+    %br
+    = t 'unit_fuels.in' 
+
+    
+    %br
+    %br
  
     %ul.nav.nav-tabs
       %li.active= link_to t('unit_fuels.diesel_usage'),  '#tab1', data: {toggle: 'tab'}
       %li= link_to t('unit_fuels.petrol_usage'),  '#tab2', data: {toggle: 'tab'}
       %li= link_to t('unit_fuels.other_usage'),  '#tab3', data: {toggle: 'tab'}
- 
+      %li= link_to t('unit_fuels.external_supplied'),  '#tab4', data: {toggle: 'tab'}      
+      %li= link_to t('unit_fuels.external_issued'),  '#tab5', data: {toggle: 'tab'}
+	   
     #myTabContent.tab-content	
       #tab1.tab-pane.active
         %br
@@ -62,7 +79,37 @@
             = f.fields_for :add_fuels do |builder|
               = render 'add_fuel_fields', f: builder
             = link_to_add_fields (t 'add_fuels.add_details'), f, :add_fuels
-				
+
+      #tab4.tab-pane
+        .row
+          .span8
+            %font{:size => "-1"}
+              /=t 'helpers.prompt.external_supplieds'
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            = f.fields_for :external_supplieds do |builder|
+              = render 'external_supplied_fields', f: builder
+            = link_to_add_fields (t 'external_supplieds.add_details'), f, :external_supplieds
+
+      #tab5.tab-pane
+        - @depot_ids=Unit.where("id IN(?)",FuelTank.pluck(:unit_id)).pluck(:id)
+        - if (!@unit_fuel.nil? || !@unit_fuel.blank?) && @unit_fuel.id && @depot_ids.include?(@unit_fuel.unit_id)
+          .row
+            .span8
+              %font{:size => "-1"}
+                /=t 'helpers.prompt.external_issueds'
+          .form-group
+            .col-lg-offset-2.col-lg-10
+              = f.fields_for :external_issueds do |builder|
+                = render 'external_issued_fields', f: builder
+              = link_to_add_fields (t 'external_issueds.add_details'), f, :external_issueds
+        - else
+          .row
+            .span8
+              &nbsp;&nbsp;&nbsp;
+              %font{:color => "red"}=t 'helpers.prompt.caution_not_depot'
+		  
+		  				
     .form-actions
       = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |

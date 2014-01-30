@@ -310,6 +310,8 @@ ms_MY:
     issue_date: Tarikh
     petrol_usage: Penggunaan Petrol
     diesel_usage: Penggunaan Diesel
+    external_issued: Bekal Kepada
+    external_supplied: Ambil Daripada
     other_usage: Lain-Lain Bahan PMP
     new: Bahan PMP Baru di Unit 
     edit: Sunting Bahan PMP di Unit
@@ -326,6 +328,9 @@ ms_MY:
     description: Deskripsi 
     quantity: Kuantiti
     unit_type_id: Unit Ukuran
+    tab_applicable: "(TAB) hanya terpakai untuk" 
+    link_available: "(pautan) hanya wujud setelah rekod 'Bahan PMP di Unit' dicipta untuk "
+    in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     new: Lain-Lain Bahan PMP Baru di Unit
@@ -336,6 +341,28 @@ ms_MY:
     quantity: Kuantiti
     unit_type_id: Unit Ukuran
     new_addfuel: Lain-Lain Bahan PMP Baru
+    add_details: Tambah Butiran
+  external_issueds:
+    title: "Bekal Darat / Udara"
+    new: "Bekal Darat / Udara Baru"
+    edit: "Sunting Bekal Darat / Bekal Udara"
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    source: Bekal Kepada
+    new_externalissued: Bekal Kepada Baru
+    add_details: Tambah Butiran
+  external_supplieds:
+    title: "Ambil Darat / Udara"
+    new: "Ambil Darat / Udara Baru"
+    edit: "Sunting Ambil Darat / Ambil Udara"
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    source: Ambil Daripada
+    new_externalsupplied: Ambil Daripada Baru
     add_details: Tambah Butiran
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
@@ -449,6 +476,8 @@ ms_MY:
         current: Baki Semasa Bahan PMP
         unit_type_id: Unit Ukuran
       unit_fuel:
+        unit_id: "UNIT *"
+        issue_date: Tarikh
         d_vessel: Kapal
         d_vehicle: Kenderaan
         d_misctool: Alat Pelbagai
@@ -462,6 +491,18 @@ ms_MY:
         description: Deskripsi 
         quantity: Kuantiti
         unit_type_id: Unit Ukuran
+      external_issued:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        unit_type_id: Unit Ukuran
+        quantity: Kuantiti
+        source: Bekal Kepada
+      external_supplied:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        unit_type_id: Unit Ukuran
+        quantity: Kuantiti
+        source: Ambil Daripada
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -490,7 +531,9 @@ ms_MY:
       balance: "* Baki semasa bahan PMP pada akhir bulan untuk setiap tangki"
       summary: "* Baki stok bahan PMP pada akhir bulan untuk setiap jenis bahan PMP"
       other_fuel: "* Untuk bahan PMP selain daripada Diesel dan Petrol"
-            
+      select_source1: Pilih Penerima
+      select_source2: Pilih Pembekal
+      caution_not_depot: Sila ambil perhatian bahagian ini hanya terpakai untuk Depot            
         
         
   

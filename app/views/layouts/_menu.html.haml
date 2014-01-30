@@ -51,7 +51,17 @@
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.depot_listing'), units_path(:id=>1)
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'depot_fuels.title'), depot_fuels_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_supplieds.title3'), fuel_supplieds_path
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_issueds.title3'), fuel_issueds_path				
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_issueds.title3'), fuel_issueds_path
+          %li.icon.icon-left
+            = link_to (t 'menu.unit'), '#'
+            .mp-level
+              %h2.icon= t 'menu.fuel'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'unit_fuels.title'), unit_fuels_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'add_fuels.title'), add_fuels_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'external_supplieds.title'), external_supplieds_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'external_issueds.title'), external_issueds_path						
           /%li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_tanks.title'), fuel_tanks_path
           %li.icon.icon-left
             = link_to (t 'menu.fuel_tank'), '#'
@@ -73,7 +83,6 @@
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path(:id=>0)
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'ranks.title'), ranks_path
-
 
           
         

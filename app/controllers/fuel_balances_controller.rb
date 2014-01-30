@@ -4,7 +4,7 @@ class FuelBalancesController < ApplicationController
   # GET /fuel_balances
   # GET /fuel_balances.json
   def index
-    @fuel_balances = FuelBalance.all
+    @fuel_balances = FuelBalance.all.order(:depot_fuel_id)
   end
 
   # GET /fuel_balances/1

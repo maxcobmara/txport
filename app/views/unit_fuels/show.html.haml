@@ -15,7 +15,9 @@
   %li.active= link_to t('unit_fuels.diesel_usage'),  '#tab1', data: {toggle: 'tab'}
   %li= link_to t('unit_fuels.petrol_usage'),  '#tab2', data: {toggle: 'tab'}
   %li= link_to t('unit_fuels.other_usage'),  '#tab3', data: {toggle: 'tab'}
-  
+  %li= link_to t('unit_fuels.external_supplied'),  '#tab4', data: {toggle: 'tab'}
+  %li= link_to t('unit_fuels.external_issued'),  '#tab5', data: {toggle: 'tab'}
+    
 #myTabContent.tab-content{:style => "padding-left:50px;"}		
   #tab1.tab-pane.active
     .div{:style => "padding: 15px 50px 10px 50px; "}
@@ -83,6 +85,7 @@
                 NIL 
               - else
                 =@unit_fuel.p_boat.to_i
+
   #tab3.tab-pane
     .row
       .span8
@@ -108,7 +111,66 @@
               %td{:align => "center"}= unit_fuel_add.quantity.to_i
               %td{:align => "center"}= check_kin {unit_fuel_add.unit_type.description}
               %td 
-			
+
+
+  #tab4.tab-pane
+    .row
+      .span8
+        %font{:size => "-1"}
+          /=t 'helpers.prompt.other_fuel'
+    .div{:style => "padding: 15px 50px 10px 50px; "}
+    - if @unit_fuel.external_supplieds == []
+      No Items
+    - else
+      %table{:width => "75%"}
+        %thead
+          %tr
+            %th{:align => "left"}= t 'external_supplieds.fuel_type_id'
+            %th= t 'external_supplieds.quantity'
+            %th= t 'external_supplieds.unit_type_id'
+            %th= t 'external_supplieds.source'
+            %th
+        %tbody 
+          - for unit_external_supplied in @unit_fuel.external_supplieds
+            %tr
+              %td= check_kin {unit_external_supplied.fuel_type.name}
+              %td{:align => "center"}= unit_external_supplied.quantity.to_i
+              %td{:align => "center"}= check_kin {unit_external_supplied.unit_type.description}
+              %td{:align => "center"}= unit_external_supplied.resource.name
+              %td 
+	
+
+  #tab5.tab-pane
+    - @depot_ids=Unit.where("id IN(?)",FuelTank.pluck(:unit_id)).pluck(:id)
+    - if (!@unit_fuel.nil? || !@unit_fuel.blank?) && @unit_fuel.id && @depot_ids.include?(@unit_fuel.unit_id)
+      .row
+        .span8
+          %font{:size => "-1"}
+            /=t 'helpers.prompt.other_fuel'
+      .div{:style => "padding: 15px 50px 10px 50px; "}
+      - if @unit_fuel.external_issueds == []
+        No Items
+      - else
+        %table{:width => "75%"}
+          %thead
+            %tr
+              %th{:align => "left"}= t 'external_issueds.fuel_type_id'
+              %th= t 'external_issueds.quantity'
+              %th= t 'external_issueds.unit_type_id'
+              %th= t 'external_issueds.source'
+              %th
+          %tbody 
+            - for unit_external_issued in @unit_fuel.external_issueds
+              %tr
+                %td= check_kin {unit_external_issued.fuel_type.name}
+                %td{:align => "center"}= unit_external_issued.quantity.to_i
+                %td{:align => "center"}= check_kin {unit_external_issued.unit_type.description}
+                %td{:align => "center"}= unit_external_issued.resource.name
+                %td
+    - else
+      .div{:style => "padding: 15px 50px 10px 50px; "}
+      %font{:color => "red"}=t 'helpers.prompt.caution_not_depot'
+		
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), unit_fuels_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |

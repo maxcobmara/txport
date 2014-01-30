@@ -1,0 +1,2 @@
+module ExternalSuppliedsHelper
+end

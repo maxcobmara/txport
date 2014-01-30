@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129103133) do
+ActiveRecord::Schema.define(version: 20140129141247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,26 @@ ActiveRecord::Schema.define(version: 20140129103133) do
   create_table "depot_fuels", force: true do |t|
     t.integer  "unit_id"
     t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_issueds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_supplieds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
