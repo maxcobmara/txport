@@ -336,6 +336,7 @@ en:
     new_balance: New Tank Balance
   unit_fuels:
     title: Unit Fuels
+    title2: Unit Fuel Usage
     unit_id: Unit
     issue_date: Issue Date
     petrol_usage: Petrol Usage
@@ -363,6 +364,7 @@ en:
     in: "(In 'New / Edit Unit Fuel' page : For UNIT *, select a depot and click 'Submit'. Click 'Edit', select 'Issued To' and add details accordingly)"
   add_fuels:
     title: Other Fuel - Unit
+    title2: Other Fuel Usage - Unit
     new: New Other Fuel - Unit 
     edit: Edit Other Fuel - Unit
     unit_fuel_id: "Unit - Month Year"

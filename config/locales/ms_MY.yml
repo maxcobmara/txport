@@ -306,6 +306,7 @@ ms_MY:
     new_balance: Baki Tangki Baru
   unit_fuels:
     title: Bahan PMP di Unit
+    title2: Penggunaan di Unit
     unit_id: Unit
     issue_date: Tarikh
     petrol_usage: Penggunaan Petrol
@@ -333,6 +334,7 @@ ms_MY:
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
+    title2: Bahan PMP Lain di Unit
     new: Lain-Lain Bahan PMP Baru di Unit
     edit: Sunting Lain-Lain Bahan PMP di Unit
     unit_fuel_id: "Unit - Bulan Tahun"
