@@ -97,6 +97,8 @@ en:
     depot_listing: Depot Listing
     fuel_tank: Storage Tanks
     fuel_tank_listing: Storage Tank Listing
+    inden_card: Inden Cards
+    inden_card_listing: Inden Card Listing
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  
@@ -396,6 +398,40 @@ en:
     source: Supplied By
     new_externalsupplied: New External Supplied
     add_details: Add Details
+  inden_cards:
+    title: Inden Cards
+    title2: Inden Card
+    new: New Inden Card
+    edit: Edit Inden Card
+    ru_staff: Staff?
+    staff_id: Staff
+    unit_id: Unit
+    card_holder: Card Holder
+    parent_unit: Unit
+    serial_no: Serial No
+    daily_limit: Daily Limit
+    monthly_limit: Monthly Limit
+    issue_date: Issue Date
+    start_date: Start Date
+    end_date: End Date
+    staff_id: Staff
+    unit_id: Unit
+  inden_usages:
+    title: Inden Card Usages
+    title2: Inden Card Usage
+    new: New Inden Card Usage
+    edit: Edit Inden Card Usage
+    inden_card_id: Inden Card
+    inden_card_serial: "Inden Card Serial No"
+    petrol_ltr: "Petrol (litre)"
+    petrol_price: "Petrol (RM)"
+    diesel_ltr: "Diesel (litre)"
+    diesel_price: "Diesel (RM)"
+    issue_date: Issue Date
+    issue_date2: Month-Year
+    issued_monthly: "* Usage to be issued monthly"
+    add_details: Add Details
+    usage_details: Card Usage Detail
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -533,6 +569,27 @@ en:
         unit_type_id: Unit Type
         quantity: Quantity
         source: Supplied By
+      inden_card:
+        title: Inden Card
+        ru_staff: Staff?
+        card_holder: Card Holder
+        parent_unit: Unit
+        serial_no: Serial No
+        daily_limit: Daily Limit
+        monthly_limit: Monthly Limit
+        issue_date: Issue Date
+        start_date: Start Date
+        end_date: End Date
+        staff_id: Staff
+        unit_id: Unit
+      inden_usage:
+        inden_card_id: Inden Card
+        inden_card_serial: "Inden Card Serial No"
+        petrol_ltr: "Petrol (litre)"
+        petrol_price: "Petrol (RM)"
+        diesel_ltr: "Diesel (litre)"
+        diesel_price: "Diesel (RM)"
+        issue_date: Issue Date
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -563,4 +620,7 @@ en:
       select_source1: Select Recepient
       select_source2: Select Supplier
       caution_not_depot: Please note this part only applicable to Depot
+      select_inden_card: Select Inden Card
+      inden_card: Inden Card Usage in a Month
+      add_edit_inden_usage: "To Add / Edit Monthly Inden Card Usage Record, Please Proceed to Menu : Fuel | Inden Cards"
       

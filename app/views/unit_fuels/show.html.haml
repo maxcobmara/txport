@@ -17,7 +17,8 @@
   %li= link_to t('unit_fuels.other_usage'),  '#tab3', data: {toggle: 'tab'}
   %li= link_to t('unit_fuels.external_supplied'),  '#tab4', data: {toggle: 'tab'}
   %li= link_to t('unit_fuels.external_issued'),  '#tab5', data: {toggle: 'tab'}
-    
+  %li= link_to t('inden_cards.title'),  '#tab6', data: {toggle: 'tab'}
+      
 #myTabContent.tab-content{:style => "padding-left:50px;"}		
   #tab1.tab-pane.active
     .div{:style => "padding: 15px 50px 10px 50px; "}
@@ -170,7 +171,50 @@
     - else
       .div{:style => "padding: 15px 50px 10px 50px; "}
       %font{:color => "red"}=t 'helpers.prompt.caution_not_depot'
-		
+
+  #tab6.tab-pane
+    .row
+      .span8
+        %font{:size => "-1"}
+          =t 'helpers.prompt.inden_card'
+    .div{:style => "padding: 15px 50px 10px 50px; "}
+    - if @unit_fuel.add_fuels == []
+      No Items
+    - else
+      %table{:width => "75%"}
+        %thead
+          %tr
+            %th{:align => "left"}= t 'inden_cards.card_holder'
+            %th{:align => "left"}= t 'inden_cards.serial_no'
+            %th= t 'inden_usages.diesel_ltr'
+            %th= t 'inden_usages.petrol_ltr'
+            %th
+        %tbody 
+          - @begin = @unit_fuel.issue_date.at_beginning_of_month
+          - @end = @unit_fuel.issue_date.end_of_month
+		  
+          / for inden cards - own by unit
+          - for inden_card in @unit_fuel.unit.inden_cards
+            %tr
+              %td= inden_card.unit.name
+              %td= inden_card.serial_no 
+              - inden_card_usage = inden_card.inden_usages.where('issue_date >= ? AND issue_date <=?', @begin, @end) 
+              %td{:align => "center"}= inden_card_usage.sum(:diesel_ltr) 
+              %td{:align => "center"}= inden_card_usage.sum(:petrol_ltr) 
+              %td
+          / for cards - own by individual (senior officer - from current unit)
+          - for staff in @unit_fuel.unit.staffs
+            - if staff.inden_cards.nil? == false
+              %tr
+                %td= staff.staff_details
+                %td= staff.inden_cards[0].serial_no
+                - inden_card_usage = staff.inden_cards[0].inden_usages.where('issue_date >= ? AND issue_date <=?', @begin, @end) 
+                %td{:align => "center"}= inden_card_usage.sum(:diesel_ltr) 
+                %td{:align => "center"}= inden_card_usage.sum(:petrol_ltr) 
+
+    %br
+    = t 'helpers.prompt.add_edit_inden_usage'
+	
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), unit_fuels_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |

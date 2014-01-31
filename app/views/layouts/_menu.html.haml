@@ -71,9 +71,15 @@
               %ul
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel_tank_listing'), fuel_tanks_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_balances.title'), fuel_balances_path		  
-
+          %li.icon.icon-left
+            = link_to (t 'menu.inden_card'), '#'
+            .mp-level
+              %h2.icon= t 'menu.fuel'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.inden_card_listing'), inden_cards_path
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'inden_usages.title'), inden_usages_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'fuel_types.title'), fuel_types_path
-          
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.people'), '#'
       .mp-level

@@ -10,6 +10,8 @@ class Unit < ActiveRecord::Base
   has_many :unit_fuels, dependent: :destroy #for all units
   has_many :external_issueds
   has_many :external_supplieds
+  has_many :staffs, dependent: :nullify
+  has_many :inden_cards, dependent: :nullify
   
   def set_combo_code
     if ancestry_depth == 0

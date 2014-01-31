@@ -26,7 +26,6 @@ class AddFuelsController < ApplicationController
   # POST /add_fuels
   # POST /add_fuels.json
   def create
-    #@add_fuel = AddFuel.new(add_fuel_params)
     @add_fuel = AddFuel.new(add_fuel_params)
     
 

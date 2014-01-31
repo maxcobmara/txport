@@ -66,6 +66,8 @@ ms_MY:
     depot_listing: Senarai Depot
     fuel_tank: Tangki Penyimpanan
     fuel_tank_listing: Senarai Tangki
+    inden_card: Kad Inden
+    inden_card_listing: Senarai Kad Inden
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -366,6 +368,38 @@ ms_MY:
     source: Ambil Daripada
     new_externalsupplied: Ambil Daripada Baru
     add_details: Tambah Butiran
+  inden_cards:
+    title: Kad Inden
+    title2: Kad Inden
+    new: Kad Inden Baru
+    edit: Sunting Kad Inden
+    ru_staff: Staff?
+    card_holder: Pemegang Kad
+    parent_unit: Unit
+    serial_no: "No. Siri"
+    daily_limit: Had Harian
+    monthly_limit: Had Bulanan
+    issue_date: Tarikh Dikeluarkan
+    start_date: Tarikh Mula
+    end_date: Tarikh Tamat
+    staff_id: Anggota
+    unit_id: Unit
+  inden_usages:
+    title: Penggunaan Kad Inden
+    title2: Penggunaan Kad Inden
+    new: Penggunaan Kad Inden Baru
+    edit: Sunting Penggunaan Kad Inden
+    inden_card_id: Kad Inden
+    inden_card_serial: "No. Siri Kad Inden"
+    petrol_ltr: "Petrol (liter)"
+    petrol_price: "Petrol (RM)"
+    diesel_ltr: "Diesel (liter)"
+    diesel_price: "Diesel (RM)"
+    issue_date: Tarikh
+    issue_date2: Bulan-Tahun
+    issued_monthly: Penggunaan direkodkan secara bulanan
+    add_details: Tambah Butiran
+    usage_details: Butiran Penggunaan Kad Inden
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -505,6 +539,27 @@ ms_MY:
         unit_type_id: Unit Ukuran
         quantity: Kuantiti
         source: Ambil Daripada
+      inden_card:
+        title: Kad Inden
+        ru_staff: Anggota?
+        card_holder: Pemegang Kad
+        parent_unit: Unit
+        serial_no: No Siri
+        daily_limit: Had Harian
+        monthly_limit: Had Bulanan
+        issue_date: Tarikh Dikeluarkan
+        start_date: Tarikh Mula
+        end_date: Tarikh Akhir
+        staff_id: Anggota
+        unit_id: Unit
+      inden_usage:
+        inden_card_id: Kad Inden
+        inden_card_serial: "No. Siri Kad Inden"
+        petrol_ltr: "Petrol (liter)"
+        petrol_price: "Petrol (RM)"
+        diesel_ltr: "Diesel (liter)"
+        diesel_price: "Diesel (RM)"
+        issue_date: Tarikh
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -535,7 +590,10 @@ ms_MY:
       other_fuel: "* Untuk bahan PMP selain daripada Diesel dan Petrol"
       select_source1: Pilih Penerima
       select_source2: Pilih Pembekal
-      caution_not_depot: Sila ambil perhatian bahagian ini hanya terpakai untuk Depot            
+      caution_not_depot: Sila ambil perhatian bahagian ini hanya terpakai untuk Depot
+      select_inden_card: Pilih Kad Inden
+      inden_card: Penggunaan Kad Inden Dalam Sebulan
+      add_edit_inden_usage: "Untuk Menambah / Menyunting Rekod Penggunaan Bulanan Bagi Kad Inden, Sila ke Menu : Bahan PMP | Kad Inden"
         
         
   

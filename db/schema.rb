@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129141247) do
+ActiveRecord::Schema.define(version: 20140131065857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,31 @@ ActiveRecord::Schema.define(version: 20140129141247) do
     t.datetime "updated_at"
   end
 
+  create_table "inden_cards", force: true do |t|
+    t.boolean  "ru_staff"
+    t.string   "serial_no"
+    t.decimal  "daily_limit"
+    t.decimal  "monthly_limit"
+    t.date     "issue_date"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "staff_id"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inden_usages", force: true do |t|
+    t.integer  "inden_card_id"
+    t.decimal  "petrol_ltr"
+    t.decimal  "petrol_price"
+    t.decimal  "diesel_ltr"
+    t.decimal  "diesel_price"
+    t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "kit_staffs", force: true do |t|
     t.integer  "kit_id"
     t.integer  "staff_id"
@@ -201,6 +226,7 @@ ActiveRecord::Schema.define(version: 20140129141247) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unit_id"
   end
 
   create_table "uniform_items", force: true do |t|
