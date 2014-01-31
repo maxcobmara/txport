@@ -6,7 +6,9 @@ class DepotFuel < ActiveRecord::Base
   accepts_nested_attributes_for :fuel_supplieds, allow_destroy: true, reject_if: proc { |fuel_supplieds| fuel_supplieds[:quantity].blank? }
   has_many :fuel_balances, dependent: :destroy
   accepts_nested_attributes_for :fuel_balances, allow_destroy: true, reject_if: proc { |fuel_balances| fuel_balances[:fuel_tank_id].blank? }
-    
+  
+  validates_presence_of :unit_id, :issue_date
+      
   def month_depot
     "#{depot.name} "+"#{issue_date.strftime("%b")} "+"#{issue_date.year}"
   end 

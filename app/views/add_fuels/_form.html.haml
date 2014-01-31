@@ -7,10 +7,9 @@
       %dt
         %strong= t 'unit_fuels.unit_fuel_id'
       %dd
-        = h @add_fuel.unit_fuel.month_unit
+        =h @add_fuel.unit_fuel.month_unit
     %br
 
-  
     .control-group
       = f.label :fuel_type_id, :class => 'control-label'
       .controls= f.collection_select :fuel_type_id, FuelType.all, :id, :name, :include_blank => t('helpers.prompt.select_fuel_type'), :html_options => {:class => 'selectpicker'}

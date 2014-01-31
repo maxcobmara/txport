@@ -1,0 +1,39 @@
+- provide(:title, 'External Issueds')
+- model_class = ExternalIssued
+.page-header
+  %h1= t 'external_issueds.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      /%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_external_issued_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'external_issueds.unit_fuel_id'
+      %th= t 'external_issueds.fuel_type_id'
+      %th= t 'external_issueds.quantity'
+      %th= t 'external_issueds.unit_type_id'
+      %th= t 'external_issueds.source'
+      %th
+  %tbody
+    - @external_issueds.each do |external_issued|
+      %tr
+        %td= check_kin {external_issued.unit_fuel.month_unit}
+        %td= check_kin {external_issued.fuel_type.name}
+        %td= external_issued.quantity.to_i
+        %td= check_kin {external_issued.unit_type.description}
+        %td= check_kin {external_issued.resource.name}
+        %td
+        = render :partial => 'action_menu', :locals => { :external_issued => external_issued }
+      
+      
+
+
+

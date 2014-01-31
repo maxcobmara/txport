@@ -97,6 +97,8 @@ en:
     depot_listing: Depot Listing
     fuel_tank: Storage Tanks
     fuel_tank_listing: Storage Tank Listing
+    inden_card: Inden Cards
+    inden_card_listing: Inden Card Listing
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  
@@ -336,11 +338,14 @@ en:
     new_balance: New Tank Balance
   unit_fuels:
     title: Unit Fuels
+    title2: Unit Fuel Usage
     unit_id: Unit
     issue_date: Issue Date
     petrol_usage: Petrol Usage
     diesel_usage: Diesel Usage
     other_usage: Other Fuel Type
+    external_issued: Issued To
+    external_supplied: Supplied By
     new: New Unit Fuel
     edit: Edit Unit Fuel
     quantity_ltr: Quantity in Litre
@@ -356,8 +361,12 @@ en:
     description: Description
     quantity: Quantity
     unit_type_id: Unit Type
+    tab_applicable: "(TAB) only applicable for" 
+    link_available: "link is available upon creation of 'Unit Fuel' for a "
+    in: "(In 'New / Edit Unit Fuel' page : For UNIT *, select a depot and click 'Submit'. Click 'Edit', select 'Issued To' and add details accordingly)"
   add_fuels:
     title: Other Fuel - Unit
+    title2: Other Fuel Usage - Unit
     new: New Other Fuel - Unit 
     edit: Edit Other Fuel - Unit
     unit_fuel_id: "Unit - Month Year"
@@ -367,6 +376,69 @@ en:
     unit_type_id: Unit Type
     new_addfuel: New Other Fuel Type
     add_details: Add Details
+  external_issueds:
+    title: External Issueds
+    new: New External Issued
+    edit: Edit External Issued
+    unit_fuel_id: "Unit - Month Year"
+    fuel_type_id: Fuel Type
+    unit_type_id: Unit Type
+    quantity: Quantity
+    source: Issued To
+    new_externalissued: New External Issued
+    add_details: Add Details
+  external_supplieds:
+    title: External Supplieds
+    new: New External Supplied
+    edit: Edit External Supplied
+    unit_fuel_id: "Unit - Month Year"
+    fuel_type_id: Fuel Type
+    unit_type_id: Unit Type
+    quantity: Quantity
+    source: Supplied By
+    new_externalsupplied: New External Supplied
+    add_details: Add Details
+  inden_cards:
+    title: Inden Cards
+    title2: Inden Card
+    new: New Inden Card
+    edit: Edit Inden Card
+    ru_staff: Staff?
+    staff_id: Staff
+    unit_id: Unit
+    card_holder: Card Holder
+    parent_unit: Unit
+    serial_no: Serial No
+    daily_limit: Daily Limit
+    monthly_limit: Monthly Limit
+    issue_date: Issue Date
+    start_date: Start Date
+    end_date: End Date
+    staff_id: Staff
+    unit_id: Unit
+  inden_usages:
+    title: Inden Card Usages
+    title2: Inden Card Usage
+    new: New Inden Card Usage
+    edit: Edit Inden Card Usage
+    inden_card_id: Inden Card
+    inden_card_serial: "Inden Card Serial No"
+    petrol_ltr: "Petrol (litre)"
+    petrol_price: "Petrol (RM)"
+    diesel_ltr: "Diesel (litre)"
+    diesel_price: "Diesel (RM)"
+    issue_date: Issue Date
+    issue_date2: Month-Year
+    issued_monthly: "* Usage & Petronas Quantity to be issued monthly"
+    add_details: Add Details
+    usage_details: Card Usage Details
+    usage_details2: "Card Usage Details & Petronas Quantity"	
+    petronas_p_ltr: "Petrol (litre)"
+    petronal_p_price: "Petrol (RM)"
+    petronas_d_ltr: "Diesel (litre)"
+    petronas_d_price: "Diesel (RM)"
+    petronas_qty: Petronas Quantity
+    usage: Usage
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -477,6 +549,8 @@ en:
         current: Fuel Current Balance
         unit_type_id: Unit Type
       unit_fuel:
+        unit_id: "UNIT *"
+        issue_date: Issue Date
         d_vessel: Vessel
         d_vehicle: Vehicle
         d_misctool: Misc Tools
@@ -489,7 +563,44 @@ en:
         fuel_type_id: Fuel Type
         description: Description
         quantity: Quantity
-        unit_type_id: Unit Type		
+        unit_type_id: Unit Type
+      external_issued:
+        unit_fuel_id: "Unit - Month Year"
+        fuel_type_id: Fuel Type
+        unit_type_id: Unit Type
+        quantity: Quantity
+        source: Issued To
+      external_supplied:
+        unit_fuel_id: "Unit - Month Year"
+        fuel_type_id: Fuel Type
+        unit_type_id: Unit Type
+        quantity: Quantity
+        source: Supplied By
+      inden_card:
+        title: Inden Card
+        ru_staff: Staff?
+        card_holder: Card Holder
+        parent_unit: Unit
+        serial_no: Serial No
+        daily_limit: Daily Limit
+        monthly_limit: Monthly Limit
+        issue_date: Issue Date
+        start_date: Start Date
+        end_date: End Date
+        staff_id: Staff
+        unit_id: Unit
+      inden_usage:
+        inden_card_id: Inden Card
+        inden_card_serial: "Inden Card Serial No"
+        petrol_ltr: "Petrol (litre)"
+        petrol_price: "Petrol (RM)"
+        diesel_ltr: "Diesel (litre)"
+        diesel_price: "Diesel (RM)"
+        issue_date: Issue Date
+        petronas_p_ltr: "Petrol (litre)"
+        petronal_p_price: "Petrol (RM)"
+        petronas_d_ltr: "Diesel (litre)"
+        petronas_d_price: "Diesel (RM)"
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -517,3 +628,11 @@ en:
       balance: "* Current balance of fuel at the end of the month for each tank"
       summary: "* Stock balance of fuel at the end of the month for each fuel type"
       other_fuel: "* For fuel of type other than Diesel and Petrol"
+      select_source1: Select Recepient
+      select_source2: Select Supplier
+      caution_not_depot: Please note this part only applicable to Depot
+      select_inden_card: Select Inden Card
+      inden_card: Inden Card Usage in a Month
+      add_edit_inden_usage: "To Add / Edit Monthly Inden Card Usage Record, Please Proceed to Menu : Fuel | Inden Cards"
+      no_items: No Items
+      

@@ -8,6 +8,10 @@ class Unit < ActiveRecord::Base
   has_many :vehicle_cards, dependent: :nullify
   has_many :depot_fuels, dependent: :destroy #only for depot (unit having fuel tanks)
   has_many :unit_fuels, dependent: :destroy #for all units
+  has_many :external_issueds
+  has_many :external_supplieds
+  has_many :staffs, dependent: :nullify
+  has_many :inden_cards, dependent: :nullify
   
   def set_combo_code
     if ancestry_depth == 0

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129103133) do
+ActiveRecord::Schema.define(version: 20140131111338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,26 @@ ActiveRecord::Schema.define(version: 20140129103133) do
     t.datetime "updated_at"
   end
 
+  create_table "external_issueds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_supplieds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fuel_balances", force: true do |t|
     t.integer  "depot_fuel_id"
     t.integer  "fuel_tank_id"
@@ -108,6 +128,35 @@ ActiveRecord::Schema.define(version: 20140129103133) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "inden_cards", force: true do |t|
+    t.boolean  "ru_staff"
+    t.string   "serial_no"
+    t.decimal  "daily_limit"
+    t.decimal  "monthly_limit"
+    t.date     "issue_date"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "staff_id"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inden_usages", force: true do |t|
+    t.integer  "inden_card_id"
+    t.decimal  "petrol_ltr"
+    t.decimal  "petrol_price"
+    t.decimal  "diesel_ltr"
+    t.decimal  "diesel_price"
+    t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "petronas_p_ltr"
+    t.decimal  "petronal_p_price"
+    t.decimal  "petronas_d_ltr"
+    t.decimal  "petronas_d_price"
   end
 
   create_table "kit_staffs", force: true do |t|
@@ -181,6 +230,7 @@ ActiveRecord::Schema.define(version: 20140129103133) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unit_id"
   end
 
   create_table "uniform_items", force: true do |t|
