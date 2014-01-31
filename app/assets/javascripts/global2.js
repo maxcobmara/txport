@@ -14,14 +14,7 @@ $(document).ready(function(){
     autoclose: true,
     todayBtn: true
   });
-  //http://stackoverflow.com/questions/11933173/how-to-restrict-the-selectable-date-ranges-in-bootstrap-datepicker
-  $('[data-behaviour=datepicker_2beforeafter]').datepicker({
-    format: "yyyy/mm/dd",
-    startDate: "-2m",
-	endDate: "+2m"
-    autoclose: true,
-    todayBtn: true
-  });
+
   
   $('[data-behaviour=datepicker_year]').datepicker({
       format: "yyyy",
@@ -60,12 +53,12 @@ function switchvisibility(el) {
 //for datepicker to works in nested forms
 //http://stackoverflow.com/questions/10824587/adding-a-date-picker-to-a-nested-form-field
 $(function() {
-  $(".add_fields_datepicker").datepicker({ format: 'yyyy/mm/dd', autoSize:true, startDate: "-2m", endDate: "+2m"});
+  $(".add_fields_datepicker").datepicker({ format: 'yyyy/mm/dd', autoSize:true});
 });
 
 $(function() {
     $('.add_fields').on('click', function(){
-      $(this).datepicker({ format: 'yyyy/mm/dd', autoSize:true, startDate: "-2m", endDate: "+2m"});
+      $(this).datepicker({ format: 'yyyy/mm/dd', autoSize:true});
     });
 });
 

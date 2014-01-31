@@ -69,6 +69,6 @@ class IndenCardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inden_card_params
-      params.require(:inden_card).permit(:ru_staff, :serial_no, :daily_limit, :monthly_limit, :issue_date, :start_date, :end_date, :staff_id, :unit_id, inden_usages_attributes: [:id, :inden_card_id, :issue_date, :petrol_ltr, :petrol_price, :diesel_ltr, :diesel_price] )
+      params.require(:inden_card).permit(:ru_staff, :serial_no, :daily_limit, :monthly_limit, :issue_date, :start_date, :end_date, :staff_id, :unit_id, inden_usages_attributes: [:id, :inden_card_id, :issue_date, :petrol_ltr, :petrol_price, :diesel_ltr, :diesel_price, :petronas_p_ltr, :petronal_p_price, :petronas_d_ltr, :petronas_d_price])
     end
 end

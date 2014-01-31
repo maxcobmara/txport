@@ -30,10 +30,10 @@
 
     
 %br
-%p= t 'inden_usages.usage_details'
+%p= t 'inden_usages.usage_details2'
 %hr{:style => "padding:0; margin:0;"}
 - if @inden_card.inden_usages == []
-  No Items
+  = t 'helpers.prompt.no_items'
 - else
   %table{:width => "75%"}
     %thead
@@ -43,6 +43,10 @@
         %th= t 'inden_usages.petrol_price'
         %th= t 'inden_usages.diesel_ltr'
         %th= t 'inden_usages.diesel_price'
+        %th= t 'inden_usages.petronas_p_ltr'
+        %th= t 'inden_usages.petronal_p_price'
+        %th= t 'inden_usages.petronas_d_ltr'
+        %th= t 'inden_usages.petronas_d_price'
         %th
     %tbody 
     - for inden_card_usage in @inden_card.inden_usages
@@ -52,6 +56,10 @@
         %td{:align => "center"}= ringgols(inden_card_usage.petrol_price)
         %td{:align => "center"}= inden_card_usage.diesel_ltr
         %td{:align => "center"}= inden_card_usage.diesel_price
+        %td{:align => "center"}= inden_card_usage.petronas_p_ltr
+        %td{:align => "center"}= ringgols(inden_card_usage.petronal_p_price)
+        %td{:align => "center"}= inden_card_usage.petronas_d_ltr
+        %td{:align => "center"}= inden_card_usage.petronas_d_price
         %td 
 
 %br

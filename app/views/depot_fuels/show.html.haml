@@ -36,7 +36,7 @@
           =t 'helpers.prompt.supplied'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @depot_fuel.fuel_supplieds == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead
@@ -61,7 +61,7 @@
           =t 'helpers.prompt.issued'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @depot_fuel.fuel_issueds == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead
@@ -85,7 +85,7 @@
           =t 'helpers.prompt.balance'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @depot_fuel.fuel_balances == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead

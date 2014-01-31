@@ -429,9 +429,16 @@ en:
     diesel_price: "Diesel (RM)"
     issue_date: Issue Date
     issue_date2: Month-Year
-    issued_monthly: "* Usage to be issued monthly"
+    issued_monthly: "* Usage & Petronas Quantity to be issued monthly"
     add_details: Add Details
-    usage_details: Card Usage Detail
+    usage_details: Card Usage Details
+    usage_details2: "Card Usage Details & Petronas Quantity"	
+    petronas_p_ltr: "Petrol (litre)"
+    petronal_p_price: "Petrol (RM)"
+    petronas_d_ltr: "Diesel (litre)"
+    petronas_d_price: "Diesel (RM)"
+    petronas_qty: Petronas Quantity
+    usage: Usage
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -590,6 +597,10 @@ en:
         diesel_ltr: "Diesel (litre)"
         diesel_price: "Diesel (RM)"
         issue_date: Issue Date
+        petronas_p_ltr: "Petrol (litre)"
+        petronal_p_price: "Petrol (RM)"
+        petronas_d_ltr: "Diesel (litre)"
+        petronas_d_price: "Diesel (RM)"
     prompt:
       select_manufacturer: Select Manufacturer
       select_category: Select Category
@@ -623,4 +634,5 @@ en:
       select_inden_card: Select Inden Card
       inden_card: Inden Card Usage in a Month
       add_edit_inden_usage: "To Add / Edit Monthly Inden Card Usage Record, Please Proceed to Menu : Fuel | Inden Cards"
+      no_items: No Items
       

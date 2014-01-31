@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131065857) do
+ActiveRecord::Schema.define(version: 20140131111338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,10 @@ ActiveRecord::Schema.define(version: 20140131065857) do
     t.date     "issue_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "petronas_p_ltr"
+    t.decimal  "petronal_p_price"
+    t.decimal  "petronas_d_ltr"
+    t.decimal  "petronas_d_price"
   end
 
   create_table "kit_staffs", force: true do |t|

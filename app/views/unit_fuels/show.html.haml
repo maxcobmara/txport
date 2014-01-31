@@ -94,7 +94,7 @@
           =t 'helpers.prompt.other_fuel'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @unit_fuel.add_fuels == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead
@@ -121,7 +121,7 @@
           /=t 'helpers.prompt.other_fuel'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @unit_fuel.external_supplieds == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead
@@ -150,7 +150,7 @@
             /=t 'helpers.prompt.other_fuel'
       .div{:style => "padding: 15px 50px 10px 50px; "}
       - if @unit_fuel.external_issueds == []
-        No Items
+        = t 'helpers.prompt.no_items'
       - else
         %table{:width => "75%"}
           %thead
@@ -179,7 +179,7 @@
           =t 'helpers.prompt.inden_card'
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @unit_fuel.add_fuels == []
-      No Items
+      = t 'helpers.prompt.no_items'
     - else
       %table{:width => "75%"}
         %thead

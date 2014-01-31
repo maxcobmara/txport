@@ -397,9 +397,16 @@ ms_MY:
     diesel_price: "Diesel (RM)"
     issue_date: Tarikh
     issue_date2: Bulan-Tahun
-    issued_monthly: Penggunaan direkodkan secara bulanan
+    issued_monthly: "* Penggunaan dan Kuantiti Petronas direkodkan secara bulanan"
     add_details: Tambah Butiran
     usage_details: Butiran Penggunaan Kad Inden
+    usage_details2: "Butiran Penggunaan Kad Inden & Kuantiti Petronas"
+    petronas_p_ltr: "Petrol (liter)"
+    petronal_p_price: "Petrol (RM)"
+    petronas_d_ltr: "Diesel (liter)"
+    petronas_d_price: "Diesel (RM)"
+    petronas_qty: Kuantiti Petronas
+    usage: Penggunaan
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -560,6 +567,10 @@ ms_MY:
         diesel_ltr: "Diesel (liter)"
         diesel_price: "Diesel (RM)"
         issue_date: Tarikh
+        petronas_p_ltr: "Petrol (liter)"
+        petronal_p_price: "Petrol (RM)"
+        petronas_d_ltr: "Diesel (liter)"
+        petronas_d_price: "Diesel (RM)"
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -594,7 +605,7 @@ ms_MY:
       select_inden_card: Pilih Kad Inden
       inden_card: Penggunaan Kad Inden Dalam Sebulan
       add_edit_inden_usage: "Untuk Menambah / Menyunting Rekod Penggunaan Bulanan Bagi Kad Inden, Sila ke Menu : Bahan PMP | Kad Inden"
-        
+      no_items: Tiada Butiran  
         
   
   

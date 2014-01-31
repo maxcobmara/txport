@@ -1,7 +1,17 @@
 %fieldset
   .form-inline{role: "form"}
+    = t 'inden_usages.issue_date'
     = f.text_field :issue_date, :class => "add_fields_datepicker"
+    %br
+    = t 'inden_usages.usage'	
     = f.text_field :petrol_ltr, :class => 'text_field input-small', :placeholder => (t 'inden_usages.petrol_ltr')
     = f.text_field :petrol_price, :class => 'text_field input-small', :placeholder => (t 'inden_usages.petrol_price')
     = f.text_field :diesel_ltr, :class => 'text_field input-small', :placeholder => (t 'inden_usages.diesel_ltr')
     = f.text_field :diesel_price , :class => 'text_field input-small', :placeholder => (t 'inden_usages.diesel_price')
+    %br
+    = t 'inden_usages.petronas_qty'
+    = f.text_field :petronas_p_ltr, :class => 'text_field input-small', :placeholder => (t 'inden_usages.petronas_p_ltr')
+    = f.text_field :petronal_p_price, :class => 'text_field input-small', :placeholder => (t 'inden_usages.petronal_p_price')
+    = f.text_field :petronas_d_ltr, :class => 'text_field input-small', :placeholder => (t 'inden_usages.petronas_d_ltr')
+    = f.text_field :petronas_d_price , :class => 'text_field input-small', :placeholder => (t 'inden_usages.petronas_d_price')
+%br
