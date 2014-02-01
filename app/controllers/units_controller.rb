@@ -13,6 +13,9 @@ class UnitsController < ApplicationController
     else
       @units = Unit.all
     end 
+    
+    @search = Unit.search(params[:q])
+    @units = @search.result
   end
 
   # GET /units/1

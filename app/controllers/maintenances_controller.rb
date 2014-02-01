@@ -5,6 +5,8 @@ class MaintenancesController < ApplicationController
   # GET /maintenances.json
   def index
     @maintenances = Maintenance.all
+    @search = Maintenance.search(params[:q])
+    @maintenances = @search.result
   end
 
   # GET /maintenances/1

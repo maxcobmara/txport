@@ -5,6 +5,8 @@ class VehicleCardsController < ApplicationController
   # GET /vehicle_cards.json
   def index
     @vehicle_cards = VehicleCard.all
+    @search = VehicleCard.search(params[:q])
+    @vehicle_cards = @search.result
   end
 
   # GET /vehicle_cards/1

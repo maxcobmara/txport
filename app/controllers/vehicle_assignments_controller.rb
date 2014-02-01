@@ -5,6 +5,9 @@ class VehicleAssignmentsController < ApplicationController
   # GET /vehicle_assignments.json
   def index
     @vehicle_assignments = VehicleAssignment.all
+    @search = VehicleAssignment.search(params[:q])
+    @vehicle_assignments = @search.result
+    
   end
 
   # GET /vehicle_assignments/1

@@ -5,6 +5,8 @@ class VehicleRoadTaxesController < ApplicationController
   # GET /vehicle_road_taxes.json
   def index
     @vehicle_road_taxes = VehicleRoadTax.order(:end_on => :desc).all
+    @search = VehicleRoadTax.search(params[:q])
+    @vehicle_road_taxes = @search.result
   end
 
   # GET /vehicle_road_taxes/1
