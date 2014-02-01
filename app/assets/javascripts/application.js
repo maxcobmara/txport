@@ -19,3 +19,10 @@
 //= require bootstrap-datetimepicker
 //= require global2
 //= require_tree .
+
+$(document).ready(function(){
+
+$('.toga').click(function() {
+  $('.searchit').toggle(); 
+});
+})

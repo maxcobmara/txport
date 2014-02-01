@@ -9,16 +9,25 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_staff_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.text_field :id_no_cont, class: "input-medium search-query", placeholder: "Armed Force No Contains" 
+        = f.text_field :rank_id_cont, class: "input-medium search-query", placeholder: "Rank Contains" 
+        = f.text_field :name_cont, class: "input-medium search-query", placeholder: "Name Contains" 
+        = f.submit "Search", class: "btn btn-warning"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'staffs.id_no'
-      %th= t 'staffs.rank_id'
-      %th= t 'staffs.name'
+      %th= sort_link @search, :id_no, t('staffs.id_no')
+      %th= sort_link @search, :rank_id, t('staffs.rank_id')
+      %th= sort_link @search, :name, t('staffs.name')
       %th 
   %tbody
     - @staffs.each do |staff|
