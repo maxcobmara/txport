@@ -9,7 +9,11 @@ Txport::Application.routes.draw do
 
   resources :add_fuels
 
-  resources :unit_fuels
+  resources :unit_fuels do
+    collection do
+      get 'unit_fuel_usage'
+    end
+  end
 
   resources :fuel_balances
 
@@ -17,7 +21,11 @@ Txport::Application.routes.draw do
 
   resources :fuel_issueds
 
-  resources :depot_fuels
+  resources :depot_fuels do
+    collection do
+      get 'PMP_monthly_usage'
+    end
+  end
 
   resources :fuel_types
 

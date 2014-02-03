@@ -1,0 +1,29 @@
+- provide(:title, 'UnitFuel')
+- model_class = UnitFuel
+.page-header
+  %h1= t 'unit_fuels.title', :default => model_class.model_name.human
+
+
+  = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+  Penggunaan Diesel Kapal
+  = line_chart UnitFuel.group("issue_date").sum(:d_vessel)
+  Penggunaan Diesel Kenderaan
+  = line_chart UnitFuel.group("issue_date").sum(:d_vehicle)
+  Penggunaan Diesel Alat Pelbagai
+  = line_chart UnitFuel.group("issue_date").sum(:d_misctool)
+  Penggunaan Diesel Bot
+  = line_chart UnitFuel.group("issue_date").sum(:d_boat)
+  Penggunaan Petrol Kenderaan
+  = line_chart UnitFuel.group("issue_date").sum(:p_vehicle)
+  Penggunaan Petrol Alat Pelbagai
+  = line_chart UnitFuel.group("issue_date").sum(:p_misctool)
+  Penggunaan Petrol Bot
+  = line_chart UnitFuel.group("issue_date").sum(:p_boat)
+  
+
+
+
+
+
+
+
