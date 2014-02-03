@@ -5,6 +5,8 @@ class FuelSuppliedsController < ApplicationController
   # GET /fuel_supplieds.json
   def index
     @fuel_supplieds = FuelSupplied.all.order(:depot_fuel_id)
+    @search = FuelSupplied.search(params[:q])
+    @fuel_supplieds = @search.result
   end
 
   # GET /fuel_supplieds/1

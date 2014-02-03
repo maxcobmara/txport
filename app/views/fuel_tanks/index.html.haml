@@ -9,8 +9,15 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_fuel_tank_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.text_field :unit_id_cont, class: "input-medium search-query", placeholder: "Unit/Depot Contains" 
+        = f.submit "Search", class: "btn btn-warning"
       
       
 %table.table.table-condensed.table-hover

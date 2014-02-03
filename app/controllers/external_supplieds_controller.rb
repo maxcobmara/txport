@@ -5,6 +5,8 @@ class ExternalSuppliedsController < ApplicationController
   # GET /external_supplieds.json
   def index
     @external_supplieds = ExternalSupplied.all
+    @search = ExternalSupplied.search(params[:q])
+    @external_supplieds = @search.result
   end
 
   # GET /external_supplieds/1

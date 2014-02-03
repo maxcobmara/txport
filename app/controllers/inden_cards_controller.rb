@@ -5,6 +5,8 @@ class IndenCardsController < ApplicationController
   # GET /inden_cards.json
   def index
     @inden_cards = IndenCard.all.order(:unit_id)
+    @search = IndenCard.search(params[:q])
+    @inden_cards = @search.result
   end
 
   # GET /inden_cards/1

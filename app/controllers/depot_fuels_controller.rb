@@ -5,6 +5,8 @@ class DepotFuelsController < ApplicationController
   # GET /depot_fuels.json
   def index
     @depot_fuels = DepotFuel.all
+    @search = DepotFuel.search(params[:q])
+    @depot_fuels = @search.result
   end
 
   # GET /depot_fuels/1

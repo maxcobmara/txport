@@ -5,6 +5,8 @@ class ExternalIssuedsController < ApplicationController
   # GET /external_issueds.json
   def index
     @external_issueds = ExternalIssued.all
+    @search = ExternalIssued.search(params[:q])
+    @external_issueds = @search.result
   end
 
   # GET /external_issueds/1

@@ -5,6 +5,8 @@ class UnitFuelsController < ApplicationController
   # GET /unit_fuels.json
   def index
     @unit_fuels = UnitFuel.all
+    @search = UnitFuel.search(params[:q])
+    @unit_fuels = @search.result
   end
 
   # GET /unit_fuels/1
