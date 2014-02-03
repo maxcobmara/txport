@@ -5,6 +5,8 @@ class FuelTanksController < ApplicationController
   # GET /fuel_tanks.json
   def index
     @fuel_tanks = FuelTank.where("capacity > ?", 0).order(fuel_type_id: :asc).all
+    @search = FuelTank.search(params[:q])
+    @fuel_tanks = @search.result
   end
 
   # GET /fuel_tanks/1
