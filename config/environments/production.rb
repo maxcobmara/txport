@@ -77,4 +77,8 @@ Txport::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # FIXME: Change to production settings
+  # @see https://github.com/thoughtbot/paperclip
+  Paperclip.options[:command_path] = "/usr/bin/"
 end

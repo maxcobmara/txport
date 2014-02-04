@@ -26,7 +26,12 @@ Txport::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-  
+
   #devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # FIXME: Change to your development settings
+  # @see https://github.com/thoughtbot/paperclip
+  # Install ImageMagick & run `which convert` to get the location
+  Paperclip.options[:command_path] = "/usr/bin/"
 end
