@@ -274,6 +274,8 @@ en:
     title: Ranks
     shortname: Short Name
     name: Name
+    category: Category
+    rate: Rate
   vehicle_manufacturers:
     title: Vehicle Manufacturer #pengeluar kenderaan @ pembuat
   vehicle_categories:
@@ -642,4 +644,5 @@ en:
       inden_card: Inden Card Usage in a Month
       add_edit_inden_usage: "To Add / Edit Monthly Inden Card Usage Record, Please Proceed to Menu : Fuel | Inden Cards"
       no_items: No Items
-      
+      select_rank_category: Select Rank Category
+      select_rank_rate: Select Rate Group (for Kit)

@@ -1,4 +1,8 @@
 Txport::Application.routes.draw do
+  resources :expertises
+
+  resources :positions
+
   resources :inden_usages
 
   resources :inden_cards

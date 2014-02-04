@@ -4,4 +4,6 @@
   
   %td= f.text_field :shortname
   %td= f.text_field :name
+  %td= f.select :category, Rank::CATEGORY, :prompt => (t 'helpers.prompt.select_rank_category')
+  %td= f.select :rate, Rank::RATE, :prompt => (t 'helpers.prompt.select_rank_rate')
   %td= f.submit (t 'actions.create'), :class => 'btn btn-primary'
