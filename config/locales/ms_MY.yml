@@ -75,6 +75,16 @@ ms_MY:
     fuel_usage_report: Laporan Penggunaan Bahan PMP
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
     tank_capacity_report: Laporan Kapasiti Tangki
+    Summary_report: Laporan Ringkasan 
+    detailed_report: Laporan Terperinci
+    vehicle_report: Laporan Kenderaan
+    vehicle_daily_report: Laporan Kenderaan Harian
+    vehicle_monthly_report: Laporan Kenderaan Bulanan
+    vehicle_yearly_report: Laporan Kenderaan Tahunan
+    annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
+    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Per Quarter
+    transport_summary: Laporan Pengangkutan
+    PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
