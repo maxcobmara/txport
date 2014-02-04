@@ -69,6 +69,13 @@ class UnitFuelsController < ApplicationController
     edate = c.end_of_month
      @month_fuel_usage = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
   end
+  
+  def annual_usage_report  
+    c = Date.today
+    sdate = c.beginning_of_year
+    edate = c.end_of_year
+     @year_annual_usage_report = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

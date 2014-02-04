@@ -16,6 +16,7 @@ Txport::Application.routes.draw do
   resources :unit_fuels do
     collection do
       get 'unit_fuel_usage'
+      get 'annual_usage_report'
     end
   end
 
