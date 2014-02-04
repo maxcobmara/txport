@@ -9,13 +9,16 @@
   %li= link_to t('vehicles.summons'),   '#tab3', data: {toggle: 'tab'}
   %li= link_to t('vehicles.maintenance'),'#tab4', data: {toggle: 'tab'}
 
-  
+
 %dl.dl-horizontal
   %dt= t 'vehicles.reg_no', :default => model_class.human_attribute_name(:reg_no) + ":"
   %dd= @vehicle.reg_no
-  
+
 #myTabContent.tab-content
   #tab1.tab-pane.active
+    %dl.dl-horizontal
+      %dt= t 'vehicle.photo', :default => model_class.human_attribute_name(:photo) + ":"
+      %dd= image_tag @vehicle.photo.url(:thumb)
     %dl.dl-horizontal
       %dt= t 'vehicle.chassis_no', :default => model_class.human_attribute_name(:chassis_no) + ":"
       %dd= @vehicle.chassis_no
@@ -24,7 +27,7 @@
       %dd= @vehicle.engine_no
     %dl.dl-horizontal
       %dt= t 'vehicles.reg_on', :default => model_class.human_attribute_name(:reg_on) + ":"
-      %dd= l(@vehicle.reg_on)
+      %dd= check_kin {l(@vehicle.reg_on)}
     %dl.dl-horizontal
       %dt= t 'vehicles.manufacturer_year', :default => model_class.human_attribute_name(:manufacturer_year) + ":"
       %dd= @vehicle.manufacturer_year
@@ -39,7 +42,7 @@
       %dd= check_kin {@vehicle.category.short_name}
     %dl.dl-horizontal
       %dt= t 'vehicles.acquired_on', :default => model_class.human_attribute_name(:acquired_on) + ":"
-      %dd= l(@vehicle.acquired_on)
+      %dd= check_kin {l(@vehicle.acquired_on)}
     %dl.dl-horizontal
       %dt= t 'vehicles.price', :default => model_class.human_attribute_name(:price) + ":"
       %dd= ringgols(@vehicle.price)
@@ -55,16 +58,16 @@
       %table.table.table-condensed.table-hover{:style => "width: 50%; "}
         %thead
           %tr
-            %th= t 'vehicle_road_taxes.start_on' 
-            %th= t 'vehicle_road_taxes.end_on' 
+            %th= t 'vehicle_road_taxes.start_on'
+            %th= t 'vehicle_road_taxes.end_on'
             %th= t 'vehicle_road_taxes.amount'
         %tbody
           - for vehicle_road_tax in @vehicle.vehicle_road_taxes
             %tr
-              %td= check_kin {l(vehicle_road_tax.start_on)} 
+              %td= check_kin {l(vehicle_road_tax.start_on)}
               %td= check_kin {l(vehicle_road_tax.end_on)}
               %td= ringgols(vehicle_road_tax.amount )
-      
+
   #tab3.tab-pane
     .div{:style => "padding: 15px 50px 10px 50px; "}
       %table.table.table-condensed.table-hover{:style => "width: 50%; "}
@@ -80,7 +83,7 @@
         %tbody
           - for vehicle_fine in @vehicle.vehicle_fines
             %tr
-              %td= vehicle_fine.code  
+              %td= vehicle_fine.code
               %td= vehicle_fine.issued_at
               %td= l(vehicle_fine.pay_before)
               %td= vehicle_fine.reason
@@ -93,14 +96,14 @@
       %table.table.table-condensed.table-hover{:style => "width: 50%; "}
         %thead
           %tr
-            %th= t 'maintenances.work_order_no' 
+            %th= t 'maintenances.work_order_no'
             %th= t 'maintenances.contract_no'
             %th= t 'maintenances.repaired_by'
             %th= t 'maintenances.supplied_by'
         %tbody
           - for maintenance in @vehicle.maintenances
             %tr
-              %td= maintenance.work_order_no 
+              %td= maintenance.work_order_no
               %td= check_kin {maintenance.contract.contract_no}
               %td= check_kin {maintenance.repairer.name}
               %td= check_kin {maintenance.supplier.name}

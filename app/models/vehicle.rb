@@ -3,9 +3,9 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :reg_no
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
-  
+
   has_many :vehicle_road_taxes, :dependent => :destroy
-  has_many :vehicle_fines,      :dependent => :destroy   
+  has_many :vehicle_fines,      :dependent => :destroy
   has_many :maintenances,       :dependent => :destroy
   has_many :vehicle_assignment_details, :dependent => :destroy #has_many - instead of has_one - refer trello card #87
   belongs_to :contract
@@ -14,8 +14,12 @@ class Vehicle < ActiveRecord::Base
   belongs_to :status,   :class_name => "VehicleStatus",   :foreign_key => "status_id"
   belongs_to :manufacturer,   :class_name => "VehicleManufacturer",   :foreign_key => "manufacturer_id"
   belongs_to :category,   :class_name => "VehicleCategory",   :foreign_key => "category_id"
-  
-  
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :default_url => "/assets/:style/no-photo.gif"
+
+  # The validation has to go after 'has_attached_file'
+  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
   def self.search(search)
     if search
       where('reg_no ILIKE ?', "%#{search}%")
@@ -23,8 +27,5 @@ class Vehicle < ActiveRecord::Base
       Vehicle.all
     end
   end
-      
-  
-  
-  
+
 end
