@@ -19,11 +19,50 @@
   = line_chart UnitFuel.group("issue_date").sum(:p_misctool)
   Penggunaan Petrol Bot
   = line_chart UnitFuel.group("issue_date").sum(:p_boat)
-  
 
 
+Diesel Usage Current Month
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'unit_fuels.unit_id'  
+      %th= t 'unit_fuels.issue_date'
+      %th= t 'unit_fuels.d_vessel'
+      %th= t 'unit_fuels.d_vehicle'
+      %th= t 'unit_fuels.d_misctool'
+      %th= t 'unit_fuels.d_boat'
+      %th= t 'unit_fuels.diesel_usage'
 
+  %tbody
+    - @month_fuel_usage.each do |unit_fuel|
+      %tr
+        %td= check_kin {unit_fuel.unit.name}
+        %td= check_kin {l(unit_fuel.issue_date)}
+        %td= unit_fuel.d_vessel
+        %td= unit_fuel.d_vehicle
+        %td= unit_fuel.d_misctool
+        %td= unit_fuel.d_boat
+        %td= UnitFuel.diesel_usage(unit_fuel)
 
+Diesel Usage Current Month
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'unit_fuels.unit_id'  
+      %th= t 'unit_fuels.issue_date'
+      %th= t 'unit_fuels.d_vehicle'
+      %th= t 'unit_fuels.d_misctool'
+      %th= t 'unit_fuels.d_boat'
+      %th= t 'unit_fuels.petrol_usage'
 
+  %tbody
+    - @month_fuel_usage.each do |unit_fuel|
+      %tr
+        %td= check_kin {unit_fuel.unit.name}
+        %td= check_kin {l(unit_fuel.issue_date)}  
+        %td= unit_fuel.p_vehicle
+        %td= unit_fuel.p_misctool
+        %td= unit_fuel.p_boat
+        %td= UnitFuel.diesel_usage(unit_fuel)
 
 
