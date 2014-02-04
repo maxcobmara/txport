@@ -68,6 +68,13 @@ ms_MY:
     fuel_tank_listing: Senarai Tangki
     inden_card: Kad Inden
     inden_card_listing: Senarai Kad Inden
+    report_list: Senarai Laporan
+    summon_report: Laporan Senarai Saman 
+    roadtax_report: Laporan Cukai Jalan Bulanan
+    maintenance_report: Laporan Penyelenggaraan
+    fuel_usage_report: Laporan Penggunaan Bahan PMP
+    maintenance_contract_report: Laporan Kontrak Penyelenggaraan
+    tank_capacity_report: Laporan Kapasiti Tangki
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
