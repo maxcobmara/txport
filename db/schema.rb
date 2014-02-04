@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140202122403) do
+ActiveRecord::Schema.define(version: 20140202202437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20140202122403) do
   create_table "depot_fuels", force: true do |t|
     t.integer  "unit_id"
     t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expertises", force: true do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.integer  "branch"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -217,11 +225,19 @@ ActiveRecord::Schema.define(version: 20140202122403) do
     t.datetime "updated_at"
   end
 
+  create_table "positions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ranks", force: true do |t|
     t.string   "shortname"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category"
+    t.integer  "rate"
   end
 
   create_table "staff_measurements", force: true do |t|
@@ -241,6 +257,10 @@ ActiveRecord::Schema.define(version: 20140202122403) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "unit_id"
+    t.integer  "expertise_id"
+    t.integer  "position_id"
+    t.integer  "gender"
+    t.integer  "religion"
   end
 
   create_table "uniform_items", force: true do |t|

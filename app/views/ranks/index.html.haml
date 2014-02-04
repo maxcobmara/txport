@@ -18,6 +18,8 @@
     %tr
       %th= t 'ranks.shortname'
       %th= t 'ranks.name'
+      %th= t 'ranks.category'
+      %th= t 'ranks.rate'
       %th 
   %tbody
     %tr#rank_form(style="display:none;")
@@ -26,5 +28,7 @@
       %tr{:id => "tr_#{rank.id}"}
         %td= rank.shortname
         %td= rank.name
+        %td= ((Rank::CATEGORY.find_all{|disp, value| value == rank.category}).map {|disp, value| disp})[0].to_s
+        %td= ((Rank::RATE.find_all{|disp, value| value == rank.rate}).map {|disp, value| disp})[0].to_s
         %td= link_to (fa_icon "trash-o"), rank, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
       

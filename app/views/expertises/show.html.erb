@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @expertise.short_name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @expertise.name %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @expertise.branch %>
+</p>
+
+<%= link_to 'Edit', edit_expertise_path(@expertise) %> |
+<%= link_to 'Back', expertises_path %>

@@ -244,6 +244,8 @@ ms_MY:
     title: Pangkat
     shortname: Nama Ringkas
     name: Nama
+    category: Kategori
+    rate: Kumpulan Kadaran
   vehicle_manufacturers:
     title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
   vehicle_categories:
@@ -612,7 +614,9 @@ ms_MY:
       select_inden_card: Pilih Kad Inden
       inden_card: Penggunaan Kad Inden Dalam Sebulan
       add_edit_inden_usage: "Untuk Menambah / Menyunting Rekod Penggunaan Bulanan Bagi Kad Inden, Sila ke Menu : Bahan PMP | Kad Inden"
-      no_items: Tiada Butiran  
+      no_items: Tiada Butiran
+      select_rank_category: Pilih Kategori Pangkat
+      select_rank_rate: Pilih Kumpulan Kadaran (untuk Kit)
         
   
   
