@@ -67,6 +67,11 @@ class FuelTanksController < ApplicationController
       @fuel_tanks = FuelTank.all
   end
   
+  def tank_capacity
+    @fuel_tanks = FuelTank.where("capacity > ?", 0).order(fuel_type_id: :asc).all
+    
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fuel_tank
