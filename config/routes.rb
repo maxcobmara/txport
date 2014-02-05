@@ -17,6 +17,7 @@ Txport::Application.routes.draw do
     collection do
       get 'unit_fuel_usage'
       get 'annual_usage_report'
+       get 'daily_usage'
     end
   end
 
@@ -88,7 +89,14 @@ Txport::Application.routes.draw do
 
   resources :vehicle_statuses
 
-  resources :vehicles
+  resources :vehicles do
+    collection do
+      get 'vehicle_daily_report'
+      get 'vehicle_monthly_report'
+      get 'vehicle_yearly_report'
+    end
+  end
+  
 
   devise_for :users
   resources :users
