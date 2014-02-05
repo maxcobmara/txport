@@ -1,4 +1,5 @@
-%h2 Listing of maintenance 
+%h2 
+  = t 'report.maintenance_listing'
 %table.table.table-bordered
   %thead
     %tr
@@ -13,9 +14,9 @@
       %tr
         %td= maintenance.vehicle.reg_no
         %td= maintenance.work_order_no 
-        %td= maintenance.contract.try(:contract_no)
-        %td= maintenance.repairer.try(:name)
-        %td= maintenance.supplier.try(:name)
+        %td= check_kin {maintenance.contract.contract_no}
+        %td= check_kin {maintenance.repairer.name}
+        %td= check_kin {maintenance.supplier.name}
 
 
 

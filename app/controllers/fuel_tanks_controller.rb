@@ -63,8 +63,8 @@ class FuelTanksController < ApplicationController
     end
   end
 
-  def maintenance
-      @fuel_tanks = FuelTank.all
+  def tank_capacity
+      @fuel_tanks = FuelTank.all.order(:unit_id)
   end
   
   private

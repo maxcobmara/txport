@@ -1,4 +1,4 @@
-%h2 Listing of tank capacity 
+%h2= t 'report.tank_capacity' 
 %table.table.table-bordered
   %thead
     %tr
@@ -6,7 +6,7 @@
       %th= t 'fuel_tanks.locations'
       %th= t 'fuel_tanks.capacity'
       %th= t 'fuel_types.fuel_type_id'
-      %th= maximum
+      %th= t 'fuel_tanks.maximum'
 
   %tbody
     - @fuel_tanks.each do |fuel_tank|

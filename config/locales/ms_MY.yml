@@ -75,6 +75,13 @@ ms_MY:
     fuel_usage_report: Laporan Penggunaan Bahan PMP
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
     tank_capacity_report: Laporan Kapasiti Tangki
+  report:
+    summon_listing: "Senarai Saman Unit - Unit" 
+    road_tax_listing: Senarai Cukai Jalan Yang Akan Tamat Pada
+    maintenance_listing: Senarai Penyelenggaraan Kenderaan
+    unit_fuel_graph: Penggunaan Bahan PMP di Unit - Unit 
+    maintenance_report: Senarai Kontrak Penyelenggaraan Kenderaan
+    tank_capacity: Penyata Kapasiti Tangki Penyimpanan Bahan PMP
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -218,6 +225,7 @@ ms_MY:
     new: Tangki Penyimpanan Baru
     edit: Sunting Tangki Penyimpanan
     tank: "Tangki : " 
+    maximum: Maksima
   fuel_types:
     title: Jenis Bahan PMP
     fuel_type_id: Jenis Bahan PMP

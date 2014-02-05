@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/20jeans/datashift.git
+  revision: dc8c5d34bbca579ed7d61c9bf09d88d94f1535b4
+  specs:
+    datashift (0.13.0)
+      rubyzip
+      spreadsheet
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -168,6 +176,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    ruby-ole (1.2.11.7)
     rubyzip (0.9.9)
     sass (3.2.12)
     sass-rails (4.0.0)
@@ -183,6 +192,8 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     slop (3.4.6)
+    spreadsheet (0.9.7)
+      ruby-ole (>= 1.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -227,6 +238,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.0.0)
   country_select (~> 1.2.0)
+  datashift!
   devise (~> 3.1.1)
   font-awesome-rails (~> 4.0.1.0)
   groupdate

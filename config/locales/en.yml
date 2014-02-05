@@ -106,6 +106,13 @@ en:
     fuel_usage_report: Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
+  report:
+    summon_listing: Summon Listing For Units
+    road_tax_listing: Listing of Expiring Road Tax for
+    maintenance_listing: Listing of Vehicle Maintenance 
+    unit_fuel_graph: Fuel Usage at Units
+    maintenance_report: Listing of Maintenance Contract
+    tank_capacity: Listing of Fuel Storage Tank Capacity
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  
@@ -248,6 +255,7 @@ en:
     new: New Storage Tank
     edit: Edit Storage Tank
     tank: "Tanks : "
+    maximum: Maximum
   fuel_types:
     title: Fuel Types
     fuel_type_id: Fuel Type
