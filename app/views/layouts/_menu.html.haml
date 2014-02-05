@@ -95,10 +95,52 @@
         %h2.icon= t 'menu.report_list'
         %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
+<<<<<<< HEAD
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.summon_report'), "/vehicle_fines/kembaran_a"
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.roadtax_report'), "/vehicle_road_taxes/monthly_roadtax" 
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.maintenance_report'), "/maintenances/maintenance"
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel_usage_report'), "/unit_fuels/unit_fuel_usage" 
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.maintenance_contract_report'), "/contracts/maintenance_contract"  
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.tank_capacity_report'), "/fuel_tanks/tank_capacity"             
+=======
+          %li.icon.icon-left
+            = link_to (t 'menu.Summary_report'), '#'
+            .mp-level
+              %h2.icon= t 'menu.Summary_report'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel_usage_report'), "unit_fuels/unit_fuel_usage"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.annual_usage_report'), "unit_fuels/annual_usage_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.summon_report'), "vehicle_fines/kembaran_a"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.maintenance_contract_report'), "contracts/maintenance_contract"                       
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.roadtax_report'), "vehicle_road_taxes/monthly_roadtax" 
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.maintenance_report'), "maintenances/maintenance"  
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.fuel_type_per_quarter'), "unit_fuels/daily_usage" 
+          %li.icon.icon-left
+            = link_to (t 'menu.detailed_report'), '#'       
+            .mp-level
+              %h2.icon= t 'menu.detailed_report'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.tank_capacity_report'), "fuel_tanks/tank_capacity" 
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.transport_summary'), "#" 
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.summon_report'), "vehicle_fines/kembaran_a"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.PMP_usage'), "#"
+          %li.icon.icon-left
+            = link_to (t 'menu.vehicle_report'), '#'
+            .mp-level
+              %h2.icon= t 'menu.vehicle_report'
+              %a.mp-back{:href => "#"}= t 'helpers.links.back'
+              %ul
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_daily_report'), "vehicles/vehicle_daily_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_monthly_report'), "vehicles/vehicle_monthly_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_yearly_report'), "vehicles/vehicle_yearly_report"
+
+
+
+
+
+
+           
+>>>>>>> 53456d1f3c895e4f4d5e9dbe0f4849a35f36f240
         

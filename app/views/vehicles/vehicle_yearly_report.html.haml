@@ -1,0 +1,39 @@
+- provide(:title, 'Vehicle')
+- model_class = Vehicle
+.page-header
+  %h1= t 'menu.vehicle_yearly_report', :default => model_class.model_name.human
+
+
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicles.reg_no'
+      %th= t 'vehicle.chassis_no'
+      %th= t 'vehicle.engine_no'
+      %th= t 'vehicles.reg_on'
+      %th= t 'vehicles.manufacturer_year' 
+      %th= t 'vehicles.manufacturer_id' 
+      %th= t 'vehicles.model' 
+      %th= t 'vehicles.category_id' 
+      %th= t 'vehicles.acquired_on' 
+      %th= t 'vehicles.price' 
+      %th= t 'vehicles.contract_id' 
+      %th= t 'vehicles.status' 
+      %th
+
+  %tbody
+    - @vehicle_yearly.each do |vehicle|
+      %tr
+        %td= vehicle.reg_no
+        %td= vehicle.chassis_no
+        %td= vehicle.engine_no
+        %td= vehicle.reg_on
+        %td= vehicle.manufacturer_year
+        %td= check_kin {vehicle.manufacturer.name}
+        %td= vehicle.model
+        %td= check_kin {vehicle.category.short_name} 
+        %td= vehicle.acquired_on
+        %td= ringgols(vehicle.price)
+        %td= check_kin {vehicle.contract.contract_no} 
+        %td= check_kin {vehicle.status.short_name}

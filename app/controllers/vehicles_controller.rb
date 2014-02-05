@@ -28,7 +28,7 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: (t 'vehicles.title')+(t 'actions.created') } 
+        format.html { redirect_to @vehicle, notice: (t 'vehicles.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @vehicle }
       else
         format.html { render action: 'new' }
@@ -61,6 +61,25 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def vehicle_daily_report  
+    sdate = Date.today
+     @vehicle_daily = Vehicle.where( "acquired_on = ? ", sdate ) 
+  end
+
+  def vehicle_monthly_report  
+        c = Date.today
+    sdate = c.beginning_of_month
+    edate = c.end_of_month
+     @vehicle_monthly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate )
+  end
+
+  def vehicle_yearly_report  
+    c = Date.today
+    sdate = c.beginning_of_year
+    edate = c.end_of_year
+     @vehicle_yearly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate ) 
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
@@ -69,6 +88,7 @@ class VehiclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:reg_no, :chassis_no, :engine_no, :reg_on, :manufacturer_year, :manufacturer_id, :model, :category_id, :acquired_on, :price, :contract_id, :status_id)
+      params.require(:vehicle).permit(:reg_no, :chassis_no, :engine_no, :reg_on, :manufacturer_year, :manufacturer_id,
+                                      :model, :category_id, :acquired_on, :price, :contract_id, :status_id, :photo)
     end
 end

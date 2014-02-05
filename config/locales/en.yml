@@ -106,13 +106,16 @@ en:
     fuel_usage_report: Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
-  report:
-    summon_listing: Summon Listing For Units
-    road_tax_listing: Listing of Expiring Road Tax for
-    maintenance_listing: Listing of Vehicle Maintenance 
-    unit_fuel_graph: Fuel Usage at Units
-    maintenance_report: Listing of Maintenance Contract
-    tank_capacity: Listing of Fuel Storage Tank Capacity
+    Summary_report: Summary Report
+    detailed_report: Detailed Report
+    vehicle_report: Vehicle Report
+    vehicle_daily_report: Vehicle Daily Report
+    vehicle_monthly_report: Vehicle Monthly Report
+    vehicle_yearly_report: Vehicle Yearly Report
+    annual_usage_report: Annual Usage Report
+    fuel_type_per_quarter: Fuel Type Usage Daily Report
+    transport_summary: Transport Summary
+    PMP_usage: Monthly Fuel Usage Report
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  

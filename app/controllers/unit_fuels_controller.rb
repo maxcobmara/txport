@@ -62,6 +62,25 @@ class UnitFuelsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def unit_fuel_usage  
+    c = Date.today
+    sdate = c.beginning_of_month
+    edate = c.end_of_month
+     @month_fuel_usage = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
+  end
+  
+  def annual_usage_report  
+    c = Date.today
+    sdate = c.beginning_of_year
+    edate = c.end_of_year
+     @year_annual_usage_report = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
+  end
+  
+  def daily_usage  
+    sdate = Date.today
+     @daily_annual_usage_report = UnitFuel.where( "issue_date = ? ", sdate ) 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
