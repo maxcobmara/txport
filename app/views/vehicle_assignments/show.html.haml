@@ -29,9 +29,11 @@
         %tr
           %td= Vehicle.where("id = ?", details.vehicle_id).pluck(:reg_no)[0]
           %td= Staff.where("id = ?", details.staff_id).pluck(:name)[0]
-          %td #{l(details.assigned_on)} to #{l(details.assignment_end)}
-  
-
+          %td
+            = check_kin {l(details.assigned_on)} 
+            to 
+            = check_kin {l(details.assignment_end)}
+          
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicle_assignments_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |

@@ -1,4 +1,5 @@
-%h2 Listing of maintenance contract 
+%h2
+  = t 'report.maintenance_report'
 %table.table.table-bordered
   %thead
     %tr
@@ -20,11 +21,11 @@
         %td= contract.name 
         %td= contract.description
         %td= ringgols(contract.value)
-        %td= contract.contractor.try(:name)
-        %td= contract.starts_on
-        %td= contract.ends_on
+        %td= check_kin {contract.contractor.name}
+        %td= check_kin {l(contract.starts_on)}
+        %td= check_kin {l(contract.ends_on)}
         %td= contract.issued_by
-        %td= contract.type.try(:short_name)
+        %td= check_kin {contract.type.short_name}
 
 
 

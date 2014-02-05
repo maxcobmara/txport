@@ -1,3 +1,4 @@
+require 'rake'
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
@@ -65,6 +66,7 @@ class ContractsController < ApplicationController
   
   def maintenance_contract
       @contracts = Contract.all
+      %x(bundle exec thor datashift:export:excel -m Contract -r public/Contract.xls)
   end 
    
   private

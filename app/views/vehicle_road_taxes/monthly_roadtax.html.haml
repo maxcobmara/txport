@@ -1,4 +1,6 @@
-%h2 Listing of expiring road tax 
+%h2 
+  = t 'report.road_tax_listing'
+  =Date.today.next_month.strftime("%b %Y")
 %table.table.table-bordered
   %thead
     %tr
