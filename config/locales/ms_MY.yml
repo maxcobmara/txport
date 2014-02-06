@@ -228,6 +228,7 @@ ms_MY:
     new: Tangki Penyimpanan Baru
     edit: Sunting Tangki Penyimpanan
     tank: "Tangki : " 
+    maximum: Maksima
   fuel_types:
     title: Jenis Bahan PMP
     fuel_type_id: Jenis Bahan PMP

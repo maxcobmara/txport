@@ -1,4 +1,4 @@
-%h2 Senarai saman unit-unit
+%h2=t 'report.summon_listing'
 
 %table.table.table-bordered
   %thead
@@ -21,14 +21,14 @@
     %tr{:class => vehicle_fine.table_status}
       %td= vehicle_fine.code
       %td= vehicle_fine.vehicle.reg_no
-      %td= vehicle_fine.vehicle_fine_type
-      %td= vehicle_fine.issued_at
-      %td= vehicle_fine.pay_before 
+      %td= check_kin {vehicle_fine.vehicle_fine_type.description}
+      %td= check_kin {l(vehicle_fine.issued_at)}
+      %td= check_kin{l(vehicle_fine.pay_before )}
       %td= vehicle_fine.location 
       %td= vehicle_fine.reason
       %td= ringgols(vehicle_fine.compound)
       %td= vehicle_fine.receipt_no
-      %td= vehicle_fine.paid_on
+      %td= check_kin{l(vehicle_fine.paid_on)}
       %td= ringgols(vehicle_fine.paid_amount)
       %td= vehicle_fine.payment_status
 

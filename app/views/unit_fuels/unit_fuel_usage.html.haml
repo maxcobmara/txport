@@ -1,7 +1,11 @@
 - provide(:title, 'UnitFuel')
 - model_class = UnitFuel
 .page-header
+<<<<<<< HEAD
+  %h1= t 'report.unit_fuel_graph', :default => model_class.model_name.human
+=======
   %h1= t 'menu.fuel_usage_report', :default => model_class.model_name.human
+>>>>>>> 53456d1f3c895e4f4d5e9dbe0f4849a35f36f240
 
 
   = javascript_include_tag "//www.google.com/jsapi", "chartkick"

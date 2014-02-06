@@ -258,6 +258,7 @@ en:
     new: New Storage Tank
     edit: Edit Storage Tank
     tank: "Tanks : "
+    maximum: Maximum
   fuel_types:
     title: Fuel Types
     fuel_type_id: Fuel Type
