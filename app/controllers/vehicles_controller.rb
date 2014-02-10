@@ -79,6 +79,11 @@ class VehiclesController < ApplicationController
     edate = c.end_of_year
      @vehicle_yearly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate ) 
   end
+  
+  def transport_summary_report
+    @vehicles = Vehicle.all
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

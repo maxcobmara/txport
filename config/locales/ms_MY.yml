@@ -85,6 +85,17 @@ ms_MY:
     fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Per Quarter
     transport_summary: Laporan Pengangkutan
     PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
+  report: 
+    unit_fuel_graph: Graf Penggunaan Minyak
+    diesel_vessel_usage: Penggunaan Diesel Kapal
+    diesel_vehicle_usage: Penggunaan Diesel Kenderaan
+    diesel_misctool_usage: Penggunaan Diesel Alat Pelbagai
+    diesel_boat_usage: Penggunaan Diesel Bot
+    petrol_vehicle_usage: Penggunaan Petrol Kenderaan
+    petrol_misctool_usage: Penggunaan Petrol Alat Pelbagai
+    petrol_boat_usage: Penggunaan Petrol Bot   
+    diesel_usage_current: Penggunaan Diesel Bulan Ini
+    petrol_usage_current: Penggunaan Petrol Bulan Ini
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan

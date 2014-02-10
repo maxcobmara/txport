@@ -1,31 +1,31 @@
 - provide(:title, 'UnitFuel')
 - model_class = UnitFuel
 .page-header
-<<<<<<< HEAD
+
   %h1= t 'report.unit_fuel_graph', :default => model_class.model_name.human
-=======
-  %h1= t 'menu.fuel_usage_report', :default => model_class.model_name.human
->>>>>>> 53456d1f3c895e4f4d5e9dbe0f4849a35f36f240
+
+  //%h1= t 'menu.fuel_usage_report', :default => model_class.model_name.human
+
 
 
   = javascript_include_tag "//www.google.com/jsapi", "chartkick"
-  Penggunaan Diesel Kapal
+  = t 'report.diesel_vessel_usage'
   = line_chart UnitFuel.group("issue_date").sum(:d_vessel)
-  Penggunaan Diesel Kenderaan
+  = t 'report.diesel_vehicle_usage'
   = line_chart UnitFuel.group("issue_date").sum(:d_vehicle)
-  Penggunaan Diesel Alat Pelbagai
+  = t 'report.diesel_misctool_usage'
   = line_chart UnitFuel.group("issue_date").sum(:d_misctool)
-  Penggunaan Diesel Bot
+  = t 'report.diesel_boat_usage'
   = line_chart UnitFuel.group("issue_date").sum(:d_boat)
-  Penggunaan Petrol Kenderaan
+  = t 'report.petrol_vehicle_usage'
   = line_chart UnitFuel.group("issue_date").sum(:p_vehicle)
-  Penggunaan Petrol Alat Pelbagai
+  = t 'report.petrol_misctool_usage'
   = line_chart UnitFuel.group("issue_date").sum(:p_misctool)
-  Penggunaan Petrol Bot
+  = t 'report.petrol_boat_usage'
   = line_chart UnitFuel.group("issue_date").sum(:p_boat)
 
 
-Diesel Usage Current Month
+  = t 'report.diesel_usage_current'
 %table.table.table-bordered
   %thead
     %tr
@@ -47,8 +47,8 @@ Diesel Usage Current Month
         %td= unit_fuel.d_misctool
         %td= unit_fuel.d_boat
         %td= UnitFuel.diesel_usage(unit_fuel)
-
-Diesel Usage Current Month
+%br
+  = t 'report.petrol_usage_current'
 %table.table.table-bordered
   %thead
     %tr
