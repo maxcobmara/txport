@@ -7,6 +7,6 @@ class Staff < ActiveRecord::Base
   has_many :inden_cards, dependent: :nullify  #1 card only
   
   def staff_details
-    "#{id_no} " + "#{name}"
+    "#{id_no} " + "#{name}".gsub(/\w+/, &:capitalize)
   end
 end
