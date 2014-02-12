@@ -94,6 +94,7 @@ Txport::Application.routes.draw do
       get 'vehicle_daily_report'
       get 'vehicle_monthly_report'
       get 'vehicle_yearly_report'
+      get 'transport_summary_report'
     end
   end
   

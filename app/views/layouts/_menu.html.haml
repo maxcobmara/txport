@@ -114,17 +114,17 @@
               %h2.icon= t 'menu.detailed_report'
               %a.mp-back{:href => "#"}= t 'helpers.links.back'
               %ul
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.tank_capacity_report'), "fuel_tanks/tank_capacity" 
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.transport_summary'), "#" 
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.summon_report'), "vehicle_fines/kembaran_a"
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.PMP_usage'), "#"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.tank_capacity_report'), "/fuel_tanks/tank_capacity" 
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.transport_summary'), "/vehicles/transport_summary_report" 
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.summon_report'), "/vehicle_fines/kembaran_a"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.PMP_usage'), "/depot_fuels/PMP_monthly_usage"
           %li.icon.icon-left
             = link_to (t 'menu.vehicle_report'), '#'
             .mp-level
               %h2.icon= t 'menu.vehicle_report'
               %a.mp-back{:href => "#"}= t 'helpers.links.back'
               %ul
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_daily_report'), "vehicles/vehicle_daily_report"
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_monthly_report'), "vehicles/vehicle_monthly_report"
-                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_yearly_report'), "vehicles/vehicle_yearly_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_daily_report'), "/vehicles/vehicle_daily_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_monthly_report'), "/vehicles/vehicle_monthly_report"
+                %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.vehicle_yearly_report'), "/vehicles/vehicle_yearly_report"
 
