@@ -21,7 +21,7 @@
     %tr{:class => vehicle_fine.table_status}
       %td= vehicle_fine.code
       %td= vehicle_fine.vehicle.reg_no
-      %td= vehicle_fine.vehicle_fine_type
+      %td= vehicle_fine.vehicle_fine_type.try(:short_name)
       %td= vehicle_fine.issued_at
       %td= vehicle_fine.pay_before 
       %td= vehicle_fine.location 

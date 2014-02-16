@@ -61,6 +61,8 @@ en:
     created: " was successfully created."
     updated: " was successfully updated."
   errors:
+    
+    
   date:
     formats:
        default: "%d-%b-%Y"
