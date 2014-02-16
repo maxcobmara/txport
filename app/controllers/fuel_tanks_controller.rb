@@ -5,6 +5,8 @@ class FuelTanksController < ApplicationController
   # GET /fuel_tanks.json
   def index
     @fuel_tanks = FuelTank.where("capacity > ?", 0).order(fuel_type_id: :asc).all
+    @search = FuelTank.search(params[:q])
+    @fuel_tanks = @search.result
   end
 
   # GET /fuel_tanks/1
@@ -61,6 +63,15 @@ class FuelTanksController < ApplicationController
     end
   end
 
+  def tank_capacity
+      @fuel_tanks = FuelTank.all.order(:unit_id)
+  end
+  
+  def tank_capacity
+    @fuel_tanks = FuelTank.where("capacity > ?", 0).order(fuel_type_id: :asc).all
+    
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fuel_tank

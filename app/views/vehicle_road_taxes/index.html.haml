@@ -9,24 +9,31 @@
     %ul.nav
   
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
+        = f.submit "Search", class: "btn btn-warning"
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
       %th= t 'vehicle.vehicle_id'
-      %th= t 'vehicle_road_taxes.start_on' 
-      %th= t 'vehicle_road_taxes.end_on' 
-      %th= t 'vehicle_road_taxes.amount' 
+      %th= sort_link @search, :start_on, t('vehicle_road_taxes.start_on') 
+      %th= sort_link @search, :end_on, t('vehicle_road_taxes.end_on') 
+      %th= sort_link @search, :amount, t('vehicle_road_taxes.amount') 
       %th     
   %tbody
     - @vehicle_road_taxes.each do |vehicle_road_tax| 
       %tr{:class => vehicle_road_tax.status}
         %td= vehicle_road_tax.vehicle.reg_no
-        %td= vehicle_road_tax.start_on 
-        %td= vehicle_road_tax.end_on 
-        %td= vehicle_road_tax.amount 
+        %td= check_kin {l(vehicle_road_tax.start_on)}
+        %td= check_kin {l(vehicle_road_tax.end_on)} 
+        %td= ringgols(vehicle_road_tax.amount) 
         = render :partial => 'action_menu', :locals => { :vehicle_road_tax => vehicle_road_tax }
 
 

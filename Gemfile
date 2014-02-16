@@ -7,6 +7,9 @@ gem "thin", "~> 1.6.0"
 gem "devise", "~> 3.1.1"
 gem "pg", "~> 0.17.0"
 gem "ransack", "~> 1.1.0"
+gem "ancestry", "~> 2.0.0"
+gem "chartkick"
+gem 'groupdate'
 
 
 #display gems
@@ -25,10 +28,12 @@ gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"
 gem "modernizr-rails", "~> 2.7.1"
 #gem "jquery-ui-rails", "~> 4.1.0"
+gem "paperclip", "~> 3.0"
 
+gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
 group :assets do
-  
+
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

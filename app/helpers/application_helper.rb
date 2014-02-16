@@ -20,6 +20,10 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
   
+  def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) + link_to(name, '#', class: "remove_fields")
+  end
+  
   #Turns decimal into Ringgit
   def ringgols(money)
     number_to_currency(money, :unit => "RM ", :separator => ".", :delimiter => ",", :precision => 2)

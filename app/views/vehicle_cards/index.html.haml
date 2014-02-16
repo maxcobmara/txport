@@ -8,27 +8,35 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_card_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.text_field :unit_id_cont, class: "input-medium search-query", placeholder: "Unit Contains" 
+        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
+        = f.submit "Search", class: "btn btn-warning"
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
       %th= t 'vehicle.vehicle_id'
       %th= t 'vehicle_cards.staff_id'
-      %th= t 'vehicle_cards.unit_id'
+      %th= sort_link @search, :unit_id, t('vehicle_cards.unit_id')
       %th= t 'vehicle_cards.serial_no'
-      %th= t 'vehicle_cards.expired_date'
+      %th= sort_link @search, :expired_date, t('vehicle_cards.expired_date')
       %th= t 'vehicle_cards.smarttag_serial'
       %th
   %tbody
     - @vehicle_cards.each do |vehicle_card| 
       %tr
-        %td= vehicle_card.vehicle.reg_no if !vehicle_card.vehicle_id.blank?
+        %td= check_kin {vehicle_card.vehicle.reg_no}
         %td= vehicle_card.card_holder.staff_details
-        %td= vehicle_card.unit.name if !vehicle_card.unit_id.blank?
+        %td= check_kin {vehicle_card.unit.name}
         %td= vehicle_card.serial_no
-        %td= vehicle_card.expired_date
+        %td= l(vehicle_card.expired_date)
         %td= vehicle_card.smarttag_serial
         = render :partial => 'action_menu', :locals => { :vehicle_card => vehicle_card }
 

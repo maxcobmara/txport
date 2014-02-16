@@ -1,0 +1,23 @@
+%h2 
+  = t 'report.maintenance_listing'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'maintenances.work_order_no'  
+      %th= t 'maintenances.contract_no'  
+      %th= t 'maintenances.repaired_by'
+      %th= t 'maintenances.supplied_by'
+
+  %tbody
+    - @maintenances.each do |maintenance|
+      %tr
+        %td= maintenance.vehicle.reg_no
+        %td= maintenance.work_order_no 
+        %td= check_kin {maintenance.contract.contract_no}
+        %td= check_kin {maintenance.repairer.name}
+        %td= check_kin {maintenance.supplier.name}
+
+
+
+

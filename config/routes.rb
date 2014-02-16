@@ -1,7 +1,45 @@
 Txport::Application.routes.draw do
+  resources :expertises
+
+  resources :positions
+
+  resources :inden_usages
+
+  resources :inden_cards
+
+  resources :external_issueds
+
+  resources :external_supplieds
+
+  resources :add_fuels
+
+  resources :unit_fuels do
+    collection do
+      get 'unit_fuel_usage'
+      get 'annual_usage_report'
+       get 'daily_usage'
+    end
+  end
+
+  resources :fuel_balances
+
+  resources :fuel_supplieds
+
+  resources :fuel_issueds
+
+  resources :depot_fuels do
+    collection do
+      get 'PMP_monthly_usage'
+    end
+  end
+
   resources :fuel_types
 
-  resources :fuel_tanks
+  resources :fuel_tanks do
+    collection do
+      get 'tank_capacity'
+    end
+  end
 
   resources :ranks
 
@@ -21,9 +59,17 @@ Txport::Application.routes.draw do
 
   resources :vehicle_cards
 
-  resources :maintenances
+  resources :maintenances do
+    collection do
+      get 'maintenance'
+    end
+  end
 
-  resources :contracts
+  resources :contracts do
+    collection do
+      get 'maintenance_contract'
+    end
+  end
 
   resources :vehicle_fines do
     collection do
@@ -43,7 +89,15 @@ Txport::Application.routes.draw do
 
   resources :vehicle_statuses
 
-  resources :vehicles
+  resources :vehicles do
+    collection do
+      get 'vehicle_daily_report'
+      get 'vehicle_monthly_report'
+      get 'vehicle_yearly_report'
+      get 'transport_summary_report'
+    end
+  end
+  
 
   devise_for :users
   resources :users

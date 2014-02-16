@@ -17,5 +17,12 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
-//= require global
+//= require global2
 //= require_tree .
+
+$(document).ready(function(){
+
+$('.toga').click(function() {
+  $('.searchit').toggle(); 
+});
+})

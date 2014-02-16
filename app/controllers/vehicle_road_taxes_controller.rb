@@ -5,6 +5,8 @@ class VehicleRoadTaxesController < ApplicationController
   # GET /vehicle_road_taxes.json
   def index
     @vehicle_road_taxes = VehicleRoadTax.order(:end_on => :desc).all
+    @search = VehicleRoadTax.search(params[:q])
+    @vehicle_road_taxes = @search.result
   end
 
   # GET /vehicle_road_taxes/1
@@ -30,7 +32,7 @@ class VehicleRoadTaxesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_road_tax.save
-        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title')+(t 'actions.created')  }
+        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title2')+(t 'actions.created')  }
         format.json { render action: 'show', status: :created, location: @vehicle_road_tax }
       else
         format.html { render action: 'new' }
@@ -44,7 +46,7 @@ class VehicleRoadTaxesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle_road_tax.update(vehicle_road_tax_params)
-        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title')+(t 'actions.updated')  }
+        format.html { redirect_to @vehicle_road_tax, notice: (t 'vehicle_road_taxes.title2')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

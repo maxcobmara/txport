@@ -8,14 +8,22 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_assignment_path     
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :document_code_cont, "VRO no Contains"
+        = f.text_field :document_code_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'vehicle_assignments.document_code'
-      %th= t 'vehicle_assignments.document_date'
+      %th= sort_link @search, :code, t('vehicle_assignments.document_code')
+      %th= sort_link @search, :document_date, t('vehicle_assignments.document_date')
       %th= t 'vehicle_assignments.authorised_by'
       %th
 
@@ -23,8 +31,8 @@
     - @vehicle_assignments.each do | vehicle_assignment | 
       %tr
         %td= vehicle_assignment.document_code
-        %td= vehicle_assignment.document_date
-        %td= vehicle_assignment.authoriser.try(:name)
+        %td= l(vehicle_assignment.document_date)
+        %td= check_kin {vehicle_assignment.authoriser.staff_details}
         %td
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
 

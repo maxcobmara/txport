@@ -1,4 +1,6 @@
-jQuery ->
+jQuery ->			
+  datepicker_update = -> $("input.add_fields_datepicker").datepicker({ format: 'yyyy/mm/dd', autoSize:true })
+  
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
@@ -9,4 +11,5 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+    datepicker_update()
     

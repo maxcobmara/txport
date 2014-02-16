@@ -5,6 +5,8 @@ class MaintenancesController < ApplicationController
   # GET /maintenances.json
   def index
     @maintenances = Maintenance.all
+    @search = Maintenance.search(params[:q])
+    @maintenances = @search.result
   end
 
   # GET /maintenances/1
@@ -64,6 +66,10 @@ class MaintenancesController < ApplicationController
     end
   end
 
+  def maintenance
+      @maintenances = Maintenance.all
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_maintenance

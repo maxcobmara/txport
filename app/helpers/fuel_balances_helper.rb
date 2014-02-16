@@ -1,0 +1,2 @@
+module FuelBalancesHelper
+end

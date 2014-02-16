@@ -1,3 +1,4 @@
+require 'rake'
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
 
@@ -5,6 +6,8 @@ class ContractsController < ApplicationController
   # GET /contracts.json
   def index
     @contracts = Contract.all
+    @search = Contract.search(params[:q])
+    @contracts = @search.result
   end
 
   # GET /contracts/1
@@ -60,7 +63,12 @@ class ContractsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def maintenance_contract
+      @contracts = Contract.all
+      %x(bundle exec thor datashift:export:excel -m Contract -r public/Contract.xls)
+  end 
+   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contract

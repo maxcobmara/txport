@@ -40,16 +40,17 @@ ms_MY:
   errors:
   date:
     formats:
-    default: "%d %B %Y"
-    short: "%d %b"
-    long: "%d %B, %Y"
-    events: "%A, %e %b"
+       default: "%d %B %Y"
+       short: "%d %b"
+       long: "%d %B, %Y"
+       events: "%A, %e %b"
     # Use the strftime parameters for formats.
     # When no format has been given, it uses default.
     # You can provide other formats here if you like!
     day_names: [Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu]
     abbr_day_names: [Ahd, Isn, Sel, Rabu, Kha, Jum, Sab]
       # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Januari, Februari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, Mei, Jun, Jul, Ogo, Sep, Okt, Nov, Dis]
       # Used in date_select and datime_select.
     order: 
@@ -62,6 +63,39 @@ ms_MY:
     fuel: Bahan PMP
     people: Pentadbiran
     depot: Depot
+    depot_listing: Senarai Depot
+    fuel_tank: Tangki Penyimpanan
+    fuel_tank_listing: Senarai Tangki
+    inden_card: Kad Inden
+    inden_card_listing: Senarai Kad Inden
+    report_list: Senarai Laporan
+    summon_report: Laporan Senarai Saman 
+    roadtax_report: Laporan Cukai Jalan Bulanan
+    maintenance_report: Laporan Penyelenggaraan
+    fuel_usage_report: Laporan Penggunaan Bahan PMP
+    maintenance_contract_report: Laporan Kontrak Penyelenggaraan
+    tank_capacity_report: Laporan Kapasiti Tangki
+    Summary_report: Laporan Ringkasan 
+    detailed_report: Laporan Terperinci
+    vehicle_report: Laporan Kenderaan
+    vehicle_daily_report: Laporan Kenderaan Harian
+    vehicle_monthly_report: Laporan Kenderaan Bulanan
+    vehicle_yearly_report: Laporan Kenderaan Tahunan
+    annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
+    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Per Quarter
+    transport_summary: Laporan Pengangkutan
+    PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
+  report: 
+    unit_fuel_graph: Graf Penggunaan Minyak
+    diesel_vessel_usage: Penggunaan Diesel Kapal
+    diesel_vehicle_usage: Penggunaan Diesel Kenderaan
+    diesel_misctool_usage: Penggunaan Diesel Alat Pelbagai
+    diesel_boat_usage: Penggunaan Diesel Bot
+    petrol_vehicle_usage: Penggunaan Petrol Kenderaan
+    petrol_misctool_usage: Penggunaan Petrol Alat Pelbagai
+    petrol_boat_usage: Penggunaan Petrol Bot   
+    diesel_usage_current: Penggunaan Diesel Bulan Ini
+    petrol_usage_current: Penggunaan Petrol Bulan Ini
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -94,9 +128,12 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
-    road_tax: Cukai Jalan Baru
-    summons: Saman Baru
-    maintenance: Penyelenggaraan Baru  
+    new_road_tax: Cukai Jalan Baru
+    new_summons: Saman Baru
+    new_maintenance: Penyelenggaraan Baru
+    road_tax: Cukai Jalan
+    summons: Saman
+    maintenance: Penyelenggaraan  
     edit: Sunting Kenderaan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
@@ -136,6 +173,7 @@ ms_MY:
     assignment_dates: Tarikh Penggunaan
   vehicle_fines:
     title: Saman
+    title2: Saman
     code: Kod
     pay_before: Bayar Sebelum
     reason: Sebab
@@ -200,6 +238,8 @@ ms_MY:
     capacity: Kapasiti    
     new: Tangki Penyimpanan Baru
     edit: Sunting Tangki Penyimpanan
+    tank: "Tangki : " 
+    maximum: Maksima
   fuel_types:
     title: Jenis Bahan PMP
     fuel_type_id: Jenis Bahan PMP
@@ -226,6 +266,8 @@ ms_MY:
     title: Pangkat
     shortname: Nama Ringkas
     name: Nama
+    category: Kategori
+    rate: Kumpulan Kadaran
   vehicle_manufacturers:
     title: Pengeluar Kenderaan #pengeluar kenderaan @ pembuat
   vehicle_categories:
@@ -244,7 +286,158 @@ ms_MY:
   vehicle_manufacturers:
     title: Pengeluar Kenderaan
     name: Nama
-    country: Negara  
+    country: Negara
+  depot_fuels:
+    title: "Bahan PMP Bulanan"
+    new: "Bahan PMP Bulanan (Depot) Baru"
+    edit: "Sunting Bahan PMP Bulanan (Depot)"
+    unit_id: Depot
+    issue_date: Tarikh
+    fuel_type: Jenis Bahan PMP
+    start_bal: Baki Mula
+    received: Penerimaan
+    issued: Pengeluaran
+    tank_bal: Baki Tangki
+    end_bal: Baki Akhir
+    summary: Rumusan
+    and: dan
+    must_match: mesti sama
+  fuel_issueds:
+    title: Pengeluaran Bahan PMP
+    title2: Pengeluaran
+    title3: Pengeluaran
+    add_details: Tambah Butiran
+    new: Pengeluaran Bahan PMP Baru
+    edit: Sunting Pengeluaran Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    new_issued: Pengeluaran Baru
+  fuel_supplieds:
+    title: Penerimaan Bahan PMP
+    title2: Penerimaan
+    title3: Penerimaan
+    add_details: Tambah Butiran
+    new: Penerimaan Bahan PMP Baru
+    edit: Sunting Penerimaan Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    new_supplied: Penerimaan Baru
+  fuel_balances:
+    title: Baki Tangki Bahan PMP
+    title2: Baki Tangki
+    add_details: Tambah Butiran
+    new: Baki Semasa Bahan PMP Baru
+    edit: Sunting Baki Semasa Bahan PMP
+    depot_fuel_id: "Depot - Bulan Tahun"
+    fuel_tank_id: Tangki Penyimpanan 
+    current: Baki Semasa 
+    unit_type_id: Unit Ukuran
+    new_balance: Baki Tangki Baru
+  unit_fuels:
+    title: Bahan PMP di Unit
+    title2: Penggunaan di Unit
+    unit_id: Unit
+    issue_date: Tarikh
+    petrol_usage: Penggunaan Petrol
+    diesel_usage: Penggunaan Diesel
+    external_issued: Bekal Kepada
+    external_supplied: Ambil Daripada
+    other_usage: Lain-Lain Bahan PMP
+    new: Bahan PMP Baru di Unit 
+    edit: Sunting Bahan PMP di Unit
+    quantity_ltr: Kuantiti dalam Liter
+    usage: Penggunaan
+    d_vessel: Kapal
+    d_vehicle: Kenderaan
+    d_misctool: Alat Pelbagai
+    d_boat: Bot
+    p_vehicle: Kenderaan
+    p_misctool: Alat Pelbagai
+    p_boat: Bot
+    fuel_type_id: Jenis Bahan PMP
+    description: Deskripsi 
+    quantity: Kuantiti
+    unit_type_id: Unit Ukuran
+    tab_applicable: "(TAB) hanya terpakai untuk" 
+    link_available: "(pautan) hanya wujud setelah rekod 'Bahan PMP di Unit' dicipta untuk "
+    in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
+  add_fuels:
+    title: Lain-Lain Bahan PMP di Unit
+    title2: Bahan PMP Lain di Unit
+    new: Lain-Lain Bahan PMP Baru di Unit
+    edit: Sunting Lain-Lain Bahan PMP di Unit
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    description: Deskripsi 
+    quantity: Kuantiti
+    unit_type_id: Unit Ukuran
+    new_addfuel: Lain-Lain Bahan PMP Baru
+    add_details: Tambah Butiran
+  external_issueds:
+    title: "Bekal Darat / Udara"
+    new: "Bekal Darat / Udara Baru"
+    edit: "Sunting Bekal Darat / Bekal Udara"
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    source: Bekal Kepada
+    new_externalissued: Bekal Kepada Baru
+    add_details: Tambah Butiran
+  external_supplieds:
+    title: "Ambil Darat / Udara"
+    new: "Ambil Darat / Udara Baru"
+    edit: "Sunting Ambil Darat / Ambil Udara"
+    unit_fuel_id: "Unit - Bulan Tahun"
+    fuel_type_id: Jenis Bahan PMP
+    unit_type_id: Unit Ukuran
+    quantity: Kuantiti
+    source: Ambil Daripada
+    new_externalsupplied: Ambil Daripada Baru
+    add_details: Tambah Butiran
+  inden_cards:
+    title: Kad Inden
+    title2: Kad Inden
+    new: Kad Inden Baru
+    edit: Sunting Kad Inden
+    ru_staff: Staff?
+    card_holder: Pemegang Kad
+    parent_unit: Unit
+    serial_no: "No. Siri"
+    daily_limit: Had Harian
+    monthly_limit: Had Bulanan
+    issue_date: Tarikh Dikeluarkan
+    start_date: Tarikh Mula
+    end_date: Tarikh Tamat
+    staff_id: Anggota
+    unit_id: Unit
+  inden_usages:
+    title: Penggunaan Kad Inden
+    title2: Penggunaan Kad Inden
+    new: Penggunaan Kad Inden Baru
+    edit: Sunting Penggunaan Kad Inden
+    inden_card_id: Kad Inden
+    inden_card_serial: "No. Siri Kad Inden"
+    petrol_ltr: "Petrol (liter)"
+    petrol_price: "Petrol (RM)"
+    diesel_ltr: "Diesel (liter)"
+    diesel_price: "Diesel (RM)"
+    issue_date: Tarikh
+    issue_date2: Bulan-Tahun
+    issued_monthly: "* Penggunaan dan Kuantiti Petronas direkodkan secara bulanan"
+    add_details: Tambah Butiran
+    usage_details: Butiran Penggunaan Kad Inden
+    usage_details2: "Butiran Penggunaan Kad Inden & Kuantiti Petronas"
+    petronas_p_ltr: "Petrol (liter)"
+    petronal_p_price: "Petrol (RM)"
+    petronas_d_ltr: "Diesel (liter)"
+    petronas_d_price: "Diesel (RM)"
+    petronas_qty: Kuantiti Petronas
+    usage: Penggunaan
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -338,6 +531,77 @@ ms_MY:
         shortname: Nama Ringkas
         name: Nama
         parent_id: Unit Induk
+      depot_fuel:
+        unit_id: Depot
+        issue_date: Tarikh
+      fuel_issued:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
+      fuel_supplied:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
+      fuel_balance:
+        depot_fuel_id: "Depot - Bulan Tahun"
+        fuel_tank_id: Tangki Penyimpanan 
+        current: Baki Semasa Bahan PMP
+        unit_type_id: Unit Ukuran
+      unit_fuel:
+        unit_id: "UNIT *"
+        issue_date: Tarikh
+        d_vessel: Kapal
+        d_vehicle: Kenderaan
+        d_misctool: Alat Pelbagai
+        d_boat: Bot
+        p_vehicle: Kenderaan
+        p_misctool: Alat Pelbagai
+        p_boat: Bot
+      add_fuel:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        description: Deskripsi 
+        quantity: Kuantiti
+        unit_type_id: Unit Ukuran
+      external_issued:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        unit_type_id: Unit Ukuran
+        quantity: Kuantiti
+        source: Bekal Kepada
+      external_supplied:
+        unit_fuel_id: "Unit - Bulan Tahun"
+        fuel_type_id: Jenis Bahan PMP
+        unit_type_id: Unit Ukuran
+        quantity: Kuantiti
+        source: Ambil Daripada
+      inden_card:
+        title: Kad Inden
+        ru_staff: Anggota?
+        card_holder: Pemegang Kad
+        parent_unit: Unit
+        serial_no: No Siri
+        daily_limit: Had Harian
+        monthly_limit: Had Bulanan
+        issue_date: Tarikh Dikeluarkan
+        start_date: Tarikh Mula
+        end_date: Tarikh Akhir
+        staff_id: Anggota
+        unit_id: Unit
+      inden_usage:
+        inden_card_id: Kad Inden
+        inden_card_serial: "No. Siri Kad Inden"
+        petrol_ltr: "Petrol (liter)"
+        petrol_price: "Petrol (RM)"
+        diesel_ltr: "Diesel (liter)"
+        diesel_price: "Diesel (RM)"
+        issue_date: Tarikh
+        petronas_p_ltr: "Petrol (liter)"
+        petronal_p_price: "Petrol (RM)"
+        petronas_d_ltr: "Diesel (liter)"
+        petronas_d_price: "Diesel (RM)"
     prompt:   
       select_manufacturer: Pilih Pengeluar
       select_category: Pilih Kategori
@@ -356,9 +620,25 @@ ms_MY:
       select_company: Pilih Kontraktor
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
-      
-            
-        
+      select_authoriser: Select Authoriser
+      sequence: Urutan
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
+      select_depot_fuel: Pilih Depot | Bulan Tahun
+      select_fuel_tank: Pilih Depot | Tangki Penyimpanan
+      supplied: "* Jumlah penerimaan sebulan mengikut jenis bahan PMP"
+      issued: "* Jumlah pengeluaran sebulan mengikut jenis bahan PMP"
+      balance: "* Baki semasa bahan PMP pada akhir bulan untuk setiap tangki"
+      summary: "* Baki stok bahan PMP pada akhir bulan untuk setiap jenis bahan PMP"
+      other_fuel: "* Untuk bahan PMP selain daripada Diesel dan Petrol"
+      select_source1: Pilih Penerima
+      select_source2: Pilih Pembekal
+      caution_not_depot: Sila ambil perhatian bahagian ini hanya terpakai untuk Depot
+      select_inden_card: Pilih Kad Inden
+      inden_card: Penggunaan Kad Inden Dalam Sebulan
+      add_edit_inden_usage: "Untuk Menambah / Menyunting Rekod Penggunaan Bulanan Bagi Kad Inden, Sila ke Menu : Bahan PMP | Kad Inden"
+      no_items: Tiada Butiran
+      select_rank_category: Pilih Kategori Pangkat
+      select_rank_rate: Pilih Kumpulan Kadaran (untuk Kit)
         
   
   

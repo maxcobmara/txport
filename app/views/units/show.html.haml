@@ -13,14 +13,15 @@
   %dl.dl-horizontal
     %dt= t 'units.parent_id', :default =>  model_class.human_attribute_name(:parent_id) + ":"
     %dd
-      = @unit.parent.try(:shortname)
+      = check_kin {@unit.parent.shortname}
       &nbsp; : &nbsp;
-      = @unit.parent.try(:name)
+      = check_kin {@unit.parent.name}
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), units_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
     edit_unit_path(@unit), :class => 'btn'
+  = link_to content_tag(:i, " New Node", :class => "fa fa-leaf"), new_unit_path(:parent_id => @unit), :class => 'btn btn-info'
   = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
     unit_path(@unit),                                                                                                    |
     :method => 'delete',                                                                                                           |

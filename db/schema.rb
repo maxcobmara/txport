@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119101557) do
+ActiveRecord::Schema.define(version: 20140206234121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_fuels", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.string   "description"
+    t.decimal  "quantity"
+    t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -48,6 +58,68 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.datetime "updated_at"
   end
 
+  create_table "depot_fuels", force: true do |t|
+    t.integer  "unit_id"
+    t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expertises", force: true do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.integer  "branch"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_issueds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_supplieds", force: true do |t|
+    t.integer  "unit_fuel_id"
+    t.integer  "fuel_type_id"
+    t.integer  "unit_type_id"
+    t.decimal  "quantity"
+    t.integer  "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fuel_balances", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_tank_id"
+    t.decimal  "current"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_type_id"
+  end
+
+  create_table "fuel_issueds", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_type_id"
+    t.decimal  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_type_id"
+  end
+
+  create_table "fuel_supplieds", force: true do |t|
+    t.integer  "depot_fuel_id"
+    t.integer  "fuel_type_id"
+    t.decimal  "quantity"
+    t.integer  "unit_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fuel_tanks", force: true do |t|
     t.integer  "unit_id"
     t.string   "locations"
@@ -56,6 +128,7 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.integer  "fuel_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "maximum"
   end
 
   create_table "fuel_types", force: true do |t|
@@ -63,6 +136,35 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "inden_cards", force: true do |t|
+    t.boolean  "ru_staff"
+    t.string   "serial_no"
+    t.decimal  "daily_limit"
+    t.decimal  "monthly_limit"
+    t.date     "issue_date"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "staff_id"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inden_usages", force: true do |t|
+    t.integer  "inden_card_id"
+    t.decimal  "petrol_ltr"
+    t.decimal  "petrol_price"
+    t.decimal  "diesel_ltr"
+    t.decimal  "diesel_price"
+    t.date     "issue_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "petronas_p_ltr"
+    t.decimal  "petronal_p_price"
+    t.decimal  "petronas_d_ltr"
+    t.decimal  "petronas_d_price"
   end
 
   create_table "kit_staffs", force: true do |t|
@@ -81,6 +183,16 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "senior_rate"
+    t.integer  "staff_group"
+    t.integer  "pk"
+    t.integer  "pkk"
+    t.integer  "graduan"
+    t.integer  "peg_l"
+    t.integer  "peg_p"
+    t.integer  "peg"
+    t.integer  "kadet_l"
+    t.integer  "kadet_p"
+    t.integer  "quantity2"
   end
 
   create_table "kits", force: true do |t|
@@ -113,11 +225,19 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.datetime "updated_at"
   end
 
+  create_table "positions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ranks", force: true do |t|
     t.string   "shortname"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category"
+    t.integer  "rate"
   end
 
   create_table "staff_measurements", force: true do |t|
@@ -136,6 +256,19 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unit_id"
+    t.integer  "expertise_id"
+    t.integer  "position_id"
+    t.integer  "gender"
+    t.integer  "religion"
+  end
+
+  create_table "stock_orders", force: true do |t|
+    t.integer "stock_id"
+    t.integer "quantity"
+    t.integer "unit_type_id"
+    t.integer "company_id"
+    t.string  "remark"
   end
 
   create_table "uniform_items", force: true do |t|
@@ -179,6 +312,20 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.datetime "updated_at"
   end
 
+  create_table "unit_fuels", force: true do |t|
+    t.date     "issue_date"
+    t.integer  "unit_id"
+    t.decimal  "d_vessel"
+    t.decimal  "d_vehicle"
+    t.decimal  "d_misctool"
+    t.decimal  "d_boat"
+    t.decimal  "p_vehicle"
+    t.decimal  "p_misctool"
+    t.decimal  "p_boat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "unit_types", force: true do |t|
     t.string   "short_name"
     t.string   "description"
@@ -189,9 +336,12 @@ ActiveRecord::Schema.define(version: 20140119101557) do
   create_table "units", force: true do |t|
     t.string   "shortname"
     t.string   "name"
-    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
+    t.string   "code"
+    t.string   "combo_code"
+    t.integer  "ancestry_depth"
   end
 
   create_table "users", force: true do |t|
@@ -307,7 +457,7 @@ ActiveRecord::Schema.define(version: 20140119101557) do
   end
 
   create_table "vehicles", force: true do |t|
-    t.string   "reg_no",            limit: 8
+    t.string   "reg_no",             limit: 8
     t.string   "chassis_no"
     t.string   "engine_no"
     t.date     "reg_on"
@@ -316,11 +466,15 @@ ActiveRecord::Schema.define(version: 20140119101557) do
     t.string   "model"
     t.integer  "category_id"
     t.date     "acquired_on"
-    t.decimal  "price",                       precision: 10, scale: 2
+    t.decimal  "price",                        precision: 10, scale: 2
     t.integer  "contract_id"
     t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end

@@ -9,8 +9,16 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_contract_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.text_field :contract_no_cont, class: "input-medium search-query", placeholder: "Contract no Contains" 
+        = f.text_field :company_id_cont, class: "input-medium search-query", placeholder: "Contractor Contains" 
+        = f.submit "Search", class: "btn btn-warning"
       
       
 .row{style: "font-weight:bold;"}
@@ -22,9 +30,9 @@
     = t 'contracts.description'
     %br
     =t 'contracts.value'
-  .span3=t 'contracts.company_id'
-  .span1=t 'contracts.starts_on'
-  .span1=t 'contracts.ends_on'
+  .span3=sort_link @search, :company_id, t('contracts.company_id')
+  .span1=sort_link @search, :starts_on, t('contracts.starts_on')
+  .span1=sort_link @search, :ends_on, t('contracts.ends_on')
   .span1=t 'contracts.issued_by'
   .span1=t 'contracts.contract_type' 
   .span1
