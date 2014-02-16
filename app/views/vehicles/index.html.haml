@@ -8,6 +8,8 @@
   .navbar-inner
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_path
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_path	  
     %ul.nav.pull-right
       %li.search_bar{:style => "display: none;" } 
         = form_tag vehicles_path, :method => 'get', :id => "vehicles_search" do

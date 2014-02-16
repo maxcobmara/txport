@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206234121) do
+ActiveRecord::Schema.define(version: 20140215021442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acquired_types", force: true do |t|
+    t.string   "short_name",  limit: 12
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "add_fuels", force: true do |t|
     t.integer  "unit_fuel_id"
@@ -457,7 +464,7 @@ ActiveRecord::Schema.define(version: 20140206234121) do
   end
 
   create_table "vehicles", force: true do |t|
-    t.string   "reg_no",             limit: 8
+    t.string   "reg_no",             limit: 20
     t.string   "chassis_no"
     t.string   "engine_no"
     t.date     "reg_on"
@@ -466,7 +473,7 @@ ActiveRecord::Schema.define(version: 20140206234121) do
     t.string   "model"
     t.integer  "category_id"
     t.date     "acquired_on"
-    t.decimal  "price",                        precision: 10, scale: 2
+    t.decimal  "price",                         precision: 10, scale: 2
     t.integer  "contract_id"
     t.integer  "status_id"
     t.datetime "created_at"
@@ -475,6 +482,7 @@ ActiveRecord::Schema.define(version: 20140206234121) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "acquired_id"
   end
 
 end

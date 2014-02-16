@@ -1,0 +1,1 @@
+$('#tr_<%= @acquired_type.id =%>').remove();

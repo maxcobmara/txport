@@ -1,4 +1,6 @@
 Txport::Application.routes.draw do
+  resources :acquired_types
+
   resources :expertises
 
   resources :positions
@@ -93,10 +95,16 @@ Txport::Application.routes.draw do
     collection do
       get 'vehicle_daily_report'
       get 'vehicle_monthly_report'
-      get 'vehicle_yearly_report'
+      get 'vehicle_yearly_report'       
     end
   end
   
+  resources :vehicles do 
+    collection { post :import }
+  end
+
+  match '/public/excel_format/vehicle_excel.xls', to: 'vehicles#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel', to:'vehicles#import_excel', via: 'get'
 
   devise_for :users
   resources :users

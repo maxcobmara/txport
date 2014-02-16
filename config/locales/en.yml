@@ -30,6 +30,8 @@ en:
     attributes:
       vehicle:
         reg_no: Registration No
+        chassis_no: Chassis No
+        engine_no: Engine No
       vehicle_fine:
         code: Code
         type_id: Summon Type
@@ -49,6 +51,7 @@ en:
           not_a_number: is not number
           too_short: "is too short (minimum is {{count}} characters)"
           taken: has already been taken
+          #record_invalid: is invalid
 
   actions:
     new: New
@@ -60,6 +63,7 @@ en:
     create: Create
     created: " was successfully created."
     updated: " was successfully updated."
+    import_excel: Import Data From Excel
   errors:
   date:
     formats:
@@ -155,6 +159,26 @@ en:
     road_tax: Road Taxes
     summons: Summons
     maintenance: Maintenances
+    import_excel: Import Vehicle From Excel File
+    pre_conditions: "Pre-Conditions of Excel File"
+    condition_reg_no: "Registration No, Engine No & Chassis No - No duplicates allowed *"
+    condition_reg_on: "Register On (Mula Khidmat) - Only Excel data of DATE type will be saved"
+    condition_status: "Status - Must match with Vehicle Statuses (from menu - Vehicle | Drop Downs | Vehicle Statuses - Short Name)"
+    condition_acquired: "Acquired From - Must match to Acquired Type (from menu - Vehicle | Drop Downs | Acquired Types - Short Name)"
+    imported: Vehicles from Excel file are successfully imported
+    acquired_id: Acquired Type
+    condition_category_spanco: "Vehicles acquired from SPANCO must be categorised according to Vehicle Categories ie. KJU, KJK, KJT and KRJ"
+    condition_category_spanco2: " (from menu - Vehicle | Dropdown | Vehicle Categories - Description)"
+    condition_model: "Model - should ONLY consist of Vehicle Manufacturer and Vehicle Model"	
+    condition_category_others: "Vehicle acquired from other than SPANCO must match with Vehicle Categories (other than KJU, KJK, KJT and KRJ)" 
+    invalid_excel: "Excel file data are invalid. "
+    errors_count: "Excel record(s) are invalid for import."
+    invalid_excel_data: Invalid Excel data
+    errors_counting: Total Errors
+    errors_description: Errors Description
+    failure: "* Failure to comply with condition no 1 will cause failure in import."
+    failure2: "Failure to comply with conditions no 2-7 may result inaccurate data saved into the system."
+    excel_format: Excel Format
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -459,6 +483,11 @@ en:
     petronas_d_price: "Diesel (RM)"
     petronas_qty: Petronas Quantity
     usage: Usage
+  acquired_types:
+    title: Acquired Types (Vehicle)
+    title2: Acquired Types
+    short_name: Short Name
+    description: Description
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
