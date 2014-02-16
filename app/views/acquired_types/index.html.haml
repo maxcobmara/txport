@@ -1,0 +1,30 @@
+- provide(:title, 'Acquired type')
+- model_class = AcquiredType
+.page-header
+  %h1= t 'acquired_types.title', :default => model_class.model_name.human.pluralize
+      
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_acquired_type_path, id: "add_acquired_type", remote: true
+    %ul.nav.pull-right
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+%table.table.table-condensed.table-hover#vehicle_fine_type_list{:style => "width:60%;"}
+  %thead
+    %tr
+      %th= t 'acquired_types.short_name'
+      %th= t 'acquired_types.description'
+      %th
+  %tbody
+    %tr#acquired_type_form(style="display:none;")
+      = render :partial => 'form'
+    - @acquired_types.each do |acquired_type|
+      %tr{:id => "tr_#{acquired_type.id}"}
+        %td= acquired_type.short_name
+        %td= acquired_type.description
+        %td= link_to (fa_icon "trash-o"), acquired_type, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+

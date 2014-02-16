@@ -32,6 +32,13 @@ gem "paperclip", "~> 3.0"
 
 gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
+gem "nokogiri"
+gem "builder"
+gem "rubyzip"
+#gem "google-spreadsheet-ruby"
+gem "spreadsheet"
+gem "roo"
+
 group :assets do
 
 end

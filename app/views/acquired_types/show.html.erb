@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @acquired_type.short_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @acquired_type.description %>
+</p>
+
+<%= link_to 'Edit', edit_acquired_type_path(@acquired_type) %> |
+<%= link_to 'Back', acquired_types_path %>

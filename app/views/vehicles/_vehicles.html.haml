@@ -8,7 +8,7 @@
       %th= t 'vehicles.model' 
       %th= t 'vehicles.category_id' 
       %th= t 'vehicles.acquired_on' 
-      %th= t 'vehicles.price' 
+      %th= t 'vehicles.acquired_id' 
       %th= t 'vehicles.contract_id' 
       %th= t 'vehicles.status' 
       %th
@@ -20,9 +20,9 @@
         %td= vehicle.manufacturer_year
         %td= check_kin {vehicle.manufacturer.name}
         %td= vehicle.model
-        %td= check_kin {vehicle.category.short_name} 
+        %td= check_kin {vehicle.vehiclecategory.short_name} 
         %td= vehicle.acquired_on
-        %td= ringgols(vehicle.price)
+        %td= check_kin {vehicle.vehicleacquired.description} #short_name
         %td= check_kin {vehicle.contract.contract_no} 
-        %td= check_kin {vehicle.status.short_name}
+        %td= check_kin {vehicle.vehiclestatus.short_name}
         = render :partial => 'action_menu', :locals => { :vehicle => vehicle }

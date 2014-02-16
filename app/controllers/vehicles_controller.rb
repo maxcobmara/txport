@@ -85,6 +85,36 @@ class VehiclesController < ApplicationController
   end
 
 
+  def import_excel
+  end
+  
+  def import
+      #use this line or line 88-89
+      #Vehicle.import(params[:file]) 
+      #redirect_to vehicles_url, notice: (t 'vehicles.imported') 
+      
+      #OR use these lines onwards
+      @vehicles = Vehicle.import(params[:file]) 
+      if @vehicles.all?(&:valid?)
+        @vehicles.each(&:save!)
+        respond_to do |format|
+          flash[:notice] 
+          format.html { redirect_to vehicles_url, notice: (t 'vehicles.imported') }
+        end
+      else
+        @invalid_vehicles = Vehicle.get_invalid(@vehicles) 
+        respond_to do |format|
+          flash[:notice] = (t 'vehicles.invalid_excel')+@invalid_vehicles.count.to_s+" "+(t 'vehicles.errors_count')  #yellow box
+          format.html { render action: 'import_excel' }
+          flash.discard
+        end
+      end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/vehicle_excel.xls")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
