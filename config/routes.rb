@@ -95,12 +95,9 @@ Txport::Application.routes.draw do
     collection do
       get 'vehicle_daily_report'
       get 'vehicle_monthly_report'
-<<<<<<< HEAD
       get 'vehicle_yearly_report'
       get 'transport_summary_report'
-=======
-      get 'vehicle_yearly_report'       
->>>>>>> e00cb08eae6a5d1bfbfc989ed891b5a9ecc6e209
+      get 'vehicle_yearly_report' 
     end
   end
   
