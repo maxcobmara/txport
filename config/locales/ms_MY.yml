@@ -182,19 +182,24 @@ ms_MY:
     new: Cukai Jalan Kenderaan Baru
     edit: Sunting Cukai Jalan Kenderaan
   vehicle_assignments:
-    title: Perjawatan Kenderaan
+    title: Pengeluaran Kenderaan
+    #title: Perjawatan Kenderaan
     #assigned_on: Mula
     #assignment_end: Tamat
-    document_code: "Kuasa VRO (No. Pengeluaran)"
+    document_code: "No. Pengeluaran"
+    #document_code: "Kuasa VRO (No. Pengeluaran)"
     document_code2: Kuasa VRO
     document_date: Tarikh VRO
     authorised_by: Pengeluar VRO
-    new: Perjawatan Kenderaan Baru
-    edit: Sunting Perjawatan Kenderaan
-    vehicle_details: "Butir-Butir Pengguna"
+    new: Pengeluaran Kenderaan Baru
+    edit: Sunting Pengeluaran Kenderaan
+    #new: Perjawatan Kenderaan Baru
+    #edit: Sunting Perjawatan Kenderaan
+    vehicle_details: "Butir-Butir Kenderaan"
     add_details: Tambah Butiran
     user: Nama Pengguna
-    assignment_dates: Tarikh Penggunaan
+    assignment_dates: Tarikh Pengambilan
+    #assignment_dates: Tarikh Penggunaan
   vehicle_fines:
     title: Saman
     title2: Saman
@@ -504,8 +509,8 @@ ms_MY:
       vehicle_assignment:
         assigned_on: Mula
         assignment_end: Tamat
-        document_code: "Kuasa VRO (No. Pengeluaran)"
-        document_date: Tarikh VRO
+        document_code: "No. Pengeluaran"
+        document_date: Tarikh Pengambilan
         authorised_by: Pengeluar VRO
       vehicle_fine:
         code: Kod
