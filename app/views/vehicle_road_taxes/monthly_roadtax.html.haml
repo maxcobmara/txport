@@ -1,3 +1,7 @@
+.navbar
+  %ul.nav
+    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
 %h2 
   = t 'report.road_tax_listing'
   =Date.today.next_month.strftime("%b %Y")
