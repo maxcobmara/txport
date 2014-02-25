@@ -181,6 +181,7 @@ ms_MY:
     amount: Amaun
     new: Cukai Jalan Kenderaan Baru
     edit: Sunting Cukai Jalan Kenderaan
+    other_report: Lain-lain Laporan Cukai Jalan
   vehicle_assignments:
     title: Pengeluaran Kenderaan
     #title: Perjawatan Kenderaan

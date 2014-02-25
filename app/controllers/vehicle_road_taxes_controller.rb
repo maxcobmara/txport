@@ -69,6 +69,11 @@ class VehicleRoadTaxesController < ApplicationController
      @next_month_road_tax = VehicleRoadTax.where("end_on >= ? AND end_on <= ?", 1.month.from_now.beginning_of_month, 1.month.from_now.end_of_month) 
   end
   
+  def report_roadtax  
+      @report_roadtax = VehicleRoadTax.all
+     
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle_road_tax

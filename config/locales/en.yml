@@ -216,6 +216,7 @@ en:
     amount: Amount
     new: New Vehicle Road Tax
     edit: Edit Vehicle Road Tax
+    other_report: Other Vehicle Road Tax Report
   vehicle_assignments:
     title: Vehicle Release
     #title: Vehicle Assignment
