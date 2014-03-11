@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+
+   <table>
+	<Row>
+		<Cell><Data ss:Type="String">code</Data></Cell>
+		<Cell><Data ss:Type="String">vehicle_id</Data></Cell>
+		<Cell><Data ss:Type="String">type_id</Data></Cell>
+		<Cell><Data ss:Type="String">issued_at</Data></Cell>
+		<Cell><Data ss:Type="String">pay_before</Data></Cell>
+		<Cell><Data ss:Type="String">location</Data></Cell>
+		<Cell><Data ss:Type="String">reason</Data></Cell>
+		<Cell><Data ss:Type="String">compound</Data></Cell>
+		<Cell><Data ss:Type="String">receipt_no</Data></Cell>
+		<Cell><Data ss:Type="String">paid_on</Data></Cell>
+		<Cell><Data ss:Type="String">paid_amount</Data></Cell>
+	</Row>
+	
+	<% @vehicle_fines.each do |vehicle_fine|  %>
+		<Row>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.code %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.vehicle.reg_no %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {vehicle_fine.vehicle_fine_type.short_name} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.issued_at%></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {l(vehicle_fine.pay_before)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.location %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.reason %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.compound) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle_fine.receipt_no %></Data></Cell>
+			<Cell><Data ss:Type="Number"><%= check_kin {l(vehicle_fine.paid_on)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.paid_amount)  %></Data></Cell>
+		</Row>
+		<% end %>
+		</table>
+	</Worksheet>
+</Workbook>

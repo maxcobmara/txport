@@ -7,7 +7,12 @@ class VehicleFinesController < ApplicationController
     @search =  VehicleFine.search(params[:q])
     @vehicle_fines = @search.result
     #@vehicle_fines = VehicleFine.order(pay_before: :asc).all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @vehicle_fines.to_csv }
+      format.xls { send_data @vehicle_fines.to_csv(col_sep: "\t") }
   end
+end
 
   # GET /vehicle_fines/1
   # GET /vehicle_fines/1.json
