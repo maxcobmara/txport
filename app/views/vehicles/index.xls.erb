@@ -33,7 +33,7 @@
 			<Cell><Data ss:Type="String"><%= vehicle.model %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= check_kin {vehicle.category.short_name} %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= vehicle.acquired_on %></Data></Cell>
-			<Cell><Data ss:Type="Number"><%= ringgols(vehicle.price) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= ringgols(vehicle.price) %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= check_kin {vehicle.contract.contract_no}  %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= check_kin {vehicle.status.short_name} %></Data></Cell>
 		</Row>
