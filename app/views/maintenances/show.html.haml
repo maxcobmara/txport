@@ -18,7 +18,47 @@
 %dl.dl-horizontal
   %dt= t 'maintenances.supplied_by', :default => model_class.human_attribute_name(:supplied_by) + ":"
   %dd= check_kin {@maintenance.supplier.name}
-
+%dl.dl-horizontal
+  %dt= t 'maintenances.maintenance_date', :default => model_class.human_attribute_name(:maintenance_date) + ":"
+  %dd= check_kin {l(@maintenance.maintenance_date)}
+%dl.dl-horizontal
+  %dt= t 'maintenances.repair_date', :default => model_class.human_attribute_name(:repair_date) + ":"
+  %dd= check_kin {l(@maintenance.repair_date)}
+%dl.dl-horizontal
+  %dt= t 'maintenances.repair_location', :default => model_class.human_attribute_name(:repair_location) + ":"
+  %dd= @maintenance.repair_location
+%dl.dl-horizontal
+  %dt= t 'maintenances.value_repaired', :default => model_class.human_attribute_name(:value_repaired) + ":"
+  %dd= @maintenance.value_repaired
+%dl.dl-horizontal
+  %dt= t 'maintenances.value_supplied', :default => model_class.human_attribute_name(:value_supplied) + ":"
+  %dd= @maintenance.value_supplied
+    
+%br
+%h5=t('maintenance_details.title_parts')
+	      
+.div{:style => "padding: 15px 50px 10px 50px; "}
+- if @maintenance.maintenance_details == []
+  = t 'helpers.prompt.no_items'
+- else
+  %table{:width => "75%"}
+    %thead
+      %tr
+        %th{:align => "left"}= t 'maintenance_details.maintenance_type_id'
+        %th{:align => "left"}= t 'maintenance_details.line_item'
+        %th= t 'maintenance_details.line_item_price'
+        %th= t 'maintenance_details.quantity'
+        %th= t 'maintenance_details.unit_type'
+        %th
+    %tbody 
+      - for maintenance_maintenance_detail in @maintenance.maintenance_details
+        %tr
+          %td= check_kin {maintenance_maintenance_detail.maintenance_type.type_name}
+          %td= maintenance_maintenance_detail.line_item
+          %td{:align => "center"}= check_kin {ringgols(maintenance_maintenance_detail.line_item_price)}		 
+          %td{:align => "center"}= maintenance_maintenance_detail.quantity
+          %td{:align => "center"}= check_kin {maintenance_maintenance_detail.unittype.description}
+          %td 
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), maintenances_path, :class => 'btn'

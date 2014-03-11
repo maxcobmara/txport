@@ -16,7 +16,7 @@
     - @vehicles.each do |vehicle|
       %tr
         %td= vehicle.reg_no
-        %td= vehicle.reg_on
+        %td= check_kin {vehicle.reg_on.strftime("%d %b %Y")}
         %td= vehicle.manufacturer_year
         %td= check_kin {vehicle.manufacturer.name}
         %td= vehicle.model

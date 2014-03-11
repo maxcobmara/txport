@@ -124,6 +124,8 @@ ms_MY:
     title: Kenderaan
     reg_no: "No. Daftar"
     reg_on: Tarikh Daftar
+    chassis_no: "No. Casis"
+    engine_no: "No. Enjin"
     manufacturer_year: Tahun Dibuat
     manufacturer_id: Pengeluar
     model: Model
@@ -141,7 +143,7 @@ ms_MY:
     edit: Sunting Kenderaan
     import_excel: Import Kenderaan Dari Fail Excel
     pre_conditions: "Pra-Syarat Fail Excel"
-    condition_reg_no: "No. Daftar - Mestilah unik dan tiada rekod yang bertindan *"
+    condition_reg_no: "No. Daftar, No. Casis dan No. Enjin - Mestilah unik dan tiada rekod yang bertindan *"
     condition_reg_on: "Mula Khidmat - Hanya data Excel dengan jenis TARIKH akan disimpan"
     condition_status: "Status - Mesti sepadan dengan Status Kenderaan (dari menu - Kenderaan | Data Asas | Status Kenderaan - Nama Ringkas)"
     condition_acquired: "Jenis Diperolehi - Mesti sepadan dengan Jenis Diperolehi (dari menu - Kenderaan | Data Asas | Jenis Diperolehi - Nama Ringkas)"
@@ -172,6 +174,12 @@ ms_MY:
     contract_id: "No. Kontrak"
     repaired_by: Dibaiki Oleh
     supplied_by: Pembekal    
+    maintenance_date: Tarikh Senggaraan
+    repair_date: Tarikh Pembaikan
+    repair_location: Lokasi Pembaikan
+    value_supplied: "Jumlah Alat Ganti (RM)"
+    value_repaired: "Jumlah Senggaraan (RM)"
+    month_year: "Bulan - Tahun"
     new: Penyelenggaraan Baru
     edit: Sunting Penyelenggaraan
   vehicle_road_taxes:
@@ -473,6 +481,18 @@ ms_MY:
     title2: Jenis Diperolehi
     short_name: Nama Ringkas
     description: Deskripsi
+  maintenance_types:
+    title: Jenis Penyelenggaraan
+    type_name: Jenis Senggaraan
+    description: Deskripsi Senggaraan
+  maintenance_details:
+    title: Butiran Penyelenggaraan
+    title_parts: "Butiran Penyelenggaraan & Alat Ganti"
+    maintenance_type_id: Jenis Senggaraan
+    line_item: Deskripsi Pembaikan / Alat Ganti
+    line_item_price: "Harga (RM)"
+    quantity: Kuantiti
+    unit_type: Unit Ukuran
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -503,6 +523,11 @@ ms_MY:
         contract_id: "No. Kontrak"
         repaired_by: Dibaiki Oleh
         supplied_by: Pembekal
+        maintenance_date: Tarikh Senggaraan
+        repair_date: Tarikh Pembaikan
+        repair_location: Lokasi Pembaikan
+        value_supplied: "Jumlah Alat Ganti (RM)"
+        value_repaired: "Jumlah Senggaraan (RM)"
       vehicle_road_tax:
         from: Dari
         to: hingga
@@ -674,6 +699,7 @@ ms_MY:
       no_items: Tiada Butiran
       select_rank_category: Pilih Kategori Pangkat
       select_rank_rate: Pilih Kumpulan Kadaran (untuk Kit)
+      select_maintenance_type: Pilih Jenis Senggaraan
         
   
   

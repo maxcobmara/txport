@@ -159,6 +159,8 @@ en:
     title2: Vehicle
     reg_no: Registration No
     reg_on: Registration Date
+    chassis_no: Chasis No
+    engine_no: Engine No
     manufacturer_year: Year of Manufacture
     manufacturer_id: Manufacturer
     model: Model
@@ -205,7 +207,13 @@ en:
     work_order_no: Work Order No
     contract_id: Contract No
     repaired_by: Repaired By
-    supplied_by: Supplied By    
+    supplied_by: Supplied By
+    maintenance_date: Maintenance Date
+    repair_date: Repair Date
+    repair_location: Repair Location
+    value_supplied: "Total Supplied (RM)"
+    value_repaired: "Total Repaired (RM)"
+    month_year: "Month - Year"	    
     new: New Maintenance
     edit: Edit Maintenance
   vehicle_road_taxes:
@@ -508,6 +516,18 @@ en:
     title2: Acquired Types
     short_name: Short Name
     description: Description
+  maintenance_types:
+    title: Maintenance Type
+    type_name: Type
+    description: Description
+  maintenance_details:
+    title: Maintenance Details
+    title_parts: "Maintenance Details & Parts"
+    maintenance_type_id: Maintenance Type
+    line_item: Repairs / Parts Description
+    line_item_price: "Price (RM)"
+    quantity: Quantity
+    unit_type: Unit Type
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -537,7 +557,12 @@ en:
         work_order_no: Work Order No
         contract_id: Contract No
         repaired_by: Repaired By
-        supplied_by: Supplied By 
+        supplied_by: Supplied By
+        maintenance_date: Maintenance Date
+        repair_date: Repair Date
+        repair_location: Repair Location
+        value_supplied: "Total Supplied (RM)"
+        value_repaired: "Total Repaired (RM)"
       vehicle_road_tax:
         from: From
         to: to
@@ -706,3 +731,4 @@ en:
       no_items: No Items
       select_rank_category: Select Rank Category
       select_rank_rate: Select Rate Group (for Kit)
+      select_maintenance_type: Select Maintenance Type

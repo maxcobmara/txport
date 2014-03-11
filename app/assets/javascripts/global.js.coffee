@@ -1,5 +1,5 @@
 jQuery ->			
-  datepicker_update = -> $("input.add_fields_datepicker").datepicker({ format: 'yyyy/mm/dd', autoSize:true })
+  datepicker_update = -> $("input.datepicker22").datepicker({ format: 'yyyy/mm/dd', autoSize:true })
   
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
