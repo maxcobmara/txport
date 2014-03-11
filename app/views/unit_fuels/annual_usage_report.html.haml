@@ -38,9 +38,9 @@ Annual Petrol Usage
     %tr
       %th= t 'unit_fuels.unit_id'  
       %th= t 'unit_fuels.issue_date'
-      %th= t 'unit_fuels.d_vehicle'
-      %th= t 'unit_fuels.d_misctool'
-      %th= t 'unit_fuels.d_boat'
+      %th= t 'unit_fuels.p_vehicle'
+      %th= t 'unit_fuels.p_misctool'
+      %th= t 'unit_fuels.p_boat'
       %th= t 'unit_fuels.petrol_usage'
 
   %tbody
@@ -51,6 +51,6 @@ Annual Petrol Usage
         %td= unit_fuel.p_vehicle
         %td= unit_fuel.p_misctool
         %td= unit_fuel.p_boat
-        %td= UnitFuel.diesel_usage(unit_fuel)
+        %td= UnitFuel.petrol_usage(unit_fuel)
 
 

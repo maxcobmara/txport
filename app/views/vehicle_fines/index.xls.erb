@@ -32,7 +32,7 @@
 			<Cell><Data ss:Type="String"><%= vehicle_fine.reason %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.compound) %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= vehicle_fine.receipt_no %></Data></Cell>
-			<Cell><Data ss:Type="Number"><%= check_kin {l(vehicle_fine.paid_on)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {l(vehicle_fine.paid_on)} %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.paid_amount)  %></Data></Cell>
 		</Row>
 		<% end %>
