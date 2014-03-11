@@ -8,7 +8,7 @@ class VehiclesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @vehicles.to_csv }
-      format.xls # { send_data @vehicles.to_csv(col_sep: "\t") }
+      format.xls { send_data @vehicles.to_csv(col_sep: "\t") }
     end
   end
 
