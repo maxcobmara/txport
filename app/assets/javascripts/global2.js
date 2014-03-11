@@ -50,16 +50,16 @@ function switchvisibility(el) {
   }
 }
 
-//for datepicker to works in nested forms
+//for datepicker to works in nested forms - used for Fuel | Inden Cards | New
 //http://stackoverflow.com/questions/10824587/adding-a-date-picker-to-a-nested-form-field
 $(function() {
-  $(".add_fields_datepicker").datepicker({ format: 'yyyy/mm/dd', autoSize:true});
+  $(".datepicker22").datepicker({ format: 'yyyy/mm/dd', autoSize:true});
 });
-
+/* - remove calendar appear -> when 'Add Details' is clicked
 $(function() {
     $('.add_fields').on('click', function(){
       $(this).datepicker({ format: 'yyyy/mm/dd', autoSize:true});
     });
-});
+});*/
 
 

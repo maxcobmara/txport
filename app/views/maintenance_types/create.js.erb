@@ -1,0 +1,5 @@
+$('#maintenance_type_form').remove();
+$('#maintenance_type_list tr:last').after('<%= j render("list") %>');
+location.reload(false);
+
+

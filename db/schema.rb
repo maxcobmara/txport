@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215021442) do
+ActiveRecord::Schema.define(version: 20140310032557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -220,6 +220,14 @@ ActiveRecord::Schema.define(version: 20140215021442) do
     t.integer  "unit_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "maintenance_type_id"
+  end
+
+  create_table "maintenance_types", force: true do |t|
+    t.string   "type_name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "maintenances", force: true do |t|
@@ -230,6 +238,11 @@ ActiveRecord::Schema.define(version: 20140215021442) do
     t.integer  "supplied_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "maintenance_date"
+    t.decimal  "value_supplied"
+    t.decimal  "value_repaired"
+    t.date     "repair_date"
+    t.string   "repair_location"
   end
 
   create_table "positions", force: true do |t|

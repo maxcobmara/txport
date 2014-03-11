@@ -1,4 +1,6 @@
 Txport::Application.routes.draw do
+  resources :maintenance_types
+
   resources :acquired_types
 
   resources :expertises

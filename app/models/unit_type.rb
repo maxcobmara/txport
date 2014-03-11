@@ -6,4 +6,5 @@ class UnitType < ActiveRecord::Base
   has_many :add_fuels, dependent: :nullify
   has_many :external_issueds, dependent: :nullify
   has_many :external_supplieds, dependent: :nullify
+  has_many :maintenance_details, dependent: :nullify
 end

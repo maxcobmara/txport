@@ -1,0 +1,7 @@
+= form_for @maintenance_type, remote: true do |f|
+  %div#maintenance_type_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :type_name
+  %td= f.text_field :description 
+  %td= f.submit (t 'actions.create'), :class => 'btn btn-primary'
