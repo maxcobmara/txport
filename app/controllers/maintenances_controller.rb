@@ -7,6 +7,11 @@ class MaintenancesController < ApplicationController
     @maintenances = Maintenance.all
     @search = Maintenance.search(params[:q])
     @maintenances = @search.result
+    respond_to do |format|
+      format.html
+      format.csv { send_data @maintenances.to_csv }
+      format.xls #{ send_data @maintenances.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /maintenances/1

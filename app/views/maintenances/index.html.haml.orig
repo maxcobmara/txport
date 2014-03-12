@@ -8,8 +8,13 @@
   .navbar-inner
     %ul.nav
       //%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_maintenance_path
+<<<<<<< HEAD
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))),{:controller =>'maintenances',:action => 'import_excel'}
+=======
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", maintenances_path(format: "xls")
+>>>>>>> ab4a6192e006bb56d77b91ccb08a05f3d2438b81
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")

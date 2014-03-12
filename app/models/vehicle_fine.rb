@@ -29,5 +29,14 @@ class VehicleFine < ActiveRecord::Base
      "Dikecualikan"     
    end
  end
+ 
+ def self.to_csv(options = {})
+   CSV.generate(options) do |csv|
+    csv << column_names
+    all.each do |vehicle_fine|
+      csv << vehicle_fine.attributes.values_at(*column_names)
+   end
+ end
+ end
 
 end

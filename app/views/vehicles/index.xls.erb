@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+
+   <table>
+	<Row>
+		<Cell><Data ss:Type="String">reg_no</Data></Cell>
+		<Cell><Data ss:Type="String">chassis_no</Data></Cell>
+		<Cell><Data ss:Type="String">engine_no</Data></Cell>
+		<Cell><Data ss:Type="String">reg_on</Data></Cell>
+		<Cell><Data ss:Type="String">manufacturer_year</Data></Cell>
+		<Cell><Data ss:Type="String">manufacturer_id</Data></Cell>
+		<Cell><Data ss:Type="String">model</Data></Cell>
+		<Cell><Data ss:Type="String">category_id</Data></Cell>
+		<Cell><Data ss:Type="String">acquired_on</Data></Cell>
+		<Cell><Data ss:Type="String">price</Data></Cell>
+		<Cell><Data ss:Type="String">contract_id</Data></Cell>
+		<Cell><Data ss:Type="String">status</Data></Cell>
+	</Row>
+	
+	<% @vehicles.each do |vehicle| %>
+		<Row>
+			<Cell><Data ss:Type="String"><%= vehicle.reg_no %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.chassis_no %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.engine_no %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.reg_on %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.manufacturer_year %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {vehicle.manufacturer.name} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.model %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {vehicle.category.short_name} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= vehicle.acquired_on %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= ringgols(vehicle.price) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {vehicle.contract.contract_no}  %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {vehicle.status.short_name} %></Data></Cell>
+		</Row>
+		<% end %>
+		</table>
+	</Worksheet>
+</Workbook>
+		

@@ -33,4 +33,13 @@ class UnitFuel < ActiveRecord::Base
     return (unit_fuel.p_vehicle+unit_fuel.p_misctool+unit_fuel.p_boat).to_i.to_s+" LTR"
   end  
   
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+     csv << column_names
+     all.each do |unit_fuel|
+       csv << unit_fuel.attributes.values_at(*column_names)
+    end
+  end
+  end
+  
 end
