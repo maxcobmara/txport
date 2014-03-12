@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+
+   <table>
+	<Row>
+		<Cell><Data ss:Type="String">work_order_no</Data></Cell>
+		<Cell><Data ss:Type="String">vehicle_id</Data></Cell>
+		<Cell><Data ss:Type="String">contract_id</Data></Cell>
+		<Cell><Data ss:Type="String">repaired_by</Data></Cell>
+		<Cell><Data ss:Type="String">supplied_by</Data></Cell>
+		<Cell><Data ss:Type="String">maintenance_date</Data></Cell>
+		<Cell><Data ss:Type="String">repair_date</Data></Cell>
+		<Cell><Data ss:Type="String">repair_location</Data></Cell>
+		<Cell><Data ss:Type="String">value_repaired</Data></Cell>
+		<Cell><Data ss:Type="String">value_supplied</Data></Cell>
+	</Row>
+	
+	<% @maintenances.each do |maintenance| %>
+		<Row>
+			<Cell><Data ss:Type="String"><%= maintenance.work_order_no %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.vehicle.try(:reg_no) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {maintenance.contract.contract_no} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {maintenance.repairer.name} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {maintenance.supplier.name} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {l(maintenance.maintenance_date)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= check_kin {l(maintenance.repair_date)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.repair_location %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.value_repaired %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.value_supplied %></Data></Cell>
+		</Row>
+		<% end %>
+		</table>
+	</Worksheet>
+</Workbook>

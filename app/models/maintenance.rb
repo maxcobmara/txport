@@ -5,5 +5,15 @@ class Maintenance < ActiveRecord::Base
 	belongs_to :supplier, :class_name => "Company", :foreign_key => "supplied_by"
   has_many :maintenance_details, dependent: :destroy
   accepts_nested_attributes_for :maintenance_details, allow_destroy: true, reject_if: proc { |maintenance_details| maintenance_details[:quantity].blank? }
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+     csv << column_names
+     all.each do |maintenance|
+       csv << maintenance.attributes.values_at(*column_names)
+    end
+  end
+  end
+
 end
 
