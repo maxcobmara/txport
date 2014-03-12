@@ -1,0 +1,59 @@
+- provide(:title, 'Import maintenance excel file')
+- model_class = Maintenance
+.page-header
+  %h1= t 'maintenances.import_excel', :default => [:'helpers.titles.new', 'Import %{model}'], :model => model_class.model_name.human
+
+= form_tag import_maintenances_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import", :class => 'btn btn-primary' 
+
+= link_to (t 'maintenances.excel_format'), '/public/excel_format/maintenances_excel.xls', :action => 'download_excel_format'
+%br
+%H5= t 'vehicles.pre_conditions'
+%ol
+  %li= t 'vehicles.condition_reg_no'
+  %li= t 'vehicles.condition_reg_on'
+  %li= t 'vehicles.condition_status'
+  %li= t 'vehicles.condition_acquired'
+  %li= t 'vehicles.condition_model'
+  %li
+    = t('vehicles.condition_category_spanco') 
+    %br
+    = t('vehicles.condition_category_spanco2')
+  %li
+    = t 'vehicles.condition_category_others'
+    %br
+    = t('vehicles.condition_category_spanco2')
+%br
+%font{:color => "red"} 
+  =(t 'vehicles.failure')+" - "
+  %b=(t 'vehicles.invalid_excel_data')
+  %br
+  =t 'vehicles.failure2'
+%br	
+%br
+- if @invalid_maintenances && @invalid_maintenances.count>0
+  %h4=t 'vehicles.invalid_excel_data'
+  %table.table.table-condensed.table-hover{:style => "width: 90%; "}
+    %thead
+      %tr
+        %th= t 'vehicles.reg_no'
+        %th= t 'vehicles.chassis_no'
+        %th= t 'vehicles.engine_no'  
+        %th= t 'vehicles.errors_counting'
+        %th= t 'vehicles.errors_description'
+    %tbody
+    - for invalid_maintenance in @invalid_maintenances
+      %tr
+        %td= invalid_maintenance.reg_no
+        %td= invalid_maintenance.chassis_no
+        %td= invalid_maintenance.engine_no
+        %td{:align => "center"}= invalid_maintenance.errors.count
+        - invalid_maintenance.errors.each do |key, value|
+          %td
+            = invalid_maintenance[key]
+            = value
+
+      
+        
+   

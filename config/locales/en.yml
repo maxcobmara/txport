@@ -216,6 +216,8 @@ en:
     month_year: "Month - Year"	    
     new: New Maintenance
     edit: Edit Maintenance
+    imported: Maintenances from Excel file are successfully imported
+    invalid_excel_data: Invalid Excel data
   vehicle_road_taxes:
     title: Vehicle Road Taxes
     title2: Vehicle Road Tax

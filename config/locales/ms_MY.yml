@@ -182,6 +182,8 @@ ms_MY:
     month_year: "Bulan - Tahun"
     new: Penyelenggaraan Baru
     edit: Sunting Penyelenggaraan
+    imported: Penyelenggaraan dari fail Excel telah berjaya diimport
+    invalid_excel: "Data fail Excel tidak sah. "  
   vehicle_road_taxes:
     title: Cukai Jalan Kenderaan
     start_on: Mula

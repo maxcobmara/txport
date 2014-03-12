@@ -75,6 +75,40 @@ class MaintenancesController < ApplicationController
       @maintenances = Maintenance.all
   end
   
+  #-------
+  def import_excel
+  end
+  
+  def import
+      #use this line or line 88-89
+      Maintenance.import(params[:file]) 
+      redirect_to maintenances_url, notice: (t 'maintenances.imported') 
+      
+      #OR use these lines onwards----
+      #@maintenances = Maintenance.import(params[:file]) 
+      #if @maintenances.all?(&:valid?)
+       # @maintenances.each(&:save!)
+        #respond_to do |format|
+          #flash[:notice] 
+          #format.html { redirect_to @maintenances_url, notice: (t 'maintenances.imported') }
+          #end
+      #else
+        #@invalid_maintenances = Vehicle.get_invalid(@maintenances) 
+        #respond_to do |format|
+          #flash[:notice] = (t 'maintenances.invalid_excel')+@invalid_maintenances.count.to_s+" "+(t 'maintenances.errors_count')  #yellow box
+          #format.html { render action: 'import_excel' }
+          #flash.discard
+          #end
+      #end
+      #---------
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/maintenance_excel.xls")
+  end
+  
+  #-------
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_maintenance

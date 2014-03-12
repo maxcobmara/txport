@@ -1,0 +1,53 @@
+//- provide(:title, 'Maintenances')
+- model_class = Maintenance
+.page-header
+  %h1= t 'maintenances.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      //%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_maintenance_path
+<<<<<<< HEAD
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))),{:controller =>'maintenances',:action => 'import_excel'}
+=======
+      //%li= link_to "CSV", vehicles_path(format: "csv") |
+      %li= link_to "Export Excel", maintenances_path(format: "xls")
+>>>>>>> ab4a6192e006bb56d77b91ccb08a05f3d2438b81
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :work_order_no_cont, "Work Order no Contains"
+        = f.text_field :work_order_no_cont, class: "input-medium search-query"
+        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
+        = f.submit "Search", class: "btn btn-warning"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'maintenances.month_year'
+      %th= sort_link @search, :work_order_no, t('maintenances.work_order_no')  
+      %th= sort_link @search, :contract_no, t('maintenances.contract_no') 
+      %th= t 'maintenances.repaired_by' 
+      %th= t 'maintenances.supplied_by' 
+      %th
+  %tbody
+    - @maintenances.each do |maintenance|
+      %tr
+        %td= maintenance.vehicle.reg_no
+        %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
+        %td= maintenance.work_order_no
+        %td= check_kin {maintenance.contract.contract_no}
+        %td= check_kin {maintenance.repairer.name}
+        %td= check_kin {maintenance.supplier.name}
+        = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
+      
+      
