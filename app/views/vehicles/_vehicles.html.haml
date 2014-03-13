@@ -1,6 +1,7 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
+      %th= t 'vehicles.number'
       %th= t 'vehicles.reg_no'
       %th= t 'vehicles.reg_on'
       %th= t 'vehicles.manufacturer_year' 
@@ -13,8 +14,9 @@
       %th= t 'vehicles.status' 
       %th
   %tbody
-    - @vehicles.each do |vehicle|
+    - @vehicles.each_with_index do |vehicle, i|
       %tr
+        %td= (i+1)
         %td= vehicle.reg_no
         %td= vehicle.reg_on
         %td= vehicle.manufacturer_year
@@ -26,3 +28,5 @@
         %td= check_kin {vehicle.contract.contract_no} 
         %td= check_kin {vehicle.vehiclestatus.short_name}
         = render :partial => 'action_menu', :locals => { :vehicle => vehicle }
+= t 'vehicles.total'
+= @vehicles.count

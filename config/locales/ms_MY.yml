@@ -159,6 +159,8 @@ ms_MY:
     failure: "* Data tidak akan diimport jika syarat 1 tidak dipenuhi."
     failure2: "Syarat 2-7 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
     excel_format: Format Excel
+    total: Jumlah Keseluruhan Kenderaan
+    number: Bilangan
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah  
