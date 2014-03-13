@@ -195,6 +195,8 @@ en:
     failure: "* Failure to comply with condition no 1 will cause failure in import."
     failure2: "Failure to comply with conditions no 2-7 may result inaccurate data saved into the system."
     excel_format: Excel Format
+    total: Total Vehicles
+    number: Number
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -652,6 +654,8 @@ en:
         p_vehicle: Vehicle
         p_misctool: Misc Tools
         p_boat: Boat
+        sum: Sum Usage
+        Total: Total
       add_fuel:
         unit_fuel_id: "Unit - Month Year"
         fuel_type_id: Fuel Type
