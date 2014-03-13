@@ -31,6 +31,14 @@ Annual Diesel Usage
         %td= unit_fuel.d_misctool
         %td= unit_fuel.d_boat
         %td= UnitFuel.diesel_usage(unit_fuel)
+    %tr
+      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.sum'
+      %td= UnitFuel.sum('d_vessel')
+      %td= UnitFuel.sum('d_vehicle')
+      %td= UnitFuel.sum('d_misctool')
+      %td= UnitFuel.sum('d_boat')
+      %td= UnitFuel.sum('d_vessel') + UnitFuel.sum('d_vehicle') + UnitFuel.sum('d_misctool') + UnitFuel.sum('d_boat')
 
 Annual Petrol Usage 
 %table.table.table-bordered
@@ -52,5 +60,13 @@ Annual Petrol Usage
         %td= unit_fuel.p_misctool
         %td= unit_fuel.p_boat
         %td= UnitFuel.petrol_usage(unit_fuel)
+
+    %tr
+      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.sum'
+      %td= UnitFuel.sum('p_vehicle')
+      %td= UnitFuel.sum('p_misctool')
+      %td= UnitFuel.sum('p_boat')
+      %td= UnitFuel.sum('p_vehicle') + UnitFuel.sum('p_misctool') + UnitFuel.sum('p_boat')
 
 
