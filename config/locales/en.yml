@@ -629,6 +629,8 @@ en:
         p_vehicle: Vehicle
         p_misctool: Misc Tools
         p_boat: Boat
+        sum: Sum Usage
+        Total: Total
       add_fuel:
         unit_fuel_id: "Unit - Month Year"
         fuel_type_id: Fuel Type

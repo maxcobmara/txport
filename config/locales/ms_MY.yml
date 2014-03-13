@@ -397,6 +397,8 @@ ms_MY:
     tab_applicable: "(TAB) hanya terpakai untuk" 
     link_available: "(pautan) hanya wujud setelah rekod 'Bahan PMP di Unit' dicipta untuk "
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
+    sum: Jumlah Penggunaan
+    Total: Total 
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit
