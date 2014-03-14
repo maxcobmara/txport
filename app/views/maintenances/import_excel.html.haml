@@ -11,25 +11,30 @@
 %br
 %H5= t 'vehicles.pre_conditions'
 %ol
-  %li= t 'vehicles.condition_reg_no'
-  %li= t 'vehicles.condition_reg_on'
-  %li= t 'vehicles.condition_status'
-  %li= t 'vehicles.condition_acquired'
-  %li= t 'vehicles.condition_model'
-  %li
-    = t('vehicles.condition_category_spanco') 
-    %br
-    = t('vehicles.condition_category_spanco2')
-  %li
-    = t 'vehicles.condition_category_others'
-    %br
-    = t('vehicles.condition_category_spanco2')
+  %li= t 'maintenances.condition_month_year'
+  //%li= t 'maintenances.condition_labelling'
+  %li= t 'maintenances.condition_reg_no'
+  %li= t 'maintenances.condition_maint_date'
+  %li= t 'maintenances.condition_repair_date'
+  %li= t 'maintenances.condition_maint_type'
+  %li= t 'maintenances.condition_value_repaired'
+  %li= t 'maintenances.condition_supplied_parts'
+  %ol
+    %li= t 'maintenances.condition_parts_format1'
+    %li= t 'maintenances.condition_parts_format2'
+  %li= t 'maintenances.condition_value_supplied'
+  %li= t 'maintenances.condition_repair_location'
+  %li= t 'maintenances.condition_supplier'
+
 %br
 %font{:color => "red"} 
-  =(t 'vehicles.failure')+" - "
-  %b=(t 'vehicles.invalid_excel_data')
+  =(t 'maintenances.failure')
+  //+" - "
+  //%b=(t 'vehicles.invalid_excel_data')
   %br
-  =t 'vehicles.failure2'
+  =t 'maintenances.failure2'
+  %br
+  =t 'maintenances.failure3'
 %br	
 %br
 - if @invalid_maintenances && @invalid_maintenances.count>0

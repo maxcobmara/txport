@@ -184,6 +184,24 @@ ms_MY:
     edit: Sunting Penyelenggaraan
     imported: Penyelenggaraan dari fail Excel telah berjaya diimport
     invalid_excel: "Data fail Excel tidak sah. "  
+    import_excel: Import Penyelenggaraan dari Fail Excel
+    condition_month_year: "Bulan & tahun semasa mesti diisi (bulan - baris 5,lajur ‘B’, tahun - baris 6,lajur ‘B’)."
+    #condition_labelling: "Row 8 is compulsory - contains required labels for data import purpose."
+    condition_reg_no: "No. Pendaftaran - mesti diisi."
+    condition_maint_date: "Tarikh Senggaraan - bagi setiap baris rekod satu-satu kenderaan mesti diisi ATAU tarikh akan disetkan kepada hari terakhir bulan semasa (mengikut item 1)."
+    condition_repair_date: "Tarikh Pembaikan - mesti ada di baris pertama (atau salah satu baris) setiap kenderaan, atau tiada data tarikh yang akan disimpan."
+    condition_maint_type: "Jenis Senggaraan - mesti sepadan dengan Jenis Senggaraan (dari menu - Kenderaan | Data Asas | Jenis Penyelenggaraan)"
+    condition_value_repaired: "Jumlah Senggaraan - mesti ada di baris pertama (atau salah satu baris) setiap kenderaan, atau tiada data yang akan disimpan."
+    condition_supplied_parts: "Alat Ganti yang Dibekalkan - deskripsi & harga setiap item mesti diisi (jika ada) mengikut format yang ditetapkan."
+    condition_parts_format1: "Format 1: deskripsi + ‘ ' +kuantiti+ ‘ ' +unit ukuran (eg. Lens Side 2 Nos)"
+    condition_parts_format2: "Format 2: deskripsi + ‘ ‘ +kuantiti+unit ukuran (eg. Lens Side 2Nos)"
+    condition_value_supplied: "Jumlah Alat Ganti - merupakan jumlah harga alat-alat ganti (item 7) bagi setiap kenderaan."
+    condition_repair_location: "Lokasi Pembaikan - mesti ada di baris pertama (atau salah satu baris) setiap kenderaan, atau data tidak akan disimpan."
+    condition_supplier: "Pembekal - mesti ada di baris pertama (atau salah satu baris) setiap kenderaan, atau data tidak akan disimpan."
+    failure: "* Data tidak akan diimport jika syarat 1 tidak dipenuhi."
+    failure2: "* Data akan diabaikan jika syarat 2 tidak dipenuhi."
+    failure3: "* Syarat 3-10 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
+    failed_check_format: "Import GAGAL. Syarat no. 2 (Bulan & Tahun Semasa) tidak dipenuhi. Gunakan 'Excel Format' yang disediakan sebagai panduan."
   vehicle_road_taxes:
     title: Cukai Jalan Kenderaan
     start_on: Mula

@@ -9,6 +9,7 @@
     %ul.nav
       //%li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_maintenance_path
       //%li= link_to "CSV", vehicles_path(format: "csv") |
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_maintenance_path
       %li= link_to "Export Excel", maintenances_path(format: "xls")
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
@@ -30,8 +31,10 @@
       %th= t 'vehicle.vehicle_id'
       %th= t 'maintenances.month_year'
       %th= sort_link @search, :work_order_no, t('maintenances.work_order_no')  
-      %th= sort_link @search, :contract_no, t('maintenances.contract_no') 
+      %th= sort_link @search, :contract_no, t('maintenances.contract_id') 
+      %th= t 'maintenances.value_repaired' 
       %th= t 'maintenances.repaired_by' 
+      %th= t 'maintenances.value_supplied' 
       %th= t 'maintenances.supplied_by' 
       %th
   %tbody
@@ -41,8 +44,10 @@
         %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
         %td= maintenance.work_order_no
         %td= check_kin {maintenance.contract.contract_no}
-        %td= check_kin {maintenance.repairer.name}
-        %td= check_kin {maintenance.supplier.name}
+        %td= check_kin {ringgols(maintenance.value_repaired)}		
+        %td= check_kin {maintenance.veh_repairer.name}
+        %td= check_kin {ringgols(maintenance.value_supplied)}
+        %td= check_kin {maintenance.part_supplier.name}	
         = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
       
       
