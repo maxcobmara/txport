@@ -22,9 +22,9 @@ class MaintenancesController < ApplicationController
   # GET /maintenances/new
   def new
     #@maintenance = Maintenance.new
-	@vehicle = Vehicle.find(params[:vehicle_id])
-	@maintenance = @vehicle.maintenances.new(params[:maintenance])
-	@maintenance.save
+	  @vehicle = Vehicle.find(params[:vehicle_id])
+	  @maintenance = @vehicle.maintenances.new(params[:maintenance])
+	  @maintenance.save
   end
 
   # GET /maintenances/1/edit
@@ -35,7 +35,6 @@ class MaintenancesController < ApplicationController
   # POST /maintenances.json
   def create
     @maintenance = Maintenance.new(maintenance_params)
-
     respond_to do |format|
       if @maintenance.save
         format.html { redirect_to @maintenance, notice: (t 'maintenances.title')+(t 'actions.created') }
@@ -75,6 +74,22 @@ class MaintenancesController < ApplicationController
       @maintenances = Maintenance.all
   end
   
+  def import_excel
+  end
+  
+  def import
+    a=Maintenance.import(params[:file]) 
+    if a == "invalid_month_and_year"
+      redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_check_format')  
+    else
+      redirect_to maintenances_url, notice: (t 'maintenances.imported')
+    end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/Maintenance_Excel.xls")
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_maintenance
@@ -83,6 +98,6 @@ class MaintenancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def maintenance_params
-      params.require(:maintenance).permit(:vehicle_id, :work_order_no, :contract_id, :repaired_by, :supplied_by, :maintenance_date,maintenance_details_attributes: [:id, :line_item, :line_item_price, :quantity, :unit_type, :maintenance_type_id,:_destroy])
+      params.require(:maintenance).permit(:vehicle_id, :work_order_no, :contract_id, :repaired_by, :supplied_by, :maintenance_date, :repair_date, :repair_location,:value_repaired, :value_supplied, maintenance_details_attributes: [:id, :line_item, :line_item_price, :quantity, :unit_type, :maintenance_type_id,:_destroy])
     end
 end

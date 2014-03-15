@@ -4,6 +4,6 @@
     = f.text_field :line_item, :class => 'text_field input-xlarge', :placeholder => t('maintenance_details.line_item')
     = f.text_field :line_item_price, :class => 'text_field input-small', :placeholder => t('maintenance_details.line_item_price')
     = f.text_field :quantity, :class => 'text_field input-small', :placeholder => t('maintenance_details.quantity')
-    = f.collection_select :unit_type, UnitType.all, :id, :description, :include_blank => (t 'helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
+    = f.collection_select :unit_type, UnitType.all, :id, :short_name, :include_blank => (t 'helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
     = f.hidden_field :_destroy
     = link_to_remove_fields (fa_icon "trash-o"), f     

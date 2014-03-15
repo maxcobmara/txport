@@ -218,6 +218,27 @@ en:
     month_year: "Month - Year"	    
     new: New Maintenance
     edit: Edit Maintenance
+    imported: Maintenances from Excel file are successfully imported
+    invalid_excel_data: Invalid Excel data
+    import_excel: Import Maintenance From Excel File
+    condition_month_year: "Current month & year are compulsory (month - row 5,column ‘B’, year - row 6,column ‘B’)."
+    #condition_labelling: "Row 8 is compulsory - contains required labels for data import purpose."
+    condition_reg_no: "Registration No - is compulsory."
+    condition_maint_date: "Maintenance Date - for all rows of ONE vehicle must be entered OR default value i.e. last day of current month (as stated in item 1) will be assigned."
+    condition_repair_date: "Repair Date - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
+    condition_maint_type: "Maintenance Type - must match with Maintenance Type (from menu - Vehicle | Drop Downs | Maintenance Type)"
+    condition_value_repaired: "Value Repaired (total) - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
+    condition_supplied_parts: "Supplied Parts - description & price of each item must be included if there’s any. Format for description must be fulfilled."
+    condition_parts_format1: "Format 1: description + ‘ ' +qty+ ‘ ' +unit type (eg. Lens Side 2 Nos)"
+    condition_parts_format2: "Format 2: description + ‘ ‘ +qty+unit type (eg. Lens Side 2Nos)"
+    condition_value_supplied: "Value Supplied (total) - is a sum of supplied parts’ price (item 7) for each vehicle."
+    condition_repair_location: "Repair Location - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
+    condition_supplier: "Supplier - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
+    failure: "* Failure to comply with condition no 1 will cause failure in import."
+    failure2: "* Failure to comply with condition no 2, record will be ignored."
+    failure3: "* Failure to comply with conditions no 3-10 may result inaccurate data saved into the system."
+    failed_check_format: "Import FAILED. Conditions no. 2 (Current Month & Year) are not complied. Use provided 'Format Excel' accordingly."
+    excel_format: Format Excel
   vehicle_road_taxes:
     title: Vehicle Road Taxes
     title2: Vehicle Road Tax
