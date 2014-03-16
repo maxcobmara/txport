@@ -73,7 +73,7 @@ Txport::Application.routes.draw do
     collection { post :import }
   end
 
-  match '/public/excel_format/maintenance_excel.xls', to: 'maintenances#download_excel_format', via: 'get', target: '_self'
+  match '/public/excel_format/Maintenance_Excel.xls', to: 'maintenances#download_excel_format', via: 'get', target: '_self'
   match 'import_excel_maintenance', to:'maintenances#import_excel', via: 'get'
 
   resources :contracts do

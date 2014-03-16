@@ -80,7 +80,9 @@ class MaintenancesController < ApplicationController
   def import
     a=Maintenance.import(params[:file]) 
     if a == "invalid_month_and_year"
-      redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_check_format')  
+      redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_check_format')
+	elsif a == "vehicle record not exist"
+	  redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_vehicle_not_exist')
     else
       redirect_to maintenances_url, notice: (t 'maintenances.imported')
     end

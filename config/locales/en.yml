@@ -223,7 +223,7 @@ en:
     import_excel: Import Maintenance From Excel File
     condition_month_year: "Current month & year are compulsory (month - row 5,column ‘B’, year - row 6,column ‘B’)."
     #condition_labelling: "Row 8 is compulsory - contains required labels for data import purpose."
-    condition_reg_no: "Registration No - is compulsory."
+    condition_reg_no: "Registration No - is compulsory and must EXIST in vehicle records."
     condition_maint_date: "Maintenance Date - for all rows of ONE vehicle must be entered OR default value i.e. last day of current month (as stated in item 1) will be assigned."
     condition_repair_date: "Repair Date - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
     condition_maint_type: "Maintenance Type - must match with Maintenance Type (from menu - Vehicle | Drop Downs | Maintenance Type)"
@@ -234,11 +234,12 @@ en:
     condition_value_supplied: "Value Supplied (total) - is a sum of supplied parts’ price (item 7) for each vehicle."
     condition_repair_location: "Repair Location - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
     condition_supplier: "Supplier - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
-    failure: "* Failure to comply with condition no 1 will cause failure in import."
-    failure2: "* Failure to comply with condition no 2, record will be ignored."
+    failure: "* Failure to comply with condition no. 1 and 2 will cause failure in import."
+    #failure2: "* Failure to comply with condition no 2, record will be ignored."
     failure3: "* Failure to comply with conditions no 3-10 may result inaccurate data saved into the system."
-    failed_check_format: "Import FAILED. Conditions no. 2 (Current Month & Year) are not complied. Use provided 'Format Excel' accordingly."
-    excel_format: Format Excel
+    failed_check_format: "Import FAILED. Conditions no. 1 (Current Month & Year) are not complied. Use provided 'Format Excel' accordingly."
+    failed_vehicle_not_exist: "Import FAILED. Conditions no. 2 (Vehicle record not exist for supplied registration no.)"
+    excel_format: Excel Format
   vehicle_road_taxes:
     title: Vehicle Road Taxes
     title2: Vehicle Road Tax

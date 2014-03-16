@@ -7,7 +7,7 @@ class MaintenanceType < ActiveRecord::Base
       return mainttypes[0].id
     else
       unless arr_fr_excel.include?(fr_excel)
-        mainttype = find_by_name(fr_excel) || new 
+        mainttype = find_by_type_name(fr_excel) || new 
         mainttype.type_name = fr_excel 
         mainttype.save!
         return mainttype.id
