@@ -2,7 +2,7 @@ class Unit < ActiveRecord::Base
   before_save :set_combo_code
   has_ancestry :cache_depth => true
   
-  has_many :fuel_tanks, :foreign_key => "unit_id"
+  has_many :fuel_tanks#, :foreign_key => "unit_id"
   has_many :subunits, class_name: "Unit", foreign_key: 'parent_id'
   belongs_to :parent, class_name: "Unit", foreign_key: 'parent_id'
   has_many :vehicle_cards, dependent: :nullify
