@@ -7,7 +7,7 @@
   = file_field_tag :file
   = submit_tag "Import", :class => 'btn btn-primary' 
 
-= link_to (t 'maintenances.excel_format'), '/public/excel_format/maintenances_excel.xls', :action => 'download_excel_format'
+= link_to (t 'maintenances.excel_format'), '/public/excel_format/Maintenance_Excel.xls', :action => 'download_excel_format'
 %br
 %H5= t 'vehicles.pre_conditions'
 %ol
@@ -31,8 +31,8 @@
   =(t 'maintenances.failure')
   //+" - "
   //%b=(t 'vehicles.invalid_excel_data')
-  %br
-  =t 'maintenances.failure2'
+  //%br
+  //=t 'maintenances.failure2'
   %br
   =t 'maintenances.failure3'
 %br	

@@ -23,10 +23,18 @@ class Maintenance < ActiveRecord::Base
     
     excel_month = spreadsheet.cell(5,'B')
     excel_year = spreadsheet.cell(6,'B')
-
+	
+	vehicles_exist=Vehicle.all.map(&:reg_no)
+	vehicles_excel=[]
+	(11..spreadsheet.last_row).each do |i|
+		vehicles_excel<<spreadsheet.cell(i,'B')
+	end
+	exist_vehicle = vehicles_excel.all? { |e| vehicles_exist.include?(e) }
+	
+  if exist_vehicle==true	
     unless (excel_month.nil? || excel_month.blank? || excel_month == " " || excel_month == "-") && (excel_year.nil? || excel_year.blank? || excel_year == " " || excel_year == "-") 
   
-      begin_month = Date.new(excel_year,excel_month,1)
+      begin_month = Date.new(excel_year.to_i,excel_month.to_i,1)
       next_month = begin_month+1.month
       end_day = 31 if (excel_month == 1)||(excel_month == 3)||(excel_month == 5)||(excel_month == 7)||(excel_month == 8)||(excel_month == 10)||(excel_month == 12)
       end_day = 28 if (excel_month == 2)
@@ -48,7 +56,7 @@ class Maintenance < ActiveRecord::Base
                 m.vehicle_id = vehicle_id
                 m.attributes = row.to_hash.slice("maintenance_date","repair_date_ex","value_repaired_ex","repair_location_ex","parts","line_item_price","maintenance_type","supplier")
                 if (m.maintenance_date.nil? || m.maintenance_date.blank? || m.maintenance_date==" "|| m.maintenance_date=="-")
-                  m.maintenance_date = Date.new(excel_year,excel_month,end_day)
+                  m.maintenance_date = Date.new(excel_year.to_i,excel_month.to_i,end_day)
                 end
 
                 #for new maintenance only - repair_date - at least 1 line must exist
@@ -122,7 +130,9 @@ class Maintenance < ActiveRecord::Base
     else #if month & year cell in excel table is blank!... 
       return "invalid_month_and_year"
     end #end for unless (excel_month.nil?...
-      
+   else
+      return "vehicle record not exist"
+   end # end for if exist_vehicles==true (exist in Vehicle records)
   end
   
   def self.open_spreadsheet(file) 

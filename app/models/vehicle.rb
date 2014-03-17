@@ -70,7 +70,7 @@ end
     (6..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose] 
       vehicle = find_by_id(row["reg_no"]) || new 
-      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","parts_jan","maint_jan","acquired", "parts_feb", "maint_feb","parts_march", "maint_march", "parts_apr", "maint_apr", "parts_may", "maint_may", "parts_june", "maint_june","parts_july", "maint_july","parts_aug", "maint_aug","parts_sept", "maint_sept", "parts_oct", "maint_oct","parts_nov", "maint_nov","parts_dec", "maint_dec") 
+      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status") 
  
       # retrieve fr excel, assign status_id according to drop down
       unless (vehicle.status.nil? || vehicle.status.blank?)
