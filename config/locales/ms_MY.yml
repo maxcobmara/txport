@@ -100,6 +100,8 @@ ms_MY:
     petrol_boat_usage: Penggunaan Petrol Bot   
     diesel_usage_current: Penggunaan Diesel Bulan Ini
     petrol_usage_current: Penggunaan Petrol Bulan Ini
+    other_usage_current: Lain-lain Penggunaan Bulan Ini
+    month_external_supply: Pengambilan Bulan Ini
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
