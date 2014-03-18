@@ -8,18 +8,24 @@
   %thead
     %tr
       %th= t 'vehicle.vehicle_id'
+      %th= t 'maintenances.month_year'
       %th= t 'maintenances.work_order_no'  
       %th= t 'maintenances.contract_no'  
+      %th= t 'maintenances.value_repaired' 
       %th= t 'maintenances.repaired_by'
+      %th= t 'maintenances.value_supplied' 
       %th= t 'maintenances.supplied_by'
 
   %tbody
     - @maintenances.each do |maintenance|
       %tr
         %td= maintenance.vehicle.reg_no
+        %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
         %td= maintenance.work_order_no 
         %td= check_kin {maintenance.contract.contract_no}
+        %td= check_kin {ringgols(maintenance.value_repaired)}
         %td= check_kin {maintenance.repairer.name}
+        %td= check_kin {ringgols(maintenance.value_supplied)}
         %td= check_kin {maintenance.supplier.name}
 
 
