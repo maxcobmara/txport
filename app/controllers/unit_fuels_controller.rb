@@ -72,6 +72,8 @@ class UnitFuelsController < ApplicationController
     c = Date.today
     sdate = c.beginning_of_month
     edate = c.end_of_month
+    @sdate = c.beginning_of_month
+    @edate = c.end_of_month
      @month_fuel_usage = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
      @month_other_fuel = AddFuel.where( "created_at >= ? AND created_at <= ? ", sdate, edate )
      @month_external_supply = ExternalSupplied.where( "created_at >= ? AND created_at <= ? ", sdate, edate )
