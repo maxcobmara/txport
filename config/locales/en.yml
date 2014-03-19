@@ -134,6 +134,8 @@ en:
     petrol_boat_usage: Petrol Boat Usage
     diesel_usage_current: Diesel Usage Current Month
     petrol_usage_current: Petrol Usage Current Month
+    other_usage_current: Other Usage Current Month
+    month_external_supply: External Supply Current Month
   home: 
     welcome: Welcome to Txport
     txport: Transport Management System  
