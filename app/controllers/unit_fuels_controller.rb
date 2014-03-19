@@ -81,11 +81,12 @@ class UnitFuelsController < ApplicationController
   
   def annual_usage_report  
     c = Date.today
-    sdate = c.beginning_of_year
-    edate = c.end_of_year
-     @year_annual_usage_report = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
-     @year_other_fuel = AddFuel.where( "created_at >= ? AND created_at <= ? ", sdate, edate )
-     @year_external_supply = ExternalSupplied.where( "created_at >= ? AND created_at <= ? ", sdate, edate )
+    @sdate = c.beginning_of_year
+    @edate = c.end_of_year
+     @year_annual_usage_report = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ) 
+     @year_other_fuel = AddFuel.where( "created_at >= ? AND created_at <= ? ", @sdate, @edate )
+     @year_external_supply = ExternalSupplied.where( "created_at >= ? AND created_at <= ? ", @sdate, @edate )
+     @unit_fuels = UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ) 
   end
   
   def daily_usage  
