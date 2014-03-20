@@ -121,7 +121,7 @@ Annual External Supplied
       %td= "-"
 
 %table.table.table-condensed.table-hover
-  - @unit_fuels.group_by(&:unit_id).each do |unit_id, unit_fuels|
+  - @unit_fuels.group_by(&:unit_id).each do |unit_id, unit_fuels, add_fuels|
     %thead
       %tr
         %th= unit_id
@@ -132,19 +132,28 @@ Annual External Supplied
           &nbsp; | &nbsp
           Total Diesel :
           = UnitFuel.where('unit_id =?', unit_id ).sum(:d_vessel) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_vehicle) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_misctool) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_boat)
+          litres
+          &nbsp; | &nbsp
+          Total Other Fuel Type :
+          = AddFuel.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
+          &nbsp; | &nbsp
+          Total External Supplied :
+          = ExternalSupplied.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
       %tr
         %th= t 'unit_fuels.unit_id'  
         %th= t 'unit_fuels.issue_date'
         %th= t 'unit_fuels.petrol_usage'
         %th= t 'unit_fuels.diesel_usage'
         %th
-    - for unit_fuel in unit_fuels
+    - for unit_fuel, add_fuel in unit_fuels
       %tbody
         %tr
           %td= check_kin {unit_fuel.unit.name}
           %td= check_kin {l(unit_fuel.issue_date)} 
           %td= UnitFuel.petrol_usage(unit_fuel)
           %td= UnitFuel.diesel_usage(unit_fuel)
+
+         
 
 
 
