@@ -4,7 +4,11 @@ class VehiclesController < ApplicationController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.search(params[:search]).order('reg_no')
+   # @vehicles = Vehicle.search(params[:search]).order('reg_no')
+  # @vehicles = vehicle.all
+   @search = Vehicle.search(params[:q])
+   @vehicles = @search.result
+   
     respond_to do |format|
       format.html
       format.csv { send_data @vehicles.to_csv }

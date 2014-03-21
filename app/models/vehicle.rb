@@ -31,13 +31,13 @@ class Vehicle < ActiveRecord::Base
     end
   end
   
-  def self.search(search)
-    if search
-      where('reg_no ILIKE ?', "%#{search}%")
-    else
-      Vehicle.all
-    end
-  end
+  #def self.search(search)
+    #if search
+     # where('reg_no ILIKE ?', "%#{search}%")
+    #else
+      #Vehicle.all
+    #end
+  #end
 
 def self.to_csv(options = {})
   CSV.generate(options) do |csv|

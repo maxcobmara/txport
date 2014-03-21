@@ -5,8 +5,9 @@ class UnitFuelsController < ApplicationController
   # GET /unit_fuels.json
   def index
     @unit_fuels = UnitFuel.all
-    @search = UnitFuel.search(params[:q])
-    @unit_fuels = @search.result
+    @search = UnitFuel.search2(params[:q])
+    #@unit_fuels = @search.result
+    @unit_fuels2 = UnitFuel.search2(params[:search2])
     respond_to do |format|
       format.html
       format.csv { send_data @unit_fuels.to_csv }
