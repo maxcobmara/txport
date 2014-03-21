@@ -397,10 +397,28 @@ en:
     summary: Summary
     and: and
     must_match: must match
+    imported: Depot Fuels from Excel file are successfully imported
+    invalid_excel_data: Invalid Excel data
+    import_excel: Import Depot Fuel From Excel File
+    condition_month_year: "Current month & year are compulsory (month - row 4,column ‘B’, year - row 5,column ‘B’)."
+    condition_fuel_tank_qty_match: "Sheet1 : Capacity Statement - Quantity of storage tank in Excel file and system must match. Refer menu, Fuel | Depots | Depot Listing" 
+    condition_naming_rules: "Sheet1 : Capacity Statement - Storage Tank Names for petrol and diesel (in Excel file) should be ended with a 'space' and followed by a number OR just alphabet. Eg. 'Tank 1', 'Ops Tank'."
+    condition_naming_rules2: "Sheet1 : Capacity Statement - Storage Tank Names for avtur and avcat (in Excel file) should be ended with a number. Eg. 'Avcat H1', 'Avtur 2', 'Avcat3'."
+    condition_capacity: "Sheet1 : Capacity Statement - Capacity for each storage tank is compulsory."
+    condition_ftcm: "Sheet2 : Usage Statement - Fuel Type count in Excel file must MATCH Fuel Type count for Storage Tanks (in system) of a Depot."
+    condition_tank_group: "Sheet2 : Usage Statement - Depot/Unit of column B - Category/Group of Tanks without Fuel Type will be ommited from the list."
+    failed_check_format: "Import FAILED. Conditions no. 1 (Current Month & Year) are not complied. Use provided 'Excel Format' accordingly."
+    failure: "* Failure to comply with condition no. 1-7 will cause failure in import."
+    failed: "Import FAILED. "
+    stc: "Storage Tank COUNT did not matched."
+    tn: "Storage Tank NAMES did not matched."
+    cap: "Storage Tank CAPACITY is blank"
+    ftcm: "Fuel Type COUNT did not matched."
+    excel_format: Format Excel
   fuel_issueds:
     title: Fuel Issued
     title2: Issued
-    title3: "Issueds/Usage"
+    title3: "Issueds/Usages"
     add_details: Add Details
     depot_fuel_id: "Depot - Month Year"
     fuel_type_id: Fuel Type

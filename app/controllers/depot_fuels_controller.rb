@@ -70,7 +70,45 @@ class DepotFuelsController < ApplicationController
      @month_usage = DepotFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
   end
   
-
+  def import_excel
+  end
+  
+  def import
+	a=DepotFuel.import(params[:file]) 		#errorneous : "stc" " tn" " cap" " ftcm"
+	if a == "stc"				
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')# "stc"
+	elsif a == " tn"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.tn')#"tn"
+	elsif a == " cap"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.cap')#"cap"
+	elsif a == " ftcm"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.ftcm')#"ftcm"
+	elsif a == "stc tn"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.tn')#"stc"+"tn"
+	elsif a == "stc tn cap"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.tn')+(t 'depot_fuels.cap')#"stc"+"tn"+"cap"
+	elsif a == "stc tn cap ftcm"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.tn')+(t 'depot_fuels.cap')+(t 'depot_fuels.ftcm')#"stc"+"tn"+"cap"+"ftcm"
+	elsif a == "stc cap"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.cap')# "stc"+"cap"
+	elsif a == "stc ftcm"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.ftcm')#"stc"+"ftcm"
+	elsif a == "stc cap ftcm"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.stc')+(t 'depot_fuels.cap')+(t 'depot_fuels.ftcm')#"stc"+"cap"+"ftcm"
+	elsif a == "tn cap"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.tn')+(t 'depot_fuels.cap')# "tn"+"cap"
+	elsif a == "tn ftcm"
+		redirect_to import_excel_depot_fuel_url, notice: (t 'depot_fuels.failed')+(t 'depot_fuels.tn')+(t 'depot_fuels.ftcm')#"tn"+"ftcm"
+	elsif a == "cap ftcm"
+		redirect_to import_excel_depot_fuel_url, notice:  (t 'depot_fuels.failed')+(t 'depot_fuels.cap')+(t 'depot_fuels.ftcm')#"cap"+"ftcm"
+	else
+      redirect_to depot_fuels_url, notice:(t 'depot_fuels.imported')
+    end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/DepotFuel_Excel.xls")
+  end 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_depot_fuel
