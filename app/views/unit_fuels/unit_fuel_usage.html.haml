@@ -14,19 +14,19 @@
 
   = javascript_include_tag "//www.google.com/jsapi", "chartkick"
   = t 'report.diesel_vessel_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:d_vessel)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:d_vessel)
   = t 'report.diesel_vehicle_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:d_vehicle)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:d_vehicle)
   = t 'report.diesel_misctool_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:d_misctool)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:d_misctool)
   = t 'report.diesel_boat_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:d_boat)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:d_boat)
   = t 'report.petrol_vehicle_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:p_vehicle)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:p_vehicle)
   = t 'report.petrol_misctool_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:p_misctool)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:p_misctool)
   = t 'report.petrol_boat_usage'
-  = line_chart UnitFuel.group("issue_date").sum(:p_boat)
+  = line_chart UnitFuel.group_by_month("issue_date").sum(:p_boat)
 
 
   = t 'report.diesel_usage_current'

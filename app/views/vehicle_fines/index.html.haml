@@ -13,16 +13,17 @@
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
       
-.row.searchit
+.row.searchit{style: "display:none;"}
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f| 
       .field
-        = f.text_field :code_cont, class: "input-medium search-query", placeholder: "Code Contains" 
-        /= f.label :vehicle_id, "Reg Contains"
-        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
-        //= f.text_field :name_cont, class: "input-large search-query"
+        = f.label :work_order_no_cont, "Code Contains"
+        = f.text_field :code_cont, class: "input-medium search-query"
+        = f.label :vehicle_id, "Register No :"
+        = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
+        /= f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
         = f.submit "Search", class: "btn btn-warning"
-    .div{style: "display:none;"}
+
 
 %table.table.table-condensed.table-hover
   %thead
