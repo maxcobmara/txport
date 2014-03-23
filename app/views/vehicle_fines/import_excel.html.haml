@@ -1,0 +1,24 @@
+- provide(:title, 'Import vehicle fine excel file')
+- model_class = VehicleFine
+.page-header
+  %h1= t 'vehicle_fines.import_excel', :default => [:'helpers.titles.new', 'Import %{model}'], :model => model_class.model_name.human
+
+= form_tag import_vehicle_fines_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import", :class => 'btn btn-primary' 
+
+= link_to (t 'vehicle_fines.excel_format'), '/public/excel_format/VehicleFine_Excel.xls', :action => 'download_excel_format'
+%br
+%H5= t 'vehicles.pre_conditions'
+%ol
+  %li= t 'vehicle_fines.condition_vehicle_code'
+  %li= t 'vehicle_fines.condition_vehicle_exist'
+  %li= t 'vehicle_fines.condition_summon_date'
+  %li= t 'vehicle_fines.condition_summon_time'
+  %li= t 'vehicle_fines.condition_issuer_exist'
+ 
+%font{:color => "red"} 
+  =(t 'vehicle_fines.failure')
+     
+        
+   

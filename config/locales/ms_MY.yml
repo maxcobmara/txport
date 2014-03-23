@@ -244,10 +244,21 @@ ms_MY:
     issued_at: Dikeluarkan Pada
     location: Lokasi
     receipt_no: "No. Resit"
-    paid_amount: Amaun Dibayar 
+    paid_amount: Amaun Dibayar
     payment_status: Status Pembayaran
     new: Saman Baru
     edit: Sunting Saman
+    imported: "Saman dari fail Excel telah berjaya diimport"
+    import_excel: "Import Saman dari Fail Excel"
+    excel_format: Format Excel
+    not_exist: "Kenderaan tidak wujud."
+    issuer_is_required: "Pengeluar Saman perlu diisi."
+    condition_vehicle_code: "No. Daftar dan No. Saman mesti diisi."
+    condition_vehicle_exist: Semua kenderaan dalam fail Excel mesti wujud di dalam sistem, sebelum rekod saman boleh diimport.
+    condition_summon_date: "Tarikh Saman - Hanya data Excel dengan jenis TARIKH akan disimpan."
+    condition_summon_time: "Format bagi masa saman dikeluarkan - 9999, contoh : 1205, 0010."
+    condition_issuer_exist: "Maklumat Pengeluar Saman mesti diisi (baris 3,lajur ‘B’) dan mesti sepadan dengan Jenis Saman (rujuk menu - Kenderaan | Data Asas | Jenis Saman)."
+    failure: "* Data tidak akan diimport jika syarat 1 - 5 tidak dipenuhi."
   vehicle_cards:
     title: "Touch N Go & Smart Tag"  
     new: "Touch N Go & Smart Tag Baru"

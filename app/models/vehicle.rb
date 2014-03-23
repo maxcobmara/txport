@@ -134,5 +134,9 @@ end
 	  end
     return @invalid_vehicles 
   end
+  
+  def self.get_vehicle(reg_no)
+	where('reg_no LIKE (?)',reg_no)[0].id
+  end
 
 end

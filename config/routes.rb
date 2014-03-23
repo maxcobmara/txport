@@ -94,6 +94,13 @@ Txport::Application.routes.draw do
       get 'kembaran_a'
     end
   end
+  
+  resources :vehicle_fines do 
+    collection { post :import }
+  end
+  
+  match '/public/excel_format/VehicleFine_Excel.xls', to: 'vehicle_fines#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel_vehicle_fine', to:'vehicle_fines#import_excel', via: 'get'
 
   resources :vehicle_road_taxes do
     collection do

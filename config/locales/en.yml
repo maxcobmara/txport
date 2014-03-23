@@ -283,6 +283,17 @@ en:
     payment_status: Payment Status
     new: New Summon
     edit: Edit Summon
+    imported: Summons from Excel file are successfully imported
+    import_excel: Import Summons From Excel File
+    excel_format: Excel Format
+    not_exist: "Vehicle Not Exist."
+    issuer_is_required: "Summons Issuer is required."
+    condition_vehicle_code: "Registration no. and summon code are compulsory."
+    condition_vehicle_exist: All vehicles in Excel file must exist in the system, before the summons can be imported.
+    condition_summon_date: "Summon Date - Only Excel data of DATE type will be saved."
+    condition_summon_time: "Format time issued - 9999, eg. : 1205, 0010."
+    condition_issuer_exist: "Summon Issuer information is compulsory (row 3,column ‘B’) and must match Summon Types (refer menu - Vehicles | Drop Downs | Summon Types)."	
+    failure: "* Failure to comply with condition no. 1-5 will cause failure in import."
   vehicle_cards:
     title: "Touch N Go & Smart Tag"
     new: "New Touch N Go & Smart Tag"
