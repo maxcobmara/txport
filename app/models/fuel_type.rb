@@ -9,25 +9,11 @@ class FuelType < ActiveRecord::Base
   def self.exclude_petrol_diesel
     where('name LIKE (?) OR name LIKE (?)','PETROL','DIESEL').pluck(:id)
   end
+
   def self.get_fuel_type(fueltype)
     where('shortname ILIKE (?)', fueltype)[0].id
   end
-  #def self.get_fuel_type2(fueltype)
-	#fuel_type = where('shortname ILIKE (?)', "%#{fueltype}%") || new
-	#if fuel_type.count > 1
-	#	return fuel_type[0].id
-	#elsif fuel_type.count==1
-	#	return fuel_type.id
-	#else
-		#if (fueltype.id.nil? || fueltype.id.blank? || fueltype.id==" " || fueltype.id=="-")
-	#		fuel_type.shortname = fueltype
-	#		fuel_type.save!
-		#end
-	#	return fuel_type.id
-	#end
-  #end
-  
-  #---
+
   def self.get_fuel_type2(fr_excel,arr_fr_excel)
     fueltypes=where('shortname ILIKE (?)',"%#{fr_excel}%")#.squeeze(" ").strip)
     if fueltypes.count > 0

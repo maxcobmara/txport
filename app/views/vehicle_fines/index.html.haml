@@ -6,6 +6,8 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_vehicle_fine_path
+    %ul.nav
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", vehicle_fines_path(format: "xls")
      
@@ -31,23 +33,28 @@
       %th= sort_link @search, :code,  t('vehicle_fines.code')
       %th= sort_link @search, :code,  t('vehicle.vehicle_id')
       %th= sort_link @search, :code,  t('vehicle_fines.pay_before')
+      %th= t 'vehicle_fines.issued_at'
       %th= t 'vehicle_fines.reason'
       %th= sort_link @search, :code,  t('vehicle_fines.compound')
+      %th= t 'vehicle_fines.paid_amount'
       %th= t 'vehicle_fines.paid_on'
       %th= sort_link @search, :code,  t('vehicle_fines.payment_status')
       %th
 
   %tbody
-    - @vehicle_fines.each do |vehicle_fine| 
-      %tr{:class => vehicle_fine.table_status}
-        %td= vehicle_fine.code 
-        %td= vehicle_fine.vehicle.reg_no
-        %td= check_kin {l(vehicle_fine.pay_before)} 
-        %td= vehicle_fine.reason
-        %td= ringgols(vehicle_fine.compound)
-        %td= check_kin {l(vehicle_fine.paid_on)}
-        %td= vehicle_fine.payment_status
-        = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
+    - @vehicle_fines.group_by(&:vehicle_id).each do |vehicle, vehicle_fines| 
+      - vehicle_fines.each do |vehicle_fine|
+        %tr{:class => vehicle_fine.table_status}
+          %td= vehicle_fine.code 
+          %td= vehicle_fine.vehicle.reg_no
+          %td= check_kin {l(vehicle_fine.pay_before)} 
+          %td= vehicle_fine.issued_at.localtime.strftime('%d-%b-%Y %H:%M')
+          %td= vehicle_fine.reason
+          %td= ringgols(vehicle_fine.compound)
+          %td= ringgols(vehicle_fine.paid_amount)
+          %td= check_kin {l(vehicle_fine.paid_on)}
+          %td= check_kin {vehicle_fine.payment_status}
+          = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
 
 
 
