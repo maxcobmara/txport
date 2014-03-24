@@ -21,7 +21,8 @@
       .field
         = f.label :work_order_no_cont, "Work Order no Contains"
         = f.text_field :work_order_no_cont, class: "input-medium search-query"
-        = f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
+        = f.label :work_order_no_cont, "Registration No :"
+        = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
       
       
