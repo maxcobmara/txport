@@ -76,6 +76,24 @@ end
     @vehicle_fines = VehicleFine.all
   end
 
+  def import_excel
+  end
+  
+  def import
+	a=VehicleFine.import(params[:file])
+	if a == "vehicle not exist"
+		redirect_to import_excel_vehicle_fine_url, notice:(t 'vehicle_fines.not_exist')
+	elsif a == "issuer is required"
+		redirect_to import_excel_vehicle_fine_url, notice:(t 'vehicle_fines.issuer_is_required')
+	else
+		redirect_to vehicle_fines_url, notice:(t 'vehicle_fines.imported')
+	end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/VehicleFine_Excel.xls")
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle_fine
