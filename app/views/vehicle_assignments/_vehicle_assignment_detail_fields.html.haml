@@ -1,7 +1,10 @@
 %fieldset
   .floaters{:style => "float:left"} 
+    = f.text_field :release_no, :class => 'text_field input-medium', :placeholder => t('helpers.label.vehicle_assignment_detail.release_no')
+    = f.select :release_type, VehicleAssignmentDetail::RELEASETYPE, :include_blank => t('helpers.prompt.select_release_type')
     = f.collection_select :vehicle_id, Vehicle.order(reg_no: :asc).all, :id, :reg_no, :include_blank => t('helpers.prompt.select_vehicle'), :html_options => {:class => 'selectpicker', "data-width" => "auto"}
     = f.collection_select :staff_id, Staff.order(name: :asc).all, :id, :staff_details, :include_blank => t('helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
+    = f.text_field :remark, :class => 'text_field input-medium', :placeholder => t('helpers.label.vehicle_assignment_detail.remark')
   #datepicker.input-daterange{:style => "float:left"}
     = f.text_field :assigned_on, :class => 'text_field input-medium', :type => :text
     %span.add-on{:style => "height:30px;"}= t 'helpers.label.vehicle_road_tax.to'

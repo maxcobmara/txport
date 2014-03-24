@@ -27,6 +27,7 @@ en:
       vehicle: Vehicle
       vehicle_fine: Summon
       vehicle_card: "Touch N Go & Smart Tag"
+      vehicle_assignment_detail: Vehicle Details
     attributes:
       vehicle:
         reg_no: Registration No
@@ -40,6 +41,14 @@ en:
         compound: Compound
       vehicle_card:
         staff_id: Card Holder
+      vehicle_assignment:
+        document_code: Assignment No
+        unit_id: Receiving Unit
+        vehicle_assignment_details:
+          one: One vehicle
+          other: "%{count} vehicle"
+      vehicle_assignment_details: 
+        vehicle_id: Vehicle
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -52,6 +61,7 @@ en:
           too_short: "is too short (minimum is {{count}} characters)"
           taken: has already been taken
           #record_invalid: is invalid
+          invalid: invalid
 
   actions:
     new: New
@@ -252,24 +262,21 @@ en:
     edit: Edit Vehicle Road Tax
     other_report: Other Vehicle Road Tax Report
   vehicle_assignments:
-    title: Vehicle Release
-    #title: Vehicle Assignment
-    #assigned_on: Assigned On
-    #assignment_end: Assignment End
-    document_code: Release No
-    #document_code: "VRO No (Release No)"
-    document_code2: VRO No
-    document_date: VRO Date
-    authorised_by: VRO Authoriser
-    new: New Vehicle Release
-    edit: Edit Vehicle Release
-    #new: New Vehicle Assignment
-    #edit: Edit Vehicle Assignment	
+    title: Vehicle Assignment
+    document_code: Vehicle Assignment
+    document_code2: Assignment No
+    document_date: Assignment Date
+    authorised_by: Assignment Authoriser
+    new: New Vehicle Assignment
+    edit: Edit Vehicle Assignment	
     vehicle_details: Vehicle Details
     add_details: Add Details
     user: User Name
-    assignment_dates: Acquisition Dates
-    #assignment_dates: Assignment Dates
+    assignment_dates: Assignment Dates
+    release_no: VRO No
+    release_type: Release Type
+    remark: Special Instructions
+    unit_id: Receiving Unit
   vehicle_fines:
     title: Summons
     title2: Summon
@@ -625,9 +632,13 @@ en:
       vehicle_assignment:
         assigned_on: Assigned On
         assignment_end: Assignment End
-        document_code: Release No
-        document_date: Acquisition Date
-        authorised_by: VRO Authoriser
+        document_code: Assignment No
+        document_date: Assignment Date
+        authorised_by: Assignment Authoriser
+        unit_id: Receiving Unit
+      vehicle_assignment_detail:
+        release_no: VRO No
+        remark: Special Instructions
       vehicle_fine:
         code: Code
         type_id: Summon Type
@@ -789,3 +800,4 @@ en:
       select_rank_category: Select Rank Category
       select_rank_rate: Select Rate Group (for Kit)
       select_maintenance_type: Select Maintenance Type
+      select_release_type: Select Release Type 

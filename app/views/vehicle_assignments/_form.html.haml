@@ -9,10 +9,14 @@
     .control-group
       = f.label :document_date, :class => 'control-label'
       .controls= f.text_field :document_date, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
-
+ 	  
     .control-group
       = f.label :authorised_by, :class => 'control-label'
       .controls= f.collection_select :authorised_by, Staff.order(name: :asc).all, :id, :staff_details, :include_blank => (t 'helpers.prompt.select_authoriser'), :html_options => {:class => 'selectpicker'}
+	  
+    .control-group
+      = f.label :unit_id, :class => 'control-label'
+      .controls= f.collection_select :unit_id, Unit.order(shortname: :asc).all, :id, :unit_details, :include_blank => (t 'helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
     
     %br
     %p= t 'vehicle_assignments.vehicle_details'

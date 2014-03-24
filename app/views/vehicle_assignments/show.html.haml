@@ -15,20 +15,29 @@
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.authorised_by'
   %dd= check_kin {@vehicle_assignment.authoriser.name}
-  
 
+%dl.dl-horizontal
+  %dt= t 'vehicle_assignments.unit_id'
+  %dd= check_kin {@vehicle_assignment.unit_receiver.unit_details}
+  
 .div{:style => "padding: 15px 50px 10px 50px; "}
   %table.table.table-condensed.table-hover{:style => "width: 70%; "}
     %thead
       %tr
+        %th= t 'vehicle_assignments.release_no'
+        %th= t 'vehicle_assignments.release_type'	
         %th= t 'vehicle.vehicle_id' 
         %th= t 'vehicle_assignments.user'
+        %th= t 'vehicle_assignments.remark'
         %th= t 'vehicle_assignments.assignment_dates'
     %tbody
       - for details in @vehicle_assignment.vehicle_assignment_details
         %tr
+          %td= details.release_no
+          %td= (VehicleAssignmentDetail::RELEASETYPE.find_all{|disp, value| value == details.release_type}).map {|disp, value| disp.to_s}[0]
           %td= Vehicle.where("id = ?", details.vehicle_id).pluck(:reg_no)[0]
           %td= Staff.where("id = ?", details.staff_id).pluck(:name)[0]
+          %td= details.remark
           %td
             = check_kin {l(details.assigned_on)} 
             to 
