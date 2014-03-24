@@ -36,7 +36,14 @@ Txport::Application.routes.draw do
       get 'PMP_monthly_usage'
     end
   end
-
+  
+  resources :depot_fuels do 
+    collection { post :import }
+  end
+  
+  match '/public/excel_format/DepotFuel_Excel.xls', to: 'depot_fuels#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel_depot_fuel', to:'depot_fuels#import_excel', via: 'get'
+  
   resources :fuel_types
 
   resources :fuel_tanks do

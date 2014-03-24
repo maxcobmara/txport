@@ -205,7 +205,7 @@ ms_MY:
     failure: "* Data tidak akan diimport jika syarat 1 dan 2 tidak dipenuhi."
     #failure2: "* Data akan diabaikan jika syarat 2 tidak dipenuhi."
     failure3: "* Syarat 3-10 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
-    failed_check_format: "Import GAGAL. Syarat no. 1 (Bulan & Tahun Semasa) tidak dipenuhi. Gunakan 'Excel Format' yang disediakan sebagai panduan."
+    failed_check_format: "Import GAGAL. Syarat no. 1 (Bulan & Tahun Semasa) tidak dipenuhi. Gunakan 'Format Excel' yang disediakan sebagai panduan."
     failed_vehicle_not_exist: "Import GAGAL. Syarat no. 2 (Rekod kenderaan tidak wujud bagi no. pendaftaran yang diberikan.)"
     excel_format: Format Excel
   vehicle_road_taxes:
@@ -366,6 +366,24 @@ ms_MY:
     summary: Rumusan
     and: dan
     must_match: mesti sama
+    imported: "Bahan PMP (Depot) dari fail Excel telah berjaya diimport"
+    invalid_excel: "Data fail Excel tidak sah. "  
+    import_excel: "Import Bahan PMP (Depot) dari Fail Excel"
+    condition_month_year: "Bulan & tahun semasa mesti diisi (bulan - baris 4,lajur ‘B’, tahun - baris 5,lajur ‘B’)."
+    condition_fuel_tank_qty_match: "Sheet1 : Penyata Kapasiti - Kuantiti tangki dalam fail Excel dan sistem mestilah bersamaan. Rujuk menu, Bahan PMP | Tangki Penyimpanan | Senarai Tangki. " 
+    condition_naming_rules: "Sheet1 : Penyata Kapasiti - Nama tangki penyimpanan bagi petrol dan diesel (dalam fail Excel) mestilah diakhiri dengan 'ruang kosong' dan nombor, ATAU huruf sahaja. Contohnya, 'Tank 1', 'Ops Tank'."
+    condition_naming_rules2: "Sheet1 : Penyata Kapasiti - Nama tangki penyimpanan bagi avtur dan avcat (dalam fail Excel) mestilah diakhiri dengan nombor. Contohnya, 'Avcat H1', 'Avtur 2'."
+    condition_capacity: "Sheet1 : Penyata Kapasiti - Kapasiti setiap tangki penyimpanan mestilah diisi."
+    condition_ftcm: "Sheet2 : Penyata Penggunaan - Bilangan Jenis Bahan PMP dalam fail Excel mesti SEPADAN dengan bilangan Jenis Bahan PMP di Tangki-Tangki Penyimpanan bagi satu-satu Depot (di dalam s1stem)."    
+    condition_tank_group: "Sheet2 : Penyata Penggunaan - Depot/Unit dalam lajur B - Penamaan kategori/kumpulan tangki tanpa JENIS Bahan PMP akan diabaikan dari senarai."
+    failed_check_format: "Import GAGAL. Syarat no. 1 (Bulan dan Tahun Semasa) tidak dipenuhi. Gunakan 'Format Excel' yang disediakan sebagai panduan."
+    failure: "* Data tidak akan diimport jika syarat 1-7 tidak dipenuhi."
+    failed: "Import GAGAL. " 
+    stc: "Storage Tank COUNT did not matched."
+    tn: "Storage Tank NAMES did not matched."
+    cap: "Storage Tank CAPACITY is blank"
+    ftcm: "Fuel Type COUNT did not matched."
+    excel_format: Format Excel
   fuel_issueds:
     title: Pengeluaran Bahan PMP
     title2: Pengeluaran

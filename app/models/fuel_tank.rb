@@ -12,4 +12,20 @@ class FuelTank < ActiveRecord::Base
     "#{unit.name}"+" | "+fuel_tank_type
   end
   
+	
+  def self.get_tank(tank_name, depot_id, fuel_type_id, capacity)
+    tankno = tank_name.split(" ")[tank_name.split(" ").count-1]
+	#capacity = 20553
+	#tankname = tank_name.split(" ")[0]
+	#where('locations ILIKE (?)', "%kios%")[0].id
+	#where('locations ILIKE (?)',"%#{tankname}%")[0].id
+	#where('unit_id=? AND fuel_type_id=? AND capacity=?',depot_id, fuel_type_id, capacity)[0].id  
+	where('locations ILIKE (?) AND unit_id=? AND fuel_type_id=? AND capacity=?',"%#{tankno}",depot_id,fuel_type_id, capacity)[0].id	
+  end
+  
+  def self.get_tank2(tank_name, depot_id, fuel_type_id, capacity)
+	tankno = tank_name.split("")[tank_name.split("").count-1]
+	where('locations ILIKE (?) AND unit_id=? AND fuel_type_id=? AND capacity=?',"%#{tankno}",depot_id,fuel_type_id, capacity)[0].id	
+  end
+  
 end
