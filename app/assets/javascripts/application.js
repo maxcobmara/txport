@@ -25,4 +25,34 @@ $(document).ready(function(){
 $('.toga').click(function() {
   $('.searchit').toggle(); 
 });
+
+$('.toga1').click(function() {
+  $('.searchit1').toggle(); 
+});
+
+$('.toga2').click(function() {
+  $('.searchit2').toggle(); 
+});
+
+$('.toga3').click(function() {
+  $('.searchit3').toggle(); 
+});
+
+$('.toga4').click(function() {
+  $('.searchit4').toggle(); 
+});
+
+$('.toga5').click(function() {
+  $('.searchit5').toggle(); 
+});
+
+$('.toga6').click(function() {
+  $('.searchit6').toggle(); 
+});
+
+$('.toga7').click(function() {
+  $('.searchit7').toggle(); 
+});
+
+
 })
