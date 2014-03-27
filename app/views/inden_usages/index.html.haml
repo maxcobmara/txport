@@ -16,7 +16,8 @@
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f|
       .field
-        = f.text_field :inden_card_id_cont, class: "input-medium search-query", placeholder: "serial No Contains" 
+        = f.label :inden_card_id_cont, "serial No Contains :"
+        = f.text_field :inden_card_serial_no_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
       
       
