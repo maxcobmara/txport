@@ -29,10 +29,10 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'unit_fuels.unit_id'
-      %th= sort_link @search, :issue_date, t('unit_fuels.issue_date')
-      %th= t 'unit_fuels.diesel_usage'
-      %th= t 'unit_fuels.petrol_usage'
+      %th= sort_link @search, :unit_name,     t( 'unit_fuels.unit_id')
+      %th= sort_link @search, :issue_date,    t('unit_fuels.issue_date')
+      %th= sort_link @search, :diesel_usage,  t('unit_fuels.diesel_usage')
+      %th= sort_link @search, :petrol_usage,  t('unit_fuels.petrol_usage')
       %th 
   %tbody
     - @unit_fuels.each do |unit_fuel|
