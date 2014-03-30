@@ -5,12 +5,11 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
 
   has_many :vehicle_road_taxes, :dependent => :destroy
-  has_many :vehicle_fines,      :dependent => :destroy
+  has_many :vehicle_fines,      :dependent => :restrict_with_error
   has_many :maintenances,       :dependent => :destroy
-  has_many :vehicle_assignment_details, :dependent => :destroy #has_many - instead of has_one - refer trello card #87
+  has_many :vehicle_assignment_details, :dependent => :destroy
+  has_many :cards, :class_name => "VehicleCard", :dependent => :destroy
   belongs_to :contract
-  #belongs_to :card,     :class_name => "VehicleCard",     :foreign_key => "vehicle_id"
-  has_many :cards, :class_name => "VehicleCard"
   belongs_to :vehiclestatus,    :class_name => "VehicleStatus",       :foreign_key => "status_id"
   belongs_to :vehicleacquired,  :class_name => "AcquiredType",        :foreign_key => "acquired_id"
   belongs_to :manufacturer,     :class_name => "VehicleManufacturer", :foreign_key => "manufacturer_id"
@@ -31,13 +30,6 @@ class Vehicle < ActiveRecord::Base
     end
   end
   
-  #def self.search(search)
-    #if search
-     # where('reg_no ILIKE ?', "%#{search}%")
-    #else
-      #Vehicle.all
-    #end
-  #end
 
 def self.to_csv(options = {})
   CSV.generate(options) do |csv|

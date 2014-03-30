@@ -4,8 +4,7 @@ class VehicleCardsController < ApplicationController
   # GET /vehicle_cards
   # GET /vehicle_cards.json
   def index
-    @vehicle_cards = VehicleCard.all
-    @search = VehicleCard.search(params[:q])
+    @search = VehicleCard.where(:vehicle_id => Vehicle.select(:id).map(&:id)).search(params[:q])
     @vehicle_cards = @search.result
   end
 

@@ -9,7 +9,7 @@
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_card_path
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+      %li= link_to content_tag(:i, " Print", class: 'fa fa-print'), '#', :onclick => "window.print();return false;"
 
 .row.searchit{style: "display:none;"}
   .span9offset1
@@ -30,15 +30,15 @@
       %th= t 'vehicle_cards.serial_no'
       %th= sort_link @search, :expired_date, t('vehicle_cards.expired_date')
       %th= t 'vehicle_cards.smarttag_serial'
-      %th
+      %th.action_menu_td
   %tbody
     - @vehicle_cards.each do |vehicle_card| 
       %tr
-        %td= check_kin {vehicle_card.vehicle.reg_no}
-        %td= vehicle_card.card_holder.staff_details
-        %td= check_kin {vehicle_card.unit.name}
+        %td= vehicle_card.vehicle_id#try(:vehicle).try(:reg_no)
+        %td= vehicle_card.try(:card_holder).try(:staff_details)
+        %td= vehicle_card.try(:unit).try(:name)
         %td= vehicle_card.serial_no
-        %td= l(vehicle_card.expired_date)
+        %td= vehicle_card.expired_date.try(:strftime, '%d-%b-%Y')
         %td= vehicle_card.smarttag_serial
         = render :partial => 'action_menu', :locals => { :vehicle_card => vehicle_card }
 
