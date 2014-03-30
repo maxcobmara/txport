@@ -6,8 +6,7 @@
     %dl.dl-horizontal
       %dt
         %strong= t 'vehicles.reg_no'
-      %dd
-        = h @vehicle_road_tax.vehicle.reg_no
+      %dd= @vehicle_road_tax.try(:vehicle).try(:reg_no)
     %br/
       
     .control-group

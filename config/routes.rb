@@ -21,7 +21,7 @@ Txport::Application.routes.draw do
     collection do
       get 'unit_fuel_usage'
       get 'annual_usage_report'
-       get 'daily_usage'
+      get 'daily_usage'
     end
   end
 
@@ -107,8 +107,6 @@ Txport::Application.routes.draw do
       get 'monthly_roadtax'
       get 'report_roadtax'
     end
-
-  
   end
 
   resources :vehicle_manufacturers
