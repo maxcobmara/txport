@@ -22,7 +22,7 @@ gem "jquery-rails", "~> 3.0.4"  # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "haml", "~> 4.0.3"
 gem "font-awesome-rails", "~> 4.0.1.0"
-gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
+gem "bootstrap-datepicker-rails", "~> 1.3.0.1"
 gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"

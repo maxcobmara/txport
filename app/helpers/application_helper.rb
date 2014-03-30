@@ -29,6 +29,10 @@ module ApplicationHelper
     number_to_currency(money, :unit => "RM ", :separator => ".", :delimiter => ",", :precision => 2)
   end
   
+  def litres(number)
+    "#{number} LTR"
+  end
+  
   ###devise
   def resource_name
     :user

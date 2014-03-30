@@ -21,8 +21,10 @@
       .field
         = f.label :unit_name_cont, "Unit Contains:"
         = f.text_field :unit_name_cont, class: "input-medium search-query"
-        = f.label :issue_date_cont, "Issue Date Contains:"
-        = f.text_field :issue_date_cont, class: "input-medium search-query"
+        = f.label :issue_date_gteq, "Issue Date From:"
+        = f.text_field :issue_date_gteq, class: "input-medium search-query", "data-behaviour" => "datepicker_std"
+        = f.label :issue_date_lteq, "Issue Date From:"
+        = f.text_field :issue_date_lteq, class: "input-medium search-query datepicker", "data-behaviour" => "datepicker_std"
         = f.submit "Search", class: "btn btn-warning"
       
       
@@ -35,13 +37,26 @@
       %th= sort_link @search, :petrol_usage,  t('unit_fuels.petrol_usage')
       %th 
   %tbody
+    - total_d = 0
+    - total_p = 0
     - @unit_fuels.each do |unit_fuel|
       %tr
         %td= check_kin {unit_fuel.unit.name}
         %td= check_kin {l(unit_fuel.issue_date)}
-        %td= UnitFuel.diesel_usage(unit_fuel)     
-        %td= UnitFuel.petrol_usage(unit_fuel)
+        %td
+          - total_d += (UnitFuel.diesel_usage(unit_fuel)).to_i
+          = UnitFuel.diesel_usage(unit_fuel)
+        %td
+          - total_p += (UnitFuel.petrol_usage(unit_fuel)).to_i
+          = UnitFuel.petrol_usage(unit_fuel)
         = render :partial => 'action_menu', :locals => { :unit_fuel => unit_fuel }
+    %tr
+      %td
+      %th Totals
+      %th= litres(total_d)
+      %th= litres(total_p)
+      %td
+    
       
       
 

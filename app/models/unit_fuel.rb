@@ -25,6 +25,7 @@ class UnitFuel < ActiveRecord::Base
     "#{unit.name} "+"#{issue_date.strftime("%b")} "+"#{issue_date.year}"
   end 
   
+  #this is really bad should have another table with type and quantity. too late now
   def self.diesel_usage(unit_fuel)
     return (unit_fuel.d_vessel+unit_fuel.d_vehicle+unit_fuel.d_misctool+unit_fuel.d_boat).to_i.to_s+" LTR"
   end
