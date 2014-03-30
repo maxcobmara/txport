@@ -30,31 +30,32 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= sort_link @search, :code,  t('vehicle_fines.code')
-      %th= sort_link @search, :vehicle,  t('vehicle.vehicle_id')
+      %th= sort_link @search, :code,      t('vehicle_fines.code')
+      %th= sort_link @search, :vehicle,   t('vehicle.vehicle_id')
       %th= sort_link @search, :pay_before,  t('vehicle_fines.pay_before')
-      %th= sort_link @search, :issued_at,  t('vehicle_fines.issued_at')
-      %th= t 'vehicle_fines.reason'
-      %th= sort_link @search, :compound,  t('vehicle_fines.compound')
-      %th= t 'vehicle_fines.paid_amount'
-      %th= t 'vehicle_fines.paid_on'
-      %th= sort_link @search, :code,  t('vehicle_fines.payment_status')
-      %th
+      %th= sort_link @search, :issued_at, t('vehicle_fines.issued_at')
+      %th= sort_link @search, :reason,    t('vehicle_fines.reason')
+      %th= sort_link(@search, :compound,  t('vehicle_fines.compound'))
+      %th= sort_link @search, :paid_amount, t('vehicle_fines.paid_amount')
+      %th= sort_link @search, :paid_on, t('vehicle_fines.paid_on')
+      %th= sort_link(@search, :payment_status,  t('vehicle_fines.payment_status'))
+      %th.action_menu_td
 
   %tbody
-    - @vehicle_fines.group_by(&:vehicle_id).each do |vehicle, vehicle_fines| 
-      - vehicle_fines.each do |vehicle_fine|
-        %tr{:class => vehicle_fine.table_status}
-          %td= vehicle_fine.code 
-          %td= vehicle_fine.try(:vehicle).try(:reg_no)
-          %td= vehicle_fine.pay_before.try(:strftime, '%d-%b-%Y')
-          %td= vehicle_fine.issued_at.try(:strftime, '%d-%b-%Y %H:%M')
-          %td= vehicle_fine.reason
-          %td= ringgols(vehicle_fine.compound)
-          %td= ringgols(vehicle_fine.paid_amount)
-          %td= vehicle_fine.paid_on.try(:strftime, '%d-%b-%Y')
-          %td= check_kin {vehicle_fine.payment_status}
-          = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
+    //These guys arent actually being grouped
+    //- @vehicle_fines.group_by(&:vehicle_id).each do |vehicle, vehicle_fines| 
+    - @vehicle_fines.each do |vehicle_fine|
+      %tr{:class => vehicle_fine.table_status}
+        %td= vehicle_fine.code 
+        %td= vehicle_fine.try(:vehicle).try(:reg_no)
+        %td= vehicle_fine.pay_before.try(:strftime, '%d-%b-%Y')
+        %td= vehicle_fine.issued_at.try(:strftime, '%d-%b-%Y %H:%M')
+        %td= vehicle_fine.reason.titleize
+        %td= ringgols(vehicle_fine.compound)
+        %td= ringgols(vehicle_fine.paid_amount)
+        %td= vehicle_fine.paid_on.try(:strftime, '%d-%b-%Y')
+        %td= check_kin {vehicle_fine.payment_status}
+        = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
 
 
 

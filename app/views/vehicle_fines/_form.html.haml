@@ -7,7 +7,7 @@
       %dt
         %strong= t 'vehicles.reg_no'
       %dd
-        = h @vehicle_fine.vehicle.reg_no
+        = @vehicle_fine.try(:vehicle).try(:reg_no)
     %br/
 
     .control-group
