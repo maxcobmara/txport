@@ -1,0 +1,16 @@
+@media print {
+
+
+.top_nav, .footer, .breadcrumb, .search_box, .scratchpad, .tool_bar, .user-info, .alerts {display:none;}
+.navbar, .mp-menu, .action_menu_td {display:none;}
+
+h1 {font-family: tahoma; font-size:20px;}
+
+table {border-collapse:collapse; width:100%;}
+  td.right {text-align:right;}
+  table td, th{border: solid 1px black; padding:5px;}
+  table thead tr {font-weight:bold; font-size:10px; color:white; background-color:#72126C;}
+  table tr {font-size:10px; font-family: tahoma;}
+  table td.right {align:right;}
+  
+}
