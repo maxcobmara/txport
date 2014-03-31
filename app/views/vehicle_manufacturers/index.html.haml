@@ -2,7 +2,8 @@
 - model_class = VehicleManufacturer
 .page-header
   %h1= t 'vehicle_manufacturers.title', :default => model_class.model_name.human.pluralize
-  %p#notice= notice
+  #notice
+    = render :partial => 'shared/flashes' , :locals => { :flash => flash }
   
 .navbar.navbar-inverse
   .navbar-inner

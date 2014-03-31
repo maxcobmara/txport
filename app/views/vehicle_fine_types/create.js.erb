@@ -1,4 +1,6 @@
 $('#vehicle_fine_type_form').remove();
 $('#vehicle_fine_type_list tr:last').after('<%= j render("list") %>');
-location.reload(false);
+$("#notice").after("<%= escape_javascript(render :partial => 'shared/flashes' , :locals => { :flash => flash }).html_safe %>");
+$('#add_new_fine_type').show();
+
 

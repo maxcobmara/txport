@@ -29,6 +29,7 @@ class VehicleFineTypesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_fine_type.save
+        flash.now[:notice] = 'Vehicle category was successfully created.'
         format.html { redirect_to @vehicle_fine_type, notice: 'Vehicle fine type was successfully created.' }
         format.js
 		format.json { render action: 'show', status: :created, location: @vehicle_fine_type }

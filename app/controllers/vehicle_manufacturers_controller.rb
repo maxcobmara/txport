@@ -29,6 +29,7 @@ class VehicleManufacturersController < ApplicationController
 
     respond_to do |format|
       if @vehicle_manufacturer.save
+        flash.now[:notice] = 'Vehicle manufacturer was successfully created.'
         format.html { redirect_to @vehicle_manufacturer, notice: 'Vehicle manufacturer was successfully created.' }
         format.js
         format.json { render action: 'show', status: :created, location: @vehicle_manufacturer }

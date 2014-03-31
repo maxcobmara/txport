@@ -30,6 +30,7 @@ class VehicleStatusesController < ApplicationController
 
     respond_to do |format|
       if @vehicle_status.save
+        flash.now[:notice] = 'Vehicle status was successfully created.'
         format.html { redirect_to vehicle_statuses_url, notice: 'Vehicle status was successfully created.' }
         format.js
         #format.json { render action: 'index', status: :created, location: @vehicle_status }

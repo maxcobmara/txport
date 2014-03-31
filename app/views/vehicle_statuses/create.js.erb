@@ -1,4 +1,5 @@
 $('#vehicle_status_form').remove();
 $('#vehicle_status_list tr:last').after('<%= j render("list") %>');
-location.reload(false); //HacketyHack
+$("#notice").after("<%= escape_javascript(render :partial => 'shared/flashes' , :locals => { :flash => flash }).html_safe %>");
+$('#add_vehicle_status').show();
 
