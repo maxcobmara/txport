@@ -1,4 +1,5 @@
-$('#vehicle_category_form').remove();
 $('#vehicle_category_list tr:last').after('<%= j render("list") %>');
-location.reload(false);
+$("#notice").after("<%= escape_javascript(render :partial => 'shared/flashes' , :locals => { :flash => flash }).html_safe %>");
+$('#vehicle_category_form').hide();
+$('#add_new_category').show();
 
