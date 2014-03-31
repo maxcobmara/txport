@@ -17,14 +17,14 @@
       .field
         = f.label :work_order_no_cont, "Unit Contains :"
         = f.text_field :unit_name_cont, class: "input-medium search-query"
-        = f.label :work_order_no_cont, "Registration No :"
+        = f.label :vehicle_reg_no_cont, "Registration No :"
         = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
 
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'vehicle.vehicle_id'
+      %th= sort_link @search, :vehicle_reg_no, t('vehicle.vehicle_id')
       %th= t 'vehicle_cards.staff_id'
       %th= sort_link @search, :unit_id, t('vehicle_cards.unit_id')
       %th= t 'vehicle_cards.serial_no'
@@ -34,7 +34,7 @@
   %tbody
     - @vehicle_cards.each do |vehicle_card| 
       %tr
-        %td= vehicle_card.vehicle_id#try(:vehicle).try(:reg_no)
+        %td= vehicle_card.try(:vehicle).try(:reg_no)
         %td= vehicle_card.try(:card_holder).try(:staff_details)
         %td= vehicle_card.try(:unit).try(:name)
         %td= vehicle_card.serial_no
