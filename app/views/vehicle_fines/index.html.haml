@@ -50,7 +50,7 @@
         %td= vehicle_fine.try(:vehicle).try(:reg_no)
         %td= vehicle_fine.pay_before.try(:strftime, '%d-%b-%Y')
         %td= vehicle_fine.issued_at.try(:strftime, '%d-%b-%Y %H:%M')
-        %td= vehicle_fine.reason.titleize
+        %td= vehicle_fine.reason.try(:titleize)
         %td= ringgols(vehicle_fine.compound)
         %td= ringgols(vehicle_fine.paid_amount)
         %td= vehicle_fine.paid_on.try(:strftime, '%d-%b-%Y')
