@@ -20,7 +20,7 @@ class Vehicle < ActiveRecord::Base
   # The validation has to go after 'has_attached_file'
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
-  attr_accessor :status, :acquired, :category, :register_on   #for data from excel file
+  attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name   #for data from excel file
   
   def chassis_is_dash?
     if chassis_no == "-"
@@ -62,7 +62,7 @@ end
     (6..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose] 
       vehicle = find_by_id(row["reg_no"]) || new 
-      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status") 
+      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name") 
  
       # retrieve fr excel, assign status_id according to drop down
       unless (vehicle.status.nil? || vehicle.status.blank?)
@@ -77,9 +77,35 @@ end
         vehicle.category_id = VehicleCategory.get_category(vehicle.category)    
       end
       # retrieve fr excel, assign manufacturer_id according to drop down
-      unless (vehicle.model.nil? || vehicle.model.blank?)
-        vehicle.manufacturer_id = VehicleManufacturer.get_manufacturer(vehicle.model)
-      end
+      unless (vehicle.manufacturer_name.nil? || vehicle.manufacturer_name.blank?)
+        vehicle.manufacturer_id = VehicleManufacturer.get_manufacturer(vehicle.manufacturer_name)
+      end	  
+
+	  # retrieve fr excel, assign unit_id according to drop down & 'perjawatan' info
+      unless ((vehicle.unit_name.nil? || vehicle.unit_name.blank? || vehicle.unit_name==" " || vehicle.unit_name=="-") && (vehicle.no_perjawatan.nil? || vehicle.no_perjawatan.blank?))
+        unit_id = Unit.get_rmn_unit(vehicle.unit_name.strip)	
+		v_assignment = VehicleAssignment.find_by_unit_id(unit_id) || VehicleAssignment.new
+		if v_assignment.id.nil? || v_assignment.id.blank?
+			v_assignment.document_code = vehicle.no_perjawatan
+			v_assignment.unit_id = unit_id
+			unless (vehicle.assignment_date.nil? || vehicle.assignment_date.blank? || vehicle.assignment_date==" " || vehicle.assignment_date=="-")
+				if vehicle.assignment_date.is_a? Date
+					v_assignment.document_date = vehicle.assignment_date
+				end
+			end
+			v_assignment.save!
+			ind = 0
+        else
+			ind = vehicle.vehicle_assignment_details.count								
+		end
+		unless ((vehicle.kuasa_vro.nil? || vehicle.kuasa_vro.blank? || vehicle.kuasa_vro==" " || vehicle.kuasa_vro=="-")&&(vehicle.vro_start_date.nil? || vehicle.vro_start_date.blank? || vehicle.vro_start_date==" " || vehicle.vro_start_date=="-")&&(vehicle.vro_type.nil? || vehicle.vro_type.blank? || vehicle.vro_type==" " || vehicle.vro_type=="-"))
+			vehicle.vehicle_assignment_details.new
+			vehicle.vehicle_assignment_details[ind].vehicle_assignment_id = v_assignment.id
+			vehicle.vehicle_assignment_details[ind].release_no = vehicle.kuasa_vro
+			vehicle.vehicle_assignment_details[ind].assigned_on = vehicle.vro_start_date
+			vehicle.vehicle_assignment_details[ind].release_type = VehicleAssignmentDetail.get_vro_type(vehicle.vro_type.strip.capitalize)
+		end
+	  end
       
       #to add other date checking - format dd-mm-yyyy vs DB date format
       unless (vehicle.register_on.nil? || vehicle.register_on.blank? || vehicle.register_on==" " || vehicle.register_on=="NIL")

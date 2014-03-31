@@ -27,4 +27,8 @@ class Unit < ActiveRecord::Base
   def unit_details
     "#{shortname} " + "#{name}"
   end
+  
+   def self.get_rmn_unit(unitname)
+    where('name ILIKE (?)', unitname)[0].id
+  end
 end
