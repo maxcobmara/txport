@@ -165,13 +165,20 @@ ms_MY:
     condition_category_spanco2: " (dari menu - Kenderaan | Data Asas | Kategori Kenderaan - Deskripsi)"	
     condition_model: "Model - Mesti terdiri daripada Pembuat Kenderaan dan Model Kenderaan SAHAJA"	
     condition_category_others: "Kategori Kenderaan bagi (Jenis Diperolehi = selain SPANCO) mesti sepadan dengan Kategori Kenderaan (selain KJU, KJK, KJT dan KRJ)" 
+    condition_assignment_particulars: "Maklumat Perjawatan : No. Perjawatan dan Nama Unit bagi setiap kenderaan mesti diisi."
+    condition_assignment_details_particulars: "Maklumat VRO : Kuasa VRO, Tarikh Pengambilan, Jenis Pengeluaran mesti diisi"
+    condition_release_type: "Jenis Pengeluaran (VRO) - mesti terdiri daripada 'Perjawatan', 'Penggantian', 'Tambahan' atau 'Pinjaman'. "    
+    condition_manufacturer: "Nama Pengeluar - Mesti sepadan dengan Pengeluar Kenderaan (dari menu - Kenderaan | Data Asas | Pengeluar Kenderaan)"
     invalid_excel: "Data fail Excel tidak sah. "   
     errors_count: "rekod dari fail Excel tidak sah untuk diimport."
     invalid_excel_data: Data Excel yang tidak sah
     errors_counting: Jumlah Ralat
     errors_description: Deskripsi Ralat
     failure: "* Data tidak akan diimport jika syarat 1 tidak dipenuhi."
-    failure2: "Syarat 2-7 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
+    failure2: "Syarat 2-7 & 11 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
+    failure3: "Syarat 8 yang tidak dipenuhi akan menyebabkan keseluruhan data Perjawatan kenderaan & VRO akan diabaikan."
+    failure4: "Syarat 9 yang tidak dipenuhi akan menyebabkan keseluruhan data VRO tidak disimpan."
+    failure5: "Syarat 10 yang tidak dipenuhi akan meyebabkan data Jenis Pengeluaran tidak disimpan."
     excel_format: Format Excel
     total: Jumlah Keseluruhan Kenderaan
     number: Bilangan

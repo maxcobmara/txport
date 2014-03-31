@@ -24,12 +24,22 @@
     = t 'vehicles.condition_category_others'
     %br
     = t('vehicles.condition_category_spanco2')
+  %li= t 'vehicles.condition_assignment_particulars'
+  %li= t 'vehicles.condition_assignment_details_particulars'
+  %li= t 'vehicles.condition_release_type'
+  %li= t 'vehicles.condition_manufacturer'
 %br
 %font{:color => "red"} 
   =(t 'vehicles.failure')+" - "
   %b=(t 'vehicles.invalid_excel_data')
   %br
   =t 'vehicles.failure2'
+  %br
+  =t 'vehicles.failure3'
+  %br
+  =t 'vehicles.failure4'
+  %br
+  =t 'vehicles.failure5'
 %br	
 %br
 - if @invalid_vehicles && @invalid_vehicles.count>0

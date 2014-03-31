@@ -33,7 +33,7 @@
       %tr
         %td= vehicle_assignment.document_code
         %td= check_kin {vehicle_assignment.unit_receiver.unit_details}
-        %td= l(vehicle_assignment.document_date)
+        %td= check_kin {l(vehicle_assignment.document_date)}
         %td= check_kin {vehicle_assignment.authoriser.staff_details}
         %td
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }
