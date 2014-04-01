@@ -26,8 +26,10 @@ $(document).ready(function(){
   /* Why so many? If you need more than one search per page use id not classes */
   /* adn put them in the model js */
   $('.toga').click(function() {
-    $('.searchit').toggle(); 
+    $('.searchit').toggle();    
+
   });
+
   
   $('[data-behaviour=datepicker_std]').datepicker({
     format: "yyyy-mm-dd",
