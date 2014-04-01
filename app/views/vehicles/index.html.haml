@@ -14,17 +14,8 @@
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", vehicles_path(format: "xls")
     %ul.nav.pull-right
-
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
-      %select
-        %option.toga{} Search All
-        %option.toga1{} Registration No
-        %option.toga2{} Manufacturer
-        %option.toga3{} Model
-        %option.toga4{} Category
-        %option.toga5{} Acquired Type
-        %option.toga6{} Acquired On
-        %option.toga7{} Status
 
 .row.searchit{style: "display:none;"}
   .span9offset1
@@ -48,61 +39,6 @@
         = f.text_field :vehiclestatus_short_name_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
 
-.row.searchit1{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field
-        = f.label :reg_no_cont, "Registration No:"
-        = f.text_field :reg_no_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit2{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :manufacturer_name_cont, "Manufacturer  :"
-        = f.text_field :manufacturer_name_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit3{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :model_cont, "Model    :"
-        = f.text_field :model_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit4{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :vehiclecategory_short_name_cont, "Category  :"
-        = f.text_field :vehiclecategory_short_name_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit5{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :vehicleacquired_description_cont, " Acquired Type :"
-        = f.text_field :vehicleacquired_description_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit6{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :acquired_on_cont, "  Acquired On  :"
-        = f.text_field :acquired_on_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
-
-.row.searchit7{style: "display:none;"}
-  .span9offset1
-    = search_form_for @search, class: "form-inline" do |f|
-      .field  
-        = f.label :vehiclestatus_short_name_cont, "  Status     :"
-        = f.text_field :vehiclestatus_short_name_cont, class: "input-medium search-query"
-        = f.submit "Search", class: "btn btn-warning"
       
 #vehicles= render 'vehicles'
       
