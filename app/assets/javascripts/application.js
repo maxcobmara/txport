@@ -29,6 +29,13 @@ $(document).ready(function(){
     $('.searchit').toggle();    
 
   });
+  
+  $(".bogus").click(function (e) {
+      alert("Sorry! Feature not yet implemented");
+  });
+  $(".out_of_scope").click(function (e) {
+      alert("Sorry! This feature for future implementation");
+  });
 
   
   $('[data-behaviour=datepicker_std]').datepicker({
