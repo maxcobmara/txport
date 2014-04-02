@@ -12,7 +12,7 @@
 
     .control-group
       = f.label :work_order_no, :class => 'control-label'
-      .controls= f.text_field :work_order_no, :class => 'text_field input-xlarge'
+      .controls= f.text_field :work_order_no, class: 'text_field input-xlarge mandatory'
 
     .control-group
       = f.label :contract_id, :class => 'control-label'
@@ -33,21 +33,6 @@
     .control-group
       = f.label :repair_date, :class => 'control-label'
       .controls= f.text_field :repair_date, :class => 'text_field input-medium', :type => :text, 'data-behaviour' => 'datepicker_before'
-	  
-    .control-group
-      = f.label :value_repaired, :class => 'control-label'
-      .controls
-        .input-prepend
-          %span.add-on{:style => "height:30px;"} RM &nbsp;
-          = f.text_field :value_repaired, :class => "span2 input-small mandatory", :id => "prependedInput", :type => "text", readonly: true
-
-    .control-group
-      = f.label :value_supplied, :class => 'control-label'
-      .controls
-        .input-prepend
-          %span.add-on{:style => "height:30px;"} RM &nbsp;
-          = f.text_field :value_supplied, :class => "span2 input-small mandatory", :id => "prependedInput", :type => "text", readonly: true
-
 
     .control-group
       = f.label :repair_location, :class => 'control-label'

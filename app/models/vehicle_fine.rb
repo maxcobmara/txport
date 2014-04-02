@@ -143,3 +143,23 @@ class VehicleFine < ActiveRecord::Base
  end
 
 end
+
+# == Schema Information
+#
+# Table name: vehicle_fines
+#
+#  code        :string(255)
+#  compound    :decimal(, )
+#  created_at  :datetime
+#  id          :integer          not null, primary key
+#  issued_at   :datetime
+#  location    :string(255)
+#  paid_amount :decimal(, )
+#  paid_on     :date
+#  pay_before  :date
+#  reason      :string(255)
+#  receipt_no  :string(255)
+#  type_id     :integer
+#  updated_at  :datetime
+#  vehicle_id  :integer
+#

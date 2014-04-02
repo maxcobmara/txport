@@ -16,3 +16,14 @@ class MaintenanceType < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: maintenance_types
+#
+#  created_at  :datetime
+#  description :string(255)
+#  id          :integer          not null, primary key
+#  type_name   :string(255)
+#  updated_at  :datetime
+#

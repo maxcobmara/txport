@@ -1,4 +1,8 @@
 class Maintenance < ActiveRecord::Base
+  
+  validates :vehicle_id, presence: true
+  validates :work_order_no, presence: true
+  
 	belongs_to :vehicle
   belongs_to :contract
 	belongs_to :repairer, :class_name => "Company", :foreign_key => "repaired_by"
@@ -146,3 +150,21 @@ class Maintenance < ActiveRecord::Base
   
 end
 
+# == Schema Information
+#
+# Table name: maintenances
+#
+#  contract_id      :integer
+#  created_at       :datetime
+#  id               :integer          not null, primary key
+#  maintenance_date :date
+#  repair_date      :date
+#  repair_location  :string(255)
+#  repaired_by      :integer
+#  supplied_by      :integer
+#  updated_at       :datetime
+#  value_repaired   :decimal(, )
+#  value_supplied   :decimal(, )
+#  vehicle_id       :integer
+#  work_order_no    :string(255)
+#

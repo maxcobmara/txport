@@ -6,3 +6,16 @@ class VehicleAssignment < ActiveRecord::Base
   validates_associated :vehicle_assignment_details
   validates_presence_of :document_code, :unit_id
 end
+
+# == Schema Information
+#
+# Table name: vehicle_assignments
+#
+#  authorised_by :integer
+#  created_at    :datetime
+#  document_code :string(255)
+#  document_date :date
+#  id            :integer          not null, primary key
+#  unit_id       :integer
+#  updated_at    :datetime
+#

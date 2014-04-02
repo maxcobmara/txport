@@ -11,3 +11,14 @@ class VehicleCategory < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: vehicle_categories
+#
+#  created_at  :datetime
+#  description :string(255)
+#  id          :integer          not null, primary key
+#  short_name  :string(12)
+#  updated_at  :datetime
+#

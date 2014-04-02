@@ -1,3 +1,11 @@
-.control-group
-  = f.label :maintenance_type_id, :class => 'control-label'
-  .controls= f.collection_select :unit_type, UnitType.all, :id, :short_name, {:include_blank => (t 'helpers.prompt.select_unit_type')}, {:class => 'selectpicker'}
+%fieldset
+  .form-inline{role: "form"}
+    .row{style: "margin-left:15px; padding-top:8px"}
+      = f.text_field :line_item, :class => 'text_field input-xlarge', :placeholder => t('maintenance_details.line_item'), style: "margin-top:-10px"
+      = f.text_field :line_item_price, :class => 'text_field input-small', :placeholder => t('maintenance_details.line_item_price'), style: "margin-top:-10px"
+      = f.select :maintenance_type_id, DropDown::MAINTENANCE_TYPES, {}, {class: "selectpicker span3"}
+      = f.text_field :quantity, :class => 'text_field input-small', :placeholder => t('maintenance_details.quantity'), style: "margin-top:-10px"
+      = f.collection_select :unit_type, UnitType.all, :id, :short_name, {:include_blank => (t 'helpers.prompt.select_unit_type')}, {:class => 'selectpicker span1'}
+      = f.hidden_field :_destroy
+      .btn.btn-danger{style: "margin-top:-10px;"}
+        = link_to_remove_fields (fa_icon "trash-o icon-white"), f

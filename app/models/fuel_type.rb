@@ -32,3 +32,14 @@ class FuelType < ActiveRecord::Base
   #---
   
 end
+
+# == Schema Information
+#
+# Table name: fuel_types
+#
+#  created_at :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  shortname  :string(255)
+#  updated_at :datetime
+#

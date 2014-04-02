@@ -6,3 +6,14 @@ class VehicleFineType < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: vehicle_fine_types
+#
+#  created_at  :datetime
+#  description :string(255)
+#  id          :integer          not null, primary key
+#  short_name  :string(255)
+#  updated_at  :datetime
+#

@@ -37,3 +37,14 @@ class UnitType < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: unit_types
+#
+#  created_at  :datetime
+#  description :string(255)
+#  id          :integer          not null, primary key
+#  short_name  :string(255)
+#  updated_at  :datetime
+#

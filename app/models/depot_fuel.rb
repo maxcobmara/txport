@@ -331,3 +331,14 @@ class DepotFuel < ActiveRecord::Base
   end
    
 end
+
+# == Schema Information
+#
+# Table name: depot_fuels
+#
+#  created_at :datetime
+#  id         :integer          not null, primary key
+#  issue_date :date
+#  unit_id    :integer
+#  updated_at :datetime
+#

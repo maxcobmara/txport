@@ -10,3 +10,20 @@ class Staff < ActiveRecord::Base
     "#{id_no} " + "#{name}".gsub(/\w+/, &:capitalize)
   end
 end
+
+# == Schema Information
+#
+# Table name: staffs
+#
+#  created_at   :datetime
+#  expertise_id :integer
+#  gender       :integer
+#  id           :integer          not null, primary key
+#  id_no        :string(255)
+#  name         :string(255)
+#  position_id  :integer
+#  rank_id      :integer
+#  religion     :integer
+#  unit_id      :integer
+#  updated_at   :datetime
+#
