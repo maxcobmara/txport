@@ -10,8 +10,8 @@
  *
  *= require bootstrap.min
  *= require font-awesome
+ *= require bootstrap-select
  *= require bootstrap-datepicker
- *= bootstrap-select
  *= require_self
  *= require_tree .
  */

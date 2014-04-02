@@ -1,9 +1,3 @@
-%fieldset
-  .form-inline{role: "form"}
-    = f.collection_select :maintenance_type_id, MaintenanceType.all, :id, :type_name, :include_blank => (t 'helpers.prompt.select_maintenance_type'), :html_options => {:class => 'selectpicker'}
-    = f.text_field :line_item, :class => 'text_field input-xlarge', :placeholder => t('maintenance_details.line_item')
-    = f.text_field :line_item_price, :class => 'text_field input-small', :placeholder => t('maintenance_details.line_item_price')
-    = f.text_field :quantity, :class => 'text_field input-small', :placeholder => t('maintenance_details.quantity')
-    = f.collection_select :unit_type, UnitType.all, :id, :short_name, :include_blank => (t 'helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
-    = f.hidden_field :_destroy
-    = link_to_remove_fields (fa_icon "trash-o"), f     
+.control-group
+  = f.label :maintenance_type_id, :class => 'control-label'
+  .controls= f.collection_select :unit_type, UnitType.all, :id, :short_name, {:include_blank => (t 'helpers.prompt.select_unit_type')}, {:class => 'selectpicker'}

@@ -27,7 +27,6 @@ $(document).ready(function(){
   /* adn put them in the model js */
   $('.toga').click(function() {
     $('.searchit').toggle();    
-
   });
   
   $(".bogus").click(function (e) {
@@ -36,7 +35,8 @@ $(document).ready(function(){
   $(".out_of_scope").click(function (e) {
       alert("Sorry! This feature for future implementation");
   });
-
+  
+  $('.selectpicker').selectpicker();
   
   $('[data-behaviour=datepicker_std]').datepicker({
     format: "yyyy-mm-dd",

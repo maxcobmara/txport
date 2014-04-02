@@ -44,11 +44,11 @@
         %td= maintenance.vehicle.reg_no
         %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
         %td= maintenance.work_order_no
-        %td= check_kin {maintenance.contract.contract_no}
-        %td= check_kin {ringgols(maintenance.value_repaired)}		
-        %td= check_kin {maintenance.veh_repairer.name}
-        %td= check_kin {ringgols(maintenance.value_supplied)}
-        %td= check_kin {maintenance.part_supplier.name}	
+        %td= maintenance.contract.try(:contract_no)
+        %td= ringgols(maintenance.value_repaired)
+        %td= maintenance.repairer.try(:name)
+        %td= ringgols(maintenance.value_supplied)
+        %td= maintenance.part_supplier.try(:name)
         = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
       
       
