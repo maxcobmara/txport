@@ -17,6 +17,8 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
+//= require jsapi
+//= require chartkick
 //= require global2
 //= require_tree .
 

@@ -57,7 +57,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    chartkick (1.2.1)
+    chartkick (1.2.4)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
@@ -90,7 +90,7 @@ GEM
     font-awesome-rails (4.0.1.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
-    groupdate (1.0.4)
+    groupdate (2.1.0)
       activerecord (>= 3.0.0)
     growl (1.0.3)
     guard (2.2.2)
@@ -266,13 +266,13 @@ DEPENDENCIES
   bootstrap-select-rails (~> 1.3.0.1)
   builder
   capybara (~> 2.1.0)
-  chartkick
+  chartkick (~> 1.2.4)
   coffee-rails (~> 4.0.0)
   country_select (~> 1.2.0)
   datashift!
   devise (~> 3.1.1)
   font-awesome-rails (~> 4.0.1.0)
-  groupdate
+  groupdate (~> 2.1.0)
   growl (= 1.0.3)
   guard-rspec (~> 2.5.0)
   haml (~> 4.0.3)

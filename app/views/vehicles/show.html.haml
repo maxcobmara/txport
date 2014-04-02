@@ -92,25 +92,30 @@
               %td= vehicle_fine.payment_status
 
   #tab4.tab-pane
-    .div{:style => "padding: 15px 50px 10px 50px; "}
-      %table.table.table-condensed.table-hover{:style => "width: 70%; "}
-        %thead
-          %tr
-            %th= t 'maintenances.work_order_no'
-            %th= t 'maintenances.contract_no'
-            %th.right= t 'maintenances.value_supplied'
-            %th.right= t 'maintenances.value_repaired'
-            %th.right Total
-        %tbody
-          - for maintenance in @vehicle.maintenances
-            -unless maintenance.work_order_no.blank?
-              %tr
-                %td= link_to maintenance.work_order_no, maintenance_path(maintenance)
-                %td= maintenance.contract.try(:contract_no)
-                %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 1).sum(:line_item_price))
-                %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 2).sum(:line_item_price))
-                %td.right= ringgols(maintenance.maintenance_details.sum(:line_item_price))
-
+    .row
+      .div{:style => "padding: 15px 50px 10px 80px; "}
+        %table.table.table-condensed.table-hover{:style => "width: 70%; "}
+          %thead
+            %tr
+              %th= t 'maintenances.work_order_no'
+              %th= t 'maintenances.contract_no'
+              %th.right= t 'maintenances.value_supplied'
+              %th.right= t 'maintenances.value_repaired'
+              %th.right Total
+          %tbody
+            - for maintenance in @vehicle.maintenances
+              -unless maintenance.work_order_no.blank?
+                %tr
+                  %td= link_to maintenance.work_order_no, maintenance_path(maintenance)
+                  %td= maintenance.contract.try(:contract_no)
+                  %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 1).sum(:line_item_price))
+                  %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 2).sum(:line_item_price))
+                  %td.right= ringgols(maintenance.maintenance_details.sum(:line_item_price))
+    .row
+      .span4{:style => "padding-left: 20px; "}
+        = line_chart MaintenanceDetail.where(maintenance_id: @vehicle.maintenances).group_by_month(:created_at).sum(:line_item_price)
+      .span4
+        = pie_chart MaintenanceDetail.where(maintenance_id: @vehicle.maintenances).group(:maintenance_type_id).sum(:line_item_price).map{ |row| [category(row[0]), row.sum ]}
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
