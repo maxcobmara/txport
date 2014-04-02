@@ -28,11 +28,12 @@
   %dt= t 'maintenances.repair_location', :default => model_class.human_attribute_name(:repair_location) + ":"
   %dd= @maintenance.repair_location
 %dl.dl-horizontal
-  %dt= t 'maintenances.value_repaired', :default => model_class.human_attribute_name(:value_repaired) + ":"
+  %dt= t 'maintenances.value_supplied', :default => model_class.human_attribute_name(:value_supplied) + ":"
   %dd= ringgols(@maintenance.maintenance_details.where(maintenance_type_id: 1).sum(:line_item_price))
 %dl.dl-horizontal
-  %dt= t 'maintenances.value_supplied', :default => model_class.human_attribute_name(:value_supplied) + ":"
+  %dt= t 'maintenances.value_repaired', :default => model_class.human_attribute_name(:value_repaired) + ":"
   %dd= ringgols(@maintenance.maintenance_details.where(maintenance_type_id: 2).sum(:line_item_price))
+
     
 %br
 %h5=t('maintenance_details.title_parts')

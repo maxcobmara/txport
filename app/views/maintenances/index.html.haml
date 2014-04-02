@@ -41,8 +41,8 @@
   %tbody
     - @maintenances.each do |maintenance|
       %tr
-        %td= maintenance.vehicle.reg_no
-        %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
+        %td= link_to maintenance.vehicle.reg_no, vehicle_path(maintenance.vehicle)
+        %td= maintenance.maintenance_date.try(:strftime, "%b %Y")}
         %td= maintenance.work_order_no
         %td= maintenance.contract.try(:contract_no)
         %td= ringgols(maintenance.value_repaired)

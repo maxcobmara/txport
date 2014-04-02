@@ -64,8 +64,8 @@
         %tbody
           - for vehicle_road_tax in @vehicle.vehicle_road_taxes
             %tr
-              %td= check_kin {l(vehicle_road_tax.start_on)}
-              %td= check_kin {l(vehicle_road_tax.end_on)}
+              %td= vehicle_road_tax.start_on.try(:strftime, "%d-%b-%Y")
+              %td= vehicle_road_tax.try(:strftime, "%d-%b-%Y")
               %td= ringgols(vehicle_road_tax.amount )
 
   #tab3.tab-pane
@@ -93,21 +93,23 @@
 
   #tab4.tab-pane
     .div{:style => "padding: 15px 50px 10px 50px; "}
-      %table.table.table-condensed.table-hover{:style => "width: 50%; "}
+      %table.table.table-condensed.table-hover{:style => "width: 70%; "}
         %thead
           %tr
             %th= t 'maintenances.work_order_no'
             %th= t 'maintenances.contract_no'
-            %th= t 'maintenances.repaired_by'
-            %th= t 'maintenances.supplied_by'
+            %th.right= t 'maintenances.value_supplied'
+            %th.right= t 'maintenances.value_repaired'
+            %th.right Total
         %tbody
           - for maintenance in @vehicle.maintenances
             -unless maintenance.work_order_no.blank?
               %tr
-                %td= maintenance.work_order_no
+                %td= link_to maintenance.work_order_no, maintenance_path(maintenance)
                 %td= maintenance.contract.try(:contract_no)
-                %td= maintenance.repairer.try(:name)
-                %td= maintenance.supplier.try(:name)
+                %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 1).sum(:line_item_price))
+                %td.right= ringgols(maintenance.maintenance_details.where(maintenance_type_id: 2).sum(:line_item_price))
+                %td.right= ringgols(maintenance.maintenance_details.sum(:line_item_price))
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicles_path, :class => 'btn'
