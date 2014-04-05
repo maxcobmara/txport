@@ -23,7 +23,7 @@
   %dd= (@contract.starts_on).to_s + ' to ' + (@contract.ends_on).to_s
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:issued_by) + ":"
-  %dd= @contract.issued_by #issuer.try(:name)
+  %dd= @contract.issuer.try(:name)
 %dl.dl-horizontal
   %dt= model_class.human_attribute_name(:contract_type) + ":"
   %dd= @contract.type.try(:short_name)

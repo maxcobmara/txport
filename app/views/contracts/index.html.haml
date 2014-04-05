@@ -23,7 +23,7 @@
         = f.submit "Search", class: "btn btn-warning"
       
       
-.row{style: "font-weight:bold;"}
+.row.bold
   .span3
     = t 'contracts.contract_no'
     %br
@@ -33,18 +33,22 @@
     %br
     =t 'contracts.value'
   .span3=sort_link @search, :company_id, t('contracts.company_id')
-  .span1=sort_link @search, :starts_on, t('contracts.starts_on')
-  .span1=sort_link @search, :ends_on, t('contracts.ends_on')
+  .span3
+    =sort_link @search, :starts_on, t('contracts.starts_on')
+    &nbsp;-&nbsp;
+    =sort_link @search, :ends_on, t('contracts.ends_on')
   .span1=t 'contracts.issued_by'
   .span1=t 'contracts.contract_type' 
   .span1
 - @contracts.each do |contract|
   .row{style: "padding-top:15px;"}
-    .span3{style: "font-weight:bold;"}= contract.contract_no
-    .span3= contract.contractor.try(:name)
-    .span1= contract.starts_on
-    .span1= contract.ends_on
-    .span1= contract.issued_by
+    .span3.bold= contract.contract_no
+    .span3.bold= contract.contractor.try(:name)
+    .span3
+      = contract.starts_on
+      &nbsp;-&nbsp;
+      = contract.ends_on
+    .span1= contract.issuer.try(:name)
     .span1= contract.type.try(:short_name)
     .span1
       = render :partial => 'action_menu', :locals => { :contract => contract }
@@ -53,6 +57,6 @@
   .row
     .span8= contract.description
   .row
-    .span6{style: "font-weight:bold;"}= ringgols(contract.value)
+    .span6.bold= ringgols(contract.value)
       
       

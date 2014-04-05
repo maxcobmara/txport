@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401210910) do
+ActiveRecord::Schema.define(version: 20140405211130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 20140401210910) do
     t.decimal  "value"
     t.date     "starts_on"
     t.date     "ends_on"
-    t.date     "issued_by"
     t.integer  "contract_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "issued_by"
   end
 
   create_table "depot_fuels", force: true do |t|
