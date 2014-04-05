@@ -3,7 +3,9 @@ class MaintenanceDetail < ActiveRecord::Base
   belongs_to :maintenance_type
   belongs_to :unittype, :class_name => "UnitType", :foreign_key => "unit_type" #avoid use of same name for relationship & field name (FK)
   
-
+  def line_item_totals
+    line_item_price * quantity
+  end
 
 end
 

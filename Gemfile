@@ -10,6 +10,7 @@ gem "ransack", "~> 1.1.0"
 gem "ancestry", "~> 2.0.0"
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.0'
+gem 'kaminari', '~> 0.15.1'
 
 
 #display gems
@@ -29,6 +30,7 @@ gem "country_select", "~> 1.2.0"
 gem "modernizr-rails", "~> 2.7.1"
 #gem "jquery-ui-rails", "~> 4.1.0"
 gem "paperclip", "~> 3.0"
+gem "bootstrap-kaminari-views", "~> 0.0.3"
 
 gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 

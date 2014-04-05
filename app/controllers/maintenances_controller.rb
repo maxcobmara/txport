@@ -4,9 +4,10 @@ class MaintenancesController < ApplicationController
   # GET /maintenances
   # GET /maintenances.json
   def index
-    @maintenances = Maintenance.all
     @search = Maintenance.search(params[:q])
+    @search.sorts = 'maintenance_date' if @search.sorts.empty?
     @maintenances = @search.result
+    @view_maintenances = @maintenances.page(params[:page]||1)
     respond_to do |format|
       format.html
       format.csv { send_data @maintenances.to_csv }
