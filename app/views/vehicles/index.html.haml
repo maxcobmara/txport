@@ -7,6 +7,7 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
+      %li.badge{style: "margin-top:10px"}= @vehicles.count
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_path
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_path
@@ -17,6 +18,7 @@
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
 
+//should really put this in a partial instead of the data.
 .row.searchit{style: "display:none;"}
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f|
