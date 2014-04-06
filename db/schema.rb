@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324033057) do
+ActiveRecord::Schema.define(version: 20140406010602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -308,6 +308,7 @@ ActiveRecord::Schema.define(version: 20140324033057) do
     t.integer  "document_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "iv_no"
   end
 
   create_table "uniform_stock_receiveds", force: true do |t|
@@ -319,6 +320,7 @@ ActiveRecord::Schema.define(version: 20140324033057) do
     t.integer  "contract_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rv_no"
   end
 
   create_table "uniform_stocks", force: true do |t|

@@ -43,7 +43,7 @@
         = f.label :vehicleacquired_description_cont, " Acquired Type :"
         = f.text_field :vehicleacquired_description_cont, class: "input-medium search-query"
         = f.label :acquired_on_cont, "  Acquired On :"
-        = f.text_field :acquired_on_cont, class: "input-medium search-query"
+        = f.text_field :acquired_on_in, :as => :date, class: "input-medium search-query", 'data-behaviour' => 'datepicker_before'
         = f.label :vehiclestatus_short_name_cont, " Status :"
         = f.text_field :vehiclestatus_short_name_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"

@@ -23,7 +23,7 @@
         %td= check_kin {vehicle.manufacturer.name}
         %td= vehicle.model
         %td= check_kin {vehicle.vehiclecategory.short_name} 
-        %td= vehicle.acquired_on
+        %td= check_kin {l(vehicle.acquired_on)}
         %td= check_kin {vehicle.vehicleacquired.description} #short_name
         %td= check_kin {vehicle.contract.contract_no} 
         %td= check_kin {vehicle.vehiclestatus.short_name}
