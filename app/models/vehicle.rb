@@ -5,6 +5,7 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
 
   has_many :vehicle_road_taxes, :dependent => :destroy
+  has_many :vehicle_end_of_lives,      :dependent => :restrict_with_error
   has_many :vehicle_fines,      :dependent => :restrict_with_error
   has_many :maintenances,       :dependent => :destroy
   has_many :vehicle_assignment_details, :dependent => :destroy

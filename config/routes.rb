@@ -67,6 +67,8 @@ Txport::Application.routes.draw do
   resources :vehicle_fine_types
 
   resources :vehicle_assignments
+  
+  resources :vehicle_end_of_lives
 
   resources :vehicle_cards
 
