@@ -29,3 +29,18 @@ class FuelTank < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: fuel_tanks
+#
+#  capacity     :decimal(, )
+#  created_at   :datetime
+#  fuel_type_id :integer
+#  id           :integer          not null, primary key
+#  locations    :string(255)
+#  maximum      :decimal(, )
+#  unit_id      :integer
+#  unit_type    :integer
+#  updated_at   :datetime
+#

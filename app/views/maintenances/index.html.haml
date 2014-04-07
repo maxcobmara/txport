@@ -29,26 +29,28 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'vehicle.vehicle_id'
-      %th= t 'maintenances.month_year'
-      %th= sort_link @search, :work_order_no, t('maintenances.work_order_no')  
+      %th= sort_link @search, :work_order_no, t('maintenances.work_order_no')
+      %th= sort_link @search, :maintenance_date, t('maintenances.month_year')
+      %th= sort_link @search, :maintenance_vehicle_reg_no, t('vehicle.vehicle_id')
       %th= sort_link @search, :contract_no, t('maintenances.contract_id') 
-      %th= t 'maintenances.value_repaired' 
+      %th= t('maintenances.value_repaired')
       %th= t 'maintenances.repaired_by' 
       %th= t 'maintenances.value_supplied' 
       %th= t 'maintenances.supplied_by' 
       %th
   %tbody
-    - @maintenances.each do |maintenance|
+    - @view_maintenances.each do |maintenance|
       %tr
-        %td= maintenance.vehicle.reg_no
-        %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}
         %td= maintenance.work_order_no
-        %td= check_kin {maintenance.contract.contract_no}
-        %td= check_kin {ringgols(maintenance.value_repaired)}		
-        %td= check_kin {maintenance.veh_repairer.name}
-        %td= check_kin {ringgols(maintenance.value_supplied)}
-        %td= check_kin {maintenance.part_supplier.name}	
+        %td= maintenance.maintenance_date.try(:strftime, "%b %Y")
+        %td= link_to maintenance.vehicle.reg_no, vehicle_path(maintenance.vehicle)
+        %td= maintenance.contract.try(:contract_no)
+        %td= repair_totals(maintenance.id)
+        %td= maintenance.repairer.try(:name)
+        %td= supply_totals(maintenance.id)
+        %td= maintenance.part_supplier.try(:name)
         = render :partial => 'action_menu', :locals => { :maintenance => maintenance }
+        
+.center{style:"padding:0 30px; margin:0;"}= paginate @view_maintenances, :theme => 'twitter-bootstrap'
       
       

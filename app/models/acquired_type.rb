@@ -12,3 +12,14 @@ class AcquiredType < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: acquired_types
+#
+#  created_at  :datetime
+#  description :string(255)
+#  id          :integer          not null, primary key
+#  short_name  :string(12)
+#  updated_at  :datetime
+#

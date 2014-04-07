@@ -44,3 +44,21 @@ class UnitFuel < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: unit_fuels
+#
+#  created_at :datetime
+#  d_boat     :decimal(, )
+#  d_misctool :decimal(, )
+#  d_vehicle  :decimal(, )
+#  d_vessel   :decimal(, )
+#  id         :integer          not null, primary key
+#  issue_date :date
+#  p_boat     :decimal(, )
+#  p_misctool :decimal(, )
+#  p_vehicle  :decimal(, )
+#  unit_id    :integer
+#  updated_at :datetime
+#

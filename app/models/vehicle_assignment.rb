@@ -17,3 +17,16 @@ class VehicleAssignment < ActiveRecord::Base
 	#self.authoriser = Staff.find_by_id_no(idno) if idno.present?
   end
 end
+
+# == Schema Information
+#
+# Table name: vehicle_assignments
+#
+#  authorised_by :integer
+#  created_at    :datetime
+#  document_code :string(255)
+#  document_date :date
+#  id            :integer          not null, primary key
+#  unit_id       :integer
+#  updated_at    :datetime
+#

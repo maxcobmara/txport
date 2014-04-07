@@ -157,3 +157,29 @@ end
   end
 
 end
+
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  acquired_id        :integer
+#  acquired_on        :date
+#  category_id        :integer
+#  chassis_no         :string(255)
+#  contract_id        :integer
+#  created_at         :datetime
+#  engine_no          :string(255)
+#  id                 :integer          not null, primary key
+#  manufacturer_id    :integer
+#  manufacturer_year  :string(255)
+#  model              :string(255)
+#  photo_content_type :string(255)
+#  photo_file_name    :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  price              :decimal(10, 2)
+#  reg_no             :string(20)
+#  reg_on             :date
+#  status_id          :integer
+#  updated_at         :datetime
+#

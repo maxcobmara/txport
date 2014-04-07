@@ -9,3 +9,15 @@ class Expertise < ActiveRecord::Base
   ]
   
 end
+
+# == Schema Information
+#
+# Table name: expertises
+#
+#  branch     :integer
+#  created_at :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  short_name :string(255)
+#  updated_at :datetime
+#

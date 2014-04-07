@@ -32,3 +32,18 @@ class Unit < ActiveRecord::Base
     where('name ILIKE (?)', unitname)[0].id
   end
 end
+
+# == Schema Information
+#
+# Table name: units
+#
+#  ancestry       :string(255)
+#  ancestry_depth :integer
+#  code           :string(255)
+#  combo_code     :string(255)
+#  created_at     :datetime
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  shortname      :string(255)
+#  updated_at     :datetime
+#

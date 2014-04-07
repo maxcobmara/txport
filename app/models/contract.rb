@@ -6,3 +6,20 @@ class Contract < ActiveRecord::Base
   belongs_to :type,       class_name: "ContractType",   foreign_key: "contract_type"
 end
 
+# == Schema Information
+#
+# Table name: contracts
+#
+#  company_id    :integer
+#  contract_no   :string(255)
+#  contract_type :integer
+#  created_at    :datetime
+#  description   :text
+#  ends_on       :date
+#  id            :integer          not null, primary key
+#  issued_by     :date
+#  name          :string(255)
+#  starts_on     :date
+#  updated_at    :datetime
+#  value         :decimal(, )
+#

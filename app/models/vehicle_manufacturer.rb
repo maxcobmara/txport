@@ -13,3 +13,14 @@ class VehicleManufacturer < ActiveRecord::Base
  end
  ##"#{}"
 end
+
+# == Schema Information
+#
+# Table name: vehicle_manufacturers
+#
+#  country    :string(255)
+#  created_at :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  updated_at :datetime
+#

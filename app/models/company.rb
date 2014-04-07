@@ -18,3 +18,18 @@ class Company < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: companies
+#
+#  address        :text
+#  contact_person :string(255)
+#  created_at     :datetime
+#  email          :string(255)
+#  fax            :string(255)
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  phone          :string(255)
+#  updated_at     :datetime
+#

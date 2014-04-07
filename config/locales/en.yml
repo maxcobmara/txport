@@ -232,8 +232,8 @@ en:
     maintenance_date: Maintenance Date
     repair_date: Repair Date
     repair_location: Repair Location
-    value_supplied: "Total Supplied (RM)"
-    value_repaired: "Total Repaired (RM)"
+    value_supplied: "Total Supplied"
+    value_repaired: "Total Repaired"
     month_year: "Month - Year"	    
     new: New Maintenance
     edit: Edit Maintenance

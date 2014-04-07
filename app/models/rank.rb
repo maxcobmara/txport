@@ -16,3 +16,16 @@ class Rank < ActiveRecord::Base
            ]         
   
 end
+
+# == Schema Information
+#
+# Table name: ranks
+#
+#  category   :integer
+#  created_at :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  rate       :integer
+#  shortname  :string(255)
+#  updated_at :datetime
+#

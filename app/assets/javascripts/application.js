@@ -18,6 +18,8 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
+//= require jsapi
+//= require chartkick
 //= require global2
 //= require_tree .
 
@@ -27,8 +29,17 @@ $(document).ready(function(){
   /* Why so many? If you need more than one search per page use id not classes */
   /* adn put them in the model js */
   $('.toga').click(function() {
-    $('.searchit').toggle(); 
+    $('.searchit').toggle();    
   });
+  
+  $(".bogus").click(function (e) {
+      alert("Sorry! Feature not yet implemented");
+  });
+  $(".out_of_scope").click(function (e) {
+      alert("Sorry! This feature for future implementation");
+  });
+  
+  $('.selectpicker').selectpicker();
   
   $('[data-behaviour=datepicker_std]').datepicker({
     format: "yyyy-mm-dd",

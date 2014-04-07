@@ -11,28 +11,29 @@
   %dd= @maintenance.vehicle.try(:reg_no)
 %dl.dl-horizontal
   %dt= t 'maintenances.contract_id', :default => model_class.human_attribute_name(:contract_id) + ":"
-  %dd= check_kin {@maintenance.contract.contract_no}
+  %dd= @maintenance.contract.try(:contract_no)
 %dl.dl-horizontal
   %dt= t 'maintenances.repaired_by', :default => model_class.human_attribute_name(:repaired_by) + ":"
-  %dd= check_kin {@maintenance.repairer.name}
+  %dd= @maintenance.repairer.try(:name)
 %dl.dl-horizontal
   %dt= t 'maintenances.supplied_by', :default => model_class.human_attribute_name(:supplied_by) + ":"
-  %dd= check_kin {@maintenance.supplier.name}
+  %dd= @maintenance.supplier.try(:name)
 %dl.dl-horizontal
   %dt= t 'maintenances.maintenance_date', :default => model_class.human_attribute_name(:maintenance_date) + ":"
-  %dd= check_kin {l(@maintenance.maintenance_date)}
+  %dd= @maintenance.maintenance_date.try(:strftime, '%d-%b-%Y')
 %dl.dl-horizontal
   %dt= t 'maintenances.repair_date', :default => model_class.human_attribute_name(:repair_date) + ":"
-  %dd= check_kin {l(@maintenance.repair_date)}
+  %dd= @maintenance.repair_date.try(:strftime, '%d-%b-%Y')
 %dl.dl-horizontal
   %dt= t 'maintenances.repair_location', :default => model_class.human_attribute_name(:repair_location) + ":"
   %dd= @maintenance.repair_location
 %dl.dl-horizontal
-  %dt= t 'maintenances.value_repaired', :default => model_class.human_attribute_name(:value_repaired) + ":"
-  %dd= @maintenance.value_repaired
-%dl.dl-horizontal
   %dt= t 'maintenances.value_supplied', :default => model_class.human_attribute_name(:value_supplied) + ":"
-  %dd= @maintenance.value_supplied
+  %dd= supply_totals(@maintenance.id)
+%dl.dl-horizontal
+  %dt= t 'maintenances.value_repaired', :default => model_class.human_attribute_name(:value_repaired) + ":"
+  %dd= repair_totals(@maintenance.id)
+
     
 %br
 %h5=t('maintenance_details.title_parts')
@@ -49,16 +50,16 @@
         %th= t 'maintenance_details.line_item_price'
         %th= t 'maintenance_details.quantity'
         %th= t 'maintenance_details.unit_type'
-        %th
+
     %tbody 
-      - for maintenance_maintenance_detail in @maintenance.maintenance_details
+      - for item in @maintenance.maintenance_details
         %tr
-          %td= check_kin {maintenance_maintenance_detail.maintenance_type.type_name}
-          %td= maintenance_maintenance_detail.line_item
-          %td{:align => "center"}= check_kin {ringgols(maintenance_maintenance_detail.line_item_price)}		 
-          %td{:align => "center"}= maintenance_maintenance_detail.quantity
-          %td{:align => "center"}= check_kin {maintenance_maintenance_detail.unittype.description}
-          %td 
+          %td= category(item.maintenance_type_id)
+          %td= item.line_item
+          %td{:align => "center"}= ringgols(item.line_item_price) 
+          %td{:align => "center"}= item.quantity
+          %td{:align => "center"}= item.unittype.try(:description)
+        - @total =+ item.quantity * item.line_item_price
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), maintenances_path, :class => 'btn'

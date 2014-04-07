@@ -12,3 +12,21 @@ class IndenCard < ActiveRecord::Base
     ru_staff == false
   end
 end
+
+# == Schema Information
+#
+# Table name: inden_cards
+#
+#  created_at    :datetime
+#  daily_limit   :decimal(, )
+#  end_date      :date
+#  id            :integer          not null, primary key
+#  issue_date    :date
+#  monthly_limit :decimal(, )
+#  ru_staff      :boolean
+#  serial_no     :string(255)
+#  staff_id      :integer
+#  start_date    :date
+#  unit_id       :integer
+#  updated_at    :datetime
+#

@@ -17,3 +17,16 @@ class VehicleRoadTax < ActiveRecord::Base
   
 
 end
+
+# == Schema Information
+#
+# Table name: vehicle_road_taxes
+#
+#  amount     :decimal(, )
+#  created_at :datetime
+#  end_on     :date
+#  id         :integer          not null, primary key
+#  start_on   :date
+#  updated_at :datetime
+#  vehicle_id :integer
+#
