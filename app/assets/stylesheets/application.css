@@ -11,6 +11,7 @@
  *= require bootstrap.min
  *= require font-awesome
  *= require bootstrap-datepicker
+ *= require jquery.ui.all
  *= bootstrap-select
  *= require_self
  *= require_tree .
