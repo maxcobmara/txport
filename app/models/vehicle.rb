@@ -1,4 +1,7 @@
 class Vehicle < ActiveRecord::Base
+  
+  after_touch :set_pending_teb
+  
   validates_presence_of :reg_no
   validates_uniqueness_of :reg_no
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
@@ -20,6 +23,11 @@ class Vehicle < ActiveRecord::Base
 
   # The validation has to go after 'has_attached_file'
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  
+  def set_pending_teb
+    self.status = VehicleStatus.where(short_name: 'PROSES TEB').first
+  end
+  
   
   attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name   #for data from excel file
   

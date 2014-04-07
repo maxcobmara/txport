@@ -80,6 +80,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_end_of_life_params
-      params.require(:vehicle_end_of_life).permit(:code, :vehicle_id, :type_id, :issued_at, :pay_before, :location, :reason, :compound, :receipt_no, :paid_on, :paid_amount)
+      params.require(:vehicle_end_of_life).permit(:confirmation_code, :confirmed_on, :data, :issued_at, :status, :vehicle_id)
     end
 end
