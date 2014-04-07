@@ -25,7 +25,10 @@ class Vehicle < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
   def set_pending_teb
-    self.status = VehicleStatus.where(short_name: 'PROSES TEB').first
+    @pending = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
+    if @pending.include?(id)
+      update_attribute(:status_id, VehicleStatus.where(short_name: 'PROSES TEB').pluck(:id)[0])
+    end
   end
   
   

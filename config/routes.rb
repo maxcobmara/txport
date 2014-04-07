@@ -68,7 +68,12 @@ Txport::Application.routes.draw do
 
   resources :vehicle_assignments
   
-  resources :vehicle_end_of_lives
+  resources :vehicle_end_of_lives do
+    member do
+      get 'confirm'
+      put 'confirm'
+    end
+  end
 
   resources :vehicle_cards
 

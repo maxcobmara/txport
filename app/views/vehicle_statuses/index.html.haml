@@ -11,7 +11,7 @@
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_vehicle_status_path, id: "add_vehicle_status", remote: true
     %ul.nav.pull-right
       //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      //%li#= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
       
 %table.table.table-condensed.table-hover#vehicle_status_list{:style => "width:60%;"}
   %thead

@@ -46,4 +46,6 @@ $(document).ready(function(){
     autoclose: true,
     todayBtn: true
   });
+  
+  $('.btn').tooltip( {placement: 'bottom', container: 'body'});
 })

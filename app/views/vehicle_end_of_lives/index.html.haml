@@ -1,0 +1,37 @@
+- model_class = VehicleEndOfLife
+.page-header
+  %h1= t 'vehicle_end_of_life.title', :default => model_class.model_name.human.pluralize
+
+
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+  
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to content_tag(:i, "", class: 'glyphicon glyphicon-print'), '#', :onclick => "window.print();return false;"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :work_order_no_cont, "Registration No :"
+        = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= sort_link @search, :vehicle_reg_no, t('vehicle.reg_no') 
+      %th= sort_link @search, :start_on, t('vehicle_end_of_life.created') 
+      %th.action_menu_td     
+  %tbody
+    - @pending.each do |vehicle| 
+      %tr
+        %td= vehicle.vehicle.try(:reg_no)
+        %td= vehicle.created_at.try(:strftime, '%d-%b-%Y')
+        %td
+          .button-toolbar.pull-right
+            .btn-group
+              .btn.btn-default{:type => "button", "data-toggle" => "tooltip", title: "Confirm"}
+                = link_to content_tag(:i, fa_icon("inbox", text: "")), confirm_vehicle_end_of_life_path(vehicle)

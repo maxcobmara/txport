@@ -4,6 +4,7 @@ class VehicleEndOfLivesController < ApplicationController
   # GET /vehicle_end_of_lives
   # GET /vehicle_end_of_lives.json
   def index
+    @pending = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil)
     @search =  VehicleEndOfLife.search(params[:q])
     @vehicle_end_of_life = @search.result
     #@vehicle_end_of_lives = VehicleEndOfLife.order(pay_before: :asc).all
@@ -28,7 +29,7 @@ end
   end
 
   # GET /vehicle_end_of_lives/1/edit
-  def edit
+  def confirm
   end
 
   # POST /vehicle_end_of_lives
@@ -38,7 +39,7 @@ end
 
     respond_to do |format|
       if @vehicle_end_of_life.save
-        format.html { redirect_to @vehicle_end_of_life, notice: (t 'vehicle_end_of_lives.title2')+(t 'actions.created') }
+        format.html { redirect_to vehicles_path, notice: (t 'vehicle_end_of_lives.title2')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @vehicle_end_of_life }
       else
         format.html { render action: 'new' }
@@ -52,7 +53,7 @@ end
   def update
     respond_to do |format|
       if @vehicle_end_of_life.update(vehicle_end_of_life_params)
-        format.html { redirect_to @vehicle_end_of_life, notice: (t 'vehicle_end_of_lives.title2')+(t 'actions.updated') }
+        format.html { redirect_to vehicles_path, notice: (t 'vehicle_end_of_lives.title2')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
