@@ -6,7 +6,7 @@
    %li= link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.new_road_tax'))), new_vehicle_road_tax_path(:vehicle_id => vehicle)
    %li= link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.new_summons'))), new_vehicle_fine_path(:vehicle_id => vehicle) 
    %li= link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.new_maintenance'))), new_maintenance_path(:vehicle_id => vehicle)
-   %li= link_to content_tag(:li, fa_icon("archive", text: "TEB")),'#', class: 'bogus'
+   %li= link_to content_tag(:li, fa_icon("archive", text: "TEB")), new_vehicle_end_of_life_path(:vehicle_id => vehicle)
    %li.divider
    %li= link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle
    %li= link_to content_tag(:li, fa_icon("pencil", text: (t 'actions.edit'))), edit_vehicle_path(vehicle)

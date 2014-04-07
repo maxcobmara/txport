@@ -4,6 +4,7 @@ class VehicleFine < ActiveRecord::Base
  belongs_to :vehicle_fine_type, :foreign_key => "type_id"
  
  validates_presence_of :vehicle_id, :code, :type_id, :issued_at, :compound
+ 
  attr_accessor :reg_no, :summon_date, :summon_time, :summon_code, :summon_location, :summon_desc, :compound_amount, :discounted_amount 
  
  def table_status

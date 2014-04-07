@@ -17,7 +17,7 @@ end
 #  description   :text
 #  ends_on       :date
 #  id            :integer          not null, primary key
-#  issued_by     :date
+#  issued_by     :integer
 #  name          :string(255)
 #  starts_on     :date
 #  updated_at    :datetime
