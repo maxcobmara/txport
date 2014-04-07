@@ -85,10 +85,10 @@
             %tr
               %td= vehicle_fine.code
               %td= vehicle_fine.issued_at
-              %td= l(vehicle_fine.pay_before)
+              %td= check_kin {l(vehicle_fine.pay_before)}
               %td= vehicle_fine.reason
               %td= ringgols(vehicle_fine.compound)
-              %td= vehicle_fine.paid_on
+              %td= check_kin {l(vehicle_fine.paid_on)}
               %td= vehicle_fine.payment_status
 
   #tab4.tab-pane

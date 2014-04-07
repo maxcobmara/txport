@@ -22,21 +22,19 @@
         %td= vehicle.manufacturer_year
         %td= vehicle.manufacturer.try(:name)
         %td= vehicle.model
-        %td= check_kin {vehicle.vehiclecategory.short_name} 
-        %td= vehicle.acquired_on
-        %td= check_kin {vehicle.vehicleacquired.description} #short_name
-        %td= check_kin {vehicle.contract.contract_no} 
-        %td= check_kin {vehicle.vehiclestatus.short_name}
-        %td= vehicle.vehiclecategory.try(:short_name)
-        %td= vehicle.acquired_on.try(:strftime, "%d %b %Y")
-        %td= vehicle.vehicleacquired.try(:description)
-        %td= vehicle.contract.try(:contract_no)
-        %td= vehicle.vehiclestatus.try(:short_name)
+<<<<<<< HEAD
         %td= check_kin {vehicle.vehiclecategory.short_name} 
         %td= check_kin {l(vehicle.acquired_on)}
         %td= check_kin {vehicle.vehicleacquired.description} #short_name
         %td= check_kin {vehicle.contract.contract_no} 
         %td= check_kin {vehicle.vehiclestatus.short_name}
+=======
+        %td= vehicle.vehiclecategory.try(:short_name)
+        %td= vehicle.acquired_on.try(:strftime, "%d %b %Y")
+        %td= vehicle.vehicleacquired.try(:description)
+        %td= vehicle.contract.try(:contract_no)
+        %td= vehicle.vehiclestatus.try(:short_name)
+>>>>>>> upstream/master
         = render :partial => 'action_menu', :locals => { :vehicle => vehicle }
 = t 'vehicles.total'
 = @vehicles.count
