@@ -287,8 +287,8 @@ DEPENDENCIES
   haml (~> 4.0.3)
   jbuilder (~> 1.2)
   jquery-rails (~> 3.0.4)
-  kaminari (~> 0.15.1)
   jquery-ui-rails
+  kaminari (~> 0.15.1)
   modernizr-rails (~> 2.7.1)
   nokogiri
   paperclip (~> 3.0)
