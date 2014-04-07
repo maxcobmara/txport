@@ -70,7 +70,7 @@
             .mp-level
               %h2.icon= t 'menu.fuel'
               %a.mp-back{:href => "#"}= t 'helpers.links.back'
-              %ul
+              %ul.hidden
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.inden_card_listing'), inden_cards_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'inden_usages.title'), inden_usages_path
           %li.hidden.icon.icon-left
@@ -78,7 +78,7 @@
             .mp-level
               %h2.icon= t 'menu.fuel'
               %a.mp-back{:href => "#"}= t 'helpers.links.back'
-              %ul
+              %ul.hidden
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'unit_fuels.title2'), unit_fuels_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'add_fuels.title2'), add_fuels_path
                 %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'external_supplieds.title'), external_supplieds_path
