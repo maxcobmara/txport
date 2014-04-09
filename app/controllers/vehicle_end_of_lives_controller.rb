@@ -5,6 +5,7 @@ class VehicleEndOfLivesController < ApplicationController
   # GET /vehicle_end_of_lives.json
   def index
     @pending = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil)
+    @confirmed = VehicleEndOfLife.where.not(confirmed_on: nil).where.not(vehicle_id: nil)
     @search =  VehicleEndOfLife.search(params[:q])
     @vehicle_end_of_life = @search.result
     #@vehicle_end_of_lives = VehicleEndOfLife.order(pay_before: :asc).all

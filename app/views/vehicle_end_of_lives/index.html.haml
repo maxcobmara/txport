@@ -26,12 +26,27 @@
       %th= sort_link @search, :start_on, t('vehicle_end_of_life.created') 
       %th.action_menu_td     
   %tbody
-    - @pending.each do |vehicle| 
+    - unless @pending.empty?
       %tr
-        %td= vehicle.vehicle.try(:reg_no)
-        %td= vehicle.created_at.try(:strftime, '%d-%b-%Y')
-        %td
-          .button-toolbar.pull-right
-            .btn-group
-              .btn.btn-default{:type => "button", "data-toggle" => "tooltip", title: "Confirm"}
-                = link_to content_tag(:i, fa_icon("inbox", text: "")), confirm_vehicle_end_of_life_path(vehicle)
+        %td{colspan: 4, style: "text-align:center; font-weight:bold; background-color:#DDE"} Pending
+      - @pending.each do |vehicle| 
+        %tr
+          %td= vehicle.vehicle.try(:reg_no)
+          %td= vehicle.created_at.try(:strftime, '%d-%b-%Y')
+          %td
+          %td
+            .button-toolbar.pull-right
+              .btn-group
+                .btn.btn-default{:type => "button", "data-toggle" => "tooltip", title: "Confirm"}
+                  = link_to content_tag(:i, fa_icon("inbox", text: "")), confirm_vehicle_end_of_life_path(vehicle)
+    
+    - unless @confirmed.empty?
+      %tr
+        %td{colspan: 4, style: "text-align:center; font-weight:bold; background-color:#DDE"} Confirmed
+      - @confirmed.each do |vehicle| 
+        %tr
+          %td= link_to vehicle.vehicle.try(:reg_no), vehicle
+          %td= vehicle.created_at.try(:strftime, '%d-%b-%Y')
+          %td= vehicle.confirmation_code
+          %td= vehicle.confirmed_on.try(:strftime, '%d-%b-%Y')
+
