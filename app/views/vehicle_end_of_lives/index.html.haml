@@ -45,7 +45,7 @@
         %td{colspan: 4, style: "text-align:center; font-weight:bold; background-color:#DDE"} Confirmed
       - @confirmed.each do |vehicle| 
         %tr
-          %td= link_to vehicle.vehicle.try(:reg_no), vehicle
+          %td= link_to vehicle.vehicle.try(:reg_no), vehicle_path(vehicle.vehicle_id)
           %td= vehicle.created_at.try(:strftime, '%d-%b-%Y')
           %td= vehicle.confirmation_code
           %td= vehicle.confirmed_on.try(:strftime, '%d-%b-%Y')
