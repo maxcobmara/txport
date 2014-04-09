@@ -1,5 +1,5 @@
 class VehicleEndOfLivesController < ApplicationController
-  before_action :set_vehicle_end_of_life, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle_end_of_life, only: [:show, :confirm, :update, :destroy]
 
   # GET /vehicle_end_of_lives
   # GET /vehicle_end_of_lives.json

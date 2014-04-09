@@ -1,4 +1,4 @@
-%td
+- if vehicle.current_status.short_name != "TEB"
   .btn-group.dropdown
     %button.btn.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
       .span.caret
@@ -12,4 +12,6 @@
       %li= link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), vehicle
       %li= link_to content_tag(:li, fa_icon("pencil", text: (t 'actions.edit'))), edit_vehicle_path(vehicle)
       %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: (t 'actions.delete'))), vehicle_path(vehicle), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
-      
+
+- elsif vehicle.current_status.short_name == "TEB"
+  = link_to content_tag(:i, fa_icon("eye", text: "")), vehicle, class: "btn btn-default"

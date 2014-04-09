@@ -1,6 +1,6 @@
 class Vehicle < ActiveRecord::Base
   
-  after_touch :set_pending_teb
+  after_touch :set_teb_status
   
   validates_presence_of :reg_no
   validates_uniqueness_of :reg_no
@@ -14,7 +14,7 @@ class Vehicle < ActiveRecord::Base
   has_many :vehicle_assignment_details, :dependent => :destroy
   has_many :cards, :class_name => "VehicleCard", :dependent => :destroy
   belongs_to :contract
-  belongs_to :vehiclestatus,    :class_name => "VehicleStatus",       :foreign_key => "status_id"
+  belongs_to :current_status,    :class_name => "VehicleStatus",       :foreign_key => "status_id"
   belongs_to :vehicleacquired,  :class_name => "AcquiredType",        :foreign_key => "acquired_id"
   belongs_to :manufacturer,     :class_name => "VehicleManufacturer", :foreign_key => "manufacturer_id"
   belongs_to :vehiclecategory,  :class_name => "VehicleCategory",     :foreign_key => "category_id"
@@ -24,9 +24,12 @@ class Vehicle < ActiveRecord::Base
   # The validation has to go after 'has_attached_file'
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
-  def set_pending_teb
-    @pending = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
-    if @pending.include?(id)
+  def set_teb_status
+    @pending    = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
+    @confirmed  = VehicleEndOfLife.where.not(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
+    if @confirmed.include?(id)
+      update_attribute(:status_id, VehicleStatus.where(short_name: 'TEB').pluck(:id)[0])
+    elsif @pending.include?(id)
       update_attribute(:status_id, VehicleStatus.where(short_name: 'PROSES TEB').pluck(:id)[0])
     end
   end

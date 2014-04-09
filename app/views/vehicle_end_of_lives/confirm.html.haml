@@ -1,0 +1,31 @@
+- provide(:title, 'New TEB')
+- model_class = VehicleEndOfLife
+.page-header
+  %h1= t 'vehicle.endoflife.confirm', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+
+.container{:style => "padding-left: 60px;"}
+  = form_for @vehicle_end_of_life, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+    = f.hidden_field :vehicle_id
+
+    %dl.dl-horizontal
+      %dt
+        %strong= t 'vehicles.reg_no'
+      %dd= @vehicle_end_of_life.try(:vehicle).try(:reg_no)
+    %br/
+    
+    .control-group
+      = f.label :confirmation_code, :class => 'control-label'
+      .controls= f.text_field :confirmation_code, :class => 'text_field input-xxlarge'
+      
+    .control-group
+      = f.label :confirmed_on, :class => 'control-label'
+      .controls= f.text_field :confirmed_on, :class => 'text_field input-medium', :type => :text, 'data-behaviour' => 'datepicker_before'
+
+      
+
+    .form-actions
+      = f.submit "Confirm TEB", :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        vehicle_end_of_lives_path, :class => 'btn'
+        

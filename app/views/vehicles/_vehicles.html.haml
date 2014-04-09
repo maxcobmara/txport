@@ -27,9 +27,9 @@
         %td= vehicle.vehicleacquired.try(:description)
         %td= vehicle.contract.try(:contract_no)
         - if vehicle.status_id != 4
-          %td= vehicle.vehiclestatus.try(:short_name)
+          %td= vehicle.current_status.try(:short_name)
         - else
-          %td= link_to vehicle.vehiclestatus.try(:short_name), vehicle_end_of_lives_path
-        = render :partial => 'action_menu', :locals => { :vehicle => vehicle }
+          %td= link_to vehicle.current_status.try(:short_name), vehicle_end_of_lives_path
+        %td= render :partial => 'action_menu', :locals => { :vehicle => vehicle }
 = t 'vehicles.total'
 = @vehicles.count

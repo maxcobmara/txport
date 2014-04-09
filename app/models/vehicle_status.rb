@@ -1,5 +1,5 @@
 class VehicleStatus < ActiveRecord::Base
-  has_many :vehicles
+  has_many :vehicles,       :foreign_key => "status_id"
   
   def self.get_status(fr_excel)
     VehicleStatus.all.each do |status|
