@@ -6,6 +6,7 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :reg_no
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
+  validates_presence_of :status_id
 
   has_many :vehicle_road_taxes, :dependent => :destroy
   has_many :vehicle_end_of_lives,      :dependent => :restrict_with_error
