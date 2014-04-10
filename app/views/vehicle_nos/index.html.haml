@@ -1,0 +1,41 @@
+//- provide(:title, 'Vehicles Nos')
+- model_class = VehicleNo
+.page-header
+  %h1= t 'vehicle_nos.title', :default => model_class.model_name.human.pluralize
+
+
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+  
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :vehicle_army_v_army_no_cont, "Registration No (Army) :"
+        = f.text_field :vehicle_army_v_army_no_cont, class: "input-medium search-query"
+        = f.label :vehicle_reg_no_cont, "Registration (Civil) No :"
+        = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_nos.title'
+      %th= sort_link @search, :start_on, t('vehicle_nos.start_on') 
+      %th= sort_link @search, :end_on, t('vehicle_nos.end_on') 
+      %th.action_menu_td     
+  %tbody
+    - @vehicle_nos.group_by(&:vehicle_id).each do |vehicle_reg_no, vehicle_nos| 
+      - vehicle_nos.each do |vehicle_no|
+        %tr
+          %td= vehicle_no.try(:vehicle_army).try(:v_army_no)
+          %td= vehicle_no.try(:vehicle).try(:reg_no)
+          %td= vehicle_no.start_on.try(:strftime, '%d-%b-%Y')
+          %td= vehicle_no.end_on.try(:strftime, '%d-%b-%Y')
+          = render :partial => 'action_menu', :locals => { :vehicle_no => vehicle_no }
