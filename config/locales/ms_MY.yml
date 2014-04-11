@@ -10,6 +10,7 @@ ms_MY:
         reg_no: "No. Pendaftaran"
         chassis_no: Chassis No
         engine_no: Engine No
+        status_id: Status
       vehicle_fine:
         code: Kod
         type_id: Jenis Saman
@@ -51,6 +52,7 @@ ms_MY:
     created: " telah berjaya disimpan."
     updated: " telah berjaya dikemaskini."
     import_excel: Import Data Dari Excel
+    removed: " telah berjaya dibuang."
   errors:
   date:
     formats:
@@ -135,6 +137,7 @@ ms_MY:
   vehicles:
     title: Kenderaan
     reg_no: "No. Daftar"
+    reg_no2: "No. Daftar Awam"
     reg_on: Tarikh Daftar
     chassis_no: "No. Casis"
     engine_no: "No. Enjin"
@@ -146,6 +149,7 @@ ms_MY:
     price: "Harga (RM)"
     contract_id: "No. Kontrak" #Kuasa VRO
     status_id: Status    
+    new_vehicle_no: "Penggantian Kenderaan(No. Awam)"
     new_road_tax: Cukai Jalan Baru
     new_summons: Saman Baru
     new_maintenance: Penyelenggaraan Baru
@@ -189,6 +193,19 @@ ms_MY:
     new: Kenderaan Baru
     chassis_no: "No. Casis"
     engine_no: "No. Enjin"
+  vehicle_nos:
+    title: "Penggantian Kenderaan Tentera (No. Daftar Awam)"
+    start_on: Mula
+    end_on: Tamat
+    new: "No. Daftar Awam Baru"
+    edit: "Sunting No. Daftar Awam"
+    #civil_no: "No. Daftar Awam"
+    vehicle_army_id: "No. Daftar Tentera"
+  vehicle_armies:
+    title: "Pendaftaran Kenderaan Tentera (dengan No. Daftar Awam)"
+    v_army_no: "No. Daftar Kenderaan (Tentera)"
+    new: "No. Daftar Kenderaan (Tentera) Baru"
+    edit: "Sunting No. Daftar Kenderaan (Tentera)"
   maintenances:
     title: Penyelenggaraan
     work_order_no: Work Order No
@@ -589,6 +606,13 @@ ms_MY:
         new: Kenderaan Baru
         chassis_no: "No. Chasis"
         engine_no: "No. Enjin"
+      vehicle_no:
+        start_on: Mula
+        end_on: Tamat
+        #civil_no: "No. Daftar Awam"
+        vehicle_army_id: "No. Daftar Tentera"
+      vehicle_army:
+        v_army_no: "No. Daftar Tentera"
       maintenance:
         work_order_no: Work Order No
         contract_id: "No. Kontrak"
@@ -776,6 +800,7 @@ ms_MY:
       select_rank_rate: Pilih Kumpulan Kadaran (untuk Kit)
       select_maintenance_type: Pilih Jenis Senggaraan
       select_release_type: Pilih Jenis Pengeluaran
+      select_army_car: "Pilih No. Pendaftaran Kenderaan Tentera Yang Ingin Digantikan"
   
   
   

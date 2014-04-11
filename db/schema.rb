@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407191946) do
+ActiveRecord::Schema.define(version: 20140410093816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -384,6 +384,12 @@ ActiveRecord::Schema.define(version: 20140407191946) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "vehicle_armies", force: true do |t|
+    t.string   "v_army_no"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "vehicle_assignment_details", force: true do |t|
     t.integer  "vehicle_assignment_id"
     t.integer  "vehicle_id"
@@ -474,6 +480,16 @@ ActiveRecord::Schema.define(version: 20140407191946) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "vehicle_nos", force: true do |t|
+    t.date     "start_on"
+    t.date     "end_on"
+    t.integer  "vehicle_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "civil_no"
+    t.integer  "vehicle_army_id"
   end
 
   create_table "vehicle_road_taxes", force: true do |t|

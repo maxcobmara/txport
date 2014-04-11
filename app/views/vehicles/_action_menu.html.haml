@@ -3,6 +3,9 @@
     %button.btn.dropdown-toggle{"data-toggle" => "dropdown", href: '#'}
       .span.caret
     %ul.dropdown-menu.pull-right.action_menu
+      - if vehicle.reg_no.split("")[0].upcase!="Z"
+        - if vehicle.vehicle_nos.nil? || vehicle.vehicle_nos.blank?
+          %li= link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.new_vehicle_no'))), new_vehicle_no_path(:vehicle_id => vehicle)
       %li= link_to content_tag(:li, fa_icon("certificate", text: t('vehicles.new_road_tax'))), new_vehicle_road_tax_path(:vehicle_id => vehicle)
       %li= link_to content_tag(:li, fa_icon("gavel", text: t('vehicles.new_summons'))), new_vehicle_fine_path(:vehicle_id => vehicle) 
       %li= link_to content_tag(:li, fa_icon("wrench", text: t('vehicles.new_maintenance'))), new_maintenance_path(:vehicle_id => vehicle)

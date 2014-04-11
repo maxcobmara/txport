@@ -2,12 +2,13 @@ class Vehicle < ActiveRecord::Base
   
   after_touch :set_teb_status
   
-  validates_presence_of :reg_no
+  validates_presence_of :reg_no, :status_id
   validates_uniqueness_of :reg_no
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
   validates_presence_of :status_id
 
+  has_many :vehicle_nos, :dependent => :nullify
   has_many :vehicle_road_taxes, :dependent => :destroy
   has_many :vehicle_end_of_lives,      :dependent => :restrict_with_error
   has_many :vehicle_fines,      :dependent => :restrict_with_error
@@ -37,6 +38,14 @@ class Vehicle < ActiveRecord::Base
   
   
   attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name   #for data from excel file
+  
+  def full_reg_details
+	if vehicle_nos.nil? || vehicle_nos.blank?
+		"#{reg_no}"
+	else
+		"#{vehicle_nos[0].vehicle_army.v_army_no}"+" ("+"#{reg_no}"+")"
+	end
+  end
   
   def chassis_is_dash?
     if chassis_no == "-"

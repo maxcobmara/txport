@@ -1,0 +1,2 @@
+module VehicleArmiesHelper
+end

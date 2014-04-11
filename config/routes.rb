@@ -1,4 +1,6 @@
 Txport::Application.routes.draw do
+  resources :vehicle_armies
+
   resources :maintenance_types
 
   resources :acquired_types
@@ -116,6 +118,8 @@ Txport::Application.routes.draw do
     end
   end
 
+  resources :vehicle_nos
+  
   resources :vehicle_manufacturers
 
   resources :vehicle_categories

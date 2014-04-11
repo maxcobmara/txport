@@ -1,0 +1,5 @@
+- provide(:title, 'Edit Registration No (Army)')
+- model_class = VehicleArmy
+.page-header
+  %h1= t 'vehicle_armies.edit', :default => [:'helpers.titles.new', 'Edit %{model}'], :model => model_class.model_name.human
+= render :partial => 'form'

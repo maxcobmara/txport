@@ -33,6 +33,7 @@ en:
         reg_no: Registration No
         chassis_no: Chassis No
         engine_no: Engine No
+        status_id: Status
       vehicle_fine:
         code: Code
         type_id: Summon Type
@@ -74,6 +75,7 @@ en:
     created: " was successfully created."
     updated: " was successfully updated."
     import_excel: Import Data From Excel
+    removed: " was successfully removed."
   errors:
     
     
@@ -170,6 +172,7 @@ en:
     title: Vehicles
     title2: Vehicle
     reg_no: Registration No
+    reg_no2: "Registration No (Civil)"
     reg_on: Registration Date
     chassis_no: Chasis No
     engine_no: Engine No
@@ -181,6 +184,7 @@ en:
     price: "Price (RM)"
     contract_id: Contract No
     status_id: Status
+    new_vehicle_no: "Vehicle Replacement(Civil No)"
     new_road_tax: New Road Tax
     new_summons: New Summon
     new_maintenance: New Maintenance
@@ -223,6 +227,19 @@ en:
     new: New Vehicle
     chassis_no: Chassis No
     engine_no: Engine No
+  vehicle_nos:
+    title: "Vehicle Replacement - Registration No (Civil)"
+    start_on: Start On
+    end_on: End On
+    new: "New Registration No (Civil)"
+    edit: "Edit Registration No (Civil)"
+    #civil_no: "Registration No (Civil)"
+    vehicle_army_id: Vehicle Army No
+  vehicle_armies:
+    title: "Army Vehicle Registration No (with Civil Registration No)"
+    v_army_no: Army Registration No
+    new: "New Registration No (Army)"
+    edit: "Edit Registration No (Army)"
   maintenances:
     title: Maintenance
     work_order_no: Work Order No
@@ -622,6 +639,13 @@ en:
         new: New Vehicle
         chassis_no: Chasis No
         engine_no: Engine No 
+      vehicle_no:
+        start_on: Start On
+        end_on: End On
+        #civil_no: "Registration No (Civil)"
+        vehicle_army_id: Vehicle Army No
+      vehicle_army:
+        v_army_no: Registration No (Army)
       maintenance:
         work_order_no: Work Order No
         contract_id: Contract No
@@ -808,3 +832,4 @@ en:
       select_rank_rate: Select Rate Group (for Kit)
       select_maintenance_type: Select Maintenance Type
       select_release_type: Select Release Type 
+      select_army_car: "Select Vehicle Registration No (Army) for Replacement"

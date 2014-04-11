@@ -1,14 +1,18 @@
 .container{:style => "padding-left: 60px;"}
-  = form_for @vehicle_road_tax, :html => { :class => 'form-horizontal' }  do |f|
+  = form_for @vehicle_no, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
     = f.hidden_field :vehicle_id
 
     %dl.dl-horizontal
       %dt
-        %strong= t 'vehicles.reg_no'
-      %dd= @vehicle_road_tax.try(:vehicle).try(:reg_no)
+        %strong= t 'vehicles.reg_no2'
+      %dd= @vehicle_no.try(:vehicle).try(:reg_no)
     %br/
-      
+
+    .control-group
+      = f.label :vehicle_army_id, :class => 'control-label'
+      .controls= f.collection_select :vehicle_army_id, VehicleArmy.find(:all, :order => 'v_army_no'), :id, :v_army_no, :include_blank => (t 'helpers.prompt.select_army_car'), :html_options => {:class => 'selectpicker'}
+    
     .control-group
       = f.label :start_on, :class => 'control-label'
       .controls
@@ -17,14 +21,7 @@
           %span.add-on{:style => "height:30px;"}= t 'helpers.label.vehicle_road_tax.to'
           = f.text_field :end_on, :class => 'text_field input-medium', :type => :text
 
-    .control-group
-      = f.label :amount, :class => 'control-label'
-      .controls
-        .input-prepend
-          %span.add-on{:style => "height:30px;"} RM &nbsp;
-          = f.text_field :amount, :class => "span2", :id => "prependedInput", :type => "text"
-
     .form-actions
       = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-        vehicle_road_taxes_path, :class => 'btn'
+        vehicle_nos_path, :class => 'btn'

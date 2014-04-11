@@ -1,0 +1,32 @@
+//- provide(:title, 'Vehicle Army')
+- model_class = VehicleArmy
+.page-header
+  %h1= t 'vehicle_armies.title', :default => model_class.model_name.human.pluralize
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_army_path
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :v_army_no_cont, "Registration No. (Army) Contains:"
+        = f.text_field :v_army_no_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+
+		    
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= sort_link @search, :name, t('vehicle_armies.v_army_no')
+      %th
+  %tbody
+    - @vehicle_armies.each do |v_army|
+      %tr
+        %td= v_army.v_army_no
+        = render :partial => 'action_menu', :locals => { :vehicle_army => v_army }

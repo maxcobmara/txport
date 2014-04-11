@@ -14,22 +14,32 @@
       %th= t 'vehicles.status' 
       %th
   %tbody
-    - @vehicles.each_with_index do |vehicle, i|
-      %tr
-        %td= (i+1)
-        %td= vehicle.reg_no
-        %td= vehicle.reg_on.try(:strftime, "%d %b %Y")
-        %td= vehicle.manufacturer_year
-        %td= vehicle.manufacturer.try(:name)
-        %td= vehicle.model
-        %td= vehicle.vehiclecategory.try(:short_name)
-        %td= vehicle.acquired_on.try(:strftime, "%d %b %Y")
-        %td= vehicle.vehicleacquired.try(:description)
-        %td= vehicle.contract.try(:contract_no)
-        - if vehicle.status_id != 4
-          %td= vehicle.current_status.try(:short_name)
+    - num=0
+    - @vehicles.each do |vehicle|
+      - if (!vehicle.vehicle_nos[0].nil? || !vehicle.vehicle_nos[0].blank?)
+        - if (!vehicle.vehicle_nos[0].end_on.nil? || !vehicle.vehicle_nos[0].end_on.blank?) 	  
+          - reg_state = 1 if vehicle.vehicle_nos[0].end_on>Date.today
         - else
-          %td= link_to vehicle.current_status.try(:short_name), vehicle_end_of_lives_path
-        %td= render :partial => 'action_menu', :locals => { :vehicle => vehicle }
+          - reg_state = 1		
+      - else
+        - reg_state = 1
+      - if reg_state == 1
+        %tr
+          %td= num+=1
+          %td= vehicle.full_reg_details
+          %td= vehicle.reg_on.try(:strftime, "%d %b %Y")
+          %td= vehicle.manufacturer_year
+          %td= vehicle.manufacturer.try(:name)
+          %td= vehicle.model
+          %td= vehicle.vehiclecategory.try(:short_name)
+          %td= vehicle.acquired_on.try(:strftime, "%d %b %Y")
+          %td= vehicle.vehicleacquired.try(:description)
+          %td= vehicle.contract.try(:contract_no)
+          - if vehicle.status_id != 4
+            %td= vehicle.current_status.try(:short_name)
+          - else
+            %td= link_to vehicle.current_status.try(:short_name), vehicle_end_of_lives_path
+          %td= render :partial => 'action_menu', :locals => { :vehicle => vehicle }
 = t 'vehicles.total'
-= @vehicles.count
+= num
+
