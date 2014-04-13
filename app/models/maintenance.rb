@@ -30,12 +30,14 @@ class Maintenance < ActiveRecord::Base
 	
 	vehicles_exist=Vehicle.all.map(&:reg_no)
 	vehicles_excel=[]
+	work_order_no_excel=[]
 	(11..spreadsheet.last_row).each do |i|
 		vehicles_excel<<spreadsheet.cell(i,'B')
+		work_order_no_excel<<spreadsheet.cell(i,'N').to_s
 	end
 	exist_vehicle = vehicles_excel.all? { |e| vehicles_exist.include?(e) }
-	
-  if exist_vehicle==true	
+	exist_work_order_no = work_order_no_excel.all? {|e|!e.empty?}
+  if exist_vehicle==true && exist_work_order_no==true	
     unless (excel_month.nil? || excel_month.blank? || excel_month == " " || excel_month == "-") && (excel_year.nil? || excel_year.blank? || excel_year == " " || excel_year == "-") 
   
       begin_month = Date.new(excel_year.to_i,excel_month.to_i,1)
@@ -58,7 +60,7 @@ class Maintenance < ActiveRecord::Base
                 vehicle_id = Vehicle.find_by_reg_no(vehicle_reg_no).id
                 m = where('vehicle_id=? AND maintenance_date >=? AND maintenance_date <?', vehicle_id, begin_month, next_month)[0] || new
                 m.vehicle_id = vehicle_id
-                m.attributes = row.to_hash.slice("maintenance_date","repair_date_ex","value_repaired_ex","repair_location_ex","parts","line_item_price","maintenance_type","supplier")
+                m.attributes = row.to_hash.slice("maintenance_date","repair_date_ex","value_repaired_ex","repair_location_ex","parts","line_item_price","maintenance_type","supplier","work_order_no")
                 if (m.maintenance_date.nil? || m.maintenance_date.blank? || m.maintenance_date==" "|| m.maintenance_date=="-")
                   m.maintenance_date = Date.new(excel_year.to_i,excel_month.to_i,end_day)
                 end
@@ -77,7 +79,7 @@ class Maintenance < ActiveRecord::Base
                   end 
                 end
               
-                #for new maintenance only
+                #for new maintenance only - #to confirm later - 1 month only got only 1 value_repaired?
                 unless (m.value_repaired_ex.nil? || m.value_repaired_ex.blank? || m.value_repaired_ex==" "|| m.value_repaired_ex=="-")
                   if m.id.nil? || m.id.blank?
                     m.value_repaired = m.value_repaired_ex               
@@ -105,8 +107,8 @@ class Maintenance < ActiveRecord::Base
                   if exist_parts == false 
                     m.maintenance_details.new
                     m.maintenance_details[ind].line_item = m.parts 
+					m.maintenance_details[ind].quantity = MaintenanceDetail.get_quantity(m.parts)
                     m.maintenance_details[ind].line_item_price = m.line_item_price 
-                    m.maintenance_details[ind].quantity = MaintenanceDetail.get_quantity(m.parts)
                     m.maintenance_details[ind].unit_type = UnitType.get_type(m.parts, unit_types)
                     unit_type_fr_excel = UnitType.get_type_desc(m.parts)
                     unit_types<<unit_type_fr_excel if UnitType.all.pluck(:short_name).include?(unit_type_fr_excel)
@@ -127,7 +129,8 @@ class Maintenance < ActiveRecord::Base
       for vehicle_reg in uniq_vehicle_regs 
         v_id=Vehicle.find_by_reg_no(vehicle_reg)
         m2=Maintenance.find_by_vehicle_id(v_id)
-        m2.value_supplied = MaintenanceDetail.where('maintenance_id=?',m2.id).sum(:line_item_price)
+		arr_qty_price = MaintenanceDetail.where('maintenance_id=?',m2.id).select([:quantity,:line_item_price])
+        m2.value_supplied = arr_qty_price.inject(0){|sum,e|sum+(e.quantity*(e.line_item_price.to_f))}
         m2.save!
       end
 
@@ -135,7 +138,13 @@ class Maintenance < ActiveRecord::Base
       return "invalid_month_and_year"
     end #end for unless (excel_month.nil?...
    else
-      return "vehicle record not exist"
+	  if exist_vehicle==false && exist_work_order_no==true
+		return "vehicle record not exist"
+	  elsif exist_work_order_no==false && exist_vehicle==true
+		return "work order no not exist"
+	  elsif exist_work_order_no==false && exist_vehicle==false
+	    return "both not exist"
+	  end
    end # end for if exist_vehicles==true (exist in Vehicle records)
   end
   
