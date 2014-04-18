@@ -312,6 +312,7 @@ en:
     release_type: Release Type
     remark: Special Instructions
     unit_id: Receiving Unit
+    authorising_unit: Authorising Unit
   vehicle_fines:
     title: Summons
     title2: Summon
@@ -684,6 +685,7 @@ en:
         document_date: Assignment Date
         authorised_by: Assignment Authoriser
         unit_id: Receiving Unit
+        authorising_unit: Authorising Unit
       vehicle_assignment_detail:
         release_no: VRO No
         remark: Special Instructions

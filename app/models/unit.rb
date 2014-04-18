@@ -12,7 +12,8 @@ class Unit < ActiveRecord::Base
   has_many :external_supplieds
   has_many :staffs, dependent: :nullify
   has_many :inden_cards, dependent: :nullify
-  has_one  :vehicle_assignment
+  has_one  :authorisor_unit, class_name: "Vehicle Assignment"
+  has_one  :receiving_unit, class_name: "Vehicle Assignment"
   
   def set_combo_code
     if ancestry_depth == 0

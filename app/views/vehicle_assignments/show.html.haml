@@ -10,15 +10,19 @@
 
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.document_date'
-  %dd= l(@vehicle_assignment.document_date)
-
+  %dd= @vehicle_assignment.try(:document_date).try(:strftime,"%d %b %Y")
+  
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.authorised_by'
-  %dd= check_kin {@vehicle_assignment.authoriser.staff_details}
+  %dd= @vehicle_assignment.authoriser.try(:staff_details)
+
+%dl.dl-horizontal
+  %dt= t 'vehicle_assignments.authorising_unit'
+  %dd= @vehicle_assignment.unit_authorised.try(:unit_details)
 
 %dl.dl-horizontal
   %dt= t 'vehicle_assignments.unit_id'
-  %dd= check_kin {@vehicle_assignment.unit_receiver.unit_details}
+  %dd= @vehicle_assignment.unit_receiver.try(:unit_details)
   
 .div{:style => "padding: 15px 50px 10px 50px; "}
   %table.table.table-condensed.table-hover{:style => "width: 70%; "}

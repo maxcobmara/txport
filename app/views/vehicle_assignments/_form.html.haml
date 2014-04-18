@@ -16,6 +16,10 @@
       .controls= f.text_field :authoriser_staff_details, :class => 'text field input-xxlarge', data: {autocomplete_source: Staff.all.order(:name).map(&:staff_details) }, placeholder: "Armed Force No / Staff Name"	  
   
     .control-group
+      = f.label :authorising_unit, :class => 'control-label'
+      .controls= f.collection_select :authorising_unit, Unit.order(shortname: :asc).all, :id, :unit_details, :include_blank => (t 'helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
+	  
+    .control-group
       = f.label :unit_id, :class => 'control-label'
       .controls= f.collection_select :unit_id, Unit.order(shortname: :asc).all, :id, :unit_details, :include_blank => (t 'helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
     

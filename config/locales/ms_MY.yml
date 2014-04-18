@@ -277,6 +277,7 @@ ms_MY:
     release_type: Jenis Pengeluaran
     remark: Arahan Khas
     unit_id: Unit Penerima
+    authorising_unit: Unit Pengeluar
   vehicle_fines:
     title: Saman
     title2: Saman
@@ -651,6 +652,7 @@ ms_MY:
         document_date: Tarikh Perjawatan
         authorised_by: Pengeluar Perjawatan
         unit_id: Unit Penerima	
+        authorising_unit: Unit Pengeluar
       vehicle_assignment_detail:
         release_no: "No. VRO"
         remark: Arahan Khas
