@@ -8,6 +8,10 @@ class Expertise < ActiveRecord::Base
              ["Cawangan Teknikal", 3]
   ]
   
+  def expertise_details
+    "#{short_name}"+" - "+"#{name}"
+  end
+  
 end
 
 # == Schema Information
