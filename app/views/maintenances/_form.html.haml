@@ -16,7 +16,7 @@
 
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.collection_select :contract_id, Contract.all, :id, :contract_no, {:include_blank =>  t('helpers.prompt.select_contract')}, {:class => 'selectpicker'}
+      .controls= f.collection_select :contract_id, Contract.transport_contract, :id, :contract_no, {:include_blank =>  t('helpers.prompt.select_contract')}, {:class => 'selectpicker'}
 
     .control-group
       = f.label :repaired_by, :class => 'control-label'
