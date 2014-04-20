@@ -52,7 +52,7 @@
 
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.collection_select :contract_id, Contract.find(:all), :id, :contract_no, :include_blank => t('helpers.prompt.select_contract'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :contract_id, Contract.transport_contract, :id, :contract_no, :include_blank => t('helpers.prompt.select_contract'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :status_id, :class => 'control-label'

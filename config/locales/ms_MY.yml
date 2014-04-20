@@ -5,6 +5,7 @@ ms_MY:
       vehicle_fine: Saman
       vehicle_card: "Touch N Go & Smart Tag"
       vehicle_assignment_detail: Butiran Kenderaan
+      staff: Staf
     attributes:
       vehicle:
         reg_no: "No. Pendaftaran"
@@ -27,6 +28,14 @@ ms_MY:
           other: "%{count} kenderaan"
       vehicle_assignment_details: 
         vehicle_id: Kenderaan
+      staff:
+        id_no: "No. Tentera"
+        rank_id: Pangkat
+        name: Nama Penuh
+        position_id: Jawatan
+        expertise_id: Kepakaran / Cawangan
+        gender: Jantina
+        religion: Agama
     errors:
       template:
         body: "Berikut adalah beberapa masalah:"
@@ -268,6 +277,7 @@ ms_MY:
     release_type: Jenis Pengeluaran
     remark: Arahan Khas
     unit_id: Unit Penerima
+    authorising_unit: Unit Pengeluar
   vehicle_fines:
     title: Saman
     title2: Saman
@@ -368,8 +378,14 @@ ms_MY:
     id_no: "No. Tentera"
     rank_id: Pangkat
     name: Nama
+    position_id: Jawatan
+    expertise_id: Kepakaran
+    gender: Jantina
+    religion: Agama
     new: Anggota Baru
     edit: Sunting Anggota
+    llp_expertise: "* LLP - Kepakaran / Cawangan"
+    peg_position: "* Pegawai - Jawatan"
   ranks:
     title: Pangkat
     shortname: Nama Ringkas
@@ -636,6 +652,7 @@ ms_MY:
         document_date: Tarikh Perjawatan
         authorised_by: Pengeluar Perjawatan
         unit_id: Unit Penerima	
+        authorising_unit: Unit Pengeluar
       vehicle_assignment_detail:
         release_no: "No. VRO"
         remark: Arahan Khas

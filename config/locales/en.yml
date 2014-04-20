@@ -28,6 +28,7 @@ en:
       vehicle_fine: Summon
       vehicle_card: "Touch N Go & Smart Tag"
       vehicle_assignment_detail: Vehicle Details
+      staff: Staff
     attributes:
       vehicle:
         reg_no: Registration No
@@ -50,6 +51,14 @@ en:
           other: "%{count} vehicle"
       vehicle_assignment_details: 
         vehicle_id: Vehicle
+      staff:
+        id_no: Armed Force No
+        rank_id: Position
+        name: Name
+        position_id: Position
+        expertise_id: Expertise / Branch
+        gender: Gender
+        religion: Religion
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -303,6 +312,7 @@ en:
     release_type: Release Type
     remark: Special Instructions
     unit_id: Receiving Unit
+    authorising_unit: Authorising Unit
   vehicle_fines:
     title: Summons
     title2: Summon
@@ -401,8 +411,14 @@ en:
     id_no: Armed Force No
     rank_id: Rank
     name: Name
+    position_id: Position
+    expertise_id: Expertise
+    gender: Gender
+    religion: Religion
     new: New Staff
     edit: Edit Staff
+    llp_expertise: "* LLP - Expertise / Branch"
+    peg_position: "* Pegawai - Position"
   ranks:
     title: Ranks
     shortname: Short Name
@@ -669,6 +685,7 @@ en:
         document_date: Assignment Date
         authorised_by: Assignment Authoriser
         unit_id: Receiving Unit
+        authorising_unit: Authorising Unit
       vehicle_assignment_detail:
         release_no: VRO No
         remark: Special Instructions
