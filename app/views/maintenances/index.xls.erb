@@ -24,11 +24,11 @@
 		<Row>
 			<Cell><Data ss:Type="String"><%= maintenance.work_order_no %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.vehicle.try(:reg_no) %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= check_kin {maintenance.contract.contract_no} %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= check_kin {maintenance.repairer.name} %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= check_kin {maintenance.supplier.name} %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= check_kin {l(maintenance.maintenance_date)} %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= check_kin {l(maintenance.repair_date)} %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.contract.try(:contract_no) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.repairer.try(:name) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.supplier.try(:name) %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.maintenance_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
+			<Cell><Data ss:Type="String"><%= maintenance.repair_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.repair_location %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.value_repaired %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.value_supplied %></Data></Cell>
