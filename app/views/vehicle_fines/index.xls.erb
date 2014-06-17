@@ -30,10 +30,10 @@
   			<Cell><Data ss:Type="String"><%= vehicle_fine.pay_before.try(:strftime, "%Y-%b-%d") %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= vehicle_fine.location %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= vehicle_fine.reason %></Data></Cell>
-  			<Cell><Data ss:Type="String"><%= ringgols((vehicle_fine.compound) rescue 0) %></Data></Cell>
+  			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.compound) %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= vehicle_fine.receipt_no %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= vehicle_fine.paid_on.try(:strftime, "%Y-%b-%d") %></Data></Cell>
-  			<Cell><Data ss:Type="String"><%= ringgols((vehicle_fine.paid_amount) rescue 0)  %></Data></Cell>
+  			<Cell><Data ss:Type="String"><%= ringgols(vehicle_fine.paid_amount) %></Data></Cell>
   		</Row>
   		<% end %>
   	</table>
