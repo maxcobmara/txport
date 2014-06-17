@@ -28,6 +28,7 @@ en:
       vehicle_fine: Summon
       vehicle_card: "Touch N Go & Smart Tag"
       vehicle_assignment_detail: Vehicle Details
+      staff: Staff
     attributes:
       vehicle:
         reg_no: Registration No
@@ -50,6 +51,14 @@ en:
           other: "%{count} vehicle"
       vehicle_assignment_details: 
         vehicle_id: Vehicle
+      staff:
+        id_no: Armed Force No
+        rank_id: Position
+        name: Name
+        position_id: Position
+        expertise_id: Expertise / Branch
+        gender: Gender
+        religion: Religion
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -260,6 +269,7 @@ en:
     condition_month_year: "Current month & year are compulsory (month - row 5,column ‘B’, year - row 6,column ‘B’)."
     #condition_labelling: "Row 8 is compulsory - contains required labels for data import purpose."
     condition_reg_no: "Registration No - is compulsory and must EXIST in vehicle records."
+    condition_work_order_no: "'Work Order No' - is compulsory for each maintenance record of a vehicle (column 'N')."
     condition_maint_date: "Maintenance Date - for all rows of ONE vehicle must be entered OR default value i.e. last day of current month (as stated in item 1) will be assigned."
     condition_repair_date: "Repair Date - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
     condition_maint_type: "Maintenance Type - must match with Maintenance Type (from menu - Vehicle | Drop Downs | Maintenance Type)"
@@ -270,11 +280,12 @@ en:
     condition_value_supplied: "Value Supplied (total) - is a sum of supplied parts’ price (item 7) for each vehicle."
     condition_repair_location: "Repair Location - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
     condition_supplier: "Supplier - must exist for first row (or any row) of each unique vehicle, or no value will be saved."
-    failure: "* Failure to comply with condition no. 1 and 2 will cause failure in import."
+    failure: "* Failure to comply with condition no. 1 - 3 will cause failure in import."
     #failure2: "* Failure to comply with condition no 2, record will be ignored."
-    failure3: "* Failure to comply with conditions no 3-10 may result inaccurate data saved into the system."
-    failed_check_format: "Import FAILED. Conditions no. 1 (Current Month & Year) are not complied. Use provided 'Format Excel' accordingly."
-    failed_vehicle_not_exist: "Import FAILED. Conditions no. 2 (Vehicle record not exist for supplied registration no.)"
+    failure3: "* Failure to comply with conditions no 4 - 11 may result inaccurate data saved into the system."
+    failed_check_format: "Import FAILED. Condition3 no. 1 (Current Month & Year) are not complied. Use provided 'Format Excel' accordingly."
+    failed_vehicle_not_exist: "Import FAILED. Condition no. 2 (Vehicle record not exist for supplied registration no.)"
+    failed_work_order_no_exist: "Import FAILED. Condition no. 3 ('Work Order No' are not supplied)."
     excel_format: Excel Format
   vehicle_road_taxes:
     title: Vehicle Road Taxes
@@ -301,6 +312,7 @@ en:
     release_type: Release Type
     remark: Special Instructions
     unit_id: Receiving Unit
+    authorising_unit: Authorising Unit
   vehicle_fines:
     title: Summons
     title2: Summon
@@ -399,8 +411,14 @@ en:
     id_no: Armed Force No
     rank_id: Rank
     name: Name
+    position_id: Position
+    expertise_id: Expertise
+    gender: Gender
+    religion: Religion
     new: New Staff
     edit: Edit Staff
+    llp_expertise: "* LLP - Expertise / Branch"
+    peg_position: "* Pegawai - Position"
   ranks:
     title: Ranks
     shortname: Short Name
@@ -667,6 +685,7 @@ en:
         document_date: Assignment Date
         authorised_by: Assignment Authoriser
         unit_id: Receiving Unit
+        authorising_unit: Authorising Unit
       vehicle_assignment_detail:
         release_no: VRO No
         remark: Special Instructions

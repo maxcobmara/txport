@@ -40,7 +40,7 @@
   .span1=t 'contracts.issued_by'
   .span1=t 'contracts.contract_type' 
   .span1
-- @contracts.each do |contract|
+- @contracts.transport_contract.each do |contract|
   .row{style: "padding-top:15px;"}
     .span3.bold= contract.contract_no
     .span3.bold= contract.contractor.try(:name)

@@ -8,11 +8,27 @@
   %dd=  @staff.id_no
 %dl.dl-horizontal
   %dt= t 'staffs.rank_id', :default => model_class.human_attribute_name(:rank_id) + ":"
-  %dd= check_kin {@staff.rank.name}
+  %dd= @staff.try(:rank).try(:name)
 %dl.dl-horizontal
   %dt= t 'staffs.name', :default => model_class.human_attribute_name(:name) + ":"
   %dd= @staff.name
-
+%dl.dl-horizontal
+  - if !@staff.rank_id.nil? && @staff.rank.rate > 2
+    %dt= t 'staffs.position_id', :default => model_class.human_attribute_name(:position_id) + ":"
+    %dd= @staff.try(:position).try(:name)
+  - elsif !@staff.rank_id.nil? && @staff.rank.rate < 3
+    %dt= t 'staffs.expertise_id', :default => model_class.human_attribute_name(:expertise_id) + ":"
+    %dd= @staff.try(:expertise).try(:expertise_details)
+%dl.dl-horizontal
+  %dt= t 'staffs.unit_id', :default => model_class.human_attribute_name(:unit_id) + ":"
+  %dd= @staff.try(:unit).try(:unit_details)
+%dl.dl-horizontal
+  %dt= t 'staffs.gender', :default => model_class.human_attribute_name(:gender) + ":"
+  %dd= (Staff::GENDER.find_all{|disp, value| value == @staff.try(:gender)}).map {|disp, value| disp}[0]
+%dl.dl-horizontal
+  %dt= t 'staffs.religion', :default => model_class.human_attribute_name(:religion) + ":"
+  %dd= (Staff::RELIGION.find_all{|disp, value| value == @staff.try(:religion)}).map {|disp, value| disp}[0]
+  
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |

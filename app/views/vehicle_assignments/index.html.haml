@@ -23,8 +23,9 @@
   %thead
     %tr
       %th= sort_link @search, :document_code, t('vehicle_assignments.document_code')
-      %th= t 'vehicle_assignments.unit_id'
       %th= sort_link @search, :document_date, t('vehicle_assignments.document_date')
+      %th= t 'vehicle_assignments.authorising_unit'
+      %th= t 'vehicle_assignments.unit_id'
       %th= t 'vehicle_assignments.authorised_by'
       %th
 
@@ -32,8 +33,9 @@
     - @vehicle_assignments.each do | vehicle_assignment | 
       %tr
         %td= vehicle_assignment.document_code
-        %td= check_kin {vehicle_assignment.unit_receiver.unit_details}
-        %td= check_kin {l(vehicle_assignment.document_date)}
+        %td= vehicle_assignment.try(:document_date).try(:strftime,"%d %b %Y")
+        %td= vehicle_assignment.unit_authorised.try(:unit_details)	
+        %td= vehicle_assignment.unit_receiver.try(:unit_details)
         %td= check_kin {vehicle_assignment.authoriser.staff_details}
         %td
         = render :partial => 'action_menu', :locals => { :vehicle_assignment => vehicle_assignment }

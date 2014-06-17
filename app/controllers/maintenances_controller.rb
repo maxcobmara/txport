@@ -84,6 +84,10 @@ class MaintenancesController < ApplicationController
       redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_check_format')
 	elsif a == "vehicle record not exist"
 	  redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_vehicle_not_exist')
+	elsif a== "work order no not exist"
+	  redirect_to import_excel_maintenance_url, notice: (t 'maintenances.failed_work_order_no_exist')
+	elsif a== "both not exist"
+	  redirect_to import_excel_maintenance_url, notice: "dua-dua"
     else
       redirect_to maintenances_url, notice: (t 'maintenances.imported')
     end
