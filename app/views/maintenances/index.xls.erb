@@ -26,9 +26,9 @@
         <Cell><Data ss:Type="String"><%= maintenance.maintenance_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= maintenance.vehicle.try(:reg_no) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= maintenance.contract.try(:contract_no) %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= repair_totals(maintenance.id) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= repair_totals(maintenance.id) %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= maintenance.repairer.try(:name) %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= supply_totals(maintenance.id) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= supply_totals(maintenance.id) %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= maintenance.supplier.try(:name) %></Data></Cell>
   			<Cell><Data ss:Type="String"><%= maintenance.repair_location %></Data></Cell>
   		</Row>
