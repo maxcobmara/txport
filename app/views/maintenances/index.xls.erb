@@ -9,12 +9,13 @@
   <Table>
 	<Row>
 		<Cell><Data ss:Type="String">work_order_no</Data></Cell>
-		<Cell><Data ss:Type="String">vehicle_id</Data></Cell>
-		<Cell><Data ss:Type="String">contract_id</Data></Cell>
-		<Cell><Data ss:Type="String">repaired_by</Data></Cell>
-		<Cell><Data ss:Type="String">supplied_by</Data></Cell>
-		<Cell><Data ss:Type="String">maintenance_date</Data></Cell>
-		<Cell><Data ss:Type="String">repair_date</Data></Cell>
+    <Cell><Data ss:Type="String">maintenance_date</Data></Cell>
+		<Cell><Data ss:Type="String">Reg No</Data></Cell>
+		<Cell><Data ss:Type="String">Contract No</Data></Cell>
+		<Cell><Data ss:Type="String">Maint Value</Data></Cell>
+		<Cell><Data ss:Type="String">Repaired By</Data></Cell>
+		<Cell><Data ss:Type="String">Supply Value</Data></Cell>
+    <Cell><Data ss:Type="String">Supplied By</Data></Cell>
 		<Cell><Data ss:Type="String">repair_location</Data></Cell>
 		<Cell><Data ss:Type="String">value_repaired</Data></Cell>
 		<Cell><Data ss:Type="String">value_supplied</Data></Cell>
@@ -23,15 +24,14 @@
 	<% @maintenances.each do |maintenance| %>
 		<Row>
 			<Cell><Data ss:Type="String"><%= maintenance.work_order_no %></Data></Cell>
+      <Cell><Data ss:Type="String"><%= maintenance.maintenance_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.vehicle.try(:reg_no) %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= maintenance.contract.try(:contract_no) %></Data></Cell>
+      <Cell><Data ss:Type="String"><%= maintenance.contract.try(:contract_no) %></Data></Cell>
+      <Cell><Data ss:Type="Number"><%= repair_totals(maintenance.id) %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.repairer.try(:name) %></Data></Cell>
+      <Cell><Data ss:Type="Number"><%= supply_totals(maintenance.id) %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.supplier.try(:name) %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= maintenance.maintenance_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= maintenance.repair_date.try(:strftime, "%Y-%b-%d") %></Data></Cell>
 			<Cell><Data ss:Type="String"><%= maintenance.repair_location %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= maintenance.value_repaired %></Data></Cell>
-			<Cell><Data ss:Type="String"><%= maintenance.value_supplied %></Data></Cell>
 		</Row>
 		<% end %>
 	</Table>
