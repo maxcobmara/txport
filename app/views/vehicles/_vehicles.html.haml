@@ -2,9 +2,8 @@
   %thead
     %tr
       %th.center.font{:color => "red"}= t 'vehicles.number'
-      %th= t 'vehicles.reg_no'
+      %th= sort_link @search, :reg_no, t('vehicles.reg_no')
       %th= t 'vehicles.reg_on'
-      %th= t 'vehicles.manufacturer_year' 
       %th= t 'vehicles.manufacturer_id' 
       %th= t 'vehicles.model' 
       %th= t 'vehicles.category_id' 
@@ -28,7 +27,6 @@
           %td= num+=1
           %td= vehicle.full_reg_details
           %td= vehicle.reg_on.try(:strftime, "%d %b %Y")
-          %td= vehicle.manufacturer_year
           %td= vehicle.manufacturer.try(:name)
           %td= vehicle.model
           %td= vehicle.vehiclecategory.try(:short_name)
@@ -36,7 +34,7 @@
           %td= vehicle.vehicleacquired.try(:description)
           %td= vehicle.contract.try(:contract_no)
           - if vehicle.status_id != 4
-            %td= vehicle.current_status.try(:short_name)
+            %td= vehicle.current_status.try(:description)
           - else
             %td= link_to vehicle.current_status.try(:short_name), vehicle_end_of_lives_path
           %td= render :partial => 'action_menu', :locals => { :vehicle => vehicle }
