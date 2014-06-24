@@ -13,6 +13,13 @@
 %dl.dl-horizontal
   %dt= t 'vehicles.reg_no', :default => model_class.human_attribute_name(:reg_no) + ":"
   %dd= @vehicle.reg_no
+%dl.dl-horizontal
+  %dt= t 'vehicles.unit'
+  %dd= @vehicle.vehicle_assignment_details.blank? ? "#{t 'vehicles.define_assignment'}" : @vehicle.try(:vehicle_assignment_details).last.try(:vehicle_assignment).try(:unit_receiver).try(:name)
+
+%dl.dl-horizontal
+  %dt= t 'vehicles.markas'
+  %dd= @vehicle.vehicle_assignment_details.blank? ? "#{t 'vehicles.define_assignment'}" : @vehicle.try(:vehicle_assignment_details).last.try(:vehicle_assignment).try(:unit_receiver).try(:parent).try(:name)
 
 #myTabContent.tab-content
   #tab1.tab-pane.active
