@@ -3,9 +3,10 @@
     %tr
       %th.center.font{:color => "red"}= t 'vehicles.number'
       %th= sort_link @search, :reg_no, t('vehicles.reg_no')
-      %th= t 'vehicles.reg_on'
-      %th= t 'vehicles.manufacturer_id' 
-      %th= t 'vehicles.model' 
+      %th= sort_link @search, :vehicle_assignment_details_vehicle_assignment_unit_receiver_name, t('vehicles.unit')
+      /%th= sort_link @search, :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, t('vehicles.markas')
+      %th= t 'vehicles.markas'
+      %th= t 'vehicles.model'
       %th= t 'vehicles.category_id' 
       %th= t 'vehicles.acquired_on' 
       %th= t 'vehicles.acquired_id' 
@@ -26,8 +27,8 @@
         %tr
           %td= num+=1
           %td= vehicle.full_reg_details
-          %td= vehicle.reg_on.try(:strftime, "%d %b %Y")
-          %td= vehicle.manufacturer.try(:name)
+          %td= vehicle.try(:vehicle_assignment_details).last.try(:vehicle_assignment).try(:unit_receiver).try(:name)
+          %td= vehicle.try(:vehicle_assignment_details).last.try(:vehicle_assignment).try(:unit_receiver).try(:parent).try(:name)
           %td= vehicle.model
           %td= vehicle.vehiclecategory.try(:short_name)
           %td= vehicle.acquired_on.try(:strftime, "%d %b %Y")

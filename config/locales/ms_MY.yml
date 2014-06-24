@@ -195,6 +195,9 @@ ms_MY:
     excel_format: Format Excel
     total: Jumlah Keseluruhan Kenderaan
     number: Bilangan
+    unit: Unit
+    markas: Markas Pemerintahan
+    define_assignment: "Please update 'Vehicle Assignment'"
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah  

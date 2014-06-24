@@ -229,6 +229,9 @@ en:
     excel_format: Excel Format
     total: Total Vehicles
     number: Number
+    unit: Unit
+    markas: Markas Pemerintahan
+    define_assignment: "Sila kemaskini 'Perjawatan Kenderaan'"
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
