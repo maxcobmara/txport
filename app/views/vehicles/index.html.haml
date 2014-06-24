@@ -25,6 +25,11 @@
       .field
         = f.label :reg_no_cont, "Registration No:"
         = f.text_field :reg_no_cont, class: "input-medium search-query"
+        = f.label :vehicle_assignment_details_vehicle_assignment_unit_receiver_name_cont, "Unit:"
+        = f.text_field :vehicle_assignment_details_vehicle_assignment_unit_receiver_name_cont, class: "input-medium search-query"
+        /can't define - ancestry (parent_id) 
+        /= f.label :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, "Markas Pemerintahan:"
+        /= f.text_field :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, class: "input-medium search-query"
         = f.label :manufacturer_name_cont, "Manufacturer:"
         = f.text_field :manufacturer_name_cont, class: "input-medium search-query"
         = f.label :model_cont, "Model :"

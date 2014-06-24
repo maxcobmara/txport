@@ -3,9 +3,10 @@
     %tr
       %th.center.font{:color => "red"}= t 'vehicles.number'
       %th= sort_link @search, :reg_no, t('vehicles.reg_no')
-      %th= t 'vehicles.unit'
+      %th= sort_link @search, :vehicle_assignment_details_vehicle_assignment_unit_receiver_name, t('vehicles.unit')
+      /%th= sort_link @search, :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, t('vehicles.markas')
       %th= t 'vehicles.markas'
-      %th= t 'vehicles.model' 
+      %th= t 'vehicles.model'
       %th= t 'vehicles.category_id' 
       %th= t 'vehicles.acquired_on' 
       %th= t 'vehicles.acquired_id' 
