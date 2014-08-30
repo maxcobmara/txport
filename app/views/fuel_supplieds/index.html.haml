@@ -16,8 +16,8 @@
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f|
       .field
-        = f.text_field :depot_fuel_id_cont, class: "input-medium search-query", placeholder: "Depot Contains" 
-        = f.text_field :fuel_type_id_cont, class: "input-medium search-query", placeholder: "Fuel Type Contains" 
+        = f.text_field :depot_fuel_depot_name_cont, class: "input-medium search-query", placeholder: "Depot Contains" 
+        = f.text_field :fuel_type_name_cont, class: "input-medium search-query", placeholder: "Fuel Type Contains" 
         = f.submit "Search", class: "btn btn-warning"
       
       

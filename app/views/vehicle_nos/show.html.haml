@@ -21,6 +21,7 @@
   %dd= @vehicle_no.end_on.try(:strftime, '%d-%b-%Y')
 
 .form-actions
+  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back_to_vehicles")), vehicles_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), vehicle_nos_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
     edit_vehicle_no_path(@vehicle_no), :class => 'btn'
