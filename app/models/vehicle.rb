@@ -102,7 +102,12 @@ end
       end
       # retrieve fr excel, assign manufacturer_id according to drop down
       unless (vehicle.manufacturer_name.nil? || vehicle.manufacturer_name.blank?)
-        vehicle.manufacturer_id = VehicleManufacturer.get_manufacturer(vehicle.manufacturer_name)
+	mfgid = VehicleManufacturer.get_manufacturer(vehicle.manufacturer_name)
+	if mfgid!=0
+	  vehicle.manufacturer_id = mfgid
+	else
+	  #nothing assigned
+	end
       end	  
 
 	  # retrieve fr excel, assign unit_id according to drop down & 'perjawatan' info
@@ -145,12 +150,12 @@ end
       exist_reg_no = excel_reg_nos.include?(vehicle.reg_no)
       unless (vehicle.reg_no.nil? || vehicle.reg_no.blank? || vehicle.reg_no == " " || vehicle.reg_no == "-") 
         if !exist_reg_no
-          excel_reg_nos<<vehicle.reg_no
+          excel_reg_nos<< vehicle.reg_no
           if vehicle.reg_no.is_a? Numeric
             vehicle.reg_no = vehicle.reg_no.to_i
           end
           #vehicle.save!    #use this line or line 59(vehicles=[]) & line 94(vehicles<<vehicle) & line 98(return vehicles)
-          vehicles<<vehicle #all valid one...will be assign to array & send for data saving
+          vehicles<< vehicle #all valid one...will be assign to array & send for data saving
         end
       end      
     end 
@@ -171,7 +176,7 @@ end
     @invalid_vehicles = []
     vehicle_list.each do |vehiclesub|
       unless vehiclesub.valid?
-        @invalid_vehicles<<vehiclesub 
+        @invalid_vehicles<< vehiclesub 
       end
 	  end
     return @invalid_vehicles 

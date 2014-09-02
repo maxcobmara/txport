@@ -72,7 +72,7 @@
           - for vehicle_road_tax in @vehicle.vehicle_road_taxes
             %tr
               %td= vehicle_road_tax.start_on.try(:strftime, "%d-%b-%Y")
-              %td= vehicle_road_tax.try(:strftime, "%d-%b-%Y")
+              %td= vehicle_road_tax.end_on.try(:strftime, "%d-%b-%Y")
               %td= ringgols(vehicle_road_tax.amount )
 
   #tab3.tab-pane

@@ -210,12 +210,12 @@ en:
     acquired_id: Acquired Type
     condition_category_spanco: "Vehicles acquired from SPANCO must be categorised according to Vehicle Categories ie. KJU, KJK, KJT and KRJ"
     condition_category_spanco2: " (from menu - Vehicle | Drop Downs | Vehicle Categories - Description)"
-    condition_model: "Model - should ONLY consist of Vehicle Manufacturer and Vehicle Model"	
+    condition_model: "Model - should ONLY consist of Vehicle Manufacturer and Vehicle Model"
     condition_category_others: "Vehicle acquired from other than SPANCO must match with Vehicle Categories (other than KJU, KJK, KJT and KRJ)" 
     condition_assignment_particulars: "Vehicle Assignment Details : Assignment No dan Unit Name are compulsory."
     condition_assignment_details_particulars: "VRO Details : 'Kuasa VRO', 'vro_start_date' & 'vro_type' are compulsory."
-    condition_release_type: "VRO Release Type (vro_type) - must be either 'Perjawatan', 'Penggantian', 'Tambahan' or 'Pinjaman'. "    
-    condition_manufacturer: "Manufacturer Name - Must match with Vehicle Manufacturers (from menu - Vehicles | Drop Downs | Vehicles Manufacturers)"
+    condition_release_type: "VRO Release Type (vro_type) - must be either 'Perjawatan', 'Penggantian', 'Tambahan' or 'Pinjaman'. "
+    condition_manufacturer: "Manufacturer Name - Must match with Vehicle Manufacturers (from menu - Vehicles | Drop Downs | Vehicles Manufacturers) OR Manufacturer data will not be saved."
     invalid_excel: "Excel file data are invalid. "
     errors_count: "Excel record(s) are invalid for import."
     invalid_excel_data: Invalid Excel data
@@ -225,7 +225,8 @@ en:
     failure2: "Failure to comply with conditions no 2-7 & 11 may result inaccurate data saved into the system."
     failure3: "Failure to comply with conditions no 8 - all Vehicle Assignment & VRO details will not be saved."
     failure4: "Failure to comply with conditions no 9 - all VRO details will not be saved."
-    failure5: "Failure to comply with conditions no 10 - VRO release type will not be saved."
+    failure5: "Failure to comply with condition no 10 - VRO release type will not be saved."
+    failure6: "Failure to comply with condition no 11 - Vehicle Manufacturer data will not be saved."
     excel_format: Excel Format
     total: Total Vehicles
     number: Number
@@ -408,6 +409,7 @@ en:
     parent_id: Parent Unit
     new: New Unit
     edit: Edit Unit
+    remark_create: "* Unit will become a Depot upon existance of at least one Fuel Storage Tank. To create a NEW depot, create a Fuel Storage Tank and select a Unit (not yet a depot) it located at."
   staffs:
     title: Staffs
     staff_id : Staff
@@ -645,6 +647,9 @@ en:
       submit: Submit
       destroy: Destroy
       edit: Edit
+      back_to_vehicles: Vehicle List
+      back_to_depots: Depot List
+      back_to_units: Unit List
     label:
       vehicle:
         reg_no: Registration No

@@ -175,14 +175,14 @@ ms_MY:
     imported: Kenderaan dari fail Excel telah berjaya diimport
     acquired_id: Jenis Diperolehi
     condition_category_spanco: "Kategori Kenderaan bagi (Jenis Diperolehi = SPANCO) - Mesti terdiri daripada KJU, KJK, KJT and KRJ"
-    condition_category_spanco2: " (dari menu - Kenderaan | Data Asas | Kategori Kenderaan - Deskripsi)"	
-    condition_model: "Model - Mesti terdiri daripada Pembuat Kenderaan dan Model Kenderaan SAHAJA"	
+    condition_category_spanco2: " (dari menu - Kenderaan | Data Asas | Kategori Kenderaan - Deskripsi)"
+    condition_model: "Model - Mesti terdiri daripada Pembuat Kenderaan dan Model Kenderaan SAHAJA"
     condition_category_others: "Kategori Kenderaan bagi (Jenis Diperolehi = selain SPANCO) mesti sepadan dengan Kategori Kenderaan (selain KJU, KJK, KJT dan KRJ)" 
     condition_assignment_particulars: "Maklumat Perjawatan : No. Perjawatan dan Nama Unit bagi setiap kenderaan mesti diisi."
     condition_assignment_details_particulars: "Maklumat VRO : Kuasa VRO, Tarikh Pengambilan, Jenis Pengeluaran mesti diisi"
-    condition_release_type: "Jenis Pengeluaran (VRO) - mesti terdiri daripada 'Perjawatan', 'Penggantian', 'Tambahan' atau 'Pinjaman'. "    
-    condition_manufacturer: "Nama Pengeluar - Mesti sepadan dengan Pengeluar Kenderaan (dari menu - Kenderaan | Data Asas | Pengeluar Kenderaan)"
-    invalid_excel: "Data fail Excel tidak sah. "   
+    condition_release_type: "Jenis Pengeluaran (VRO) - mesti terdiri daripada 'Perjawatan', 'Penggantian', 'Tambahan' atau 'Pinjaman'. "
+    condition_manufacturer: "Nama Pengeluar - Mesti sepadan dengan Pengeluar Kenderaan (dari menu - Kenderaan | Data Asas | Pengeluar Kenderaan) ATAU data Pengeluar tidak akan disimpan."
+    invalid_excel: "Data fail Excel tidak sah. "
     errors_count: "rekod dari fail Excel tidak sah untuk diimport."
     invalid_excel_data: Data Excel yang tidak sah
     errors_counting: Jumlah Ralat
@@ -191,7 +191,8 @@ ms_MY:
     failure2: "Syarat 2-7 & 11 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
     failure3: "Syarat 8 yang tidak dipenuhi akan menyebabkan keseluruhan data Perjawatan kenderaan & VRO akan diabaikan."
     failure4: "Syarat 9 yang tidak dipenuhi akan menyebabkan keseluruhan data VRO tidak disimpan."
-    failure5: "Syarat 10 yang tidak dipenuhi akan meyebabkan data Jenis Pengeluaran tidak disimpan."
+    failure5: "Syarat 10 yang tidak dipenuhi akan menyebabkan data Jenis Pengeluaran tidak disimpan."
+    failure6: "Syarat 11 yang tidak dipenuhi akan menyebabkan data Pengeluar Kenderaan tidak disimpan"
     excel_format: Format Excel
     total: Jumlah Keseluruhan Kenderaan
     number: Bilangan
@@ -375,6 +376,7 @@ ms_MY:
     parent_id: Unit Induk
     new: Unit Baru
     edit: Sunting Unit
+    remark_create: "* Unit akan menjadi Depot apabila terdapat sekurang-kurangnya satu Tangki Penyimpanan Bahan PMP. Untuk mewujudkan Depot baru, ciptakan satu Tangki Penyimpanan Bahan PMP dan pilih lokasi Unit (yang bukan Depot) di mana ia berada."
   staffs:
     title: Anggota
     staff_id: Anggota
@@ -612,6 +614,9 @@ ms_MY:
       submit: Hantar
       destroy: Hapus
       edit: Sunting
+      back_to_vehicles: Senarai Kenderaan
+      back_to_depots: Senarai Depot
+      back_to_units: Senarai Unit
     label:
       vehicle:
         reg_no: "No. Daftar"
