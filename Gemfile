@@ -50,13 +50,13 @@ end
 # gem 'therubyracer', platforms: :ruby
 
 group :development do
-  gem "quiet_assets", "~> 1.0.2"
-  gem "annotate", "~> 2.6.1"
+  gem 'quiet_assets', '~> 1.1.0'
+  gem "annotate", "~> 2.6.8"
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.14.0"
-  gem 'guard-rspec', "~> 2.5.0"
+  gem 'rspec-rails', '~> 3.2.1'
+  gem 'guard-rspec', '~> 4.5.0'
 end
 
 group :test do
