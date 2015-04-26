@@ -15,11 +15,11 @@ gem 'kaminari', '~> 0.15.1'
 
 #display gems
 gem 'bootstrap-sass', '~> 2.3.2.2'
-gem 'sass-rails', '4.0.0'
+gem 'sass-rails', '~> 4.0.5'
 gem 'uglifier', '~> 2.1.1'  # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.0.0'  # Use CoffeeScript for .js.coffee assets and views
-gem "jquery-ui-rails"#, "~> 4.1.1"
-gem "jquery-rails", "~> 3.0.4"  # Use jquery as the JavaScript library
+gem "jquery-ui-rails", "~> 4.2.1"
+gem 'jquery-rails', '~> 3.1.2'  # Use jquery as the JavaScript library
 #gem 'turbolinks', '~> 1.1.1'  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "haml", "~> 4.0.3"
@@ -29,7 +29,6 @@ gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"
 gem "modernizr-rails", "~> 2.7.1"
-#gem "jquery-ui-rails", "~> 4.1.0"
 gem "paperclip", "~> 3.0"
 gem "bootstrap-kaminari-views", "~> 0.0.3"
 

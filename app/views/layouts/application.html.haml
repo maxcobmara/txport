@@ -3,7 +3,7 @@
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag 'application', media: 'screen'
-    = stylesheet_link_tag 'print', media: 'print'                 |
+    = stylesheet_link_tag 'print', media: 'print'
     = javascript_include_tag :modernizr
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -24,11 +24,11 @@
                 %div{:class => "alert alert-#{key}"}
                   = value
                   %button.close{"data-dismiss" => "alert", :type => "button"} &times;
-              .container{:style => "width:90%; margin:auto; min-height:400px;"}  
+              .container{:style => "width:90%; margin:auto; min-height:400px;"}
                 = yield
               = render 'layouts/footer'
-              
-              
+
+
 
     :javascript
       new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
