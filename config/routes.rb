@@ -36,16 +36,13 @@ Txport::Application.routes.draw do
   resources :depot_fuels do
     collection do
       get 'PMP_monthly_usage'
+      post :import
     end
   end
-  
-  resources :depot_fuels do 
-    collection { post :import }
-  end
-  
+
   match '/public/excel_format/DepotFuel_Excel.xls', to: 'depot_fuels#download_excel_format', via: 'get', target: '_self'
   match 'import_excel_depot_fuel', to:'depot_fuels#import_excel', via: 'get'
-  
+
   resources :fuel_types
 
   resources :fuel_tanks do
@@ -69,7 +66,7 @@ Txport::Application.routes.draw do
   resources :vehicle_fine_types
 
   resources :vehicle_assignments
-  
+
   resources :vehicle_end_of_lives do
     member do
       get 'confirm'
@@ -85,7 +82,7 @@ Txport::Application.routes.draw do
     end
   end
 
-  resources :maintenances do 
+  resources :maintenances do
     collection { post :import }
   end
 
@@ -103,11 +100,11 @@ Txport::Application.routes.draw do
       get 'kembaran_a'
     end
   end
-  
-  resources :vehicle_fines do 
+
+  resources :vehicle_fines do
     collection { post :import }
   end
-  
+
   match '/public/excel_format/VehicleFine_Excel.xls', to: 'vehicle_fines#download_excel_format', via: 'get', target: '_self'
   match 'import_excel_vehicle_fine', to:'vehicle_fines#import_excel', via: 'get'
 
@@ -119,7 +116,7 @@ Txport::Application.routes.draw do
   end
 
   resources :vehicle_nos
-  
+
   resources :vehicle_manufacturers
 
   resources :vehicle_categories
@@ -132,25 +129,24 @@ Txport::Application.routes.draw do
       get 'vehicle_monthly_report'
       get 'vehicle_yearly_report'
       get 'transport_summary_report'
-      get 'vehicle_yearly_report'       
+      get 'vehicle_yearly_report'
     end
   end
-  
-  resources :vehicles do 
+
+  resources :vehicles do
     collection { post :import }
   end
 
-  match '/public/excel_format/vehicle_excel.xls', to: 'vehicles#download_excel_format', via: 'get', target: '_self'
-  match 'import_excel', to:'vehicles#import_excel', via: 'get'
+
 
   devise_for :users
   resources :users
-  
+
   root to:  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -191,7 +187,7 @@ Txport::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
