@@ -137,6 +137,8 @@ Txport::Application.routes.draw do
     collection { post :import }
   end
 
+  match '/public/excel_format/vehicle_excel.xls', to: 'vehicles#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel_vehicle', to:'vehicles#import_excel', via: 'get'
 
 
   devise_for :users
