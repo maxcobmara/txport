@@ -10,7 +10,7 @@
       %li.badge{style: "margin-top:10px"}= @vehicles.count
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_path
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_vehicle_path
     %ul.nav	  
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", vehicles_path(format: "xls")
