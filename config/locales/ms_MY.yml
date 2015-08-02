@@ -259,6 +259,7 @@ ms_MY:
     excel_format: Format Excel
   vehicle_road_taxes:
     title: Cukai Jalan Kenderaan
+    title2: Cukai Jalan Kenderaan
     start_on: Mula
     end_on: Tamat
     amount: Amaun

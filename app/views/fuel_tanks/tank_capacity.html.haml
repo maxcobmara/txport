@@ -6,8 +6,6 @@
 .page-header
   %h1= t 'menu.tank_capacity_report', :default => model_class.model_name.human.pluralize
 
-
-%h2= t 'report.tank_capacity' 
 %table.table.table-bordered
   %thead
     %tr
@@ -40,7 +38,7 @@
         %th=t 'fuel_tanks.locations'
         %th=t 'fuel_types.fuel_type_id'
         %th.centre{colspan: "2"}=t 'fuel_tanks.capacity' 
-        %th
+
     - for fuel_tank in fuel_tanks
       %tbody
         %tr

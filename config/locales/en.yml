@@ -838,6 +838,7 @@ en:
       select_unit: Select Unit
       select_company: Select Contractor
       select_issuer: Select Issuer
+      select_contract_type: Select Contract Type
       select_authoriser: Select Authoriser
       sequence: Sequence
       sequence_text: "Sequence format : 01 for 1, 11 for 11"
