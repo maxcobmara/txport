@@ -105,10 +105,29 @@ class VehiclesController < ApplicationController
       #OR use these lines onwards
       @vehicles = Vehicle.import(params[:file]) 
       if @vehicles.all?(&:valid?)
-        @vehicles.each(&:save!)
+        #vids = @vehicles.each(&:save!).map(&:id)
+        #vehs=Vehicle.where(id: vids)
+        #vehs.each do |v|
+        @vehicles.each do |v|
+          v.save!
+          if v.status_id==4
+            veol=VehicleEndOfLife.new(vehicle_id: v.id)
+          elsif (v.status_id==3 || v.status_id==5)
+            if v.confirmation_code && v.confirmed_on
+              veol=VehicleEndOfLife.new(vehicle_id: v.id, confirmation_code: v.confirmation_code, confirmed_on: v.confirmed_on) 
+            else
+             #when confirmation_code(TEB ref no) & confirmed_on(TEB date) are invalid, status is SET as 'Proses TEB' - for LATER editing by user
+              vehicle=Vehicle.find(v.id)
+              vehicle.status_id = 4
+              vehicle.save!
+              veol=VehicleEndOfLife.new(vehicle_id: v.id)
+            end
+          end
+          veol.save!
+        end
         respond_to do |format|
           flash[:notice] 
-          format.html { redirect_to vehicles_url, notice: (t 'vehicles.imported') }
+          format.html { redirect_to vehicles_url, notice: (t 'vehicles.imported')}
         end
       else
         @invalid_vehicles = Vehicle.get_invalid(@vehicles) 

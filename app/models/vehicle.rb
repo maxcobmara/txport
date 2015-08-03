@@ -37,7 +37,7 @@ class Vehicle < ActiveRecord::Base
   end
   
   
-  attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name   #for data from excel file
+  attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name, :confirmation_code, :teb_date, :confirmed_on   #for data from excel file
   
   def full_reg_details
 	if vehicle_nos.nil? || vehicle_nos.blank?
@@ -86,11 +86,16 @@ end
     (6..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose] 
       vehicle = find_by_id(row["reg_no"]) || new 
-      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name") 
+      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name", "confirmation_code", "teb_date") 
  
       # retrieve fr excel, assign status_id according to drop down
       unless (vehicle.status.nil? || vehicle.status.blank?)
-        vehicle.status_id = VehicleStatus.get_status(vehicle.status)         
+        vehicle.status_id = VehicleStatus.get_status(vehicle.status)
+        unless (vehicle.teb_date.nil? || vehicle.teb_date.blank? || vehicle.teb_date==" " || vehicle.teb_date=="-")
+          if vehicle.teb_date.is_a? Date
+            vehicle.confirmed_on = vehicle.teb_date
+          end
+        end
       end
       # retrieve fr excel, assign acquired_id according to drop down
       unless (vehicle.acquired.nil? || vehicle.acquired.blank?)

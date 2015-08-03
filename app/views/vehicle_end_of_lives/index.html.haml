@@ -1,6 +1,6 @@
 - model_class = VehicleEndOfLife
 .page-header
-  %h1= t 'vehicle_end_of_life.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'vehicle_end_of_lives.title', :default => model_class.model_name.human.pluralize
 
 
 .navbar.navbar-inverse
@@ -22,8 +22,8 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= sort_link @search, :vehicle_reg_no, t('vehicle.reg_no') 
-      %th= sort_link @search, :start_on, t('vehicle_end_of_life.created') 
+      %th= sort_link @search, :vehicle_reg_no, t('vehicles.reg_no') 
+      %th= sort_link @search, :start_on, t('vehicle_end_of_lives.created') 
       %th.action_menu_td     
   %tbody
     - unless @pending.empty?

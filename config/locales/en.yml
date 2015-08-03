@@ -205,6 +205,7 @@ en:
     condition_reg_no: "Registration No, Engine No & Chassis No - No duplicates allowed *"
     condition_reg_on: "Register On (Mula Khidmat) - Only Excel data of DATE type will be saved"
     condition_status: "Status - Must match with Vehicle Statuses (from menu - Vehicle | Drop Downs | Vehicle Statuses - Short Name)"
+    condition_status2: "Status - if 'TEB', TEB Approval No.(Kuasa TEB) and TEB Approval Date must be supplied, OR status will be saved as 'Proses TEB'"
     condition_acquired: "Acquired From - Must match to Acquired Type (from menu - Vehicle | Drop Downs | Acquired Types - Short Name)"
     imported: Vehicles from Excel file are successfully imported
     acquired_id: Acquired Type
@@ -222,11 +223,11 @@ en:
     errors_counting: Total Errors
     errors_description: Errors Description
     failure: "* Failure to comply with condition no 1 will cause failure in import."
-    failure2: "Failure to comply with conditions no 2-7 & 11 may result inaccurate data saved into the system."
-    failure3: "Failure to comply with conditions no 8 - all Vehicle Assignment & VRO details will not be saved."
-    failure4: "Failure to comply with conditions no 9 - all VRO details will not be saved."
-    failure5: "Failure to comply with condition no 10 - VRO release type will not be saved."
-    failure6: "Failure to comply with condition no 11 - Vehicle Manufacturer data will not be saved."
+    failure2: "Failure to comply with conditions no 2-8 & 12 may result inaccurate data saved into the system."
+    failure3: "Failure to comply with conditions no 9 - all Vehicle Assignment & VRO details will not be saved."
+    failure4: "Failure to comply with conditions no 10 - all VRO details will not be saved."
+    failure5: "Failure to comply with condition no 11 - VRO release type will not be saved."
+    failure6: "Failure to comply with condition no 12 - Vehicle Manufacturer data will not be saved."
     excel_format: Excel Format
     total: Total Vehicles
     number: Number
@@ -637,6 +638,10 @@ en:
     line_item_price: "Price (RM)"
     quantity: Quantity
     unit_type: Unit Type
+  vehicle_end_of_lives:
+    title: Vehicle End of Lives
+    title2: Vehicle End of Life
+    created: Date
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)
   helpers:
