@@ -51,7 +51,11 @@ class VehicleFine < ActiveRecord::Base
 	(8..spreadsheet.last_row).each do |i|
 		e = spreadsheet.cell(i,'B')
 		unless (e.nil? || e.blank? || e==" " || e=="-")
-			vehicles_fr_excel << (e.scan(/\D+/)+e.scan(/\d+/)).join(" ")
+		    if e.include?(" ")
+		       vehicles_fr_excel << e
+		    else
+		       vehicles_fr_excel << (e.scan(/\D+/)+e.scan(/\d+/)).join(" ")
+		    end
 		end
 	end
 	#second sheet---
@@ -62,7 +66,11 @@ class VehicleFine < ActiveRecord::Base
 	(10..last_row_second).each do |i|
 		e2 = spreadsheet.cell(i,'B',second_sheet)
 		unless (e2.nil? || e2.blank? || e2==" " || e2=="-")
+		     if e2.include?(" ")
+		        vehicles_fr_excel2 << e2
+		     else
 			vehicles_fr_excel2 << (e2.scan(/\D+/)+e2.scan(/\d+/)).join(" ")
+		     end
 		end
 	end
 	#check for existance---
@@ -85,7 +93,11 @@ class VehicleFine < ActiveRecord::Base
 			reg_no = spreadsheet.cell(i,'B')
 			summoncode = spreadsheet.cell(i,'D')
 			unless (reg_no.nil? || reg_no.blank? || reg_no==" " || reg_no=="-")
-				reg_no_rev = (reg_no.scan(/\D+/)+reg_no.scan(/\d+/)).join(" ") 	#WHM2323 becomes WHM 2323
+			        if reg_no.include?(" ")
+				  reg_no_rev= reg_no
+				else
+				  reg_no_rev = (reg_no.scan(/\D+/)+reg_no.scan(/\d+/)).join(" ") 	#WHM2323 becomes WHM 2323
+				end
 				vehicle_id = Vehicle.get_vehicle(reg_no_rev) 					#("WHM 498") #46
 				vf = where('vehicle_id =? AND code=?', vehicle_id, summoncode)[0] || new
 				vf.attributes = row.to_hash.slice("reg_no","summon_code","summon_date","summon_time","summon_location","summon_desc","compound_amount","discounted_amount")
@@ -116,7 +128,11 @@ class VehicleFine < ActiveRecord::Base
 			summoncode = spreadsheet.cell(i,'D',second_sheet)					#row2["summon_code"]		
 			compound_amt = spreadsheet.cell(i,'M',second_sheet)					#row2["compound_amount"]	
 			unless (reg_no.nil? || reg_no.blank? || reg_no==" " || reg_no=="-")
-				reg_no_rev = (reg_no.scan(/\D+/)+reg_no.scan(/\d+/)).join(" ") 	#WHM2323 becomes WHM 2323
+			        if reg_no.include?(" ")
+                                  reg_no_rev = reg_no
+				else
+				  reg_no_rev = (reg_no.scan(/\D+/)+reg_no.scan(/\d+/)).join(" ") 	#WHM2323 becomes WHM 2323
+				end
 				vehicle_id = Vehicle.get_vehicle(reg_no_rev) 					
 				vf2 = where('vehicle_id =? AND code=?', vehicle_id, summoncode)[0] 
 				vf2.attributes = row2.to_hash.slice("discounted_amount")
