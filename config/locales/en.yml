@@ -234,6 +234,7 @@ en:
     unit: Unit
     markas: Markas Pemerintahan
     define_assignment: "Sila kemaskini 'Perjawatan Kenderaan'"
+    proses_teb_action_menu: "Status : 'PROSES TEB' mesti disetkan melalui menu tindakan (klik pada 'TEB')"
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah

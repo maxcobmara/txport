@@ -7,6 +7,7 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
   validates_presence_of :status_id
+  validate :process_teb_must_done_via_actionmenu
 
   has_many :vehicle_nos, :dependent => :nullify
   has_many :vehicle_road_taxes, :dependent => :destroy
@@ -35,7 +36,6 @@ class Vehicle < ActiveRecord::Base
       update_attribute(:status_id, VehicleStatus.where(short_name: 'PROSES TEB').pluck(:id)[0])
     end
   end
-  
   
   attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name, :confirmation_code, :teb_date, :confirmed_on   #for data from excel file
   
@@ -189,6 +189,15 @@ end
   
   def self.get_vehicle(reg_no)
 	where('reg_no LIKE (?)',reg_no)[0].id
+  end
+  
+  def process_teb_must_done_via_actionmenu
+    status_name = VehicleStatus.find(status_id).short_name
+    if status_name=='PROSES TEB' 
+      if vehicle_end_of_lives.count < 1
+        errors.add(:base, I18n.t('vehicles.proses_teb_action_menu'))
+      end
+    end
   end
 
 end
