@@ -94,12 +94,12 @@ ms_MY:
     inden_card: Kad Inden
     inden_card_listing: Senarai Kad Inden
     report_list: Senarai Laporan
-    summon_report: Laporan Senarai Saman 
+    summon_report: Laporan Saman 
     roadtax_report: Laporan Cukai Jalan Bulanan
     maintenance_report: Laporan Penyelenggaraan
     fuel_usage_report: Laporan Penggunaan Bahan PMP Bulanan
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
-    tank_capacity_report: Laporan Kapasiti Tangki
+    tank_capacity_report: Penyata Kapasiti Tangki
     summary_report: Laporan Ringkas
     detailed_report: Laporan Terperinci
     vehicle_report: Laporan Kenderaan
@@ -107,8 +107,8 @@ ms_MY:
     vehicle_monthly_report: Laporan Kenderaan Bulanan
     vehicle_yearly_report: Laporan Kenderaan Tahunan
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
-    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Bagi Suku Tahun
-    transport_summary: Laporan Pengangkutan
+    fuel_type_per_quarter: "Penyata Purata Pengunaan Harian (Bahan PMP) Bagi Suku Tahun"
+    transport_summary: Ringkasan Kenderaan
     PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
   report: 
     unit_fuel_graph: Graf Penggunaan Minyak
@@ -132,6 +132,14 @@ ms_MY:
     total_diesel: Jumlah Diesel
     total_other_fuel_type: Jumlah Bahan PMP Lain
     total_external_supplied: Jumlah Bekal Kepada
+    summon_listing: Senarai Saman
+    summon_report: Laporan Saman
+    maintenance_report: Laporan Kontrak Penyelenggaraan
+    road_tax_listing: Senarai Cukai Jalan Kenderaan
+    road_tax_listing_end: Senarai Cukai Jalan Kenderaan Berakhir 
+    maintenance_listing: Laporan Penyelenggaraan Kenderaan
+    average_petrol_usage: Purata Penggunaan Petrol
+    average_diesel_usage: Purata Peggunaan Diesel
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -306,6 +314,7 @@ ms_MY:
     location: Lokasi
     receipt_no: "No. Resit"
     paid_amount: Amaun Dibayar
+    topaid_amount: Selepas Diskaun
     payment_status: Status Pembayaran
     new: Saman Baru
     edit: Sunting Saman
@@ -320,6 +329,8 @@ ms_MY:
     condition_summon_time: "Format bagi masa saman dikeluarkan - 9999, contoh : 1205, 0010."
     condition_issuer_exist: "Maklumat Pengeluar Saman mesti diisi (baris 3,lajur ‘B’) dan mesti sepadan dengan Jenis Saman (rujuk menu - Kenderaan | Data Asas | Jenis Saman)."
     failure: "* Data tidak akan diimport jika syarat 1 - 5 tidak dipenuhi."
+    outstanding: Saman Belum Jelas
+    paid: Saman Telah Dijelaskan
   vehicle_cards:
     title: "Touch N Go & Smart Tag"  
     new: "Touch N Go & Smart Tag Baru"
@@ -526,6 +537,12 @@ ms_MY:
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
     sum: Jumlah Penggunaan
     total: Jumlah
+    monthly_usage: Penggunaan Sebulan
+    daily_average: Purata Penggunaan Sehari
+    first_quarter: Suku Tahun Pertama
+    second_quarter: Suku Tahun Kedua
+    third_quarter: Suku Tahun Ketiga
+    fourth_quarter: Suku Tahun KeempatF
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit

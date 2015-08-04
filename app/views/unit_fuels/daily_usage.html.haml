@@ -6,9 +6,11 @@
 - model_class = UnitFuel
 .page-header
   %h1= t 'menu.fuel_type_per_quarter', :default => model_class.model_name.human
-
-
-Annual Diesel Usage
+  
+%h2
+  =(t 'unit_fuels.first_quarter')+" "+Date.today.year.to_s
+  
+=t 'report.average_diesel_usage'
 %table.table.table-bordered
   %thead
     %tr
@@ -18,10 +20,11 @@ Annual Diesel Usage
       %th= t 'unit_fuels.d_vehicle'
       %th= t 'unit_fuels.d_misctool'
       %th= t 'unit_fuels.d_boat'
-      %th= t 'unit_fuels.diesel_usage'
+      %th= t 'unit_fuels.monthly_usage'
+      %th= t 'unit_fuels.daily_average'
 
   %tbody
-    - @daily_annual_usage_report.each do |unit_fuel|
+    - @daily_annual_usage_report1.each do |unit_fuel|
       %tr
         %td= check_kin {unit_fuel.unit.name}
         %td= check_kin {l(unit_fuel.issue_date)}
@@ -29,9 +32,13 @@ Annual Diesel Usage
         %td= unit_fuel.d_vehicle
         %td= unit_fuel.d_misctool
         %td= unit_fuel.d_boat
-        %td= UnitFuel.diesel_usage(unit_fuel)
+        %td= monthly_usage=UnitFuel.diesel_usage(unit_fuel)
+        %td
+          - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+          = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+          LTR
 
-Annual Petrol Usage 
+=t 'report.average_petrol_usage'
 %table.table.table-bordered
   %thead
     %tr
@@ -40,14 +47,201 @@ Annual Petrol Usage
       %th= t 'unit_fuels.d_vehicle'
       %th= t 'unit_fuels.d_misctool'
       %th= t 'unit_fuels.d_boat'
-      %th= t 'unit_fuels.petrol_usage'
+      %th= t 'unit_fuels.monthly_usage'
+      %th= t 'unit_fuels.daily_average'
 
   %tbody
-    - @daily_annual_usage_report.each do |unit_fuel|
+    - @daily_annual_usage_report1.each do |unit_fuel|
       %tr
         %td= check_kin {unit_fuel.unit.name}
         %td= check_kin {l(unit_fuel.issue_date)}  
         %td= unit_fuel.p_vehicle
         %td= unit_fuel.p_misctool
         %td= unit_fuel.p_boat
-        %td= UnitFuel.diesel_usage(unit_fuel)
+        %td= monthly_usage=UnitFuel.petrol_usage(unit_fuel)
+        %td
+          - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+          = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+          LTR
+          
+/second quarter 
+%BR
+- if @daily_annual_usage_report2
+  %h2
+    =(t 'unit_fuels.second_quarter')+" "+Date.today.year.to_s
+    
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vessel'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report2.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}
+          %td= unit_fuel.d_vessel
+          %td= unit_fuel.d_vehicle
+          %td= unit_fuel.d_misctool
+          %td= unit_fuel.d_boat
+          %td= monthly_usage=UnitFuel.diesel_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR
+
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report2.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}  
+          %td= unit_fuel.p_vehicle
+          %td= unit_fuel.p_misctool
+          %td= unit_fuel.p_boat
+          %td= monthly_usage=UnitFuel.petrol_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR
+            
+          
+/third quarter 
+%BR
+- if @daily_annual_usage_report3
+  %h2
+    =(t 'unit_fuels.third_quarter')+" "+Date.today.year.to_s
+    
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vessel'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report3.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}
+          %td= unit_fuel.d_vessel
+          %td= unit_fuel.d_vehicle
+          %td= unit_fuel.d_misctool
+          %td= unit_fuel.d_boat
+          %td= monthly_usage=UnitFuel.diesel_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR
+
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report3.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}  
+          %td= unit_fuel.p_vehicle
+          %td= unit_fuel.p_misctool
+          %td= unit_fuel.p_boat
+          %td= monthly_usage=UnitFuel.petrol_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR
+            
+          
+/fourth quarter 
+%BR
+- if @daily_annual_usage_report4
+  %h2
+    =(t 'unit_fuels.fourth_quarter')+" "+Date.today.year.to_s
+    
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vessel'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report4.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}
+          %td= unit_fuel.d_vessel
+          %td= unit_fuel.d_vehicle
+          %td= unit_fuel.d_misctool
+          %td= unit_fuel.d_boat
+          %td= monthly_usage=UnitFuel.diesel_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR
+
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th= t 'unit_fuels.unit_id'  
+        %th= t 'unit_fuels.issue_date'
+        %th= t 'unit_fuels.d_vehicle'
+        %th= t 'unit_fuels.d_misctool'
+        %th= t 'unit_fuels.d_boat'
+        %th= t 'unit_fuels.monthly_usage'
+        %th= t 'unit_fuels.daily_average'
+
+    %tbody
+      - @daily_annual_usage_report4.each do |unit_fuel|
+        %tr
+          %td= check_kin {unit_fuel.unit.name}
+          %td= check_kin {l(unit_fuel.issue_date)}  
+          %td= unit_fuel.p_vehicle
+          %td= unit_fuel.p_misctool
+          %td= unit_fuel.p_boat
+          %td= monthly_usage=UnitFuel.petrol_usage(unit_fuel)
+          %td
+            - total_days = Time.days_in_month(Date.today.month, Date.today.year)
+            = number_with_precision(monthly_usage.split(" ")[0].to_f/total_days, precision: 2)
+            LTR

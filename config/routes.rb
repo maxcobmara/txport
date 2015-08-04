@@ -98,6 +98,7 @@ Txport::Application.routes.draw do
   resources :vehicle_fines do
     collection do
       get 'kembaran_a'
+      get 'detailed_fine'
     end
   end
 

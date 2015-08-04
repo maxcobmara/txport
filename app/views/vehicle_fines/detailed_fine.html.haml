@@ -1,0 +1,68 @@
+.navbar
+  %ul.nav
+    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+%h1=t 'report.summon_report'
+
+=t 'vehicle_fines.outstanding'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle_fines.code'
+      %th= t 'vehicle.vehicle_id'
+      %th Unit
+      %th= t 'vehicle_fine_types.type_id'
+      %th= t 'vehicle_fines.issued_at'
+      %th= t 'vehicle_fines.pay_before'
+      %th= t 'vehicle_fines.location'
+      %th= t 'vehicle_fines.reason'
+      %th= t 'vehicle_fines.compound'
+      %th= t 'vehicle_fines.topaid_amount'
+
+  %tbody
+  - @vehicles_fines_outstanding.each do |vehicle_fine| 
+    - unitid=VehicleAssignmentDetail.where(vehicle_id: vehicle_fine.vehicle_id).first.vehicle_assignment.unit_id
+    %tr{:class => vehicle_fine.table_status}
+      %td= vehicle_fine.code
+      %td= vehicle_fine.vehicle.reg_no
+      %td= unitid.nil? ? "" : Unit.find(unitid).name 
+      %td= check_kin {vehicle_fine.vehicle_fine_type.description}
+      %td= check_kin {l(vehicle_fine.issued_at)}
+      %td= check_kin{l(vehicle_fine.pay_before )}
+      %td= vehicle_fine.location 
+      %td= vehicle_fine.reason
+      %td= ringgols(vehicle_fine.compound)
+      %td= ringgols(vehicle_fine.paid_amount)
+
+=t 'vehicle_fines.paid'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'vehicle_fines.code'
+      %th= t 'vehicle.vehicle_id'
+      %th= t 'vehicle_fine_types.type_id'
+      %th= t 'vehicle_fines.issued_at'
+      %th= t 'vehicle_fines.pay_before'
+      %th= t 'vehicle_fines.location'
+      %th= t 'vehicle_fines.reason'
+      %th= t 'vehicle_fines.compound'
+      %th= t 'vehicle_fines.receipt_no'
+      %th= t 'vehicle_fines.paid_on'
+      %th= t 'vehicle_fines.paid_amount'
+      %th= t 'vehicle_fines.payment_status'
+
+  %tbody
+  - @vehicles_fines_paid.each do |vehicle_fine| 
+    %tr{:class => vehicle_fine.table_status}
+      %td= vehicle_fine.code
+      %td= vehicle_fine.vehicle.reg_no
+      %td= check_kin {vehicle_fine.vehicle_fine_type.description}
+      %td= check_kin {l(vehicle_fine.issued_at)}
+      %td= check_kin{l(vehicle_fine.pay_before )}
+      %td= vehicle_fine.location 
+      %td= vehicle_fine.reason
+      %td= ringgols(vehicle_fine.compound)
+      %td= vehicle_fine.receipt_no
+      %td= check_kin{l(vehicle_fine.paid_on)}
+      %td= ringgols(vehicle_fine.paid_amount)
+      %td= vehicle_fine.payment_status
+

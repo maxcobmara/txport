@@ -94,7 +94,16 @@ class UnitFuelsController < ApplicationController
   
   def daily_usage  
     sdate = Date.today
-     @daily_annual_usage_report = UnitFuel.where( "issue_date = ? ", sdate ) 
+    thisyear=sdate.year
+    #@daily_annual_usage_report = UnitFuel.where( "issue_date = ? ", sdate ) 
+    quarter1=Date.new(thisyear, 1, 1)
+    quarter2=Date.new(thisyear, 4, 1)
+    quarter3=Date.new(thisyear, 7, 1)
+    quarter4=Date.new(thisyear, 10,1)
+    @daily_annual_usage_report1 = UnitFuel.where('issue_date >=? and issue_date <?', quarter1, quarter2)
+    @daily_annual_usage_report2 = UnitFuel.where('issue_date >=? and issue_date <?', quarter2, quarter3) if sdate >= quarter2 
+    @daily_annual_usage_report3 = UnitFuel.where('issue_date >=? and issue_date <?', quarter3, quarter4) if sdate >= quarter3 
+    @daily_annual_usage_report4 = UnitFuel.where('issue_date >=? and issue_date <?', quarter4, sdate.end_of_year)  if sdate >= quarter4
   end
 
   private

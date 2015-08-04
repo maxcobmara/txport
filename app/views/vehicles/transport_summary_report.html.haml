@@ -22,8 +22,7 @@
       %th= t 'vehicles.acquired_on' 
       %th= t 'vehicles.price' 
       %th= t 'vehicles.contract_id' 
-      %th= t 'vehicles.status' 
-      %th
+      %th= t 'vehicles.status_id' 
 
   %tbody
     - @vehicles.each do |vehicle|
@@ -31,7 +30,7 @@
         %td= vehicle.reg_no
         %td= vehicle.chassis_no
         %td= vehicle.engine_no
-        %td= vehicle.reg_on
+        %td= vehicle.reg_on.try(:strftime, '%d-%m-%Y')
         %td= vehicle.manufacturer_year
         %td= check_kin {vehicle.manufacturer.name}
         %td= vehicle.model
