@@ -130,7 +130,7 @@ en:
     summon_report: Summon Report
     roadtax_report: Monthly Roadtax Report
     maintenance_report: Maintenance Report
-    fuel_usage_report: Fuel Usage Report
+    fuel_usage_report: Monthly Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
     Summary_report: Summary Report
@@ -157,6 +157,15 @@ en:
     petrol_usage_current: Petrol Usage Current Month
     other_usage_current: Other Usage Current Month
     month_external_supply: External Supply Current Month
+    annual_diesel_usage: Annual Diesel Usage
+    annual_petrol_usage: Annual Petrol Usage 
+    annual_other_type_usage: Annual Other Fuel Type Usage
+    annual_external_supplied: Annual External Supplied
+    annual_external_issued: Annual External Issued
+    total_petrol: Total Petrol
+    total_diesel: Total Diesel
+    total_other_fuel_type: Total Other Fuel Type
+    total_external_supplied: Total External Supplied
   home:
     welcome: Welcome to Txport
     txport: Transport Management System
@@ -205,6 +214,7 @@ en:
     condition_reg_no: "Registration No, Engine No & Chassis No - No duplicates allowed *"
     condition_reg_on: "Register On (Mula Khidmat) - Only Excel data of DATE type will be saved"
     condition_status: "Status - Must match with Vehicle Statuses (from menu - Vehicle | Drop Downs | Vehicle Statuses - Short Name)"
+    condition_status2: "Status - if 'TEB', TEB Approval No.(Kuasa TEB) and TEB Approval Date must be supplied, OR status will be saved as 'Proses TEB'"
     condition_acquired: "Acquired From - Must match to Acquired Type (from menu - Vehicle | Drop Downs | Acquired Types - Short Name)"
     imported: Vehicles from Excel file are successfully imported
     acquired_id: Acquired Type
@@ -222,17 +232,18 @@ en:
     errors_counting: Total Errors
     errors_description: Errors Description
     failure: "* Failure to comply with condition no 1 will cause failure in import."
-    failure2: "Failure to comply with conditions no 2-7 & 11 may result inaccurate data saved into the system."
-    failure3: "Failure to comply with conditions no 8 - all Vehicle Assignment & VRO details will not be saved."
-    failure4: "Failure to comply with conditions no 9 - all VRO details will not be saved."
-    failure5: "Failure to comply with condition no 10 - VRO release type will not be saved."
-    failure6: "Failure to comply with condition no 11 - Vehicle Manufacturer data will not be saved."
+    failure2: "Failure to comply with conditions no 2-8 & 12 may result inaccurate data saved into the system."
+    failure3: "Failure to comply with conditions no 9 - all Vehicle Assignment & VRO details will not be saved."
+    failure4: "Failure to comply with conditions no 10 - all VRO details will not be saved."
+    failure5: "Failure to comply with condition no 11 - VRO release type will not be saved."
+    failure6: "Failure to comply with condition no 12 - Vehicle Manufacturer data will not be saved."
     excel_format: Excel Format
     total: Total Vehicles
     number: Number
     unit: Unit
     markas: Markas Pemerintahan
-    define_assignment: "Sila kemaskini 'Perjawatan Kenderaan'"
+    define_assignment: "Please update 'Vehicle Assignment'"
+    proses_teb_action_menu: "Status : 'PROSES TEB' must be done via action menu (click on 'TEB')"
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -545,6 +556,8 @@ en:
     tab_applicable: "(TAB) only applicable for"
     link_available: "link is available upon creation of 'Unit Fuel' for a "
     in: "(In 'New / Edit Unit Fuel' page : For UNIT *, select a depot and click 'Submit'. Click 'Edit', select 'Issued To' and add details accordingly)"
+    sum: Total Usage
+    total: Total
   add_fuels:
     title: Other Fuel - Unit
     title2: Other Fuel Usage - Unit
@@ -637,6 +650,10 @@ en:
     line_item_price: "Price (RM)"
     quantity: Quantity
     unit_type: Unit Type
+  vehicle_end_of_lives:
+    title: Vehicle End of Lives
+    title2: Vehicle End of Life
+    created: Date
   #localization for forms label in activemodel (to use in haml)  --> refer helpers --> label
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)
   helpers:

@@ -97,17 +97,17 @@ ms_MY:
     summon_report: Laporan Senarai Saman 
     roadtax_report: Laporan Cukai Jalan Bulanan
     maintenance_report: Laporan Penyelenggaraan
-    fuel_usage_report: Laporan Penggunaan Bahan PMP
+    fuel_usage_report: Laporan Penggunaan Bahan PMP Bulanan
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
     tank_capacity_report: Laporan Kapasiti Tangki
-    Summary_report: Laporan Ringkasan 
+    summary_report: Laporan Ringkas
     detailed_report: Laporan Terperinci
     vehicle_report: Laporan Kenderaan
     vehicle_daily_report: Laporan Kenderaan Harian
     vehicle_monthly_report: Laporan Kenderaan Bulanan
     vehicle_yearly_report: Laporan Kenderaan Tahunan
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
-    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Per Quarter
+    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Bagi Suku Tahun
     transport_summary: Laporan Pengangkutan
     PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
   report: 
@@ -119,10 +119,19 @@ ms_MY:
     petrol_vehicle_usage: Penggunaan Petrol Kenderaan
     petrol_misctool_usage: Penggunaan Petrol Alat Pelbagai
     petrol_boat_usage: Penggunaan Petrol Bot   
-    diesel_usage_current: Penggunaan Diesel Bulan Ini
-    petrol_usage_current: Penggunaan Petrol Bulan Ini
-    other_usage_current: Lain-lain Penggunaan Bulan Ini
-    month_external_supply: Pengambilan Bulan Ini
+    diesel_usage_current: Penggunaan Diesel Bulan Semasa
+    petrol_usage_current: Penggunaan Petrol Bulan Semasa
+    other_usage_current: Penggunaan Bahan PMP Lain Bulan Semasa
+    month_external_supply: Ambil Daripada Bulan Semasa
+    annual_diesel_usage: Penggunaan Diesel Tahun Semasa
+    annual_petrol_usage: Penggunaan Petrol Tahun Semasa
+    annual_other_type_usage: Penggunaan Bahan PMP Lain Tahun Semasa
+    annual_external_supplied: Bekal Kepada Tahun Semasa
+    annual_external_issued: Ambil Daripada Tahun Semasa
+    total_petrol: Jumlah Petrol
+    total_diesel: Jumlah Diesel
+    total_other_fuel_type: Jumlah Bahan PMP Lain
+    total_external_supplied: Jumlah Bekal Kepada
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -171,6 +180,7 @@ ms_MY:
     condition_reg_no: "No. Daftar, No. Casis dan No. Enjin - Mestilah unik dan tiada rekod yang bertindan *"
     condition_reg_on: "Mula Khidmat - Hanya data Excel dengan jenis TARIKH akan disimpan"
     condition_status: "Status - Mesti sepadan dengan Status Kenderaan (dari menu - Kenderaan | Data Asas | Status Kenderaan - Nama Ringkas)"
+    condition_status2: "Status - jika 'TEB', No. Kelulusan TEB (Kuasa TEB) dan Tarikh Kelulusan TEB mesti disertakan, jika tidak, status akan disimpan sebagai 'Proses TEB'"
     condition_acquired: "Jenis Diperolehi - Mesti sepadan dengan Jenis Diperolehi (dari menu - Kenderaan | Data Asas | Jenis Diperolehi - Nama Ringkas)"
     imported: Kenderaan dari fail Excel telah berjaya diimport
     acquired_id: Jenis Diperolehi
@@ -188,20 +198,21 @@ ms_MY:
     errors_counting: Jumlah Ralat
     errors_description: Deskripsi Ralat
     failure: "* Data tidak akan diimport jika syarat 1 tidak dipenuhi."
-    failure2: "Syarat 2-7 & 11 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
-    failure3: "Syarat 8 yang tidak dipenuhi akan menyebabkan keseluruhan data Perjawatan kenderaan & VRO akan diabaikan."
-    failure4: "Syarat 9 yang tidak dipenuhi akan menyebabkan keseluruhan data VRO tidak disimpan."
-    failure5: "Syarat 10 yang tidak dipenuhi akan menyebabkan data Jenis Pengeluaran tidak disimpan."
-    failure6: "Syarat 11 yang tidak dipenuhi akan menyebabkan data Pengeluar Kenderaan tidak disimpan"
+    failure2: "Syarat 2-8 & 12 yang tidak dipenuhi akan menyebabkan data yang tidak tepat disimpan ke dalam sistem."
+    failure3: "Syarat 9 yang tidak dipenuhi akan menyebabkan keseluruhan data Perjawatan kenderaan & VRO akan diabaikan."
+    failure4: "Syarat 10 yang tidak dipenuhi akan menyebabkan keseluruhan data VRO tidak disimpan."
+    failure5: "Syarat 11 yang tidak dipenuhi akan menyebabkan data Jenis Pengeluaran tidak disimpan."
+    failure6: "Syarat 12 yang tidak dipenuhi akan menyebabkan data Pengeluar Kenderaan tidak disimpan"
     excel_format: Format Excel
     total: Jumlah Keseluruhan Kenderaan
     number: Bilangan
     unit: Unit
     markas: Markas Pemerintahan
-    define_assignment: "Please update 'Vehicle Assignment'"
+    define_assignment: "Sila kemaskini 'Perjawatan Kenderaan'"
+    proses_teb_action_menu: "Status : 'PROSES TEB' mesti disetkan melalui menu tindakan (klik pada 'TEB')"
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
-    home: Rumah  
+    home: Laman Utama  
     vehicle_id: Kenderaan   #use in index - other than vehicles
     new: Kenderaan Baru
     chassis_no: "No. Casis"
@@ -514,7 +525,7 @@ ms_MY:
     link_available: "(pautan) hanya wujud setelah rekod 'Bahan PMP di Unit' dicipta untuk "
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
     sum: Jumlah Penggunaan
-    Total: Total 
+    total: Jumlah
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit
@@ -605,6 +616,10 @@ ms_MY:
     line_item_price: "Harga (RM)"
     quantity: Kuantiti
     unit_type: Unit Ukuran
+  vehicle_end_of_lives:
+    title: "Kenderaan - Tamat Jangka Hayat"
+    title2: "Kenderaan - Tamat Jangka Hayat"
+    created: Tarikh
   #localization for FORMS LABEL in activemodel (to use in haml)
   #http://stackoverflow.com/questions/4736396/how-do-you-localize-the-field-names-in-activemodel-error-messages    (solution #3)     
   helpers:
@@ -807,7 +822,7 @@ ms_MY:
       select_company: Pilih Kontraktor
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
-      select_authoriser: Select Authoriser
+      select_authoriser: Pilih Pelulus
       sequence: Urutan
       sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
       select_depot_fuel: Pilih Depot | Bulan Tahun

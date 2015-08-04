@@ -26,7 +26,7 @@ end
     #@vehicle_end_of_life = VehicleEndOfLife.new
 	@vehicle = Vehicle.find(params[:vehicle_id])
 	@vehicle_end_of_life = @vehicle.vehicle_end_of_lives.new(params[:vehicle_end_of_life])
-    @vehicle_end_of_life.save
+
   end
 
   # GET /vehicle_end_of_lives/1/edit

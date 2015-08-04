@@ -22,7 +22,7 @@ class UnitFuel < ActiveRecord::Base
   end 
   
   def month_unit
-    "#{unit.name} "+"#{issue_date.strftime("%b")} "+"#{issue_date.year}"
+    "#{unit.name} - "+"#{issue_date.strftime("%b")} "+"#{issue_date.year}"
   end 
   
   #this is really bad should have another table with type and quantity. too late now

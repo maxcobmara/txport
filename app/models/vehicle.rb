@@ -7,6 +7,7 @@ class Vehicle < ActiveRecord::Base
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
   validates_uniqueness_of :engine_no,   :allow_nil => true, :allow_blank => true
   validates_presence_of :status_id
+  validate :process_teb_must_done_via_actionmenu
 
   has_many :vehicle_nos, :dependent => :nullify
   has_many :vehicle_road_taxes, :dependent => :destroy
@@ -36,8 +37,7 @@ class Vehicle < ActiveRecord::Base
     end
   end
   
-  
-  attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name   #for data from excel file
+  attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name, :confirmation_code, :teb_date, :confirmed_on   #for data from excel file
   
   def full_reg_details
 	if vehicle_nos.nil? || vehicle_nos.blank?
@@ -86,11 +86,16 @@ end
     (6..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose] 
       vehicle = find_by_id(row["reg_no"]) || new 
-      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name") 
+      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name", "confirmation_code", "teb_date") 
  
       # retrieve fr excel, assign status_id according to drop down
       unless (vehicle.status.nil? || vehicle.status.blank?)
-        vehicle.status_id = VehicleStatus.get_status(vehicle.status)         
+        vehicle.status_id = VehicleStatus.get_status(vehicle.status)
+        unless (vehicle.teb_date.nil? || vehicle.teb_date.blank? || vehicle.teb_date==" " || vehicle.teb_date=="-")
+          if vehicle.teb_date.is_a? Date
+            vehicle.confirmed_on = vehicle.teb_date
+          end
+        end
       end
       # retrieve fr excel, assign acquired_id according to drop down
       unless (vehicle.acquired.nil? || vehicle.acquired.blank?)
@@ -184,6 +189,15 @@ end
   
   def self.get_vehicle(reg_no)
 	where('reg_no LIKE (?)',reg_no)[0].id
+  end
+  
+  def process_teb_must_done_via_actionmenu
+    status_name = VehicleStatus.find(status_id).short_name
+    if status_name=='PROSES TEB' 
+      if vehicle_end_of_lives.count < 1
+        errors.add(:base, I18n.t('vehicles.proses_teb_action_menu'))
+      end
+    end
   end
 
 end

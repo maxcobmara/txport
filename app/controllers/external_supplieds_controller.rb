@@ -18,7 +18,7 @@ class ExternalSuppliedsController < ApplicationController
   def new
     @external_supplied = ExternalSupplied.new
     @unit_fuel = UnitFuel.find(params[:unit_fuel_id])
-    @external_supplied = @unit_fuel.external_isupplieds.new(params[:external_supplied])
+    @external_supplied = @unit_fuel.external_supplieds.new(params[:external_supplied])
     @external_supplied.save
   end
 
