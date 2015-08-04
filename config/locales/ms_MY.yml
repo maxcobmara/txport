@@ -97,17 +97,17 @@ ms_MY:
     summon_report: Laporan Senarai Saman 
     roadtax_report: Laporan Cukai Jalan Bulanan
     maintenance_report: Laporan Penyelenggaraan
-    fuel_usage_report: Laporan Penggunaan Bahan PMP
+    fuel_usage_report: Laporan Penggunaan Bahan PMP Bulanan
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
     tank_capacity_report: Laporan Kapasiti Tangki
-    Summary_report: Laporan Ringkasan 
+    summary_report: Laporan Ringkas
     detailed_report: Laporan Terperinci
     vehicle_report: Laporan Kenderaan
     vehicle_daily_report: Laporan Kenderaan Harian
     vehicle_monthly_report: Laporan Kenderaan Bulanan
     vehicle_yearly_report: Laporan Kenderaan Tahunan
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
-    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Per Quarter
+    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Bagi Suku Tahun
     transport_summary: Laporan Pengangkutan
     PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
   report: 
@@ -119,10 +119,19 @@ ms_MY:
     petrol_vehicle_usage: Penggunaan Petrol Kenderaan
     petrol_misctool_usage: Penggunaan Petrol Alat Pelbagai
     petrol_boat_usage: Penggunaan Petrol Bot   
-    diesel_usage_current: Penggunaan Diesel Bulan Ini
-    petrol_usage_current: Penggunaan Petrol Bulan Ini
-    other_usage_current: Lain-lain Penggunaan Bulan Ini
-    month_external_supply: Pengambilan Bulan Ini
+    diesel_usage_current: Penggunaan Diesel Bulan Semasa
+    petrol_usage_current: Penggunaan Petrol Bulan Semasa
+    other_usage_current: Penggunaan Bahan PMP Lain Bulan Semasa
+    month_external_supply: Ambil Daripada Bulan Semasa
+    annual_diesel_usage: Penggunaan Diesel Tahun Semasa
+    annual_petrol_usage: Penggunaan Petrol Tahun Semasa
+    annual_other_type_usage: Penggunaan Bahan PMP Lain Tahun Semasa
+    annual_external_supplied: Bekal Kepada Tahun Semasa
+    annual_external_issued: Ambil Daripada Tahun Semasa
+    total_petrol: Jumlah Petrol
+    total_diesel: Jumlah Diesel
+    total_other_fuel_type: Jumlah Bahan PMP Lain
+    total_external_supplied: Jumlah Bekal Kepada
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -516,7 +525,7 @@ ms_MY:
     link_available: "(pautan) hanya wujud setelah rekod 'Bahan PMP di Unit' dicipta untuk "
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
     sum: Jumlah Penggunaan
-    Total: Total 
+    total: Jumlah
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit

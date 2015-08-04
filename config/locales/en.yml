@@ -130,7 +130,7 @@ en:
     summon_report: Summon Report
     roadtax_report: Monthly Roadtax Report
     maintenance_report: Maintenance Report
-    fuel_usage_report: Fuel Usage Report
+    fuel_usage_report: Monthly Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
     Summary_report: Summary Report
@@ -157,6 +157,15 @@ en:
     petrol_usage_current: Petrol Usage Current Month
     other_usage_current: Other Usage Current Month
     month_external_supply: External Supply Current Month
+    annual_diesel_usage: Annual Diesel Usage
+    annual_petrol_usage: Annual Petrol Usage 
+    annual_other_type_usage: Annual Other Fuel Type Usage
+    annual_external_supplied: Annual External Supplied
+    annual_external_issued: Annual External Issued
+    total_petrol: Total Petrol
+    total_diesel: Total Diesel
+    total_other_fuel_type: Total Other Fuel Type
+    total_external_supplied: Total External Supplied
   home:
     welcome: Welcome to Txport
     txport: Transport Management System
@@ -547,6 +556,8 @@ en:
     tab_applicable: "(TAB) only applicable for"
     link_available: "link is available upon creation of 'Unit Fuel' for a "
     in: "(In 'New / Edit Unit Fuel' page : For UNIT *, select a depot and click 'Submit'. Click 'Edit', select 'Issued To' and add details accordingly)"
+    sum: Total Usage
+    total: Total
   add_fuels:
     title: Other Fuel - Unit
     title2: Other Fuel Usage - Unit

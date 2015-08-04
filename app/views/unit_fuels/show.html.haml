@@ -204,7 +204,7 @@
               %td
           / for cards - own by individual (senior officer - from current unit)
           - for staff in @unit_fuel.unit.staffs
-            - if staff.inden_cards.nil? == false
+            - if staff.inden_cards.count > 0
               %tr
                 %td= staff.staff_details
                 %td= staff.inden_cards[0].serial_no

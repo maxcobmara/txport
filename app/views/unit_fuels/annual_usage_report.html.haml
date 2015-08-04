@@ -9,7 +9,7 @@
 
 
 
-Annual Diesel Usage
+=t 'report.annual_diesel_usage'
 %table.table.table-bordered
   %thead
     %tr
@@ -32,7 +32,7 @@ Annual Diesel Usage
         %td= unit_fuel.d_boat
         %td= UnitFuel.diesel_usage(unit_fuel)
     %tr
-      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.total'
       %td= t 'unit_fuels.sum'
       %td= UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_vessel)
       %td= UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_vehicle)
@@ -40,7 +40,7 @@ Annual Diesel Usage
       %td= UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_boat)
       %td= UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_vessel) + UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_vehicle) + UnitFuel.where( "issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_misctool) + UnitFuel.where("issue_date >= ? AND issue_date <= ? ", @sdate, @edate ).sum(:d_boat)
 
-Annual Petrol Usage 
+=t 'report.annual_petrol_usage'
 %table.table.table-bordered
   %thead
     %tr
@@ -62,15 +62,15 @@ Annual Petrol Usage
         %td= UnitFuel.petrol_usage(unit_fuel)
 
     %tr
-      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.total'
       %td= t 'unit_fuels.sum'
       %td= UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_vehicle)
       %td= UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_misctool)
       %td= UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_boat)
       %td= UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_vehicle) + UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_misctool) + UnitFuel.where('issue_date >=? AND issue_date <=?', @sdate, @edate).sum(:p_boat)
-	
 
-Annual Other Fuel Type
+
+= t 'report.annual_other_type_usage'
 %table.table.table-bordered
   %thead
     %tr
@@ -91,11 +91,11 @@ Annual Other Fuel Type
     %tr
       %td= "-"
       %td= "-"
-      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.total'
       %td= AddFuel.where('created_at >=? AND created_at <=?', @sdate, @edate).sum(:quantity)
       %td= "-"
 
-Annual External Supplied
+= t 'report.annual_external_supplied'
 %table.table.table-bordered
   %thead
     %tr
@@ -115,7 +115,32 @@ Annual External Supplied
         %td= check_kin {external_supplied.resource.name}
     %tr
       %td= "-"
-      %td= t 'unit_fuels.Total'
+      %td= t 'unit_fuels.total'
+      %td= ExternalSupplied.where('created_at >=? AND created_at <=?', @sdate, @edate).sum(:quantity)
+      %td= "-"
+      %td= "-"
+ 
+= t 'report.annual_external_issued'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'add_fuels.unit_fuel_id'
+      %th= t 'external_supplieds.fuel_type_id'
+      %th= t 'external_supplieds.quantity'
+      %th= t 'external_supplieds.unit_type_id'
+      %th= t 'external_supplieds.source'
+
+  %tbody
+    - @year_external_issue.each do |external_issued|
+      %tr
+        %td= check_kin {external_issued.unit_fuel.month_unit}
+        %td= check_kin {external_issued.fuel_type.name}
+        %td= external_issued.quantity.to_i
+        %td= check_kin {external_issued.unit_type.description}
+        %td= check_kin {external_issued.resource.name}
+    %tr
+      %td= "-"
+      %td= t 'unit_fuels.total'
       %td= ExternalSupplied.where('created_at >=? AND created_at <=?', @sdate, @edate).sum(:quantity)
       %td= "-"
       %td= "-"
@@ -126,18 +151,22 @@ Annual External Supplied
       %tr
         %th= unit_id
         %td{colspan: "4", style: "font-size:0.8em; padding-top:25px;"}
-          Total Petrol :
+          = t 'report.total_petrol'
+          \:
           = UnitFuel.where('unit_id =?', unit_id ).sum(:p_vehicle) + UnitFuel.where('unit_id =?', unit_id ).sum(:p_boat) + UnitFuel.where('unit_id =?', unit_id ).sum(:p_misctool)
-          litres
+          ltr
           &nbsp; | &nbsp
-          Total Diesel :
+          = t 'report.total_diesel' 
+          \:
           = UnitFuel.where('unit_id =?', unit_id ).sum(:d_vessel) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_vehicle) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_misctool) + UnitFuel.where('unit_id =?', unit_id ).sum(:d_boat)
-          litres
+          ltr
           &nbsp; | &nbsp
-          Total Other Fuel Type :
+          = t 'report.total_other_fuel_type' 
+          \:
           = AddFuel.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
           &nbsp; | &nbsp
-          Total External Supplied :
+          = t 'report.total_external_supplied' 
+          \:
           = ExternalSupplied.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
       %tr
         %th= t 'unit_fuels.unit_id'  
