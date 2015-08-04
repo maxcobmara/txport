@@ -142,7 +142,7 @@ en:
     annual_usage_report: Annual Usage Report
     fuel_type_per_quarter: "Report of Daily Average Usage (Fuel Type) Per Quarter"
     transport_summary: Transport Summary
-    PMP_usage: Monthly Fuel Usage Report
+    pmp_usage: Monthly Fuel Usage Report
 
   report:
     unit_fuel_graph: Unit Fuel Graph
@@ -172,6 +172,10 @@ en:
     road_tax_listing: Vehicle Road Tax Listing
     road_tax_listing_end: Vehicle Road Tax Listing Ending
     maintenance_listing: Vehicle Maintenance Report
+    average_petrol_usage: Average Petrol Usage
+    average_diesel_usage: Averge Diesel Usage
+    average_avtur_usage: Average Avtur Usage
+    average_avcat_usage: Average Avcat Usage
   home:
     welcome: Welcome to Txport
     txport: Transport Management System
@@ -502,6 +506,10 @@ en:
     cap: "Storage Tank CAPACITY is blank"
     ftcm: "Fuel Type COUNT did not matched."
     excel_format: Format Excel
+    bal_start_and_supplied: "Carried Forward + Received"
+    issued_received: "Issued / Usage"
+    current_stock: Current Stock
+    usage_average: Usage Average
   fuel_issueds:
     title: Fuel Issued
     title2: Issued

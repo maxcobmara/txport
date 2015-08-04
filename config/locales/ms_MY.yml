@@ -109,7 +109,7 @@ ms_MY:
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
     fuel_type_per_quarter: "Penyata Purata Pengunaan Harian (Bahan PMP) Bagi Suku Tahun"
     transport_summary: Ringkasan Kenderaan
-    PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
+    pmp_usage: Penyata Penggunaan Bahan PMP Bulanan
   report: 
     unit_fuel_graph: Graf Penggunaan Minyak
     diesel_vessel_usage: Penggunaan Diesel Kapal
@@ -139,7 +139,9 @@ ms_MY:
     road_tax_listing_end: Senarai Cukai Jalan Kenderaan Berakhir 
     maintenance_listing: Laporan Penyelenggaraan Kenderaan
     average_petrol_usage: Purata Penggunaan Petrol
-    average_diesel_usage: Purata Peggunaan Diesel
+    average_diesel_usage: Purata Penggunaan Diesel
+    average_avtur_usage: Purata Penggunaan Avtur
+    average_avcat_usage: Purata Penggunaan Avcat
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -472,6 +474,10 @@ ms_MY:
     cap: "Storage Tank CAPACITY is blank"
     ftcm: "Fuel Type COUNT did not matched."
     excel_format: Format Excel
+    bal_start_and_supplied: "Stok Awal + Penerimaan"
+    issued_received: "Pengeluaran / Pengunaan"
+    current_stock: Stok Semasa
+    usage_average: Purata Penggunaan
   fuel_issueds:
     title: Pengeluaran Bahan PMP
     title2: Pengeluaran

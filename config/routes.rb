@@ -36,6 +36,7 @@ Txport::Application.routes.draw do
   resources :depot_fuels do
     collection do
       get 'PMP_monthly_usage'
+      get 'quarter_daily_usage'
       post :import
     end
   end
