@@ -97,7 +97,7 @@ ms_MY:
     summon_report: Laporan Saman 
     roadtax_report: Laporan Cukai Jalan Bulanan
     maintenance_report: Laporan Penyelenggaraan
-    fuel_usage_report: Laporan Penggunaan Bahan PMP Bulanan
+    fuel_usage_report: Laporan Penggunaan Bahan PMP
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
     tank_capacity_report: Penyata Kapasiti Tangki
     summary_report: Laporan Ringkas
@@ -107,7 +107,7 @@ ms_MY:
     vehicle_monthly_report: Laporan Kenderaan Bulanan
     vehicle_yearly_report: Laporan Kenderaan Tahunan
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
-    fuel_type_per_quarter: "Penyata Purata Pengunaan Harian (Bahan PMP) Bagi Suku Tahun"
+    fuel_type_per_quarter: "Penyata Purata Penggunaan Harian (Jenis Bahan PMP) Bagi Suku Tahun"
     transport_summary: Ringkasan Kenderaan
     pmp_usage: Penyata Penggunaan Bahan PMP Bulanan
   report: 
@@ -448,7 +448,7 @@ ms_MY:
     unit_id: Depot
     issue_date: Tarikh
     fuel_type: Jenis Bahan PMP
-    start_bal: Baki Mula
+    start_bal: Baki Awal
     received: Penerimaan
     issued: Pengeluaran
     tank_bal: Baki Tangki
@@ -475,9 +475,12 @@ ms_MY:
     ftcm: "Fuel Type COUNT did not matched."
     excel_format: Format Excel
     bal_start_and_supplied: "Stok Awal + Penerimaan"
-    issued_received: "Pengeluaran / Pengunaan"
+    issued_received: "Pengeluaran / Penggunaan"
     current_stock: Stok Semasa
     usage_average: Purata Penggunaan
+    total: Jumlah
+    detail_by_month: Mengikut Bulan
+    general: Umum
   fuel_issueds:
     title: Pengeluaran Bahan PMP
     title2: Pengeluaran
@@ -545,10 +548,10 @@ ms_MY:
     total: Jumlah
     monthly_usage: Penggunaan Sebulan
     daily_average: Purata Penggunaan Sehari
-    first_quarter: Suku Tahun Pertama
-    second_quarter: Suku Tahun Kedua
-    third_quarter: Suku Tahun Ketiga
-    fourth_quarter: Suku Tahun KeempatF
+    first_quarter: "Suku Tahun Pertama "
+    second_quarter: "Suku Tahun Kedua "
+    third_quarter: "Suku Tahun Ketiga "
+    fourth_quarter: "Suku Tahun Keempat "
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit

@@ -37,6 +37,7 @@ Txport::Application.routes.draw do
     collection do
       get 'PMP_monthly_usage'
       get 'quarter_daily_usage'
+      get 'quarter_daily_usage2'
       post :import
     end
   end

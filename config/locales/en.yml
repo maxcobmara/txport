@@ -130,7 +130,7 @@ en:
     summon_report: Summon Report
     roadtax_report: Monthly Roadtax Report
     maintenance_report: Maintenance Report
-    fuel_usage_report: Monthly Fuel Usage Report
+    fuel_usage_report: Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
     summary_report: Summary Report
@@ -510,6 +510,9 @@ en:
     issued_received: "Issued / Usage"
     current_stock: Current Stock
     usage_average: Usage Average
+    total: Total
+    detail_by_month: Detail by Month
+    general: General
   fuel_issueds:
     title: Fuel Issued
     title2: Issued
