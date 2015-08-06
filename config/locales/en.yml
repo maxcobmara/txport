@@ -166,6 +166,7 @@ en:
     total_diesel: Total Diesel
     total_other_fuel_type: Total Other Fuel Type
     total_external_supplied: Total External Supplied
+    total_external_issued: Total External Issued
     summon_listing: Summons Listing
     summon_report: Summons Report
     maintenance_report: Maintenance Contract Report

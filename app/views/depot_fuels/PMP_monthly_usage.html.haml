@@ -5,8 +5,7 @@
 - provide(:title, 'Depot Fuels')
 - model_class = DepotFuel
 .page-header
-  %h1= t 'PMP_usage.title', :default => model_class.model_name.human.pluralize
-
+  %h1= t 'menu.pmp_usage', :default => model_class.model_name.human.pluralize
 
 %table.table.table-bordered
   %thead
@@ -14,19 +13,55 @@
       %th= t 'depot_fuels.unit_id'
       %th= t 'depot_fuels.issue_date'
       %th= t 'fuel_supplieds.fuel_type_id'
+      %th= t 'depot_fuels.start_bal'
       %th= t 'depot_fuels.received' 
       %th= t 'depot_fuels.issued' 
-      %th= t 'fuel_balances.current' 
-
+      %th= t 'fuel_balances.current'
+      %th= t 'depot_fuels.usage_average'
   %tbody
-    - @month_usage.each do |unit_fuel|
+    - fuel_types=FuelType.where(shortname: ['PETROL', 'DIESEL', 'AVTUR', 'AVCAT']).pluck(:id)  #[1,2,5,12]
+    - fuel_types.each do |ftype|
+      - total_bal_start=0
+      - total_supplieds=0
+      - total_issueds=0
+      - total_current=0
+      - total_average=0
+      - @month_usage.each do |depot_fuel|
+        - tank_ids=FuelTank.where(fuel_type_id: ftype).where(unit_id: depot_fuel.unit_id).pluck(:id)
+        - days_count=Time.days_in_month(Date.today.month, Date.today.year)
+        %tr
+          %td= check_kin {depot_fuel.depot.unit_details}
+          %td= check_kin {l(depot_fuel.issue_date)}
+          %td= FuelType.find(ftype).name
+          %td.right= bal_start=@last_prev_depot_fuel.fuel_balances.where(fuel_tank_id: tank_ids).sum(:current) if @last_prev_depot_fuel rescue 0
+          %td.right= supplieds=depot_fuel.fuel_supplieds.where(fuel_type_id: ftype).sum(:quantity)
+          %td.right= issueds=depot_fuel.fuel_issueds.where(fuel_type_id: ftype).sum(:quantity)
+          %td.right= current=depot_fuel.fuel_balances.where(fuel_tank_id: tank_ids).sum(:current) 
+          - average=issueds/days_count
+          %td.right=number_with_precision(average, precision: 2)
+          - total_bal_start+=bal_start
+          - total_supplieds+=supplieds
+          - total_issueds+=issueds
+          - total_current+=current
+          - total_average+=average
       %tr
-        %td= check_kin {depot_fuel.depot.unit_details}
-        %td= check_kin {l(depot_fuel.issue_date)}
-        %td= check_kin {depot_fuel_supplied.fuel_type.name}
-        %td= check_kin {depot_fuel_supplied.quantity}
-        %td= check_kin {depot_fuel_issued.quantity}
-        %td= check_kin {depot_fuel_balance.current}
+        %th.right{colspan: 3}= (t 'depot_fuels.total').upcase
+        %td.right=total_bal_start
+        %td.right=total_supplieds
+        %td.right=total_issueds
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+      %tr
+        %td{:colspan => 8} &nbsp;
+
+    /- @month_usage.each do |depot_fuel|
+    /  %tr
+    /    %td= check_kin {depot_fuel.depot.unit_details}
+    /    %td= check_kin {l(depot_fuel.issue_date)}
+    /    %td= check_kin {depot_fuel_supplied.fuel_type.name}
+    /    %td= check_kin {depot_fuel_supplied.quantity}
+    /    %td= check_kin {depot_fuel_issued.quantity}
+    /    %td= check_kin {depot_fuel_balance.current}
 
 
              

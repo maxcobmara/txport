@@ -67,19 +67,19 @@ class DepotFuel < ActiveRecord::Base
 	(11..spreadsheet.last_row).each do |i|
 		tank_excel = spreadsheet.cell(i,'C')
 		unless (tank_excel.nil? || tank_excel.blank? || tank_excel==" " || tank_excel=="-")
-			storage_tank_excel<<tank_excel
+			storage_tank_excel<< tank_excel
 			lastitem = tank_excel.split("")[tank_excel.split("").count-1]
 			if (lastitem.is_a? Numeric) 	
 			elsif (lastitem.is_a? String)
 			else	#if not a number or string
-				tank_naming_err<<tank_excel
+				tank_naming_err<< tank_excel
 			end
 		end
 		capacity_val = spreadsheet.cell(i,'D')
 		current_val = spreadsheet.cell(i,'F')
 		unless (current_val.nil? || current_val.blank? || current_val==" " || current_val=="-")
 			if (capacity_val.nil? || capacity_val.blank? || capacity_val==" " || capacity_val=="-")
-				capacity_err<<capacity_val
+				capacity_err<< capacity_val
 			end
 		end
 	end

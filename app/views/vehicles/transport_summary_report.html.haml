@@ -12,6 +12,7 @@
   %thead
     %tr
       %th= t 'vehicles.reg_no'
+      %th= t 'units.title3'
       %th= t 'vehicle.chassis_no'
       %th= t 'vehicle.engine_no'
       %th= t 'vehicles.reg_on'
@@ -25,9 +26,33 @@
       %th= t 'vehicles.status_id' 
 
   %tbody
-    - @vehicles.each do |vehicle|
+    - with_vadetails=[]
+    /Perjawatan exist
+    - VehicleAssignment.all.each do |va|
+      - va.vehicle_assignment_details.each do |vad|
+        - if vad.id==Vehicle.find(vad.vehicle_id).vehicle_assignment_details.last.id
+          - with_vadetails << vad.vehicle_id
+          %tr
+            %td= vad.vehicle.reg_no
+            %td= va.unit_receiver.name
+            %td= vad.vehicle.chassis_no
+            %td= vad.vehicle.engine_no
+            %td= vad.vehicle.reg_on.try(:strftime, '%d-%m-%Y')
+            %td= vad.vehicle.manufacturer_year
+            %td= check_kin {vad.vehicle.manufacturer.name}
+            %td= vad.vehicle.model
+            %td= check_kin {vad.vehicle.category.short_name} 
+            %td= vad.vehicle.acquired_on.try(:strftime, '%d-%m-%Y')
+            %td= ringgols(vad.vehicle.price)
+            %td= check_kin {vad.vehicle.contract.contract_no} 
+            %td= check_kin {vad.vehicle.current_status.short_name}
+    /Perjawatan not exist
+    /- @vehicles.each do |vehicle|
+    - @vehicles.where.not(id: with_vadetails).each do |vehicle|
       %tr
         %td= vehicle.reg_no
+        /%td= vehicle.vehicle_assignment_details.last.try(:vehicle_assignment).try(:unit_receiver).try(:name)
+        %td &nbsp;
         %td= vehicle.chassis_no
         %td= vehicle.engine_no
         %td= vehicle.reg_on.try(:strftime, '%d-%m-%Y')
@@ -35,7 +60,7 @@
         %td= check_kin {vehicle.manufacturer.name}
         %td= vehicle.model
         %td= check_kin {vehicle.category.short_name} 
-        %td= vehicle.acquired_on
+        %td= vehicle.acquired_on.try(:strftime, '%d-%m-%Y')
         %td= ringgols(vehicle.price)
         %td= check_kin {vehicle.contract.contract_no} 
-        %td= check_kin {vehicle.status.short_name}
+        %td= check_kin {vehicle.current_status.short_name}

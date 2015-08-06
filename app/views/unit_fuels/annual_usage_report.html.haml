@@ -168,6 +168,10 @@
           = t 'report.total_external_supplied' 
           \:
           = ExternalSupplied.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
+          &nbsp; | &nbsp
+          = t 'report.total_external_issued' 
+          \:
+          = ExternalIssued.where('unit_fuel_id =? AND created_at >=? AND created_at <=?', unit_id, @sdate, @edate).sum(:quantity)
       %tr
         %th= t 'unit_fuels.unit_id'  
         %th= t 'unit_fuels.issue_date'

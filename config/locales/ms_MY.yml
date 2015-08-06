@@ -132,6 +132,7 @@ ms_MY:
     total_diesel: Jumlah Diesel
     total_other_fuel_type: Jumlah Bahan PMP Lain
     total_external_supplied: Jumlah Bekal Kepada
+    total_external_issued: Jumlah Ambil Daripada
     summon_listing: Senarai Saman
     summon_report: Laporan Saman
     maintenance_report: Laporan Kontrak Penyelenggaraan
