@@ -255,6 +255,9 @@ en:
     markas: Markas Pemerintahan
     define_assignment: "Please update 'Vehicle Assignment'"
     proses_teb_action_menu: "Status : 'PROSES TEB' must be done via action menu (click on 'TEB')"
+    fuel_type_id: Fuel Type
+    fuel_unit_type_id: Fuel Measurement Unit
+    fuel_capacity: Fuel Capacity
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -709,6 +712,9 @@ en:
         new: New Vehicle
         chassis_no: Chasis No
         engine_no: Engine No
+        fuel_type_id: Fuel Type
+        fuel_unit_type_id: Fuel Measurement Unit
+        fuel_capacity: Fuel Capacity
       vehicle_no:
         start_on: Start On
         end_on: End On

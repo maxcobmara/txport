@@ -21,6 +21,8 @@ class Vehicle < ActiveRecord::Base
   belongs_to :vehicleacquired,  :class_name => "AcquiredType",        :foreign_key => "acquired_id"
   belongs_to :manufacturer,     :class_name => "VehicleManufacturer", :foreign_key => "manufacturer_id"
   belongs_to :vehiclecategory,  :class_name => "VehicleCategory",     :foreign_key => "category_id"
+  belongs_to :fueltype, :class_name => "FuelType", :foreign_key => "fuel_type_id"
+  belongs_to :unittype, :class_name => "UnitType", :foreign_key => "fuel_unit_type_id"
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "/assets/:style/no-photo.gif"
 

@@ -58,8 +58,15 @@
       %dd= @vehicle.contract.try(:contract_no)
     %dl.dl-horizontal
       %dt= t 'vehicles.status_id', :default => model_class.human_attribute_name(:status_id) + ":"
-      %dd= @vehicle.current_status.try(:short_name)
+      %dd= @vehicle.current_status.try(:short_name) 
       //%dd= @vehicle.vehicle_assignment_details[0].vehicle_assignment.document_date
+    %dl.dl-horizontal
+      %dt= t 'vehicles.fuel_type_id', :default => model_class.human_attribute_name(:fuel_type_id) + ":"
+      %dd= @vehicle.fueltype.try(:shortname)
+    %dl.dl-horizontal
+      %dt= t 'vehicles.fuel_capacity', :default => model_class.human_attribute_name(:fuel_capacity) + ":"
+      %dd= @vehicle.fuel_capacity.blank? ? "" : @vehicle.fuel_capacity.to_s+" "+@vehicle.unittype.try(:short_name)
+
   #tab2.tab-pane
     .div{:style => "padding: 15px 50px 10px 50px; "}
       %table.table.table-condensed.table-hover{:style => "width: 50%; "}
