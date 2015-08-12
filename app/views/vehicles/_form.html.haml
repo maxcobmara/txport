@@ -64,11 +64,11 @@
       
     .control-group
       = f.label :fuel_capacity, :class => 'control-label'
-      .controls= f.text_field :fuel_capacity, :class => 'form-control'
-      
-    .control-group
-      = f.label :fuel_unit_type_id, :class => 'control-label'
-      .controls= f.collection_select :fuel_unit_type_id, UnitType.all, :id, :short_name, :include_blank => t('helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
+      .controls
+        .input-append
+          = f.text_field :fuel_capacity, :class => 'text_field input-medium'
+          %span
+            = f.collection_select :fuel_unit_type_id, UnitType.all, :id, :short_name, :include_blank => t('helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker', 'data-width'=>"auto"}
 
     .form-actions
       = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
