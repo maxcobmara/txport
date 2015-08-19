@@ -7,7 +7,7 @@ class FuelType < ActiveRecord::Base
   has_many :external_supplieds, dependent: :nullify
   has_many :vehicles,  dependent: :nullify
   
-  scope :main_use, -> { where(name: ['PETROL', 'DIESEL', 'AVTUR', 'AVCAT'])}
+  scope :main_use, -> { where(id: [FuelTank.where('fuel_type_id is not null').pluck(:fuel_type_id)])} #for use in Vehicle - fuel_type
   
   def self.exclude_petrol_diesel
     where('name LIKE (?) OR name LIKE (?)','PETROL','DIESEL').pluck(:id)

@@ -110,6 +110,7 @@ ms_MY:
     fuel_type_per_quarter: "Penyata Purata Penggunaan Harian (Jenis Bahan PMP) Bagi Suku Tahun"
     transport_summary: Ringkasan Kenderaan
     pmp_usage: Penyata Penggunaan Bahan PMP Bulanan
+    unit: Unit
   report: 
     unit_fuel_graph: Graf Penggunaan Minyak
     diesel_vessel_usage: Penggunaan Diesel Kapal

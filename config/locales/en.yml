@@ -143,6 +143,7 @@ en:
     fuel_type_per_quarter: "Report of Daily Average Usage (Fuel Type) Per Quarter"
     transport_summary: Transport Summary
     pmp_usage: Monthly Fuel Usage Report
+    unit: Unit
 
   report:
     unit_fuel_graph: Unit Fuel Graph
