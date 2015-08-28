@@ -64,10 +64,46 @@ class DepotFuelsController < ApplicationController
   end
   
   def PMP_monthly_usage 
-    c = Date.today
+    c = Date.today-1.month
     sdate = c.beginning_of_month
     edate = c.end_of_month
      @month_usage = DepotFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
+     @last_prev_depot_fuel = DepotFuel.where( "issue_date < ? ", sdate).last
+  end
+  
+  def quarter_daily_usage
+    sdate = Date.today
+    thisyear=sdate.year
+    quarter1=Date.new(thisyear, 1, 1)
+    quarter2=Date.new(thisyear, 4, 1)
+    quarter3=Date.new(thisyear, 7, 1)
+    quarter4=Date.new(thisyear, 10,1)
+    @last_prev_depot_fuel=DepotFuel.where('issue_date <=?', '2012-09-30').last
+    @daily_usage_quarter=DepotFuel.where('issue_date >=? and issue_date <=?', '2012-10-01', '2012-12-31').group_by(&:unit_id)
+    @last_prev_depot_fuel1=DepotFuel.where('issue_date <?', quarter1).last
+    @last_prev_depot_fuel2=DepotFuel.where('issue_date <?', quarter2).last
+    @last_prev_depot_fuel3=DepotFuel.where('issue_date <?', quarter3).last
+    @last_prev_depot_fuel4=DepotFuel.where('issue_date <?', quarter4).last
+    @daily_usage_quarter1=DepotFuel.where('issue_date >=? and issue_date <?', quarter1, quarter2).group_by(&:unit_id)
+    @daily_usage_quarter2=DepotFuel.where('issue_date >=? and issue_date <?', quarter2, quarter3).group_by(&:unit_id) if sdate >= quarter2 
+    @daily_usage_quarter3=DepotFuel.where('issue_date >=? and issue_date <?', quarter3, quarter4).group_by(&:unit_id) if sdate >= quarter3 
+    @daily_usage_quarter4=DepotFuel.where('issue_date >=? and issue_date <?', quarter4, sdate.end_of_year).group_by(&:unit_id)  if sdate >= quarter4
+  end
+  def quarter_daily_usage2
+    sdate = Date.today
+    thisyear=sdate.year
+    quarter1=Date.new(thisyear, 1, 1)
+    quarter2=Date.new(thisyear, 4, 1)
+    quarter3=Date.new(thisyear, 7, 1)
+    quarter4=Date.new(thisyear, 10,1)
+    @last_prev_depot_fuel1=DepotFuel.where('issue_date <?', quarter1).last
+    @last_prev_depot_fuel2=DepotFuel.where('issue_date <?', quarter2).last
+    @last_prev_depot_fuel3=DepotFuel.where('issue_date <?', quarter3).last
+    @last_prev_depot_fuel4=DepotFuel.where('issue_date <?', quarter4).last
+    @daily_usage_quarter1=DepotFuel.where('issue_date >=? and issue_date <?', quarter1, quarter2).group_by(&:unit_id)
+    @daily_usage_quarter2=DepotFuel.where('issue_date >=? and issue_date <?', quarter2, quarter3).group_by(&:unit_id) if sdate >= quarter2 
+    @daily_usage_quarter3=DepotFuel.where('issue_date >=? and issue_date <?', quarter3, quarter4).group_by(&:unit_id) if sdate >= quarter3 
+    @daily_usage_quarter4=DepotFuel.where('issue_date >=? and issue_date <?', quarter4, sdate.end_of_year).group_by(&:unit_id)  if sdate >= quarter4
   end
   
   def import_excel

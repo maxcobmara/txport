@@ -130,19 +130,20 @@ en:
     summon_report: Summon Report
     roadtax_report: Monthly Roadtax Report
     maintenance_report: Maintenance Report
-    fuel_usage_report: Monthly Fuel Usage Report
+    fuel_usage_report: Fuel Usage Report
     maintenance_contract_report: Maintenance Contract Report
     tank_capacity_report: Tank Capacity Report
-    Summary_report: Summary Report
+    summary_report: Summary Report
     detailed_report: Detailed Report
     vehicle_report: Vehicle Report
     vehicle_daily_report: Vehicle Daily Report
     vehicle_monthly_report: Vehicle Monthly Report
     vehicle_yearly_report: Vehicle Yearly Report
     annual_usage_report: Annual Usage Report
-    fuel_type_per_quarter: Fuel Type Usage Daily Report
+    fuel_type_per_quarter: "Report of Daily Average Usage (Fuel Type) Per Quarter"
     transport_summary: Transport Summary
-    PMP_usage: Monthly Fuel Usage Report
+    pmp_usage: Monthly Fuel Usage Report
+    unit: Unit
 
   report:
     unit_fuel_graph: Unit Fuel Graph
@@ -166,6 +167,17 @@ en:
     total_diesel: Total Diesel
     total_other_fuel_type: Total Other Fuel Type
     total_external_supplied: Total External Supplied
+    total_external_issued: Total External Issued
+    summon_listing: Summons Listing
+    summon_report: Summons Report
+    maintenance_report: Maintenance Contract Report
+    road_tax_listing: Vehicle Road Tax Listing
+    road_tax_listing_end: Vehicle Road Tax Listing Ending
+    maintenance_listing: Vehicle Maintenance Report
+    average_petrol_usage: Average Petrol Usage
+    average_diesel_usage: Averge Diesel Usage
+    average_avtur_usage: Average Avtur Usage
+    average_avcat_usage: Average Avcat Usage
   home:
     welcome: Welcome to Txport
     txport: Transport Management System
@@ -244,6 +256,9 @@ en:
     markas: Markas Pemerintahan
     define_assignment: "Please update 'Vehicle Assignment'"
     proses_teb_action_menu: "Status : 'PROSES TEB' must be done via action menu (click on 'TEB')"
+    fuel_type_id: Fuel Type
+    fuel_unit_type_id: Fuel Measurement Unit
+    fuel_capacity: Fuel Capacity
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Rumah
@@ -340,6 +355,7 @@ en:
     location: Location
     receipt_no: Receipt No
     paid_amount: Paid Amount
+    topaid_amount: After Discount
     payment_status: Payment Status
     new: New Summon
     edit: Edit Summon
@@ -354,6 +370,8 @@ en:
     condition_summon_time: "Format time issued - 9999, eg. : 1205, 0010."
     condition_issuer_exist: "Summon Issuer information is compulsory (row 3,column ‘B’) and must match Summon Types (refer menu - Vehicles | Drop Downs | Summon Types)."
     failure: "* Failure to comply with condition no. 1-5 will cause failure in import."
+    outstanding: Outstanding Summons
+    paid: Paid Summons
   vehicle_cards:
     title: "Touch N Go & Smart Tag"
     new: "New Touch N Go & Smart Tag"
@@ -493,6 +511,13 @@ en:
     cap: "Storage Tank CAPACITY is blank"
     ftcm: "Fuel Type COUNT did not matched."
     excel_format: Format Excel
+    bal_start_and_supplied: "Carried Forward + Received"
+    issued_received: "Issued / Usage"
+    current_stock: Current Stock
+    usage_average: Usage Average
+    total: Total
+    detail_by_month: Detail by Month
+    general: General
   fuel_issueds:
     title: Fuel Issued
     title2: Issued
@@ -558,6 +583,12 @@ en:
     in: "(In 'New / Edit Unit Fuel' page : For UNIT *, select a depot and click 'Submit'. Click 'Edit', select 'Issued To' and add details accordingly)"
     sum: Total Usage
     total: Total
+    monthly_usage: Monthly Usage
+    daily_average: Daily Average Usage
+    first_quarter: First Quarter of
+    second_quarter: Second Quarter of
+    third_quarter: Third Quarter of
+    fourth_quarter: Fouth Quarter of
   add_fuels:
     title: Other Fuel - Unit
     title2: Other Fuel Usage - Unit
@@ -682,6 +713,9 @@ en:
         new: New Vehicle
         chassis_no: Chasis No
         engine_no: Engine No
+        fuel_type_id: Fuel Type
+        fuel_unit_type_id: Fuel Measurement Unit
+        fuel_capacity: Fuel Capacity
       vehicle_no:
         start_on: Start On
         end_on: End On

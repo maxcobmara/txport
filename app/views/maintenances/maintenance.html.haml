@@ -10,14 +10,14 @@
       %th= t 'vehicle.vehicle_id'
       %th= t 'maintenances.month_year'
       %th= t 'maintenances.work_order_no'  
-      %th= t 'maintenances.contract_no'  
+      %th= t 'maintenances.contract_id'  
       %th= t 'maintenances.value_repaired' 
       %th= t 'maintenances.repaired_by'
       %th= t 'maintenances.value_supplied' 
       %th= t 'maintenances.supplied_by'
 
   %tbody
-    - @maintenances.each do |maintenance|
+    - @maintenances.sort_by{|x|[x.maintenance_date, x.vehicle.reg_no]}.each do |maintenance|
       %tr
         %td= maintenance.vehicle.reg_no
         %td= check_kin {maintenance.maintenance_date.strftime("%b %Y")}

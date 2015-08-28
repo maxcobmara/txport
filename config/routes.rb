@@ -36,6 +36,8 @@ Txport::Application.routes.draw do
   resources :depot_fuels do
     collection do
       get 'PMP_monthly_usage'
+      get 'quarter_daily_usage'
+      get 'quarter_daily_usage2'
       post :import
     end
   end
@@ -98,6 +100,7 @@ Txport::Application.routes.draw do
   resources :vehicle_fines do
     collection do
       get 'kembaran_a'
+      get 'detailed_fine'
     end
   end
 

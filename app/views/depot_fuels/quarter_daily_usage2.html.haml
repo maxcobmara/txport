@@ -1,0 +1,1468 @@
+.navbar
+  %ul.nav
+    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+    %li= link_to (t 'depot_fuels.general'), "/depot_fuels/quarter_daily_usage"
+- provide(:title, 'DepotFuel')
+- model_class = DepotFuel
+.page-header
+  %h1= t 'menu.fuel_type_per_quarter', :default => model_class.model_name.human
+          
+/1st quarter 
+- if @daily_usage_quarter1
+  %h2=(t 'unit_fuels.first_quarter')+" "+Date.today.year.to_s
+  /diesel section
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0.0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter1.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - diesel_tank_ids=FuelTank.where(fuel_type_id: 2).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel1
+          - prev_bal_recs=@last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: diesel_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if diesel_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: diesel_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /petrol section
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter1.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - petrol_tank_ids=FuelTank.where(fuel_type_id: 1).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel1
+          - prev_bal_recs=@last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: petrol_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if petrol_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: petrol_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avtur section
+  =t 'report.average_avtur_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter1.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avtur_tank_ids=FuelTank.where(fuel_type_id: 5).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel1
+          - prev_bal_recs=@last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avtur_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avtur_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avtur_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avcat section
+  =t 'report.average_avcat_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+        %th Jan
+        %th Feb
+        %th Mac
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter1.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avcat_tank_ids=FuelTank.where(fuel_type_id: 12).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel1
+          - prev_bal_recs=@last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avcat_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avcat_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avcat_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+
+////
+/2nd quarter 
+- if @daily_usage_quarter2
+  %br
+  %h2=(t 'unit_fuels.second_quarter')+" "+Date.today.year.to_s
+  /diesel section
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0.0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter2.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - diesel_tank_ids=FuelTank.where(fuel_type_id: 2).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel2
+          - prev_bal_recs=@last_prev_depot_fuel2.fuel_balances.where(fuel_tank_id: diesel_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if diesel_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: diesel_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /petrol section
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter2.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - petrol_tank_ids=FuelTank.where(fuel_type_id: 1).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel2
+          - prev_bal_recs=@last_prev_depot_fuel2.fuel_balances.where(fuel_tank_id: petrol_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if petrol_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: petrol_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avtur section
+  =t 'report.average_avtur_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter2.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avtur_tank_ids=FuelTank.where(fuel_type_id: 5).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel2
+          - prev_bal_recs=@last_prev_depot_fuel2.fuel_balances.where(fuel_tank_id: avtur_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avtur_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avtur_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avcat section
+  =t 'report.average_avcat_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+        %th Apr
+        %th Mei
+        %th Jun
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter2.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avcat_tank_ids=FuelTank.where(fuel_type_id: 12).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel2
+          - prev_bal_recs=@last_prev_depot_fuel2.fuel_balances.where(fuel_tank_id: avcat_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avcat_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avcat_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+        
+////
+/3rd quarter 
+- if @daily_usage_quarter3
+  %br
+  %h2=(t 'unit_fuels.third_quarter')+" "+Date.today.year.to_s
+  /diesel section
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0.0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter3.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - diesel_tank_ids=FuelTank.where(fuel_type_id: 2).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel3
+          - prev_bal_recs=@last_prev_depot_fuel3.fuel_balances.where(fuel_tank_id: diesel_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if diesel_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: diesel_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /petrol section
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter3.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - petrol_tank_ids=FuelTank.where(fuel_type_id: 1).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel3
+          - prev_bal_recs=@last_prev_depot_fuel3.fuel_balances.where(fuel_tank_id: petrol_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if petrol_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: petrol_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avtur section
+  =t 'report.average_avtur_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter3.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avtur_tank_ids=FuelTank.where(fuel_type_id: 5).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel3
+          - prev_bal_recs=@last_prev_depot_fuel3.fuel_balances.where(fuel_tank_id: avtur_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avtur_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avtur_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avcat section
+  =t 'report.average_avcat_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+        %th Julai
+        %th Ogos
+        %th Sept
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter3.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avcat_tank_ids=FuelTank.where(fuel_type_id: 12).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel3
+          - prev_bal_recs=@last_prev_depot_fuel3.fuel_balances.where(fuel_tank_id: avcat_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avcat_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avcat_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+        
+////
+/4th quarter 
+- if @daily_usage_quarter4
+  %br
+  %h2=(t 'unit_fuels.fourth_quarter')+" "+Date.today.year.to_s
+  /diesel section
+  =t 'report.average_diesel_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0.0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter4.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - diesel_tank_ids=FuelTank.where(fuel_type_id: 2).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel4
+          - prev_bal_recs=@last_prev_depot_fuel4.fuel_balances.where(fuel_tank_id: diesel_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if diesel_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 2).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 2).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: diesel_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /petrol section
+  =t 'report.average_petrol_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter4.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - petrol_tank_ids=FuelTank.where(fuel_type_id: 1).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel4
+          - prev_bal_recs=@last_prev_depot_fuel4.fuel_balances.where(fuel_tank_id: petrol_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if petrol_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 1).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right=usage= FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 1).sum(:quantity)
+            %td.right=current= FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: petrol_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avtur section
+  =t 'report.average_avtur_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter4.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avtur_tank_ids=FuelTank.where(fuel_type_id: 5).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel4
+          - prev_bal_recs=@last_prev_depot_fuel4.fuel_balances.where(fuel_tank_id: avtur_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avtur_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 5).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 5).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avtur_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)
+
+  /avcat section
+  =t 'report.average_avcat_usage'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{:rowspan =>2} Depot
+        %th.centre{:colspan =>5}=t 'depot_fuels.bal_start_and_supplied'
+        %th.centre{:colspan =>4}=t 'depot_fuels.issued_received'
+        %th{:rowspan =>2}=t 'depot_fuels.current_stock'
+        %th{:rowspan =>2}=t 'depot_fuels.usage_average'
+      %tr
+        %th=t 'depot_fuels.start_bal'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+        %th Okt
+        %th Nov
+        %th Dis
+        %th=t 'depot_fuels.total'
+
+    %tbody
+      - total_bal_supplied=0
+      - total_usage=0
+      - total_current=0
+      - total_average=0
+      - bal_start=0
+      - @jul_supp=@ogos_supp=@sept_supp=0
+      - @jul_iss=@ogos_iss=@sept_iss=0
+      - @daily_usage_quarter4.each do |depot, depot_fuels|
+        - depot_fuel_ids=depot_fuels.map(&:id)
+        - depot_fuel_last=depot_fuels.last.id
+        - avcat_tank_ids=FuelTank.where(fuel_type_id: 12).where(unit_id: depot).pluck(:id)
+        - if @last_prev_depot_fuel4
+          - prev_bal_recs=@last_prev_depot_fuel4.fuel_balances.where(fuel_tank_id: avcat_tank_ids)
+          - bal_start= prev_bal_recs.first.current if prev_bal_recs.count > 0
+        - if avcat_tank_ids.count > 0
+          %tr
+            %td= check_kin {Unit.find(depot).name}
+            %td.right=bal_start
+            - aa=[]
+            - depot_fuels.map(&:issue_date).each{|x|aa << x.month}
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_supplieds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_supp+=qty if xy==7
+                      - @ogos_supp+=qty if xy==8
+                      - @sept_supp+=qty if xy==9
+            %td.right=bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            - [7,8,9].each do |xy|
+              %td.right
+                - if aa.include?(xy)==false
+                  0
+                - else
+                  - depot_fuels.each do |df|
+                    - if df.issue_date.month==xy
+                      =qty= df.fuel_issueds.where(fuel_type_id: 12).sum(:quantity) 
+                      - @jul_iss+=qty if xy==7
+                      - @ogos_iss+=qty if xy==8
+                      - @sept_iss+=qty if xy==9
+            %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avcat_tank_ids).sum(:current)
+            - if usage > 0
+              - average=usage/90
+            - else
+              - average=0
+            %td.right=number_with_precision(average, precision: 2)
+          - total_bal_supplied+=bal_start_supplied
+          - total_usage+=usage
+          - total_current+=current
+          - total_average+=average
+      %tr
+        %td= t 'depot_fuels.total'
+        %td
+        %td.right=@jul_supp
+        %td.right=@ogos_supp
+        %td.right=@sept_supp
+        %td.right=total_bal_supplied
+        %td.right=@jul_iss
+        %td.right=@ogos_iss
+        %td.right=@sept_iss
+        %td.right=total_usage
+        %td.right=total_current
+        %td.right=number_with_precision(total_average, precision: 2)

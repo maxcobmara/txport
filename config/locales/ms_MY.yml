@@ -94,12 +94,12 @@ ms_MY:
     inden_card: Kad Inden
     inden_card_listing: Senarai Kad Inden
     report_list: Senarai Laporan
-    summon_report: Laporan Senarai Saman 
+    summon_report: Laporan Saman 
     roadtax_report: Laporan Cukai Jalan Bulanan
     maintenance_report: Laporan Penyelenggaraan
-    fuel_usage_report: Laporan Penggunaan Bahan PMP Bulanan
+    fuel_usage_report: Laporan Penggunaan Bahan PMP
     maintenance_contract_report: Laporan Kontrak Penyelenggaraan
-    tank_capacity_report: Laporan Kapasiti Tangki
+    tank_capacity_report: Penyata Kapasiti Tangki
     summary_report: Laporan Ringkas
     detailed_report: Laporan Terperinci
     vehicle_report: Laporan Kenderaan
@@ -107,9 +107,10 @@ ms_MY:
     vehicle_monthly_report: Laporan Kenderaan Bulanan
     vehicle_yearly_report: Laporan Kenderaan Tahunan
     annual_usage_report: Laporan Penggunaan Bahan PMP Tahunan
-    fuel_type_per_quarter: Laporan Penyata Purata Pengunaan Harian Bagi Suku Tahun
-    transport_summary: Laporan Pengangkutan
-    PMP_usage: Laporan Penyata Penggunaan Bahan PMP Bulanan
+    fuel_type_per_quarter: "Penyata Purata Penggunaan Harian (Jenis Bahan PMP) Bagi Suku Tahun"
+    transport_summary: Ringkasan Kenderaan
+    pmp_usage: Penyata Penggunaan Bahan PMP Bulanan
+    unit: Unit
   report: 
     unit_fuel_graph: Graf Penggunaan Minyak
     diesel_vessel_usage: Penggunaan Diesel Kapal
@@ -132,6 +133,17 @@ ms_MY:
     total_diesel: Jumlah Diesel
     total_other_fuel_type: Jumlah Bahan PMP Lain
     total_external_supplied: Jumlah Bekal Kepada
+    total_external_issued: Jumlah Ambil Daripada
+    summon_listing: Senarai Saman
+    summon_report: Laporan Saman
+    maintenance_report: Laporan Kontrak Penyelenggaraan
+    road_tax_listing: Senarai Cukai Jalan Kenderaan
+    road_tax_listing_end: Senarai Cukai Jalan Kenderaan Berakhir 
+    maintenance_listing: Laporan Penyelenggaraan Kenderaan
+    average_petrol_usage: Purata Penggunaan Petrol
+    average_diesel_usage: Purata Penggunaan Diesel
+    average_avtur_usage: Purata Penggunaan Avtur
+    average_avcat_usage: Purata Penggunaan Avcat
   home:
     welcome: Selamat Datang ke Txport
     txport: Sistem Pengurusan Pengangkutan
@@ -210,6 +222,9 @@ ms_MY:
     markas: Markas Pemerintahan
     define_assignment: "Sila kemaskini 'Perjawatan Kenderaan'"
     proses_teb_action_menu: "Status : 'PROSES TEB' mesti disetkan melalui menu tindakan (klik pada 'TEB')"
+    fuel_type_id: Jenis Bahan PMP
+    fuel_unit_type_id: Unit Ukuran Bahan PMP 
+    fuel_capacity: Kapasiti Bahan PMP
   #-forms (other than FORMS LABEL) & show & controller
   vehicle:
     home: Laman Utama  
@@ -306,6 +321,7 @@ ms_MY:
     location: Lokasi
     receipt_no: "No. Resit"
     paid_amount: Amaun Dibayar
+    topaid_amount: Selepas Diskaun
     payment_status: Status Pembayaran
     new: Saman Baru
     edit: Sunting Saman
@@ -320,6 +336,8 @@ ms_MY:
     condition_summon_time: "Format bagi masa saman dikeluarkan - 9999, contoh : 1205, 0010."
     condition_issuer_exist: "Maklumat Pengeluar Saman mesti diisi (baris 3,lajur ‘B’) dan mesti sepadan dengan Jenis Saman (rujuk menu - Kenderaan | Data Asas | Jenis Saman)."
     failure: "* Data tidak akan diimport jika syarat 1 - 5 tidak dipenuhi."
+    outstanding: Saman Belum Jelas
+    paid: Saman Telah Dijelaskan
   vehicle_cards:
     title: "Touch N Go & Smart Tag"  
     new: "Touch N Go & Smart Tag Baru"
@@ -435,7 +453,7 @@ ms_MY:
     unit_id: Depot
     issue_date: Tarikh
     fuel_type: Jenis Bahan PMP
-    start_bal: Baki Mula
+    start_bal: Baki Awal
     received: Penerimaan
     issued: Pengeluaran
     tank_bal: Baki Tangki
@@ -461,6 +479,13 @@ ms_MY:
     cap: "Storage Tank CAPACITY is blank"
     ftcm: "Fuel Type COUNT did not matched."
     excel_format: Format Excel
+    bal_start_and_supplied: "Stok Awal + Penerimaan"
+    issued_received: "Pengeluaran / Penggunaan"
+    current_stock: Stok Semasa
+    usage_average: Purata Penggunaan
+    total: Jumlah
+    detail_by_month: Mengikut Bulan
+    general: Umum
   fuel_issueds:
     title: Pengeluaran Bahan PMP
     title2: Pengeluaran
@@ -526,6 +551,12 @@ ms_MY:
     in: "(Dalam laman 'Bahan PMP Baru di Unit / Sunting Bahan PMP di Unit' : Untuk UNIT *, pilih depot and klik 'Hantar'. Klik 'Sunting', pilih 'Bekal Kepada' dan masukkan butiran berkaitan)"
     sum: Jumlah Penggunaan
     total: Jumlah
+    monthly_usage: Penggunaan Sebulan
+    daily_average: Purata Penggunaan Sehari
+    first_quarter: "Suku Tahun Pertama "
+    second_quarter: "Suku Tahun Kedua "
+    third_quarter: "Suku Tahun Ketiga "
+    fourth_quarter: "Suku Tahun Keempat "
   add_fuels:
     title: Lain-Lain Bahan PMP di Unit
     title2: Bahan PMP Lain di Unit
@@ -648,6 +679,9 @@ ms_MY:
         new: Kenderaan Baru
         chassis_no: "No. Chasis"
         engine_no: "No. Enjin"
+        fuel_type_id: Jenis Bahan PMP
+        fuel_unit_type_id: Unit Ukuran Bahan PMP 
+        fuel_capacity: Kapasiti Bahan PMP
       vehicle_no:
         start_on: Mula
         end_on: Tamat

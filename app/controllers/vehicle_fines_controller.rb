@@ -75,6 +75,11 @@ end
   def kembaran_a
     @vehicle_fines = VehicleFine.all
   end
+  
+  def detailed_fine
+    @vehicles_fines_outstanding= VehicleFine.where('receipt_no is null AND paid_on is null') 
+    @vehicles_fines_paid=VehicleFine.where('receipt_no is NOT null AND paid_on is NOT null')
+  end
 
   def import_excel
   end
