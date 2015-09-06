@@ -4,7 +4,13 @@
 	
     .control-group
       = f.label :inden_card_serial, :class => 'control-label'		
-      .controls= f.collection_select :inden_card_id, IndenCard.all, :id, :serial_no, :include_blank => t('helpers.prompt.select_inden_card'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :inden_card_id, IndenCard.all.order(:serial_no), :id, :details, :include_blank => t('helpers.prompt.select_inden_card'), :html_options => {:class => 'selectpicker'}
+      
+    .control-group
+      = f.label :unit_fuel_id, :class => 'control-label'		
+      .controls
+        /= @inden_usage.unit_fuel.try(:issue_date).try(:strftime, "%b %Y")
+        = f.collection_select :unit_fuel_id, UnitFuel.all.order(issue_date: :desc), :id, :month_unit, :include_blank => t('helpers.prompt.select_unit_fuel'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :issue_date, :class => 'control-label'

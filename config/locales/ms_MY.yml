@@ -860,6 +860,7 @@ ms_MY:
       sequence: Urutan
       sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
       select_depot_fuel: Pilih Depot | Bulan Tahun
+      select_unit_fuel: Pilih Unit | Bulan Tahun
       select_fuel_tank: Pilih Depot | Tangki Penyimpanan
       supplied: "* Jumlah penerimaan sebulan mengikut jenis bahan PMP"
       issued: "* Jumlah pengeluaran sebulan mengikut jenis bahan PMP"
