@@ -74,6 +74,6 @@ class IndenUsagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inden_usage_params
-      params.require(:inden_usage).permit(:inden_card_id, :petrol_ltr, :petrol_price, :diesel_ltr, :diesel_price, :issue_date, :petronas_p_ltr, :petronal_p_price, :petronas_d_ltr, :petronas_d_price)
+      params.require(:inden_usage).permit(:inden_card_id, :petrol_ltr, :petrol_price, :diesel_ltr, :diesel_price, :issue_date, :petronas_p_ltr, :petronal_p_price, :petronas_d_ltr, :petronas_d_price, :unit_fuel_id)
     end
 end

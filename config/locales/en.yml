@@ -894,6 +894,7 @@ en:
       sequence: Sequence
       sequence_text: "Sequence format : 01 for 1, 11 for 11"
       select_depot_fuel: Select Depot | Month Year
+      select_unit_fuel: Select Unit | Month Year
       select_fuel_tank: Select Depot | Fuel Tank
       supplied: "* Total supplieds (receive) per month according to the fuel type"
       issued: "* Total issueds (usage) per month according to the fuel type"
