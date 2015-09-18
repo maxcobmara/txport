@@ -135,8 +135,11 @@
         - depot_fuel_ids=depot_fuels.map(&:id)
         - depot_fuel_last=depot_fuels.last.id
         - diesel_tank_ids=FuelTank.where(fuel_type_id: 2).where(unit_id: depot).pluck(:id)
-        - if @last_prev_depot_fuel1
-          - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: diesel_tank_ids).first.current
+        - unless @last_prev_depot_fuel1.nil?
+          - if @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: diesel_tank_ids).count > 0
+            - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: diesel_tank_ids).first.current
+          - else
+            - bal_start=0
         - else
           - bal_start=0
         - if diesel_tank_ids.count > 0
@@ -181,8 +184,11 @@
         - depot_fuel_ids=depot_fuels.map(&:id)
         - depot_fuel_last=depot_fuels.last.id
         - petrol_tank_ids=FuelTank.where(fuel_type_id: 1).where(unit_id: depot).pluck(:id)
-        - if @last_prev_depot_fuel1
-          - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: petrol_tank_ids).first.current
+        - unless @last_prev_depot_fuel1.nil?
+          - if @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: petrol_tank_ids).count > 0
+            - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: petrol_tank_ids).first.current
+          - else
+            - bal_start=0
         - else
           - bal_start=0
         - if petrol_tank_ids.count > 0
@@ -227,8 +233,11 @@
         - depot_fuel_ids=depot_fuels.map(&:id)
         - depot_fuel_last=depot_fuels.last.id
         - avtur_tank_ids=FuelTank.where(fuel_type_id: 5).where(unit_id: depot).pluck(:id)
-        - if @last_prev_depot_fuel1
-          - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avtur_tank_ids).first.current
+        - unless @last_prev_depot_fuel1.nil?
+          - if @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avtur_tank_ids).count > 0
+            - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avtur_tank_ids).first.current
+          - else
+            - bal_start=0
         - else
           - bal_start=0
         - if avtur_tank_ids.count > 0
@@ -273,14 +282,17 @@
         - depot_fuel_ids=depot_fuels.map(&:id)
         - depot_fuel_last=depot_fuels.last.id
         - avcat_tank_ids=FuelTank.where(fuel_type_id: 12).where(unit_id: depot).pluck(:id)
-        - if @last_prev_depot_fuel1
-          - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avcat_tank_ids).first.current
+        - unless @last_prev_depot_fuel1.nil?
+          - if @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avcat_tank_ids).count > 0
+            - bal_start= @last_prev_depot_fuel1.fuel_balances.where(fuel_tank_id: avcat_tank_ids).first.current
+          - else
+            - bal_start=0
         - else
           - bal_start=0
         - if avcat_tank_ids.count > 0
           %tr
             %td= check_kin {Unit.find(depot).name}
-            %td.right= bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
+            %td.right= bal_start_supplied=bal_start+FuelSupplied.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
             %td.right= usage = FuelIssued.where(depot_fuel_id: depot_fuel_ids).where(fuel_type_id: 12).sum(:quantity)
             %td.right= current=FuelBalance.where(depot_fuel_id: depot_fuel_last, fuel_tank_id: avcat_tank_ids).sum(:current)
             - if usage > 0

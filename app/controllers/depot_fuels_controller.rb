@@ -64,7 +64,7 @@ class DepotFuelsController < ApplicationController
   end
   
   def PMP_monthly_usage 
-    c = Date.today-1.month
+    c = Date.today-8.month
     sdate = c.beginning_of_month
     edate = c.end_of_month
      @month_usage = DepotFuel.where( "issue_date >= ? AND issue_date <= ? ", sdate, edate ) 
