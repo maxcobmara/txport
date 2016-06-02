@@ -33,3 +33,5 @@ public/assets/notes/*
 public/assets/staffs/*
 public/assets/students/*
 public/system/**
+
+shared/*
