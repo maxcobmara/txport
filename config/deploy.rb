@@ -38,7 +38,7 @@ set :pty, true
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
  
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+ #set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
@@ -52,14 +52,13 @@ set :rvm_custom_path, '/home/nurhashimah/.rvm/'  # only needed if not detected
 shared_path = "/opt/app/txport/current/shared"
 
 namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+  desc "Unicorn - load default var, mkdir & start unicorn service (txport)"
+  task :run_unicorn_txport do
+    invoke "load:defaults"
+    invoke "unicorn:setup"
+    invoke "unicorn:start"
   end
-
 end
+
+before "deploy:symlink:linked_files", "unicorn:stop"
+after "deploy:log_revision", "deploy:run_unicorn_txport"

@@ -1,0 +1,51 @@
+I, [2016-06-02T10:20:02.001021 #5966]  INFO -- : Refreshing Gem list
+I, [2016-06-02T10:20:04.475278 #5966]  INFO -- : listening on addr=/home/shimah/rails/txport/shared/sockets/unicorn.sock fd=10
+I, [2016-06-02T10:20:04.475558 #5966]  INFO -- : listening on addr=0.0.0.0:3103 fd=11
+I, [2016-06-02T10:20:04.475642 #5966]  INFO -- : worker=0 spawning...
+I, [2016-06-02T10:20:04.477059 #5966]  INFO -- : worker=1 spawning...
+I, [2016-06-02T10:20:04.477670 #5977]  INFO -- : worker=0 spawned pid=5977
+I, [2016-06-02T10:20:04.477874 #5977]  INFO -- : worker=0 ready
+I, [2016-06-02T10:20:04.478583 #5966]  INFO -- : master process ready
+I, [2016-06-02T10:20:04.479127 #5980]  INFO -- : worker=1 spawned pid=5980
+I, [2016-06-02T10:20:04.479297 #5980]  INFO -- : worker=1 ready
+I, [2016-06-02T10:20:52.964139 #5966]  INFO -- : reaped #<Process::Status: pid 5977 exit 0> worker=0
+I, [2016-06-02T10:20:52.964393 #5966]  INFO -- : reaped #<Process::Status: pid 5980 exit 0> worker=1
+I, [2016-06-02T10:20:52.964602 #5966]  INFO -- : master complete
+I, [2016-06-02T10:20:59.372060 #6136]  INFO -- : Refreshing Gem list
+I, [2016-06-02T10:21:01.895627 #6136]  INFO -- : unlinking existing socket=/home/shimah/rails/txport/shared/sockets/unicorn.sock
+I, [2016-06-02T10:21:01.895817 #6136]  INFO -- : listening on addr=/home/shimah/rails/txport/shared/sockets/unicorn.sock fd=10
+I, [2016-06-02T10:21:01.896086 #6136]  INFO -- : listening on addr=0.0.0.0:3103 fd=11
+I, [2016-06-02T10:21:01.896182 #6136]  INFO -- : worker=0 spawning...
+I, [2016-06-02T10:21:01.897911 #6136]  INFO -- : worker=1 spawning...
+I, [2016-06-02T10:21:01.898577 #6142]  INFO -- : worker=0 spawned pid=6142
+I, [2016-06-02T10:21:01.898786 #6142]  INFO -- : worker=0 ready
+I, [2016-06-02T10:21:01.899921 #6136]  INFO -- : master process ready
+I, [2016-06-02T10:21:01.900530 #6145]  INFO -- : worker=1 spawned pid=6145
+I, [2016-06-02T10:21:01.900711 #6145]  INFO -- : worker=1 ready
+I, [2016-06-02T10:21:10.661546 #6136]  INFO -- : reaped #<Process::Status: pid 6142 exit 0> worker=0
+I, [2016-06-02T10:21:10.661636 #6136]  INFO -- : reaped #<Process::Status: pid 6145 exit 0> worker=1
+I, [2016-06-02T10:21:10.661703 #6136]  INFO -- : master complete
+I, [2016-06-02T11:13:47.973105 #8235]  INFO -- : Refreshing Gem list
+I, [2016-06-02T11:13:51.793602 #8235]  INFO -- : unlinking existing socket=/home/shimah/rails/txport/shared/sockets/unicorn.sock
+I, [2016-06-02T11:13:51.793798 #8235]  INFO -- : listening on addr=/home/shimah/rails/txport/shared/sockets/unicorn.sock fd=10
+I, [2016-06-02T11:13:51.793924 #8235]  INFO -- : worker=0 spawning...
+I, [2016-06-02T11:13:51.795746 #8235]  INFO -- : worker=1 spawning...
+I, [2016-06-02T11:13:51.796321 #8242]  INFO -- : worker=0 spawned pid=8242
+I, [2016-06-02T11:13:51.796501 #8242]  INFO -- : worker=0 ready
+I, [2016-06-02T11:13:51.798630 #8235]  INFO -- : master process ready
+I, [2016-06-02T11:13:51.799211 #8245]  INFO -- : worker=1 spawned pid=8245
+I, [2016-06-02T11:13:51.799428 #8245]  INFO -- : worker=1 ready
+/home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:195:in `pid=': Already running on PID:8235 (or pid=/home/shimah/rails/txport/shared/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:127:in `start'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/bin/unicorn:126:in `<top (required)>'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/unicorn:23:in `load'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/unicorn:23:in `<main>'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `eval'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `<main>'
+/home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:195:in `pid=': Already running on PID:8235 (or pid=/home/shimah/rails/txport/shared/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:127:in `start'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/gems/unicorn-5.1.0/bin/unicorn:126:in `<top (required)>'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/unicorn:23:in `load'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/unicorn:23:in `<main>'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `eval'
+	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `<main>'
