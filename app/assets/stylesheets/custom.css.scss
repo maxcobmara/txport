@@ -95,8 +95,9 @@ p {
   a:hover{color:#606060; background-color:white; font-size:1.3em;}
 }
 
+/*http://stackoverflow.com/questions/34563480/image-assets-not-showing-for-rails-4-app-deployed-with-capistrano-3*/
 .hero-unit {
-background-image:url('cover_art.jpg');
+background-image:image-url('cover_art.jpg');
 background-repeat:no-repeat;
 background-position:right bottom; 
   
