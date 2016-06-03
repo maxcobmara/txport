@@ -49,3 +49,6 @@ I, [2016-06-02T11:13:51.799428 #8245]  INFO -- : worker=1 ready
 	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/unicorn:23:in `<main>'
 	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `eval'
 	from /home/shimah/.rvm/gems/ruby-2.0.0-p643/bin/ruby_executable_hooks:15:in `<main>'
+I, [2016-06-02T19:11:12.516617 #8235]  INFO -- : reaped #<Process::Status: pid 8242 exit 0> worker=0
+I, [2016-06-02T19:11:12.516735 #8235]  INFO -- : reaped #<Process::Status: pid 8245 exit 0> worker=1
+I, [2016-06-02T19:11:12.516804 #8235]  INFO -- : master complete
