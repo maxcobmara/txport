@@ -7,7 +7,8 @@ class VehicleAssignmentsController < ApplicationController
     @vehicle_assignments = VehicleAssignment.all
     @search = VehicleAssignment.search(params[:q])
     @vehicle_assignments = @search.result
-    
+    @vehicle_assignments = @vehicle_assignments.includes([:unit_authorised, :unit_receiver, :authoriser])
+
   end
 
   # GET /vehicle_assignments/1
