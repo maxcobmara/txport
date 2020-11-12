@@ -10,18 +10,18 @@
     %ul.nav
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", vehicle_fines_path(format: "xls")
-     
+
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
-      
+      %li= link_to(fa_icon("print", text: (t 'actions.print')), '#', onclick: "javascript:print()")
+
 .row.searchit{style: "display:none;"}
   .span9offset1
-    = search_form_for @search, class: "form-inline" do |f| 
+    = search_form_for @search, class: "form-inline" do |f|
       .field
         = f.label :code, "Code Contains"
         = f.text_field :code_cont, class: "input-medium search-query"
-        = f.label :vehicle_reg_no
+        = f.label :vehicle_reg_no, "vehicle Reg No"
         = f.text_field :vehicle_reg_no_cont, class: "input-medium search-query"
         /= f.select :vehicle_id_eq, Vehicle.where(id: (VehicleFine.pluck(:vehicle_id).uniq)).collect{|c| [c.reg_no, c.id]}
         = f.submit "Search", class: "btn btn-warning"
@@ -43,10 +43,10 @@
 
   %tbody
     //These guys arent actually being grouped
-    //- @vehicle_fines.group_by(&:vehicle_id).each do |vehicle, vehicle_fines| 
+    //- @vehicle_fines.group_by(&:vehicle_id).each do |vehicle, vehicle_fines|
     - @vehicle_fines.each do |vehicle_fine|
       %tr{:class => vehicle_fine.table_status}
-        %td= vehicle_fine.code 
+        %td= vehicle_fine.code
         %td= vehicle_fine.try(:vehicle).try(:reg_no)
         %td= vehicle_fine.pay_before.try(:strftime, '%d-%b-%Y')
         %td= vehicle_fine.issued_at.try(:strftime, '%d-%b-%Y %H:%M')
@@ -56,6 +56,3 @@
         %td= vehicle_fine.paid_on.try(:strftime, '%d-%b-%Y')
         %td= check_kin {vehicle_fine.payment_status}
         = render :partial => 'action_menu', :locals => { :vehicle_fine => vehicle_fine }
-
-
-

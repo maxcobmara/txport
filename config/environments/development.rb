@@ -30,8 +30,17 @@ Txport::Application.configure do
   #devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  config.after_initialize do
+    Bullet.enable = true
+    #Bullet.alert = true
+    #Bullet.console = true
+    Bullet.slack = { webhook_url: 'https://hooks.slack.com/services/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', channel: '#feed', username: 'txport' }
+  end
+
   # FIXME: Change to your development settings
   # @see https://github.com/thoughtbot/paperclip
   # Install ImageMagick & run `which convert` to get the location
   Paperclip.options[:command_path] = "/usr/bin/"
+
+
 end

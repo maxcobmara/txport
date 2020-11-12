@@ -1,6 +1,6 @@
 .navbar
   %ul.nav
-    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+    %li= link_to(fa_icon("print", text: (t 'actions.print')), '#', onclick: "javascript:print()")
 
 - provide(:title, 'UnitFuel')
 - model_class = UnitFuel

@@ -25,7 +25,7 @@
   #tab1.tab-pane.active
     %dl.dl-horizontal
       %dt= t 'vehicle.photo', :default => model_class.human_attribute_name(:photo) + ":"
-      %dd= image_tag @vehicle.photo.url(:thumb)
+      %dd image_tag @vehicle.photo.url(:thumb)
     %dl.dl-horizontal
       %dt= t 'vehicle.chassis_no', :default => model_class.human_attribute_name(:chassis_no) + ":"
       %dd= @vehicle.chassis_no
@@ -58,7 +58,7 @@
       %dd= @vehicle.contract.try(:contract_no)
     %dl.dl-horizontal
       %dt= t 'vehicles.status_id', :default => model_class.human_attribute_name(:status_id) + ":"
-      %dd= @vehicle.current_status.try(:short_name) 
+      %dd= @vehicle.current_status.try(:short_name)
       //%dd= @vehicle.vehicle_assignment_details[0].vehicle_assignment.document_date
     %dl.dl-horizontal
       %dt= t 'vehicles.fuel_type_id', :default => model_class.human_attribute_name(:fuel_type_id) + ":"

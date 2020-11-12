@@ -1,7 +1,7 @@
 class Vehicle < ActiveRecord::Base
-  
+
   after_touch :set_teb_status
-  
+
   validates_presence_of :reg_no, :status_id
   validates_uniqueness_of :reg_no
   validates_uniqueness_of :chassis_no,  :allow_nil => true, :allow_blank => true, :unless => :chassis_is_dash?
@@ -23,12 +23,11 @@ class Vehicle < ActiveRecord::Base
   belongs_to :vehiclecategory,  :class_name => "VehicleCategory",     :foreign_key => "category_id"
   belongs_to :fueltype, :class_name => "FuelType", :foreign_key => "fuel_type_id"
   belongs_to :unittype, :class_name => "UnitType", :foreign_key => "fuel_unit_type_id"
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/assets/:style/no-photo.gif"
+  #has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" },:default_url => "/assets/:style/no-photo.gif"
 
   # The validation has to go after 'has_attached_file'
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
-  
+  #validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
   def set_teb_status
     @pending    = VehicleEndOfLife.where(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
     @confirmed  = VehicleEndOfLife.where.not(confirmed_on: nil).where.not(vehicle_id: nil).pluck(:vehicle_id)
@@ -38,9 +37,9 @@ class Vehicle < ActiveRecord::Base
       update_attribute(:status_id, VehicleStatus.where(short_name: 'PROSES TEB').pluck(:id)[0])
     end
   end
-  
+
   attr_accessor :status, :acquired, :category, :register_on, :unit_name, :no_perjawatan, :assignment_date, :kuasa_vro, :vro_start_date, :vro_type, :manufacturer_name, :confirmation_code, :teb_date, :confirmed_on   #for data from excel file
-  
+
   def full_reg_details
 	if vehicle_nos.nil? || vehicle_nos.blank?
 		"#{reg_no}"
@@ -48,7 +47,7 @@ class Vehicle < ActiveRecord::Base
 		"#{vehicle_nos[0].vehicle_army.v_army_no}"+" ("+"#{reg_no}"+")"
 	end
   end
-  
+
   def chassis_is_dash?
     if chassis_no == "-"
       return true
@@ -56,7 +55,7 @@ class Vehicle < ActiveRecord::Base
       return false
     end
   end
-  
+
 def self.to_csv(options = {})
   CSV.generate(options) do |csv|
    csv << column_names
@@ -65,31 +64,31 @@ def self.to_csv(options = {})
   end
 end
 end
-  
-  def self.import(file) 
-    spreadsheet = open_spreadsheet(file) 
-    
+
+  def self.import(file)
+    spreadsheet = open_spreadsheet(file)
+
     #BELOW-works successfully for KEMBARAN_A,B,C,D(1)(1)edited.xls
-    #header = spreadsheet.row(2) 
+    #header = spreadsheet.row(2)
     #(3..spreadsheet.last_row).each do |i|
-      #row = Hash[[header, spreadsheet.row(i)].transpose] 
-      #vehicle = find_by_id(row["reg_no"]) || new 
-      #vehicle.attributes = row.to_hash.slice("reg_no","chassis_no","engine_no","price","reg_on") 
+      #row = Hash[[header, spreadsheet.row(i)].transpose]
+      #vehicle = find_by_id(row["reg_no"]) || new
+      #vehicle.attributes = row.to_hash.slice("reg_no","chassis_no","engine_no","price","reg_on")
       #vehicle.contract_id = 888
       #vehicle.save!
-    #end 
+    #end
     #ABOVE-please do not remove above codes yet - 14feb2014
-    
+
     #BELOW-for TABLE DATA KENDERAAN TLDM.xls
     excel_reg_nos=[]
     vehicles=[]
     excel_year = spreadsheet.cell(3,'A')
-    header = spreadsheet.row(5) 
+    header = spreadsheet.row(5)
     (6..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose] 
-      vehicle = find_by_id(row["reg_no"]) || new 
-      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name", "confirmation_code", "teb_date") 
- 
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      vehicle = find_by_id(row["reg_no"]) || new
+      vehicle.attributes = row.to_hash.slice("reg_no","category","model","chassis_no","engine_no","price","register_on","status","unit_name","no_perjawatan","assignment_date","kuasa_vro","vro_start_date","vro_type","manufacturer_name", "confirmation_code", "teb_date")
+
       # retrieve fr excel, assign status_id according to drop down
       unless (vehicle.status.nil? || vehicle.status.blank?)
         vehicle.status_id = VehicleStatus.get_status(vehicle.status)
@@ -101,11 +100,11 @@ end
       end
       # retrieve fr excel, assign acquired_id according to drop down
       unless (vehicle.acquired.nil? || vehicle.acquired.blank?)
-        vehicle.acquired_id = AcquiredType.get_acquired(vehicle.acquired)    
+        vehicle.acquired_id = AcquiredType.get_acquired(vehicle.acquired)
       end
       # retrieve fr excel, assign category_id according to drop down
       unless (vehicle.category.nil? || vehicle.category.blank?)
-        vehicle.category_id = VehicleCategory.get_category(vehicle.category)    
+        vehicle.category_id = VehicleCategory.get_category(vehicle.category)
       end
       # retrieve fr excel, assign manufacturer_id according to drop down
       unless (vehicle.manufacturer_name.nil? || vehicle.manufacturer_name.blank?)
@@ -115,11 +114,11 @@ end
 	else
 	  #nothing assigned
 	end
-      end	  
+      end
 
 	  # retrieve fr excel, assign unit_id according to drop down & 'perjawatan' info
       unless ((vehicle.unit_name.nil? || vehicle.unit_name.blank? || vehicle.unit_name==" " || vehicle.unit_name=="-") && (vehicle.no_perjawatan.nil? || vehicle.no_perjawatan.blank?))
-        unit_id = Unit.get_rmn_unit(vehicle.unit_name.strip)	
+        unit_id = Unit.get_rmn_unit(vehicle.unit_name.strip)
 		v_assignment = VehicleAssignment.find_by_unit_id(unit_id) || VehicleAssignment.new
 		if v_assignment.id.nil? || v_assignment.id.blank?
 			v_assignment.document_code = vehicle.no_perjawatan
@@ -132,7 +131,7 @@ end
 			v_assignment.save!
 			ind = 0
         else
-			ind = vehicle.vehicle_assignment_details.count								
+			ind = vehicle.vehicle_assignment_details.count
 		end
 		unless ((vehicle.kuasa_vro.nil? || vehicle.kuasa_vro.blank? || vehicle.kuasa_vro==" " || vehicle.kuasa_vro=="-")&&(vehicle.vro_start_date.nil? || vehicle.vro_start_date.blank? || vehicle.vro_start_date==" " || vehicle.vro_start_date=="-")&&(vehicle.vro_type.nil? || vehicle.vro_type.blank? || vehicle.vro_type==" " || vehicle.vro_type=="-"))
 			vehicle.vehicle_assignment_details.new
@@ -142,20 +141,20 @@ end
 			vehicle.vehicle_assignment_details[ind].release_type = VehicleAssignmentDetail.get_vro_type(vehicle.vro_type.strip.capitalize)
 		end
 	  end
-      
+
       #to add other date checking - format dd-mm-yyyy vs DB date format
       unless (vehicle.register_on.nil? || vehicle.register_on.blank? || vehicle.register_on==" " || vehicle.register_on=="NIL")
         #if celltype is STRING
         if (vehicle.register_on.is_a? String)
           #DO NOTHING
-        #if celltype is DATE  
+        #if celltype is DATE
         elsif vehicle.register_on.is_a? Date
           vehicle.reg_on = vehicle.register_on
         end
-      end 
-         
+      end
+
       exist_reg_no = excel_reg_nos.include?(vehicle.reg_no)
-      unless (vehicle.reg_no.nil? || vehicle.reg_no.blank? || vehicle.reg_no == " " || vehicle.reg_no == "-") 
+      unless (vehicle.reg_no.nil? || vehicle.reg_no.blank? || vehicle.reg_no == " " || vehicle.reg_no == "-")
         if !exist_reg_no
           excel_reg_nos<< vehicle.reg_no
           if vehicle.reg_no.is_a? Numeric
@@ -164,38 +163,38 @@ end
           #vehicle.save!    #use this line or line 59(vehicles=[]) & line 94(vehicles<<vehicle) & line 98(return vehicles)
           vehicles<< vehicle #all valid one...will be assign to array & send for data saving
         end
-      end      
-    end 
+      end
+    end
     return vehicles
   end
 
 
-  def self.open_spreadsheet(file) 
-    case File.extname(file.original_filename) 
-      when ".csv" then Roo::Csv.new(file.path, nil, :ignore) 
-      when ".xls" then Roo::Excel.new(file.path, nil, :ignore) 
-      when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore) 
-      else raise "Unknown file type: #{file.original_filename}" 
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+      when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
+      when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
+      when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
+      else raise "Unknown file type: #{file.original_filename}"
     end
-  end 
-    
+  end
+
   def self.get_invalid(vehicle_list)
     @invalid_vehicles = []
     vehicle_list.each do |vehiclesub|
       unless vehiclesub.valid?
-        @invalid_vehicles<< vehiclesub 
+        @invalid_vehicles<< vehiclesub
       end
 	  end
-    return @invalid_vehicles 
+    return @invalid_vehicles
   end
-  
+
   def self.get_vehicle(reg_no)
 	where('reg_no LIKE (?)',reg_no)[0].id
   end
-  
+
   def process_teb_must_done_via_actionmenu
     status_name = VehicleStatus.find(status_id).short_name
-    if status_name=='PROSES TEB' 
+    if status_name=='PROSES TEB'
       if vehicle_end_of_lives.count < 1
         errors.add(:base, I18n.t('vehicles.proses_teb_action_menu'))
       end
@@ -219,10 +218,6 @@ end
 #  manufacturer_id    :integer
 #  manufacturer_year  :string(255)
 #  model              :string(255)
-#  photo_content_type :string(255)
-#  photo_file_name    :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
 #  price              :decimal(10, 2)
 #  reg_no             :string(20)
 #  reg_on             :date

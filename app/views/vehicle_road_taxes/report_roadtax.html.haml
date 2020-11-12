@@ -1,6 +1,6 @@
 .navbar
   %ul.nav
-    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+    %li= link_to(fa_icon("print", text: (t 'actions.print')), '#', onclick: "javascript:print()")
     %li= link_to ((t 'report.road_tax_listing_end') + Date.today.next_month.strftime(" %b %Y")), "/vehicle_road_taxes/monthly_roadtax"
 %br
 %h2 

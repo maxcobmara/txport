@@ -6,9 +6,15 @@ class VehiclesController < ApplicationController
   def index
    # @vehicles = Vehicle.search(params[:search]).order('reg_no')
   # @vehicles = vehicle.all
-   @search = Vehicle.search(params[:q])
-   @vehicles = @search.result
-   
+
+   if params[:q]
+     @search = Vehicle.search(params[:q])
+     @vehicles = @search.result
+   else
+     @vehicles = Vehicle.all
+     @search = Vehicle.search(params[:q])
+   end
+     @vehicles = @vehicles.includes([:current_status, :contract, :vehicleacquired, :vehiclecategory, :vehicle_nos])
     respond_to do |format|
       format.html
       format.csv { send_data @vehicles.to_csv }
@@ -70,25 +76,25 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def vehicle_daily_report  
+  def vehicle_daily_report
     sdate = Date.today
-     @vehicle_daily = Vehicle.where( "acquired_on = ? ", sdate ) 
+     @vehicle_daily = Vehicle.where( "acquired_on = ? ", sdate )
   end
 
-  def vehicle_monthly_report  
+  def vehicle_monthly_report
         c = Date.today
     sdate = c.beginning_of_month
     edate = c.end_of_month
      @vehicle_monthly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate )
   end
 
-  def vehicle_yearly_report  
+  def vehicle_yearly_report
     c = Date.today
     sdate = c.beginning_of_year
     edate = c.end_of_year
-     @vehicle_yearly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate ) 
+     @vehicle_yearly = Vehicle.where( "acquired_on >= ? AND acquired_on <= ? ", sdate, edate )
   end
-  
+
   def transport_summary_report
     @vehicles = Vehicle.all
   end
@@ -96,14 +102,14 @@ class VehiclesController < ApplicationController
 
   def import_excel
   end
-  
+
   def import
       #use this line or line 88-89
-      #Vehicle.import(params[:file]) 
-      #redirect_to vehicles_url, notice: (t 'vehicles.imported') 
-      
+      #Vehicle.import(params[:file])
+      #redirect_to vehicles_url, notice: (t 'vehicles.imported')
+
       #OR use these lines onwards
-      @vehicles = Vehicle.import(params[:file]) 
+      @vehicles = Vehicle.import(params[:file])
       if @vehicles.all?(&:valid?)
         #vids = @vehicles.each(&:save!).map(&:id)
         #vehs=Vehicle.where(id: vids)
@@ -114,7 +120,7 @@ class VehiclesController < ApplicationController
             veol=VehicleEndOfLife.new(vehicle_id: v.id)
           elsif (v.status_id==3 || v.status_id==5)
             if v.confirmation_code && v.confirmed_on
-              veol=VehicleEndOfLife.new(vehicle_id: v.id, confirmation_code: v.confirmation_code, confirmed_on: v.confirmed_on) 
+              veol=VehicleEndOfLife.new(vehicle_id: v.id, confirmation_code: v.confirmation_code, confirmed_on: v.confirmed_on)
             else
              #when confirmation_code(TEB ref no) & confirmed_on(TEB date) are invalid, status is SET as 'Proses TEB' - for LATER editing by user
               vehicle=Vehicle.find(v.id)
@@ -126,11 +132,11 @@ class VehiclesController < ApplicationController
           veol.save!
         end
         respond_to do |format|
-          flash[:notice] 
+          flash[:notice]
           format.html { redirect_to vehicles_url, notice: (t 'vehicles.imported')}
         end
       else
-        @invalid_vehicles = Vehicle.get_invalid(@vehicles) 
+        @invalid_vehicles = Vehicle.get_invalid(@vehicles)
         respond_to do |format|
           flash[:notice] = (t 'vehicles.invalid_excel')+@invalid_vehicles.count.to_s+" "+(t 'vehicles.errors_count')  #yellow box
           format.html { render action: 'import_excel' }
@@ -138,7 +144,7 @@ class VehiclesController < ApplicationController
         end
       end
   end
-  
+
   def download_excel_format
     send_file ("#{::Rails.root.to_s}/public/excel_format/vehicle_excel.xls")
   end

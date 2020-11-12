@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.2.11.3'
 gem "thin", "~> 1.6.0"
-gem "devise", "~> 3.1.1"
-gem "pg", "~> 0.17.1"
-gem "ransack", "~> 1.1.0"
+gem "devise", "~> 3.4.1"
+gem "pg", "~> 0.18.1"
+gem "ransack", "~> 1.4.1"
 gem "ancestry", "~> 2.0.0"
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.0'
-gem 'kaminari', '~> 0.15.1'
+gem 'kaminari', '~> 0.16.3'
 
 
 #display gems
@@ -30,7 +30,7 @@ gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"
 gem "modernizr-rails", "~> 2.7.1"
 gem "paperclip", "~> 3.0"
-gem "bootstrap-kaminari-views", "~> 0.0.3"
+gem "bootstrap-kaminari-views", "~> 0.0.5"
 
 gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
@@ -40,6 +40,8 @@ gem "rubyzip"
 #gem "google-spreadsheet-ruby"
 gem "spreadsheet"
 gem "roo"
+
+gem 'faker', '~> 1.9.1'
 
 group :assets do
 
@@ -51,6 +53,8 @@ end
 group :development do
   gem 'quiet_assets', '~> 1.1.0'
   gem "annotate", "~> 2.6.8"
+  gem 'bullet', '~> 5.7.6'
+  gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 end
 
 group :development, :test do
@@ -59,7 +63,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "selenium-webdriver", "~> 2.35.1"
+  gem "selenium-webdriver", "~> 2.53.4"
   gem "capybara", "~> 2.1.0"
   gem 'growl', '1.0.3'
 end

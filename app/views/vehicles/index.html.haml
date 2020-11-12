@@ -2,8 +2,8 @@
 - model_class = Vehicle
 .page-header
   %h1= t 'vehicles.title', :default => model_class.model_name.human.pluralize
-  
-  
+
+
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
@@ -11,12 +11,12 @@
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_vehicle_path
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.import_excel'))), import_excel_vehicle_path
-    %ul.nav	  
+    %ul.nav
       //%li= link_to "CSV", vehicles_path(format: "csv") |
       %li= link_to "Export Excel", vehicles_path(format: "xls")
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+      %li= link_to(fa_icon("print", text: (t 'actions.print')), '#', onclick: "javascript:print()")
 
 //should really put this in a partial instead of the data.
 .row.searchit{style: "display:none;"}
@@ -27,7 +27,7 @@
         = f.text_field :reg_no_cont, class: "input-medium search-query"
         = f.label :vehicle_assignment_details_vehicle_assignment_unit_receiver_name_cont, "Unit:"
         = f.text_field :vehicle_assignment_details_vehicle_assignment_unit_receiver_name_cont, class: "input-medium search-query"
-        /can't define - ancestry (parent_id) 
+        /can't define - ancestry (parent_id)
         /= f.label :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, "Markas Pemerintahan:"
         /= f.text_field :vehicle_assignment_details_vehicle_assignment_unit_receiver_parent_name_cont, class: "input-medium search-query"
         = f.label :manufacturer_name_cont, "Manufacturer:"
@@ -48,8 +48,5 @@
         = f.text_field :current_status_description_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
 
-      
-#vehicles= render 'vehicles'
-      
 
-  
+#vehicles= render 'vehicles'

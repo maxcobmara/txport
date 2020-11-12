@@ -526,10 +526,6 @@ ActiveRecord::Schema.define(version: 20140630003631) do
     t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
     t.integer  "acquired_id"
   end
 

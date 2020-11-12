@@ -13,7 +13,7 @@
       %li= link_to "Export Excel", maintenances_path(format: "xls")
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+      %li= link_to(fa_icon("print", text: (t 'actions.print')), '#', onclick: "javascript:print()")
 
 .row.searchit{style: "display:none;"}
   .span9offset1
