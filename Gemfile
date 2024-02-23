@@ -2,50 +2,51 @@ source 'https://rubygems.org'
 ruby '2.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.11.3'
+gem 'rails', '5.0.7.2'
 gem 'thin',  '~> 1.8.0'
-gem "devise", "~> 3.4.1"
+gem "devise", "~> 4.0.0"
 #gem "pg", "~> 0.18.1"
-gem 'sqlite3',         '~> 1.3.13'
-gem "ransack", "~> 1.4.1"
-gem "ancestry", "~> 2.0.0"
+gem 'sqlite3', '~> 1.3.13'
+gem "ransack", "~> 2.0.0"
+gem "ancestry", "~> 3.2.1"
 gem 'chartkick', '~> 1.5.2'
-gem 'groupdate', '~> 2.1.0'
-gem 'kaminari', '~> 0.16.3'
+gem 'groupdate', '~> 3.0.0'
+gem 'kaminari', '~> 1.2.0'
 
 
 #display gems
-gem 'bootstrap-sass', '~> 2.3.2.2'
-gem 'sass-rails', '~> 4.0.5'
-gem 'uglifier', '~> 2.1.1'  # Use Uglifier as compressor for JavaScript assets
-gem 'coffee-rails', '~> 4.0.0'  # Use CoffeeScript for .js.coffee assets and views
-gem "jquery-ui-rails", "~> 4.2.1"
-gem 'jquery-rails', '~> 3.1.2'  # Use jquery as the JavaScript library
+gem 'bootstrap-sass', '~> 3.4.0'
+gem 'sass-rails', '~> 6.0.0'
+gem 'uglifier', '~> 1.3.0'  # Use Uglifier as compressor for JavaScript assets
+gem 'coffee-rails', '~> 4.1.0'  # Use CoffeeScript for .js.coffee assets and views
+gem 'jquery-rails', '~> 4.4.0'
+gem "jquery-ui-rails", "~> 6.0.0"
+# Use jquery as the JavaScript library
 #gem 'turbolinks', '~> 1.1.1'  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "haml", "~> 4.0.3"
-gem "font-awesome-rails", "~> 4.0.1.0"
+gem 'jbuilder', '~> 2.0'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "haml", "~> 5.1.0"
+gem "font-awesome-rails", "~> 4.5.0"
 gem "bootstrap-datepicker-rails", "~> 1.3.0.1"
 gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 gem "country_select", "~> 1.2.0"
 gem "modernizr-rails", "~> 2.7.1"
-gem "paperclip", "~> 4.0.0"
-gem "bootstrap-kaminari-views", "~> 0.0.5"
+gem "paperclip", "~> 6.0.0"
+#gem "bootstrap-kaminari-views", "~> 0.0.5"
 
-gem 'datashift', '~> 0.40.1'
+gem 'datashift', '~> 0.40.4'
 #gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
-gem "nokogiri"
+gem 'nokogiri', '~> 1.10.0'
 gem "builder"
 gem "rubyzip"
 #gem "google-spreadsheet-ruby"
 gem "spreadsheet"
-gem "roo"
+gem "roo", "~> 2.5.0"
 
 #compatability
 gem 'bigdecimal', '1.3.0'
-gem 'loofah', '~>2.19.1'
+gem 'loofah', '~>2.9.0'
 
 gem 'faker', '~> 1.9.1'
 
@@ -57,21 +58,21 @@ end
 # gem 'therubyracer', platforms: :ruby
 
 group :development do
-  gem 'quiet_assets', '~> 1.1.0'
-  gem "annotate", "~> 2.6.8"
+  #gem 'quiet_assets', '~> 1.1.0'
+  gem "annotate", "~> 2.7.0"
   gem 'bullet', '~> 5.7.6'
   gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.5.0'
   gem 'guard-rspec', '~> 4.5.0'
 end
 
 group :test do
   gem "selenium-webdriver", "~> 2.53.4"
   gem "capybara", "~> 2.1.0"
-  gem 'growl', '1.0.3'
+  #gem 'growl', '1.0.3'
 end
 
 group :doc do

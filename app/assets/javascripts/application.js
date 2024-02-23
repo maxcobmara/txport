@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-transition
+// require bootstrap-transition
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
