@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 ruby '2.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.7'
+gem 'rails', '5.2.3'
 gem 'thin',  '~> 1.8.0'
-gem "devise", "~> 4.3.0"
+gem "devise", "~> 4.4.0"
 #gem "pg", "~> 0.18.1"
 gem 'sqlite3', '~> 1.3.13'
-gem "ransack", "~> 2.0.0"
+gem "ransack", "~> 2.1.0"
 gem "ancestry", "~> 3.2.1"
 gem 'chartkick', '~> 1.5.2'
 gem 'groupdate', '~> 3.0.0'
@@ -34,7 +34,7 @@ gem "modernizr-rails", "~> 2.7.1"
 gem "paperclip", "~> 6.0.0"
 #gem "bootstrap-kaminari-views", "~> 0.0.5"
 
-gem 'datashift', '~> 0.40.4'
+#gem 'datashift', '~> 0.40.4'. <---- datashift no longer works with rails 5.2
 #gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
 gem 'nokogiri', '~> 1.10.0'
