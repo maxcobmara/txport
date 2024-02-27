@@ -34,9 +34,9 @@ Txport::Application.configure do
 
   config.after_initialize do
     Bullet.enable = true
-    #Bullet.alert = true
-    #Bullet.console = true
-    Bullet.slack = { webhook_url: 'https://hooks.slack.com/services/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', channel: '#feed', username: 'txport' }
+    Bullet.alert = true
+    Bullet.console = true
+    #Bullet.slack = { webhook_url: 'https://hooks.slack.com/services/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', channel: '#feed', username: 'txport' }
   end
 
   # FIXME: Change to your development settings

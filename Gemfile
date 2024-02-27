@@ -5,7 +5,7 @@ ruby '2.5.3'
 #http://rubythursday.com/episodes/ruby-snack-27-upgrade-paperclip-and-aws-sdk-in-prep-for-rails-5
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.8'
 gem 'thin',  '~> 1.8.0'
 gem "devise", "~> 4.4.0"
 #gem "pg", "~> 0.18.1"
@@ -50,8 +50,8 @@ gem "roo", "~> 2.5.0"
 #compatability
 gem 'bigdecimal', '1.3.0'
 gem 'loofah', '~>2.9.0'
-
-gem 'faker', '~> 1.9.1'
+gem 'psych', '~> 3.3.0' 
+gem 'faker', '~> 2.1.0'
 
 group :assets do
 
@@ -64,7 +64,7 @@ group :development do
   #gem 'quiet_assets', '~> 1.1.0'
   gem "annotate", "~> 2.7.0"
   gem 'bullet', '~> 5.7.6'
-  gem 'slack-notifier', '~> 2.3', '>= 2.3.2'
+  gem 'slack-notifier', '~> 2.4.0'
 end
 
 group :development, :test do
